@@ -5,7 +5,7 @@ export type T72LoadTanksOnHeavyCarriersUnit = 'طاقم' | 'فصيلة' | 'سر�
 export const T72_LOAD_TANKS_ON_HEAVY_CARRIERS_UNITS: Array<{ id: T72LoadTanksOnHeavyCarriersUnit; label: string; thresholds: [number, number, number] }> = [
   { id: 'طاقم', label: 'الطاقم', thresholds: [600, 780, 960] },
   { id: 'فصيلة', label: 'الفصيلة', thresholds: [720, 900, 1080] },
-  { id: 'سرية', label: 'السرية', thresholds: [780, 960, 1200] },
+  { id: 'سرية', label: 'السرية', thresholds: [900, 1080, 1320] },
 ]
 
 export function createT72LoadTanksOnHeavyCarriersEvent(unit: T72LoadTanksOnHeavyCarriersUnit): SportEvent {
