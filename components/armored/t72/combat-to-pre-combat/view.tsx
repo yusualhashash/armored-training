@@ -29,16 +29,16 @@ export function T72CombatToPreCombatView({
             variant="ghost"
             onClick={() => openView(`t72-combat-to-pre-combat-${unit.id}` as T72CombatToPreCombatViewId)}
             dir="rtl"
-            className="group flex h-auto w-full items-center justify-start gap-3 rounded-3xl border border-white/10 bg-[#101216] p-4 text-right text-white hover:bg-[#17191f] sm:justify-between sm:p-5"
+            className="group flex min-w-0 w-full items-center justify-start gap-3 overflow-hidden rounded-3xl border border-white/10 bg-[#101216] p-4 text-right text-white hover:bg-[#17191f] sm:justify-between sm:p-5"
           >
             <ChevronLeft className="order-2 hidden shrink-0 text-white/40 transition-transform group-hover:-translate-x-1 sm:block" aria-hidden="true" />
             <span dir="rtl" className="order-1 flex min-w-0 flex-1 items-center gap-3 sm:flex-none sm:gap-4">
-              <span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
+              <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
                 <Shield aria-hidden="true" />
               </span>
-              <span className="flex flex-col items-start gap-1">
+              <span className="flex min-w-0 flex-1 flex-col items-start gap-1">
                 <span className="text-lg font-semibold">{unit.label}</span>
-                <span className="text-xs text-white/50">الانتقال من ترتيب القتال الى ترتيب ما قبل القتال — {unit.label}</span>
+                <span className="max-w-full truncate text-xs text-white/50">الانتقال من ترتيب القتال الى ترتيب ما قبل القتال — {unit.label}</span>
               </span>
             </span>
           </Button>
