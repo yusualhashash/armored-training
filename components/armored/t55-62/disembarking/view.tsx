@@ -50,10 +50,6 @@ export function T55_62DisembarkingView({
                 <span className="text-lg font-semibold">
                   {unit.label}
                 </span>
-
-                <span className="text-xs text-white/50">
-                  نزول {unit.label} من الدبابة
-                </span>
               </span>
             </span>
           </Button>

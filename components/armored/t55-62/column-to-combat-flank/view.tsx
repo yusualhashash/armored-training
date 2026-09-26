@@ -50,10 +50,6 @@ export function T55_62ColumnToCombatFlankView({
                 <span className="text-lg font-semibold">
                   {unit.label}
                 </span>
-
-                <span className="text-xs text-white/50">
-                  الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب) — {unit.label}
-                </span>
               </span>
             </span>
           </Button>

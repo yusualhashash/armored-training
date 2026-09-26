@@ -38,7 +38,6 @@ export function T72CombatToPreCombatView({
               </span>
               <span className="flex min-w-0 flex-1 flex-col items-start gap-1">
                 <span className="text-lg font-semibold">{unit.label}</span>
-                <span className="max-w-full truncate text-xs text-white/50">الانتقال من ترتيب القتال الى ترتيب ما قبل القتال — {unit.label}</span>
               </span>
             </span>
           </Button>

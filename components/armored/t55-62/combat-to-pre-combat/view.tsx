@@ -46,9 +46,6 @@ export function T55_62CombatToPreCombatView({
               </span>
               <span className="flex flex-col items-start gap-1">
                 <span className="text-lg font-semibold">{unit.label}</span>
-                <span className="text-xs text-white/50">
-                  الانتقال من ترتيب القتال الى ترتيب ما قبل القتال — {unit.label}
-                </span>
               </span>
             </span>
           </Button>

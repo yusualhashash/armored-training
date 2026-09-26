@@ -49,10 +49,6 @@ export function T72PreCombatToColumnView({
                 <span className="text-lg font-semibold">
                   {unit.label}
                 </span>
-
-                <span className="text-xs text-white/50">
-                  الانتقال من ترتيب ما قبل القتال الى الرتل — {unit.label}
-                </span>
               </span>
             </span>
           </Button>

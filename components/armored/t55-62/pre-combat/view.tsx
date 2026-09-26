@@ -53,10 +53,6 @@ export function T55_62PreCombatView({
                 <span className="text-lg font-semibold">
                   {unit.label}
                 </span>
-
-                <span className="text-xs text-white/50">
-                  الانتقال إلى ترتيب ما قبل القتال — {unit.label}
-                </span>
               </span>
             </span>
           </Button>

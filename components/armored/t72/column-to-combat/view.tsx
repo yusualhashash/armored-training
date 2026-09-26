@@ -49,10 +49,6 @@ export function T72ColumnToCombatView({
                 <span className="text-lg font-semibold">
                   {unit.label}
                 </span>
-
-                <span className="text-xs text-white/50">
-                  الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة) — {unit.label}
-                </span>
               </span>
             </span>
           </Button>

@@ -50,10 +50,6 @@ export function T72View({
                 <span className="text-lg font-semibold">
                   {unit.label}
                 </span>
-
-                <span className="text-xs text-white/50">
-                  ركوب {unit.label} في الدبابة
-                </span>
               </span>
             </span>
           </Button>
