@@ -111,6 +111,8 @@ import { T72PreCombatToColumnView, T72PreCombatToColumnViewId } from '@/componen
 import { T55_62PreCombatToColumnView, T55_62PreCombatToColumnViewId } from '@/components/armored/t55-62/pre-combat-to-column/view';
 import { T72ColumnToCombatView, T72ColumnToCombatViewId } from '@/components/armored/t72/column-to-combat/view';
 import { T55_62ColumnToCombatView, T55_62ColumnToCombatViewId } from '@/components/armored/t55-62/column-to-combat/view';
+import { T55_62ColumnToCombatFlankView, T55_62ColumnToCombatFlankViewId } from '@/components/armored/t55-62/column-to-combat-flank/view';
+import { T72ColumnToCombatFlankView, T72ColumnToCombatFlankViewId } from '@/components/armored/t72/column-to-combat-flank/view';
 
 /**
  * Generic category configuration.
@@ -623,7 +625,19 @@ function renderArmoredView(
     )
   }
 
-
+  if (
+    activeView === 't72-column-to-combat-flank' ||
+    activeView === 't72-column-to-combat-flank-فصيلة' ||
+    activeView === 't72-column-to-combat-flank-سرية' ||
+    activeView === 't72-column-to-combat-flank-كتيبة'
+  ) {
+    return (
+      <T72ColumnToCombatFlankView
+        activeView={activeView as T72ColumnToCombatFlankViewId}
+        openView={openView as (view: T72ColumnToCombatFlankViewId) => void}
+      />
+    )
+  }
   // ============================================================
   // T55+62
   // ============================================================
@@ -744,7 +758,7 @@ function renderArmoredView(
     )
   }
 
-    if (
+  if (
     activeView === 't55-62-column-to-combat' ||
     activeView === 't55-62-column-to-combat-سرية' ||
     activeView === 't55-62-column-to-combat-كتيبة'
@@ -763,6 +777,19 @@ function renderArmoredView(
     )
   }
 
+  if (
+      activeView === 't55-62-column-to-combat-flank' ||
+      activeView === 't55-62-column-to-combat-flank-فصيلة' ||
+      activeView === 't55-62-column-to-combat-flank-سرية' ||
+      activeView === 't55-62-column-to-combat-flank-كتيبة'
+    ) {
+      return (
+        <T55_62ColumnToCombatFlankView
+          activeView={activeView as T55_62ColumnToCombatFlankViewId}
+          openView={openView as (view: T55_62ColumnToCombatFlankViewId) => void}
+        />
+      )
+    }
 
   return null
 }

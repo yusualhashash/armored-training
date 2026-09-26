@@ -117,6 +117,11 @@ export type View =
   | 't72-column-to-combat-سرية'
   | 't72-column-to-combat-كتيبة'
 
+  | 't72-column-to-combat-flank'
+  | 't72-column-to-combat-flank-فصيلة'
+  | 't72-column-to-combat-flank-سرية'
+  | 't72-column-to-combat-flank-كتيبة'
+
 
   // T55+62
   | 't55-62'
@@ -152,6 +157,12 @@ export type View =
   | 't55-62-column-to-combat-سرية'
   | 't55-62-column-to-combat-كتيبة'
 
+  | 't55-62-column-to-combat-flank'
+  | 't55-62-column-to-combat-flank-فصيلة'
+  | 't55-62-column-to-combat-flank-سرية'
+  | 't55-62-column-to-combat-flank-كتيبة'
+
+  
 export interface ViewContent {
   title: string
   backLabel: string

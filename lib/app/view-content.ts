@@ -625,6 +625,26 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't72-column-to-combat',
   },
 
+  't72-column-to-combat-flank': {
+    title: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+  't72-column-to-combat-flank-فصيلة': {
+    title: 'الفصيلة',
+    backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
+    backTo: 't72-column-to-combat-flank',
+  },
+  't72-column-to-combat-flank-سرية': {
+    title: 'السرية',
+    backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
+    backTo: 't72-column-to-combat-flank',
+  },
+  't72-column-to-combat-flank-كتيبة': {
+    title: 'الكتيبة',
+    backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
+    backTo: 't72-column-to-combat-flank',
+  },
 
   // ============================================================
   // T55+62
@@ -784,6 +804,27 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     title: 'الكتيبة',
     backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)',
     backTo: 't55-62-column-to-combat',
+  },
+
+  't55-62-column-to-combat-flank': {
+    title: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
+    backLabel: 'T55+62',
+    backTo: 't55-62',
+  },
+  't55-62-column-to-combat-flank-فصيلة': {
+    title: 'الفصيلة',
+    backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
+    backTo: 't55-62-column-to-combat-flank',
+  },
+  't55-62-column-to-combat-flank-سرية': {
+    title: 'السرية',
+    backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
+    backTo: 't55-62-column-to-combat-flank',
+  },
+  't55-62-column-to-combat-flank-كتيبة': {
+    title: 'الكتيبة',
+    backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
+    backTo: 't55-62-column-to-combat-flank',
   },
 
 }
