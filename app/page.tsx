@@ -262,7 +262,7 @@ export default function Page() {
           {!currentSection && <span className="shrink-0 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-xs text-white/55">يعمل دون إنترنت</span>}
         </header>
 
-        <section className="relative flex min-w-0 flex-1 flex-col px-3 pb-32 pt-7 sm:px-10 sm:pb-36 sm:pt-10">
+        <section className="relative flex min-w-0 flex-1 flex-col overflow-y-auto px-3 pb-40 pt-7 sm:px-10 sm:pb-36 sm:pt-10">
           {activeView === 'home' && (
             <div className="mx-auto w-full max-w-2xl">
               <div className="grid gap-4">
