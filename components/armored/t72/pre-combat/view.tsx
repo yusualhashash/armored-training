@@ -8,6 +8,7 @@ import { TimerPanel } from '@/components/timer/timer-panel'
 
 export type T72PreCombatViewId =
   | 't72-pre-combat'
+  | 't72-pre-combat-فصيلة'
   | 't72-pre-combat-سرية'
   | 't72-pre-combat-كتيبة'
 
