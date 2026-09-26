@@ -247,7 +247,6 @@ export default function Page() {
                   <h1 className="mt-1 line-clamp-2 break-words text-base font-bold leading-tight tracking-tight text-white sm:text-xl">{currentSection.title}</h1>
                 </div>
               </div>
-              <span className="shrink-0 self-start rounded-full border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/60 sm:self-auto">يعمل دون إنترنت</span>
             </div>
           ) : (
             <div className="flex min-w-0 items-center gap-3">
