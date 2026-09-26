@@ -1,0 +1,58 @@
+import { CountScoreEntry } from "@/lib/types";
+
+/**
+ * جدول علامات تمرين القوة المركب - ( الفئة العمرية السابعة - ف٧ ): كل سطر يربط عدد التكرارات بالعلامة المقابلة له.
+ * أي عدد تكرارات أعلى من أول سطر يأخذ أعلى علامة، وأي عدد أقل من آخر سطر يأخذ صفراً.
+ * الترتيب من الأكثر تكراراً إلى الأقل.
+ */
+export const COMPOUND_STRENGTH_CATEGORY_SEVEN_SCORES: CountScoreEntry[] = [
+  // من 90 إلى 100
+  { count: 41, score: 100 },
+  { count: 40, score: 98 },
+  { count: 39, score: 96 },
+  { count: 38, score: 94 },
+  { count: 37, score: 92 },
+  { count: 36, score: 90 },
+
+  // من 80 إلى 89
+  { count: 35, score: 87 },
+  { count: 34, score: 84 },
+  { count: 33, score: 82 },
+  { count: 32, score: 80 },
+
+  // من 70 إلى 79
+  { count: 31, score: 77 },
+  { count: 30, score: 74 },
+  { count: 29, score: 72 },
+  { count: 28, score: 70 },
+
+  // من 60 إلى 69
+  { count: 27, score: 67 },
+  { count: 26, score: 64 },
+  { count: 25, score: 62 },
+  { count: 24, score: 60 },
+
+  // من 0 إلى 59
+  { count: 23, score: 58 },
+  { count: 22, score: 56 },
+  { count: 21, score: 54 },
+  { count: 20, score: 52 },
+  { count: 19, score: 50 },
+  { count: 18, score: 48 },
+  { count: 17, score: 46 },
+  { count: 16, score: 44 },
+  { count: 15, score: 42 },
+  { count: 14, score: 40 },
+  { count: 13, score: 38 },
+  { count: 12, score: 36 },
+  { count: 11, score: 34 },
+  { count: 10, score: 32 },
+  { count: 9, score: 30 },
+  { count: 8, score: 26 },
+  { count: 7, score: 22 },
+  { count: 6, score: 18 },
+  { count: 5, score: 14 },
+  { count: 4, score: 10 },
+  { count: 3, score: 5 },
+  { count: 2, score: 0 } // تكرار واحد أو أقل يأخذ صفراً
+];
