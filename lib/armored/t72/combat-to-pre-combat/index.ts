@@ -1,10 +1,11 @@
 import type { PerformanceStandard, SportEvent } from '@/lib/types'
 
-export type T72CombatToPreCombatUnit = 'سرية' | 'كتيبة'
+export type T72CombatToPreCombatUnit = 'فصيلة' | 'سرية' | 'كتيبة'
 
 export const T72_COMBAT_TO_PRE_COMBAT_UNITS: Array<{ id: T72CombatToPreCombatUnit; label: string; thresholds: [number, number, number] }> = [
-  { id: 'سرية', label: 'السرية', thresholds: [110, 120, 145] },
-  { id: 'كتيبة', label: 'الكتيبة', thresholds: [190, 210, 250] },
+  { id: 'فصيلة', label: 'الفصيلة', thresholds: [30, 35, 42] },
+  { id: 'سرية', label: 'السرية', thresholds: [50, 55, 65] },
+  { id: 'كتيبة', label: 'الكتيبة', thresholds: [165, 180, 210] },
 ]
 
 export function createT72CombatToPreCombatEvent(unit: T72CombatToPreCombatUnit): SportEvent {
