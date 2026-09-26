@@ -8,6 +8,7 @@ import { TimerPanel } from '@/components/timer/timer-panel'
 
 export type T72PreCombatViewId =
   | 't72-pre-combat'
+  | 't72-pre-combat-فصيلة'
   | 't72-pre-combat-سرية'
   | 't72-pre-combat-كتيبة'
 
@@ -51,7 +52,7 @@ export function T72PreCombatView({
                 </span>
 
                 <span className="text-xs text-white/50">
-                  الانتقال إلى ترتيب ما قبل القتال — {unit.label}
+                  الانتقال من ترتيب القتال الى ترتيب ما قبل القتال — {unit.label}
                 </span>
               </span>
             </span>
