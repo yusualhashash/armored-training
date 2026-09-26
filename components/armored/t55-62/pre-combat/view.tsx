@@ -14,6 +14,7 @@ export type T55_62PreCombatViewId =
   | 't55-62-pre-combat-طاقم'
   | 't55-62-pre-combat-فصيلة'
   | 't55-62-pre-combat-سرية'
+  | 't55-62-pre-combat-كتيبة'
 
 export function T55_62PreCombatView({
   activeView,
@@ -55,7 +56,7 @@ export function T55_62PreCombatView({
                 </span>
 
                 <span className="text-xs text-white/50">
-                  الانتقال إلى ترتيب ما قبل القتال — {unit.label}
+                  الانتقال من ترتيب القتال إلى ترتيب ما قبل القتال — {unit.label}
                 </span>
               </span>
             </span>
