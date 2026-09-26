@@ -607,6 +607,25 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't72-pre-combat-to-column',
   },
 
+  't72-column-to-combat': {
+    title: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-column-to-combat-سرية': {
+    title: 'السرية',
+    backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)',
+    backTo: 't72-column-to-combat',
+  },
+
+  't72-column-to-combat-كتيبة': {
+    title: 'الكتيبة',
+    backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)',
+    backTo: 't72-column-to-combat',
+  },
+
+
   // ============================================================
   // T55+62
   // ============================================================
@@ -748,4 +767,23 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'الانتقال من ترتيب ما قبل القتال الى الرتل',
     backTo: 't55-62-pre-combat-to-column',
   },
+
+  't55-62-column-to-combat': {
+    title: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)',
+    backLabel: 'T55+62',
+    backTo: 't55-62',
+  },
+
+  't55-62-column-to-combat-سرية': {
+    title: 'السرية',
+    backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)',
+    backTo: 't55-62-column-to-combat',
+  },
+
+  't55-62-column-to-combat-كتيبة': {
+    title: 'الكتيبة',
+    backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)',
+    backTo: 't55-62-column-to-combat',
+  },
+
 }

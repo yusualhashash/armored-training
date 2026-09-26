@@ -109,6 +109,8 @@ import {
 import type { OpenView, View } from './types'
 import { T72PreCombatToColumnView, T72PreCombatToColumnViewId } from '@/components/armored/t72/pre-combat-to-column/view';
 import { T55_62PreCombatToColumnView, T55_62PreCombatToColumnViewId } from '@/components/armored/t55-62/pre-combat-to-column/view';
+import { T72ColumnToCombatView, T72ColumnToCombatViewId } from '@/components/armored/t72/column-to-combat/view';
+import { T55_62ColumnToCombatView, T55_62ColumnToCombatViewId } from '@/components/armored/t55-62/column-to-combat/view';
 
 /**
  * Generic category configuration.
@@ -602,6 +604,26 @@ function renderArmoredView(
     )
   }
 
+  if (
+    activeView === 't72-column-to-combat' ||
+    activeView === 't72-column-to-combat-سرية' ||
+    activeView === 't72-column-to-combat-كتيبة'
+  ) {
+    return (
+      <T72ColumnToCombatView
+        activeView={
+          activeView as T72ColumnToCombatViewId
+        }
+        openView={
+          openView as (
+            view: T72ColumnToCombatViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+
   // ============================================================
   // T55+62
   // ============================================================
@@ -721,6 +743,26 @@ function renderArmoredView(
       />
     )
   }
+
+    if (
+    activeView === 't55-62-column-to-combat' ||
+    activeView === 't55-62-column-to-combat-سرية' ||
+    activeView === 't55-62-column-to-combat-كتيبة'
+  ) {
+    return (
+      <T55_62ColumnToCombatView
+        activeView={
+          activeView as T55_62ColumnToCombatViewId
+        }
+        openView={
+          openView as (
+            view: T55_62ColumnToCombatViewId
+          ) => void
+        }
+      />
+    )
+  }
+
 
   return null
 }

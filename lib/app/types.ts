@@ -113,6 +113,11 @@ export type View =
   | 't72-pre-combat-to-column-سرية'
   | 't72-pre-combat-to-column-كتيبة'
 
+  | 't72-column-to-combat'
+  | 't72-column-to-combat-سرية'
+  | 't72-column-to-combat-كتيبة'
+
+
   // T55+62
   | 't55-62'
   | 't55-62-boarding'
@@ -142,6 +147,10 @@ export type View =
   | 't55-62-pre-combat-to-column'
   | 't55-62-pre-combat-to-column-سرية'
   | 't55-62-pre-combat-to-column-كتيبة'
+
+  | 't55-62-column-to-combat'
+  | 't55-62-column-to-combat-سرية'
+  | 't55-62-column-to-combat-كتيبة'
 
 export interface ViewContent {
   title: string

@@ -98,6 +98,14 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t72-pre-combat-to-column')}
         />
+
+        <SectionButton
+          label="الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)"
+          description="السرية والكتيبة"
+          icon={Medal}
+          onClick={() => openView('t72-column-to-combat')}
+        />
+
       </div>
     )
   }
@@ -152,6 +160,14 @@ export function AppContent({
             openView('t55-62-pre-combat-to-column')
           }
         />
+
+        <SectionButton
+          label="الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)"
+          description="السرية والكتيبة"
+          icon={Medal}
+          onClick={() => openView('t55-62-column-to-combat')}
+        />
+
       </div>
     )
   }
