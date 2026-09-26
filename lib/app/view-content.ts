@@ -667,7 +667,31 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't72-move-and-occupy-firing-line',
   },
 
+  't72-load-tanks-on-heavy-carriers': {
+    title: 'تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+  
+  't72-load-tanks-on-heavy-carriers-طاقم': {
+    title: 'الطاقم',
+    backLabel: 'تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't72-load-tanks-on-heavy-carriers',
+  },
 
+  't72-load-tanks-on-heavy-carriers-فصيلة': {
+    title: 'الفصيلة',
+    backLabel: 'تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't72-load-tanks-on-heavy-carriers',
+  },
+
+  't72-load-tanks-on-heavy-carriers-سرية': {
+    title: 'السرية',
+    backLabel: 'تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't72-load-tanks-on-heavy-carriers',
+  },
+
+  
   // ============================================================
   // T55+62
   // ============================================================
@@ -868,6 +892,30 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     title: 'السرية',
     backLabel: 'التحرك واحتلال خط رمي لصد هجمات العدو',
     backTo: 't55-62-move-and-occupy-firing-line',
+  },
+
+  't55-62-load-tanks-on-heavy-carriers': {
+    title: 'تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backLabel: 'T55+62',
+    backTo: 't55-62',
+  },
+
+  't55-62-load-tanks-on-heavy-carriers-طاقم': {
+    title: 'الطاقم',
+    backLabel: 'تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't55-62-load-tanks-on-heavy-carriers',
+  },
+
+  't55-62-load-tanks-on-heavy-carriers-فصيلة': {
+    title: 'الفصيلة',
+    backLabel: 'تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't55-62-load-tanks-on-heavy-carriers',
+  },
+
+  't55-62-load-tanks-on-heavy-carriers-سرية': {
+    title: 'السرية',
+    backLabel: 'تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't55-62-load-tanks-on-heavy-carriers',
   },
 
 }

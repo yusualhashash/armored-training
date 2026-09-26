@@ -126,7 +126,12 @@ export type View =
   | 't72-move-and-occupy-firing-line-فصيلة'
   | 't72-move-and-occupy-firing-line-سرية'
 
+  | 't72-load-tanks-on-heavy-carriers'
+  | 't72-load-tanks-on-heavy-carriers-طاقم'
+  | 't72-load-tanks-on-heavy-carriers-فصيلة'
+  | 't72-load-tanks-on-heavy-carriers-سرية'
 
+  
   // T55+62
   | 't55-62'
   | 't55-62-boarding'
@@ -170,6 +175,10 @@ export type View =
   | 't55-62-move-and-occupy-firing-line-فصيلة'
   | 't55-62-move-and-occupy-firing-line-سرية'
 
+  | 't55-62-load-tanks-on-heavy-carriers'
+  | 't55-62-load-tanks-on-heavy-carriers-طاقم'
+  | 't55-62-load-tanks-on-heavy-carriers-فصيلة'
+  | 't55-62-load-tanks-on-heavy-carriers-سرية'
   
 export interface ViewContent {
   title: string

@@ -115,6 +115,8 @@ import { T55_62ColumnToCombatFlankView, T55_62ColumnToCombatFlankViewId } from '
 import { T72ColumnToCombatFlankView, T72ColumnToCombatFlankViewId } from '@/components/armored/t72/column-to-combat-flank/view';
 import { T55_62MoveAndOccupyFiringLineView, T55_62MoveAndOccupyFiringLineViewId } from '@/components/armored/t55-62/move-and-occupy-firing-line/view';
 import { T72MoveAndOccupyFiringLineView, T72MoveAndOccupyFiringLineViewId } from '@/components/armored/t72/move-and-occupy-firing-line/view';
+import { T72LoadTanksOnHeavyCarriersView, T72LoadTanksOnHeavyCarriersViewId } from '@/components/armored/t72/load-tanks-on-heavy-carriers/view';
+import { T55_62LoadTanksOnHeavyCarriersView, T55_62LoadTanksOnHeavyCarriersViewId } from '@/components/armored/t55-62/load-tanks-on-heavy-carriers/view';
 
 /**
  * Generic category configuration.
@@ -654,7 +656,21 @@ function renderArmoredView(
     )
   }
 
+  if (
+    activeView === 't72-load-tanks-on-heavy-carriers' ||
+    activeView === 't72-load-tanks-on-heavy-carriers-طاقم' ||
+    activeView === 't72-load-tanks-on-heavy-carriers-فصيلة' ||
+    activeView === 't72-load-tanks-on-heavy-carriers-سرية'
+  ) {
+    return (
+      <T72LoadTanksOnHeavyCarriersView
+        activeView={activeView as T72LoadTanksOnHeavyCarriersViewId}
+        openView={openView as (view: T72LoadTanksOnHeavyCarriersViewId) => void}
+      />
+    )
+  }
   
+
   // ============================================================
   // T55+62
   // ============================================================
@@ -817,6 +833,20 @@ function renderArmoredView(
       <T55_62MoveAndOccupyFiringLineView
         activeView={activeView as T55_62MoveAndOccupyFiringLineViewId}
         openView={openView as (view: T55_62MoveAndOccupyFiringLineViewId) => void}
+      />
+    )
+  }
+
+  if (
+    activeView === 't55-62-load-tanks-on-heavy-carriers' ||
+    activeView === 't55-62-load-tanks-on-heavy-carriers-طاقم' ||
+    activeView === 't55-62-load-tanks-on-heavy-carriers-فصيلة' ||
+    activeView === 't55-62-load-tanks-on-heavy-carriers-سرية'
+  ) {
+    return (
+      <T55_62LoadTanksOnHeavyCarriersView
+        activeView={activeView as T55_62LoadTanksOnHeavyCarriersViewId}
+        openView={openView as (view: T55_62LoadTanksOnHeavyCarriersViewId) => void}
       />
     )
   }
