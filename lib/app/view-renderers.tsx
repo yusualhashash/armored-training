@@ -113,6 +113,8 @@ import { T72ColumnToCombatView, T72ColumnToCombatViewId } from '@/components/arm
 import { T55_62ColumnToCombatView, T55_62ColumnToCombatViewId } from '@/components/armored/t55-62/column-to-combat/view';
 import { T55_62ColumnToCombatFlankView, T55_62ColumnToCombatFlankViewId } from '@/components/armored/t55-62/column-to-combat-flank/view';
 import { T72ColumnToCombatFlankView, T72ColumnToCombatFlankViewId } from '@/components/armored/t72/column-to-combat-flank/view';
+import { T55_62MoveAndOccupyFiringLineView, T55_62MoveAndOccupyFiringLineViewId } from '@/components/armored/t55-62/move-and-occupy-firing-line/view';
+import { T72MoveAndOccupyFiringLineView, T72MoveAndOccupyFiringLineViewId } from '@/components/armored/t72/move-and-occupy-firing-line/view';
 
 /**
  * Generic category configuration.
@@ -638,6 +640,21 @@ function renderArmoredView(
       />
     )
   }
+
+  if (
+    activeView === 't72-move-and-occupy-firing-line' ||
+    activeView === 't72-move-and-occupy-firing-line-فصيلة' ||
+    activeView === 't72-move-and-occupy-firing-line-سرية'
+  ) {
+    return (
+      <T72MoveAndOccupyFiringLineView
+        activeView={activeView as T72MoveAndOccupyFiringLineViewId}
+        openView={openView as (view: T72MoveAndOccupyFiringLineViewId) => void}
+      />
+    )
+  }
+
+  
   // ============================================================
   // T55+62
   // ============================================================
@@ -790,6 +807,19 @@ function renderArmoredView(
         />
       )
     }
+
+  if (
+    activeView === 't55-62-move-and-occupy-firing-line' ||
+    activeView === 't55-62-move-and-occupy-firing-line-فصيلة' ||
+    activeView === 't55-62-move-and-occupy-firing-line-سرية'
+  ) {
+    return (
+      <T55_62MoveAndOccupyFiringLineView
+        activeView={activeView as T55_62MoveAndOccupyFiringLineViewId}
+        openView={openView as (view: T55_62MoveAndOccupyFiringLineViewId) => void}
+      />
+    )
+  }
 
   return null
 }

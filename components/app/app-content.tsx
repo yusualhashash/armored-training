@@ -112,6 +112,12 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t72-column-to-combat-flank')}
         />
+        <SectionButton
+          label="التحرك واحتلال خط رمي لصد هجمات العدو"
+          description="الفصيلة والسرية"
+          icon={Medal}
+          onClick={() => openView('t72-move-and-occupy-firing-line')}
+        />
       </div>
     )
   }
@@ -179,6 +185,12 @@ export function AppContent({
           description="الفصيلة والسرية والكتيبة"
           icon={Medal}
           onClick={() => openView('t55-62-column-to-combat-flank')}
+        />
+        <SectionButton
+          label="التحرك واحتلال خط رمي لصد هجمات العدو"
+          description="الفصيلة والسرية"
+          icon={Medal}
+          onClick={() => openView('t55-62-move-and-occupy-firing-line')}
         />
       </div>
     )

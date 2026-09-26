@@ -630,21 +630,43 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T72',
     backTo: 't72',
   },
+
   't72-column-to-combat-flank-فصيلة': {
     title: 'الفصيلة',
     backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
     backTo: 't72-column-to-combat-flank',
   },
+
   't72-column-to-combat-flank-سرية': {
     title: 'السرية',
     backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
     backTo: 't72-column-to-combat-flank',
   },
+
   't72-column-to-combat-flank-كتيبة': {
     title: 'الكتيبة',
     backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
     backTo: 't72-column-to-combat-flank',
   },
+
+  't72-move-and-occupy-firing-line': {
+    title: 'التحرك واحتلال خط رمي لصد هجمات العدو',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-move-and-occupy-firing-line-فصيلة': {
+    title: 'الفصيلة',
+    backLabel: 'التحرك واحتلال خط رمي لصد هجمات العدو',
+    backTo: 't72-move-and-occupy-firing-line',
+  },
+
+  't72-move-and-occupy-firing-line-سرية': {
+    title: 'السرية',
+    backLabel: 'التحرك واحتلال خط رمي لصد هجمات العدو',
+    backTo: 't72-move-and-occupy-firing-line',
+  },
+
 
   // ============================================================
   // T55+62
@@ -811,20 +833,41 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T55+62',
     backTo: 't55-62',
   },
+
   't55-62-column-to-combat-flank-فصيلة': {
     title: 'الفصيلة',
     backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
     backTo: 't55-62-column-to-combat-flank',
   },
+
   't55-62-column-to-combat-flank-سرية': {
     title: 'السرية',
     backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
     backTo: 't55-62-column-to-combat-flank',
   },
+
   't55-62-column-to-combat-flank-كتيبة': {
     title: 'الكتيبة',
     backLabel: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
     backTo: 't55-62-column-to-combat-flank',
+  },
+
+  't55-62-move-and-occupy-firing-line': {
+    title: 'التحرك واحتلال خط رمي لصد هجمات العدو',
+    backLabel: 'T55+62',
+    backTo: 't55-62',
+  },
+
+  't55-62-move-and-occupy-firing-line-فصيلة': {
+    title: 'الفصيلة',
+    backLabel: 'التحرك واحتلال خط رمي لصد هجمات العدو',
+    backTo: 't55-62-move-and-occupy-firing-line',
+  },
+
+  't55-62-move-and-occupy-firing-line-سرية': {
+    title: 'السرية',
+    backLabel: 'التحرك واحتلال خط رمي لصد هجمات العدو',
+    backTo: 't55-62-move-and-occupy-firing-line',
   },
 
 }

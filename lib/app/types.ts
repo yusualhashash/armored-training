@@ -122,6 +122,10 @@ export type View =
   | 't72-column-to-combat-flank-سرية'
   | 't72-column-to-combat-flank-كتيبة'
 
+  | 't72-move-and-occupy-firing-line'
+  | 't72-move-and-occupy-firing-line-فصيلة'
+  | 't72-move-and-occupy-firing-line-سرية'
+
 
   // T55+62
   | 't55-62'
@@ -161,6 +165,10 @@ export type View =
   | 't55-62-column-to-combat-flank-فصيلة'
   | 't55-62-column-to-combat-flank-سرية'
   | 't55-62-column-to-combat-flank-كتيبة'
+
+  | 't55-62-move-and-occupy-firing-line'
+  | 't55-62-move-and-occupy-firing-line-فصيلة'
+  | 't55-62-move-and-occupy-firing-line-سرية'
 
   
 export interface ViewContent {
