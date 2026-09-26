@@ -125,6 +125,15 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t72-load-tanks-on-heavy-carriers')}
         />
+
+        <SectionButton
+          label="تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)"
+          description="الطاقم والفصيلة والسرية"
+          icon={Medal}
+          onClick={() => openView('t72-unload-tanks-from-heavy-carriers')}
+        />
+
+        
       </div>
     )
   }
@@ -206,6 +215,14 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t55-62-load-tanks-on-heavy-carriers')}
         />
+
+        <SectionButton
+          label="تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)"
+          description="الطاقم والفصيلة والسرية"
+          icon={Medal}
+          onClick={() => openView('t55-62-unload-tanks-from-heavy-carriers')}
+        />
+
 
       </div>
     )

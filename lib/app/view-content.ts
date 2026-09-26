@@ -691,7 +691,31 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't72-load-tanks-on-heavy-carriers',
   },
 
+  't72-unload-tanks-from-heavy-carriers': {
+    title: 'تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-unload-tanks-from-heavy-carriers-طاقم': {
+    title: 'الطاقم',
+    backLabel: 'تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't72-unload-tanks-from-heavy-carriers',
+  },
+
+  't72-unload-tanks-from-heavy-carriers-فصيلة': {
+    title: 'الفصيلة',
+    backLabel: 'تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't72-unload-tanks-from-heavy-carriers',
+  },
+
+  't72-unload-tanks-from-heavy-carriers-سرية': {
+    title: 'السرية',
+    backLabel: 'تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't72-unload-tanks-from-heavy-carriers',
+  },
   
+
   // ============================================================
   // T55+62
   // ============================================================
@@ -916,6 +940,30 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     title: 'السرية',
     backLabel: 'تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)',
     backTo: 't55-62-load-tanks-on-heavy-carriers',
+  },
+
+  't55-62-unload-tanks-from-heavy-carriers': {
+    title: 'تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backLabel: 'T55+62',
+    backTo: 't55-62',
+  },
+
+  't55-62-unload-tanks-from-heavy-carriers-طاقم': {
+    title: 'الطاقم',
+    backLabel: 'تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't55-62-unload-tanks-from-heavy-carriers',
+  },
+
+  't55-62-unload-tanks-from-heavy-carriers-فصيلة': {
+    title: 'الفصيلة',
+    backLabel: 'تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't55-62-unload-tanks-from-heavy-carriers',
+  },
+
+  't55-62-unload-tanks-from-heavy-carriers-سرية': {
+    title: 'السرية',
+    backLabel: 'تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)',
+    backTo: 't55-62-unload-tanks-from-heavy-carriers',
   },
 
 }

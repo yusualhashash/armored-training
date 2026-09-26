@@ -131,6 +131,11 @@ export type View =
   | 't72-load-tanks-on-heavy-carriers-فصيلة'
   | 't72-load-tanks-on-heavy-carriers-سرية'
 
+  | 't72-unload-tanks-from-heavy-carriers'
+  | 't72-unload-tanks-from-heavy-carriers-طاقم'
+  | 't72-unload-tanks-from-heavy-carriers-فصيلة'
+  | 't72-unload-tanks-from-heavy-carriers-سرية'
+
   
   // T55+62
   | 't55-62'
@@ -179,6 +184,11 @@ export type View =
   | 't55-62-load-tanks-on-heavy-carriers-طاقم'
   | 't55-62-load-tanks-on-heavy-carriers-فصيلة'
   | 't55-62-load-tanks-on-heavy-carriers-سرية'
+
+  | 't55-62-unload-tanks-from-heavy-carriers'
+  | 't55-62-unload-tanks-from-heavy-carriers-طاقم'
+  | 't55-62-unload-tanks-from-heavy-carriers-فصيلة'
+  | 't55-62-unload-tanks-from-heavy-carriers-سرية'
   
 export interface ViewContent {
   title: string

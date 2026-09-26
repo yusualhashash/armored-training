@@ -117,6 +117,8 @@ import { T55_62MoveAndOccupyFiringLineView, T55_62MoveAndOccupyFiringLineViewId 
 import { T72MoveAndOccupyFiringLineView, T72MoveAndOccupyFiringLineViewId } from '@/components/armored/t72/move-and-occupy-firing-line/view';
 import { T72LoadTanksOnHeavyCarriersView, T72LoadTanksOnHeavyCarriersViewId } from '@/components/armored/t72/load-tanks-on-heavy-carriers/view';
 import { T55_62LoadTanksOnHeavyCarriersView, T55_62LoadTanksOnHeavyCarriersViewId } from '@/components/armored/t55-62/load-tanks-on-heavy-carriers/view';
+import { T55_62UnloadTanksFromHeavyCarriersView, T55_62UnloadTanksFromHeavyCarriersViewId } from '@/components/armored/t55-62/unload-tanks-from-heavy-carriers/view';
+import { T72UnloadTanksFromHeavyCarriersView, T72UnloadTanksFromHeavyCarriersViewId } from '@/components/armored/t72/unload-tanks-from-heavy-carriers/view';
 
 /**
  * Generic category configuration.
@@ -670,6 +672,21 @@ function renderArmoredView(
     )
   }
   
+  if (
+    activeView === 't72-unload-tanks-from-heavy-carriers' ||
+    activeView === 't72-unload-tanks-from-heavy-carriers-طاقم' ||
+    activeView === 't72-unload-tanks-from-heavy-carriers-فصيلة' ||
+    activeView === 't72-unload-tanks-from-heavy-carriers-سرية'
+  ) {
+    return (
+      <T72UnloadTanksFromHeavyCarriersView
+        activeView={activeView as T72UnloadTanksFromHeavyCarriersViewId}
+        openView={openView as (view: T72UnloadTanksFromHeavyCarriersViewId) => void}
+      />
+    )
+  }
+
+
 
   // ============================================================
   // T55+62
@@ -847,6 +864,20 @@ function renderArmoredView(
       <T55_62LoadTanksOnHeavyCarriersView
         activeView={activeView as T55_62LoadTanksOnHeavyCarriersViewId}
         openView={openView as (view: T55_62LoadTanksOnHeavyCarriersViewId) => void}
+      />
+    )
+  }
+
+  if (
+    activeView === 't55-62-unload-tanks-from-heavy-carriers' ||
+    activeView === 't55-62-unload-tanks-from-heavy-carriers-طاقم' ||
+    activeView === 't55-62-unload-tanks-from-heavy-carriers-فصيلة' ||
+    activeView === 't55-62-unload-tanks-from-heavy-carriers-سرية'
+  ) {
+    return (
+      <T55_62UnloadTanksFromHeavyCarriersView
+        activeView={activeView as T55_62UnloadTanksFromHeavyCarriersViewId}
+        openView={openView as (view: T55_62UnloadTanksFromHeavyCarriersViewId) => void}
       />
     )
   }
