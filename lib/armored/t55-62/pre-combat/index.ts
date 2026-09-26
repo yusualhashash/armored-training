@@ -8,7 +8,7 @@ export const T55_62_PRE_COMBAT_UNITS: Array<{ id: T55_62PreCombatUnit; label: st
 ]
 
 export function createT55_62PreCombatEvent(unit: T55_62PreCombatUnit): SportEvent {
-  const thresholds = T55_62_PRE_COMBAT_UNITS.find((entry) => entry.id === unit)?.thresholds ?? [9, 10, 12]
+  const thresholds = T55_62_PRE_COMBAT_UNITS.find((entry) => entry.id === unit)?.thresholds ?? [120, 135, 165]
   const standards: PerformanceStandard[] = [
     { time: thresholds[0], level: 'excellent' },
     { time: thresholds[1], level: 'good' },
