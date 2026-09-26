@@ -1,0 +1,766 @@
+import type { ReactNode } from 'react'
+
+import {
+  T55_62View,
+  type T55_62ViewId,
+} from '@/components/armored/t55-62/boarding/view'
+
+import {
+  T55_62DisembarkingView,
+  type T55_62DisembarkingViewId,
+} from '@/components/armored/t55-62/disembarking/view'
+
+import {
+  T55_62OpenPreCombatView,
+  type T55_62OpenPreCombatViewId,
+} from '@/components/armored/t55-62/open-pre-combat/view'
+
+import {
+  T55_62PreCombatView,
+  type T55_62PreCombatViewId,
+} from '@/components/armored/t55-62/pre-combat/view'
+
+import {
+  T55_62CombatToPreCombatView,
+  type T55_62CombatToPreCombatViewId,
+} from '@/components/armored/t55-62/combat-to-pre-combat/view'
+
+
+
+import { T72View } from '@/components/armored/t72/boarding/view'
+
+import {
+  T72DisembarkingView,
+  type T72DisembarkingViewId,
+} from '@/components/armored/t72/disembarking/view'
+
+import {
+  T72OpenPreCombatView,
+  type T72OpenPreCombatViewId,
+} from '@/components/armored/t72/open-pre-combat/view'
+
+import {
+  T72PreCombatView,
+  type T72PreCombatViewId,
+} from '@/components/armored/t72/pre-combat/view'
+
+import {
+  T72CombatToPreCombatView,
+  type T72CombatToPreCombatViewId,
+} from '@/components/armored/t72/combat-to-pre-combat/view'
+
+
+
+import {
+  OneKilometerCategories,
+  OneKilometerView,
+} from '@/components/sports/1-km/one-km-view'
+
+import {
+  HundredMeterCategories,
+  HundredMeterView,
+  type HundredMeterViewId,
+} from '@/components/sports/100-meter/100-meter-view'
+
+import {
+  TwoKilometerCategories,
+  TwoKilometerView,
+  type TwoKilometerViewId,
+} from '@/components/sports/2-km/two-km-view'
+
+import {
+  ThreeKilometerCategories,
+  ThreeKilometerView,
+  type ThreeKilometerViewId,
+} from '@/components/sports/3-km/three-km-view'
+
+import {
+  FourXHundredMeterCategories,
+  FourXHundredMeterView,
+  type FourXHundredMeterViewId,
+} from '@/components/sports/4x100-meter/four-x-hundred-meter-view'
+
+import {
+  FiveKilometerCategories,
+  FiveKilometerView,
+  type FiveKilometerViewId,
+} from '@/components/sports/5-km/five-km-view'
+
+import {
+  CompoundStrengthCategories,
+  CompoundStrengthView,
+} from '@/components/sports/compound-strength/compound-strength-view'
+
+import {
+  PullupsCategories,
+  PullupsView,
+} from '@/components/sports/pullups/pullups-view'
+
+import {
+  PushupsCategories,
+  PushupsView,
+} from '@/components/sports/pushups/pushups-view'
+
+import {
+  StomachCategories,
+  StomachView,
+} from '@/components/sports/stomach/stomach-view'
+
+import type { OpenView, View } from './types'
+import { T72PreCombatToColumnView, T72PreCombatToColumnViewId } from '@/components/armored/t72/pre-combat-to-column/view';
+import { T55_62PreCombatToColumnView, T55_62PreCombatToColumnViewId } from '@/components/armored/t55-62/pre-combat-to-column/view';
+
+/**
+ * Generic category configuration.
+ *
+ * This allows all exercises to use the same rendering mechanism
+ * instead of writing one condition for every category.
+ */
+interface CategoryConfig {
+  parent: View
+  categories: readonly View[]
+}
+
+const categoryConfigs: Record<string, CategoryConfig> = {
+  stomach: {
+    parent: 'stomach',
+    categories: [
+      'stomach-category-one',
+      'stomach-category-two',
+      'stomach-category-three',
+      'stomach-category-four',
+      'stomach-category-five',
+      'stomach-category-six',
+      'stomach-category-seven',
+    ],
+  },
+
+  pushups: {
+    parent: 'pushups',
+    categories: [
+      'pushups-category-one',
+      'pushups-category-two',
+      'pushups-category-three',
+      'pushups-category-four',
+      'pushups-category-five',
+      'pushups-category-six',
+      'pushups-category-seven',
+    ],
+  },
+
+  'compound-strength': {
+    parent: 'compound-strength',
+    categories: [
+      'compound-strength-category-one',
+      'compound-strength-category-two',
+      'compound-strength-category-three',
+      'compound-strength-category-four',
+      'compound-strength-category-five',
+      'compound-strength-category-six',
+      'compound-strength-category-seven',
+    ],
+  },
+
+  pullups: {
+    parent: 'pullups',
+    categories: [
+      'pullups-category-one',
+      'pullups-category-two',
+      'pullups-category-three',
+      'pullups-category-four',
+      'pullups-category-five',
+      'pullups-category-six',
+      'pullups-category-seven',
+    ],
+  },
+
+  hundred: {
+    parent: 'hundred',
+    categories: [
+      'category-one',
+      'category-two',
+      'category-three',
+      'category-four',
+      'category-five',
+      'category-six',
+      'category-seven',
+    ],
+  },
+
+  'one-km': {
+    parent: 'one-km',
+    categories: [
+      'one-km-category-one',
+      'one-km-category-two',
+      'one-km-category-three',
+      'one-km-category-four',
+      'one-km-category-five',
+      'one-km-category-six',
+      'one-km-category-seven',
+    ],
+  },
+
+  'two-km': {
+    parent: 'two-km',
+    categories: [
+      'two-km-category-one',
+      'two-km-category-two',
+      'two-km-category-three',
+      'two-km-category-four',
+    ],
+  },
+
+  'three-km': {
+    parent: 'three-km',
+    categories: [
+      'three-km-category-one',
+      'three-km-category-two',
+      'three-km-category-three',
+    ],
+  },
+
+  'five-km': {
+    parent: 'five-km',
+    categories: [
+      'five-km-category-one',
+      'five-km-category-two',
+      'five-km-category-three',
+    ],
+  },
+
+  '4x100': {
+    parent: '4x100',
+    categories: [
+      '4x100-category-one',
+      '4x100-category-two',
+      '4x100-category-three',
+      '4x100-category-four',
+      '4x100-category-five',
+      '4x100-category-six',
+    ],
+  },
+}
+
+/**
+ * Helper for checking whether a view belongs to a category group.
+ */
+function isCategoryOf(
+  view: View,
+  parent: View,
+): boolean {
+  const config = categoryConfigs[parent]
+
+  if (!config) {
+    return false
+  }
+
+  return config.categories.includes(view)
+}
+
+/**
+ * Render category pages.
+ *
+ * Notice that we no longer have:
+ *
+ * activeView === "category-one"
+ * activeView === "category-two"
+ * activeView === "category-three"
+ *
+ * for every component.
+ */
+function renderCategoryView(
+  activeView: View,
+  openView: OpenView,
+): ReactNode | null {
+  // ------------------------------------------------------------
+  // STOMACH
+  // ------------------------------------------------------------
+
+  if (isCategoryOf(activeView, 'stomach')) {
+    return (
+      <StomachView
+        activeView={activeView as
+          | 'stomach-category-one'
+          | 'stomach-category-two'
+            | 'stomach-category-three'
+            | 'stomach-category-four'
+            | 'stomach-category-five'
+            | 'stomach-category-six'
+            | 'stomach-category-seven'}
+      />
+    )
+  }
+
+  // ------------------------------------------------------------
+  // PUSHUPS
+  // ------------------------------------------------------------
+
+  if (isCategoryOf(activeView, 'pushups')) {
+    return (
+      <PushupsView
+        categoryId={activeView as
+          | 'pushups-category-one'
+          | 'pushups-category-two'
+          | 'pushups-category-three'
+          | 'pushups-category-four'
+          | 'pushups-category-five'
+          | 'pushups-category-six'
+          | 'pushups-category-seven'}
+      />
+    )
+  }
+
+  // ------------------------------------------------------------
+  // COMPOUND STRENGTH
+  // ------------------------------------------------------------
+
+  if (isCategoryOf(activeView, 'compound-strength')) {
+    return (
+      <CompoundStrengthView
+        categoryId={activeView as
+          | 'compound-strength-category-one'
+          | 'compound-strength-category-two'
+          | 'compound-strength-category-three'
+          | 'compound-strength-category-four'
+          | 'compound-strength-category-five'
+          | 'compound-strength-category-six'
+          | 'compound-strength-category-seven'}
+      />
+    )
+  }
+
+  // ------------------------------------------------------------
+  // PULLUPS
+  // ------------------------------------------------------------
+
+  if (isCategoryOf(activeView, 'pullups')) {
+    return (
+      <PullupsView
+        categoryId={activeView as
+          | 'pullups-category-one'
+          | 'pullups-category-two'
+          | 'pullups-category-three'
+          | 'pullups-category-four'
+          | 'pullups-category-five'
+          | 'pullups-category-six'
+          | 'pullups-category-seven'}
+      />
+    )
+  }
+
+  // ------------------------------------------------------------
+  // 100M
+  // ------------------------------------------------------------
+
+  if (isCategoryOf(activeView, 'hundred')) {
+    return (
+      <HundredMeterView
+        activeView={activeView as HundredMeterViewId}
+        openView={openView}
+      />
+    )
+  }
+
+  // ------------------------------------------------------------
+  // 1KM
+  // ------------------------------------------------------------
+
+  if (isCategoryOf(activeView, 'one-km')) {
+    return (
+      <OneKilometerView
+        activeView={activeView as
+          | 'one-km-category-one'
+          | 'one-km-category-two'
+          | 'one-km-category-three'
+          | 'one-km-category-four'
+          | 'one-km-category-five'
+          | 'one-km-category-six'
+          | 'one-km-category-seven'}
+        openView={openView}
+      />
+    )
+  }
+
+  // ------------------------------------------------------------
+  // 2KM
+  // ------------------------------------------------------------
+
+  if (isCategoryOf(activeView, 'two-km')) {
+    return (
+      <TwoKilometerView
+        activeView={activeView as TwoKilometerViewId}
+      />
+    )
+  }
+
+  // ------------------------------------------------------------
+  // 3KM
+  // ------------------------------------------------------------
+
+  if (isCategoryOf(activeView, 'three-km')) {
+    return (
+      <ThreeKilometerView
+        activeView={activeView as ThreeKilometerViewId}
+      />
+    )
+  }
+
+  // ------------------------------------------------------------
+  // 5KM
+  // ------------------------------------------------------------
+
+  if (isCategoryOf(activeView, 'five-km')) {
+    return (
+      <FiveKilometerView
+        activeView={activeView as FiveKilometerViewId}
+      />
+    )
+  }
+
+  // ------------------------------------------------------------
+  // 4x100
+  // ------------------------------------------------------------
+
+  if (isCategoryOf(activeView, '4x100')) {
+    return (
+      <FourXHundredMeterView
+        activeView={activeView as FourXHundredMeterViewId}
+      />
+    )
+  }
+
+  return null
+}
+
+/**
+ * Render the category selection pages.
+ */
+function renderCategorySelection(
+  activeView: View,
+  openView: OpenView,
+): ReactNode | null {
+  switch (activeView) {
+    case 'stomach':
+      return <StomachCategories openView={openView} />
+
+    case 'pushups':
+      return <PushupsCategories openView={openView} />
+
+    case 'compound-strength':
+      return (
+        <CompoundStrengthCategories
+          openView={openView}
+        />
+      )
+
+    case 'pullups':
+      return <PullupsCategories openView={openView} />
+
+    case 'hundred':
+      return <HundredMeterCategories openView={openView} />
+
+    case 'one-km':
+      return <OneKilometerCategories openView={openView} />
+
+    case 'two-km':
+      return <TwoKilometerCategories openView={openView} />
+
+    case 'three-km':
+      return <ThreeKilometerCategories openView={openView} />
+
+    case 'five-km':
+      return <FiveKilometerCategories openView={openView} />
+
+    case '4x100':
+      return (
+        <FourXHundredMeterCategories
+          openView={openView}
+        />
+      )
+
+    default:
+      return null
+  }
+}
+
+/**
+ * Render armored sections.
+ */
+function renderArmoredView(
+  activeView: View,
+  openView: OpenView,
+): ReactNode | null {
+  // ============================================================
+  // T72
+  // ============================================================
+
+  if (
+    activeView === 't72-boarding' ||
+    activeView === 't72-طاقم' ||
+    activeView === 't72-فصيلة' ||
+    activeView === 't72-سرية'
+  ) {
+    return (
+      <T72View
+        activeView={activeView}
+        openView={openView}
+      />
+    )
+  }
+
+  if (
+    activeView === 't72-disembarking' ||
+    activeView === 't72-disembarking-طاقم' ||
+    activeView === 't72-disembarking-فصيلة' ||
+    activeView === 't72-disembarking-سرية'
+  ) {
+    return (
+      <T72DisembarkingView
+        activeView={activeView as T72DisembarkingViewId}
+        openView={
+          openView as (
+            view: T72DisembarkingViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+  if (
+    activeView === 't72-pre-combat' ||
+    activeView === 't72-pre-combat-سرية' ||
+    activeView === 't72-pre-combat-كتيبة'
+  ) {
+    return (
+      <T72PreCombatView
+        activeView={activeView as T72PreCombatViewId}
+        openView={
+          openView as (
+            view: T72PreCombatViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+  if (
+    activeView === 't72-combat-to-pre-combat' ||
+    activeView === 't72-combat-to-pre-combat-فصيلة' ||
+    activeView === 't72-combat-to-pre-combat-سرية' ||
+    activeView === 't72-combat-to-pre-combat-كتيبة'
+  ) {
+    return (
+      <T72CombatToPreCombatView
+        activeView={
+          activeView as T72CombatToPreCombatViewId
+        }
+        openView={
+          openView as (
+            view: T72CombatToPreCombatViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+  if (
+    activeView === 't72-open-pre-combat' ||
+    activeView === 't72-open-pre-combat-فصيلة' ||
+    activeView === 't72-open-pre-combat-سرية' ||
+    activeView === 't72-open-pre-combat-كتيبة'
+  ) {
+    return (
+      <T72OpenPreCombatView
+        activeView={
+          activeView as T72OpenPreCombatViewId
+        }
+        openView={
+          openView as (
+            view: T72OpenPreCombatViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+  if (
+    activeView === 't72-pre-combat-to-column' ||
+    activeView === 't72-pre-combat-to-column-سرية' ||
+    activeView === 't72-pre-combat-to-column-كتيبة'
+  ) {
+    return (
+      <T72PreCombatToColumnView
+        activeView={
+          activeView as T72PreCombatToColumnViewId
+        }
+        openView={
+          openView as (
+            view: T72PreCombatToColumnViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+  // ============================================================
+  // T55+62
+  // ============================================================
+
+  if (
+    activeView === 't55-62-boarding' ||
+    activeView === 't55-62-طاقم' ||
+    activeView === 't55-62-فصيلة' ||
+    activeView === 't55-62-سرية'
+  ) {
+    return (
+      <T55_62View
+        activeView={activeView as T55_62ViewId}
+        openView={
+          openView as (
+            view: T55_62ViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+  if (
+    activeView === 't55-62-disembarking' ||
+    activeView === 't55-62-disembarking-طاقم' ||
+    activeView === 't55-62-disembarking-فصيلة' ||
+    activeView === 't55-62-disembarking-سرية'
+  ) {
+    return (
+      <T55_62DisembarkingView
+        activeView={
+          activeView as T55_62DisembarkingViewId
+        }
+        openView={
+          openView as (
+            view: T55_62DisembarkingViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+  if (
+    activeView === 't55-62-pre-combat' ||
+    activeView === 't55-62-pre-combat-سرية' ||
+    activeView === 't55-62-pre-combat-كتيبة'
+  ) {
+    return (
+      <T55_62PreCombatView
+        activeView={
+          activeView as T55_62PreCombatViewId
+        }
+        openView={
+          openView as (
+            view: T55_62PreCombatViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+  if (
+    activeView === 't55-62-combat-to-pre-combat' ||
+    activeView === 't55-62-combat-to-pre-combat-فصيلة' ||
+    activeView === 't55-62-combat-to-pre-combat-سرية' ||
+    activeView === 't55-62-combat-to-pre-combat-كتيبة'
+  ) {
+    return (
+      <T55_62CombatToPreCombatView
+        activeView={
+          activeView as T55_62CombatToPreCombatViewId
+        }
+        openView={
+          openView as (
+            view: T55_62CombatToPreCombatViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+  if (
+    activeView === 't55-62-open-pre-combat' ||
+    activeView === 't55-62-open-pre-combat-فصيلة' ||
+    activeView === 't55-62-open-pre-combat-سرية' ||
+    activeView === 't55-62-open-pre-combat-كتيبة'
+  ) {
+    return (
+      <T55_62OpenPreCombatView
+        activeView={
+          activeView as T55_62OpenPreCombatViewId
+        }
+        openView={
+          openView as (
+            view: T55_62OpenPreCombatViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+  if (
+    activeView === 't55-62-pre-combat-to-column' ||
+    activeView === 't55-62-pre-combat-to-column-سرية' ||
+    activeView === 't55-62-pre-combat-to-column-كتيبة'
+  ) {
+    return (
+      <T55_62PreCombatToColumnView
+        activeView={
+          activeView as T55_62PreCombatToColumnViewId
+        }
+        openView={
+          openView as (
+            view: T55_62PreCombatToColumnViewId
+          ) => void
+        }
+      />
+    )
+  }
+
+  return null
+}
+
+/**
+ * Generic application content renderer.
+ */
+export function renderView(
+  activeView: View,
+  openView: OpenView,
+): ReactNode | null {
+  // Category pages
+  const categoryView = renderCategoryView(
+    activeView,
+    openView,
+  )
+
+  if (categoryView) {
+    return categoryView
+  }
+
+  // Category selection
+  const categorySelection = renderCategorySelection(
+    activeView,
+    openView,
+  )
+
+  if (categorySelection) {
+    return categorySelection
+  }
+
+  // Armored pages
+  const armoredView = renderArmoredView(
+    activeView,
+    openView,
+  )
+
+  if (armoredView) {
+    return armoredView
+  }
+
+  return null
+}
