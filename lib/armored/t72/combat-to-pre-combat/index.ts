@@ -9,7 +9,7 @@ export const T72_COMBAT_TO_PRE_COMBAT_UNITS: Array<{ id: T72CombatToPreCombatUni
 ]
 
 export function createT72CombatToPreCombatEvent(unit: T72CombatToPreCombatUnit): SportEvent {
-  const thresholds = T72_COMBAT_TO_PRE_COMBAT_UNITS.find((entry) => entry.id === unit)?.thresholds ?? [110, 120, 145]
+  const thresholds = T72_COMBAT_TO_PRE_COMBAT_UNITS.find((entry) => entry.id === unit)?.thresholds ?? [30, 35, 42]
   const standards: PerformanceStandard[] = [
     { time: thresholds[0], level: 'excellent' },
     { time: thresholds[1], level: 'good' },
@@ -18,7 +18,7 @@ export function createT72CombatToPreCombatEvent(unit: T72CombatToPreCombatUnit):
   ]
   return {
     id: `t72-combat-to-pre-combat-${unit}`,
-    name: `الانتقال من ترتيب القتال الى ترتيب ما قبل القتال - ${unit}`,
+    name: `الانتقال من ترتيب القتال الى ترتيب ما قبل القتال - ${unit} - T72`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],
