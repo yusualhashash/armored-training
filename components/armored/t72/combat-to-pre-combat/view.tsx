@@ -8,6 +8,7 @@ import { TimerPanel } from '@/components/timer/timer-panel'
 
 export type T72CombatToPreCombatViewId =
   | 't72-combat-to-pre-combat'
+  | 't72-combat-to-pre-combat-فصيلة'
   | 't72-combat-to-pre-combat-سرية'
   | 't72-combat-to-pre-combat-كتيبة'
 
@@ -27,11 +28,11 @@ export function T72CombatToPreCombatView({
             type="button"
             variant="ghost"
             onClick={() => openView(`t72-combat-to-pre-combat-${unit.id}` as T72CombatToPreCombatViewId)}
-            dir="ltr"
-            className="group flex h-auto w-full items-center justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]"
+            dir="rtl"
+            className="group flex h-auto w-full items-center justify-start gap-3 rounded-3xl border border-white/10 bg-[#101216] p-4 text-right text-white hover:bg-[#17191f] sm:justify-between sm:p-5"
           >
-            <ChevronLeft className="order-1 text-white/40 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
-            <span dir="rtl" className="order-2 flex items-center gap-4">
+            <ChevronLeft className="order-2 hidden shrink-0 text-white/40 transition-transform group-hover:-translate-x-1 sm:block" aria-hidden="true" />
+            <span dir="rtl" className="order-1 flex min-w-0 flex-1 items-center gap-3 sm:flex-none sm:gap-4">
               <span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
                 <Shield aria-hidden="true" />
               </span>
