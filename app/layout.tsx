@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from 'next'
+
+import { OfflineRegister } from '@/components/offline-register'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -6,6 +8,7 @@ export const metadata: Metadata = {
     default: 'تطبيق المسابقات',
     template: '%s | تطبيق المسابقات',
   },
+  manifest: '/manifest.webmanifest',
   icons: {
     icon: [
       {
@@ -40,7 +43,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+    <OfflineRegister />
+    {children}
+  </body>
     </html>
   )
 }

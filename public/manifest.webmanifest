@@ -1,0 +1,24 @@
+{
+  "name": "تطبيق المسابقات",
+  "short_name": "المسابقات",
+  "description": "نظام التدريب والاختبارات المدرعة والرياضية",
+  "lang": "ar",
+  "dir": "rtl",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020",
+  "icons": [
+    {
+      "src": "/icon-light-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
