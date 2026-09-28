@@ -45,6 +45,25 @@ export function TimerPanel({
         {stopwatch.isFinished && <ResultSummary level={level} score={score} maxScore={event.maxScore} />}
       </div>
 
+
+
+      <TimerControls
+        isRunning={stopwatch.isRunning}
+        isFinished={stopwatch.isFinished}
+        hasStarted={stopwatch.elapsedMs > 0}
+        arrivalsCount={stopwatch.arrivals.length}
+        onToggle={stopwatch.toggleRunning}
+        onFinish={stopwatch.finish}
+        onRecord={stopwatch.recordArrival}
+        onReset={stopwatch.reset}
+        showRecord={showRecord}
+      />
+
+      {stopwatch.arrivals.length > 0 && <ArrivalsList event={event} arrivals={stopwatch.arrivals} />}
+
+      {stopwatch.isFinished && <StandardsTable event={event} />}
+
+
       {trainerInstructions && (
         <section className="overflow-hidden rounded-3xl border border-emerald-200/10 bg-[#101216]" dir="rtl">
           <Button
@@ -87,22 +106,6 @@ export function TimerPanel({
           )}
         </section>
       )}
-
-      <TimerControls
-        isRunning={stopwatch.isRunning}
-        isFinished={stopwatch.isFinished}
-        hasStarted={stopwatch.elapsedMs > 0}
-        arrivalsCount={stopwatch.arrivals.length}
-        onToggle={stopwatch.toggleRunning}
-        onFinish={stopwatch.finish}
-        onRecord={stopwatch.recordArrival}
-        onReset={stopwatch.reset}
-        showRecord={showRecord}
-      />
-
-      {stopwatch.arrivals.length > 0 && <ArrivalsList event={event} arrivals={stopwatch.arrivals} />}
-
-      {stopwatch.isFinished && <StandardsTable event={event} />}
     </div>
   )
 }
