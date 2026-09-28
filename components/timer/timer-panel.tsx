@@ -1,11 +1,14 @@
 'use client'
 
+import { useState } from 'react'
 import { ArrivalsList } from '@/components/timer/arrivals-list'
 import { ResultSummary } from '@/components/timer/result-summary'
 import { StandardsTable } from '@/components/timer/standards-table'
 import { StopwatchDisplay } from '@/components/timer/stopwatch-display'
 import { TimerControls } from '@/components/timer/timer-controls'
 import { useStopwatch } from '@/components/timer/use-stopwatch'
+import { Button } from '@/components/ui/button'
+import { BookOpen, ChevronDown } from 'lucide-react'
 import { getPerformanceScore, resolvePerformanceLevel } from '@/lib/performance'
 import type { AgeCategory, SportEvent } from '@/lib/types'
 
@@ -13,11 +16,18 @@ interface TimerPanelProps {
   event: SportEvent
   category?: AgeCategory
   showRecord?: boolean
+  trainerInstructions?: string
 }
 
 /** شاشة اختبار كاملة: ساعة إيقاف وتسجيل أوقات الوصول والنتيجة النهائية. */
-export function TimerPanel({ event, category, showRecord = true }: TimerPanelProps) {
+export function TimerPanel({
+  event,
+  category,
+  showRecord = true,
+  trainerInstructions,
+}: TimerPanelProps) {
   const stopwatch = useStopwatch()
+  const [showInstructions, setShowInstructions] = useState(false)
   const seconds = stopwatch.elapsedMs / 1000
   const level = resolvePerformanceLevel(event, seconds)
   const score = getPerformanceScore(event, seconds)
@@ -32,6 +42,31 @@ export function TimerPanel({ event, category, showRecord = true }: TimerPanelPro
         </div>
         {stopwatch.isFinished && <ResultSummary level={level} score={score} maxScore={event.maxScore} />}
       </div>
+
+      {trainerInstructions && (
+        <section className="overflow-hidden rounded-3xl border border-emerald-200/10 bg-[#101216]" dir="rtl">
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={() => setShowInstructions((visible) => !visible)}
+            aria-expanded={showInstructions}
+            className="flex h-auto w-full items-center justify-between px-5 py-4 text-right text-white hover:bg-white/5"
+          >
+            <span className="flex items-center gap-3">
+              <BookOpen className="size-5 text-emerald-300" aria-hidden="true" />
+              <span className="font-semibold">تعليمات المدرب</span>
+            </span>
+            <ChevronDown className={`size-5 text-white/50 transition-transform ${showInstructions ? 'rotate-180' : ''}`} aria-hidden="true" />
+          </Button>
+          {showInstructions && (
+            <div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-8 text-white/70">
+              {trainerInstructions.split('\\n').map((line) => (
+                <p key={line} className="not-last:mb-2">{line}</p>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
 
       <TimerControls
         isRunning={stopwatch.isRunning}
