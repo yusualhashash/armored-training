@@ -3,7 +3,10 @@
 import { Button } from '@/components/ui/button'
 import { ChevronLeft, Shield } from 'lucide-react'
 import type { T72ColumnToCombatFlankUnit } from '@/lib/armored/t72/column-to-combat-flank'
-import { createT72ColumnToCombatFlankEvent, T72_COLUMN_TO_COMBAT_FLANK_UNITS } from '@/lib/armored/t72/column-to-combat-flank'
+import {
+  createT72ColumnToCombatFlankEvent,
+  T72_COLUMN_TO_COMBAT_FLANK_UNITS,
+} from '@/lib/armored/t72/column-to-combat-flank'
 import { TimerPanel } from '@/components/timer/timer-panel'
 
 export type T72ColumnToCombatFlankViewId =
@@ -11,6 +14,28 @@ export type T72ColumnToCombatFlankViewId =
   | 't72-column-to-combat-flank-فصيلة'
   | 't72-column-to-combat-flank-سرية'
   | 't72-column-to-combat-flank-كتيبة'
+
+const UNIT_RATINGS: Record <T72ColumnToCombatFlankUnit, Array<{ score: string; rating: string }>> = {
+  فصيلة: [
+    { score: '16 ثا', rating: 'ممتاز' },
+    { score: '18 ثا', rating: 'جيد' },
+    { score: '20 ثا', rating: 'مقبول' },
+  ],
+  سرية: [
+    { score: '20 ثا', rating: 'ممتاز' },
+    { score: '25 ثا', rating: 'جيد' },
+    { score: '30 ثا', rating: 'مقبول' },
+  ],
+  كتيبة: [
+    { score: '35 ثا', rating: 'ممتاز' },
+    { score: '40 ثا', rating: 'جيد' },
+    { score: '45 ثا', rating: 'مقبول' },
+  ],
+}
+
+function getInstructions() {
+  return `الوحدات تقوم بالمسير. المدافع مثبتة على الوضعية الأمامية، الغلافات منزوعة عن الأسلحة، وبإيعاز (إشارة) تنفتح بترتيب القتال بالاتجاه المحدد، ويجري تحويل الأسلحة من وضعية الرحيل إلى وضعية القتال وتتابع الحركة.`
+}
 
 export function T72ColumnToCombatFlankView({
   activeView,
@@ -28,7 +53,9 @@ export function T72ColumnToCombatFlankView({
             type="button"
             variant="ghost"
             onClick={() =>
-              openView(`t72-column-to-combat-flank-${unit.id}` as T72ColumnToCombatFlankViewId)
+              openView(
+                `t72-column-to-combat-flank-${unit.id}` as T72ColumnToCombatFlankViewId,
+              )
             }
             dir="ltr"
             className="group flex h-auto w-full items-center justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]"
@@ -38,18 +65,13 @@ export function T72ColumnToCombatFlankView({
               aria-hidden="true"
             />
 
-            <span
-              dir="rtl"
-              className="order-2 flex items-center gap-4"
-            >
+            <span dir="rtl" className="order-2 flex items-center gap-4">
               <span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
                 <Shield aria-hidden="true" />
               </span>
 
               <span className="flex flex-col items-start gap-1">
-                <span className="text-lg font-semibold">
-                  {unit.label}
-                </span>
+                <span className="text-lg font-semibold">{unit.label}</span>
               </span>
             </span>
           </Button>
@@ -58,12 +80,18 @@ export function T72ColumnToCombatFlankView({
     )
   }
 
-  const unit = activeView.replace('t72-column-to-combat-flank-', '') as T72ColumnToCombatFlankUnit
+  const unit = activeView.replace(
+    't72-column-to-combat-flank-',
+    '',
+  ) as T72ColumnToCombatFlankUnit
 
   return (
     <TimerPanel
       event={createT72ColumnToCombatFlankEvent(unit)}
       showRecord={false}
+      trainerInstructions={getInstructions()}
+      trainerRatings={UNIT_RATINGS[unit]}
+      ratingsTitle="التقدير حسب الزمن"
     />
   )
 }
