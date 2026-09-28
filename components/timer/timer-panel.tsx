@@ -61,7 +61,7 @@ export function TimerPanel({
             <ChevronDown className={`size-5 text-white/50 transition-transform ${showInstructions ? 'rotate-180' : ''}`} aria-hidden="true" />
           </Button>
           {showInstructions && (
-            <div className="border-t border-white/10 px-5 pb-10 pt-4 text-sm leading-8 text-white/70">
+            <div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-8 text-white/70">
               {trainerInstructions.split('\\n').map((line) => (
                 <p key={line} className="not-last:mb-2">{line}</p>
               ))}
