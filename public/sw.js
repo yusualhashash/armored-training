@@ -1,4 +1,4 @@
-const CACHE_NAME = 'armored-training-v1'
+const CACHE_NAME = 'armored-training-v2'
 const APP_SHELL = [
   '/',
   '/manifest.webmanifest',
@@ -13,6 +13,10 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL))
   )
   self.skipWaiting()
+})
+
+self.addEventListener('message', (event) => {
+  if (event.data?.type === 'SKIP_WAITING') self.skipWaiting()
 })
 
 self.addEventListener('activate', (event) => {
@@ -32,27 +36,24 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return
 
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) return cachedResponse
-
-      return fetch(event.request)
-        .then((response) => {
-          if (!response || response.status !== 200 || response.type === 'opaque') {
-            return response
-          }
-
+    fetch(event.request)
+      .then((response) => {
+        if (response && response.status === 200 && response.type !== 'opaque') {
           const responseCopy = response.clone()
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseCopy)
-          })
-          return response
-        })
-        .catch(() => {
-          if (event.request.mode === 'navigate') {
-            return caches.match('/')
-          }
-          return new Response('', { status: 503, statusText: 'Offline' })
-        })
-    })
+          event.waitUntil(
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseCopy))
+          )
+        }
+        return response
+      })
+      .catch(async () => {
+        const cachedResponse = await caches.match(event.request)
+        if (cachedResponse) return cachedResponse
+
+        if (event.request.mode === 'navigate') {
+          return caches.match('/')
+        }
+        return new Response('', { status: 503, statusText: 'Offline' })
+      })
   )
 })
