@@ -75,7 +75,7 @@ export function TimerPanel({
           >
             <span className="flex items-center gap-3">
               <BookOpen className="size-5 text-emerald-300" aria-hidden="true" />
-              <span className="font-semibold">تعليمات المدرب</span>
+              <span className="font-semibold">تعليمات المتدرب</span>
             </span>
             <ChevronDown className={`size-5 text-white/50 transition-transform ${showInstructions ? 'rotate-180' : ''}`} aria-hidden="true" />
           </Button>
