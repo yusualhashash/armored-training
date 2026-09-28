@@ -17,7 +17,7 @@ interface TimerPanelProps {
   category?: AgeCategory
   showRecord?: boolean
   trainerInstructions?: string
-  trainerRatings?: Array<{ score: string; rating: string }>
+  armoredTrainerRatings?: Array<{ score: string; rating: string }>
 }
 
 /** شاشة اختبار كاملة: ساعة إيقاف وتسجيل أوقات الوصول والنتيجة النهائية. */
@@ -26,7 +26,7 @@ export function TimerPanel({
   category,
   showRecord = true,
   trainerInstructions,
-  trainerRatings,
+  armoredTrainerRatings,
 }: TimerPanelProps) {
   const stopwatch = useStopwatch()
   const [showInstructions, setShowInstructions] = useState(false)
@@ -65,9 +65,8 @@ export function TimerPanel({
               {trainerInstructions.split('\\n').map((line) => (
                 <p key={line} className="not-last:mb-2">{line}</p>
               ))}
-              {trainerRatings && (
+              {armoredTrainerRatings && (
                 <table className="mt-4 w-full overflow-hidden rounded-xl border border-white/10 text-right text-sm">
-                  <caption className="sr-only">جدول درجات التقييم</caption>
                   <thead className="bg-white/5 text-white/90">
                     <tr>
                       <th scope="col" className="px-4 py-2 font-semibold">الزمن</th>
@@ -75,7 +74,7 @@ export function TimerPanel({
                     </tr>
                   </thead>
                   <tbody>
-                    {trainerRatings.map((item) => (
+                    {armoredTrainerRatings.map((item) => (
                       <tr key={item.score} className="border-t border-white/10">
                         <td className="px-4 py-2 text-white/80">{item.score}</td>
                         <td className="px-4 py-2 text-white/80">{item.rating}</td>
