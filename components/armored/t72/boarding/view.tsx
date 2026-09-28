@@ -18,6 +18,24 @@ const UNIT_SUBJECT: Record<T72Unit, string> = {
   سرية: 'السرية',
 }
 
+const UNIT_RATINGS: Record<T72Unit, { score: string; rating: string }[]> = {
+  طاقم: [
+    { score: '8 ثا', rating: 'ممتاز' },
+    { score: '9 ثا', rating: 'جيد' },
+    { score: '10 ثا', rating: 'مقبول' },
+  ],
+  فصيلة: [
+    { score: '9 ثا', rating: 'ممتاز' },
+    { score: '10 ثا', rating: 'جيد' },
+    { score: '12 ثا', rating: 'مقبول' },
+  ],
+  سرية: [
+    { score: '11 ثا', rating: 'ممتاز' },
+    { score: '12 ثا', rating: 'جيد' },
+    { score: '14 ثا', rating: 'مقبول' },
+  ],
+}
+
 function getInstructions(unit: T72Unit) {
   const subject = UNIT_SUBJECT[unit]
   if (!subject) return 'لا يوجد تعليمات خاصة بهذا القسم'
@@ -71,15 +89,7 @@ export function T72View({
       event={createT72Event(unit)}
       showRecord={false}
       trainerInstructions={getInstructions(unit)}
-      trainerRatings={
-        unit === 'طاقم'
-          ? [
-              { score: '8 ثا', rating: 'ممتاز' },
-              { score: '9 ثا', rating: 'جيد' },
-              { score: '10 ثا', rating: 'مقبول' },
-            ]
-          : undefined
-      }
+      trainerRatings={UNIT_RATINGS[unit]}
       ratingsTitle="التقدير حسب الزمن"
     />
   )
