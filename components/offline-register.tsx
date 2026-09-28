@@ -4,8 +4,18 @@ import { useEffect } from 'react'
 
 export function OfflineRegister() {
   useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
+    if (!('serviceWorker' in navigator)) return
+
+    // v0 preview deployments do not serve the public service worker reliably.
+    // Remove any stale registration there so the browser stops retrying it.
+    if (window.location.hostname.endsWith('.v0.build')) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        registrations.forEach((registration) => registration.unregister())
+      })
+      return
+    }
+
+    navigator.serviceWorker
         .register('/sw.js', { updateViaCache: 'none' })
         .then((registration) => {
           registration.update()
@@ -31,7 +41,6 @@ export function OfflineRegister() {
         .catch(() => {
           // Offline support is optional when service workers are unavailable.
         })
-    }
   }, [])
 
   return null
