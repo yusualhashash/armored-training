@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from 'next'
 
-import { OfflineRegister } from '@/components/offline-register'
+import { OfflineRegister } from '@/components/offline/offline-register'
 import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'تطبيق المسابقات',
-    template: '%s | تطبيق المسابقات',
+    default: 'المعدلات الزمنية',
+    template: '%s | المعدلات الزمنية',
   },
   manifest: '/manifest.webmanifest',
   icons: {
