@@ -5,9 +5,32 @@ import { useEffect } from 'react'
 export function OfflineRegister() {
   useEffect(() => {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(() => {
-        // Offline support is optional when service workers are unavailable.
-      })
+      navigator.serviceWorker
+        .register('/sw.js', { updateViaCache: 'none' })
+        .then((registration) => {
+          registration.update()
+
+          const refreshWhenUpdated = () => {
+            if (registration.waiting) {
+              registration.waiting.postMessage({ type: 'SKIP_WAITING' })
+            }
+          }
+
+          registration.addEventListener('updatefound', () => {
+            registration.installing?.addEventListener('statechange', () => {
+              if (registration.installing?.state === 'installed' && navigator.serviceWorker.controller) {
+                refreshWhenUpdated()
+              }
+            })
+          })
+
+          document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') registration.update()
+          })
+        })
+        .catch(() => {
+          // Offline support is optional when service workers are unavailable.
+        })
     }
   }, [])
 
