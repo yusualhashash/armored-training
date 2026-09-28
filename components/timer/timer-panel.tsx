@@ -60,33 +60,9 @@ export function TimerPanel({
           </Button>
           {showInstructions && (
             <div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-8 text-white/70">
-              {trainerInstructions.split('\\n').map((line, index) => (
-                <p key={`${line}-${index}`} className="not-last:mb-2">{line}</p>
+              {trainerInstructions.split('\\n').map((line) => (
+                <p key={line} className="not-last:mb-2">{line}</p>
               ))}
-              <div className="mt-5 overflow-hidden rounded-2xl border border-white/10">
-                <table className="w-full text-right text-sm" aria-label="تقدير النتائج">
-                  <thead className="bg-white/5 text-white/80">
-                    <tr>
-                      <th scope="col" className="px-4 py-2 font-semibold">النتيجة</th>
-                      <th scope="col" className="px-4 py-2 font-semibold">التقدير</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/10 text-white/70">
-                    <tr>
-                      <td className="px-4 py-2 font-medium text-white">٨</td>
-                      <td className="px-4 py-2">ممتاز</td>
-                    </tr>
-                    <tr>
-                      <td className="px-4 py-2 font-medium text-white">٩</td>
-                      <td className="px-4 py-2">جيد</td>
-                    </tr>
-                    <tr>
-                      <td className="px-4 py-2 font-medium text-white">١٠</td>
-                      <td className="px-4 py-2">مقبول</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
             </div>
           )}
         </section>
