@@ -215,7 +215,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
         rows: [historyHeader, ...historyRows(relevantHistory)],
       },
     ])
-    return { blob, name: `نتائج-${eventName}-${category.name}-${fileStamp(entry.savedAt)}.xlsx` }
+    return { blob, name: `${eventName}_${category.name}_${fileStamp(entry.savedAt)}.xlsx` }
   }
 
   const makeAllFile = () => {
@@ -226,7 +226,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
         rows: [historyHeader, ...historyRows(relevantHistory)],
       },
     ])
-    return { blob, name: `سجل-${eventName}-${category.name}.xlsx` }
+    return { blob, name: `${eventName}_${category.name}_السجل.xlsx` }
   }
 
 
