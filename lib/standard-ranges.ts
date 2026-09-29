@@ -23,6 +23,15 @@ export function buildStandardRanges(standards: PerformanceStandard[]): StandardR
   }))
 }
 
+/** نصّ عربي مقروء لنطاق معيار واحد، مثل «13.4 – 14.0 ثانية» أو «15.4 ثانية فأكثر». */
+export function formatStandardRange(range: StandardRange): string {
+  const lower = roundToTenth(range.lowerSeconds).toFixed(1)
+
+  if (!Number.isFinite(range.upperSeconds)) return `${lower} ثانية فأكثر`
+
+  return `${lower} – ${roundToTenth(range.upperSeconds).toFixed(1)} ثانية`
+}
+
 function resolveStep(standards: PerformanceStandard[]): number {
   const finiteTimes = standards.filter((standard) => Number.isFinite(standard.time)).map((standard) => standard.time)
   const slowestStandard = Math.max(0, ...finiteTimes)

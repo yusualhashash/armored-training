@@ -1,13 +1,13 @@
 'use client'
 
-import { Medal } from 'lucide-react'
+import { Medal } from 'lucide-react';
 
-import { TimerPanel } from '@/components/timer/timer-panel'
-import { Button } from '@/components/ui/button'
-import { RUN_2KM_CATEGORY_ONE_DEFAULT, RUN_2KM_CATEGORY_ONE_EVENT } from '@/lib/sports/2-km/1'
-import { RUN_2KM_CATEGORY_TWO_DEFAULT, RUN_2KM_CATEGORY_TWO_EVENT } from '@/lib/sports/2-km/2'
-import { RUN_2KM_CATEGORY_THREE_DEFAULT, RUN_2KM_CATEGORY_THREE_EVENT } from '@/lib/sports/2-km/3'
-import { RUN_2KM_CATEGORY_FOUR_DEFAULT, RUN_2KM_CATEGORY_FOUR_EVENT } from '@/lib/sports/2-km/4'
+import { TimedTestPanel } from '@/components/timer/timed-distance-panel';
+import { Button } from '@/components/ui/button';
+import { RUN_2KM_CATEGORY_ONE_DEFAULT, RUN_2KM_CATEGORY_ONE_EVENT } from '@/lib/sports/2-km/1';
+import { RUN_2KM_CATEGORY_TWO_DEFAULT, RUN_2KM_CATEGORY_TWO_EVENT } from '@/lib/sports/2-km/2';
+import { RUN_2KM_CATEGORY_THREE_DEFAULT, RUN_2KM_CATEGORY_THREE_EVENT } from '@/lib/sports/2-km/3';
+import { RUN_2KM_CATEGORY_FOUR_DEFAULT, RUN_2KM_CATEGORY_FOUR_EVENT } from '@/lib/sports/2-km/4';
 
 export type TwoKilometerViewId = 'two-km-category-one' | 'two-km-category-two' | 'two-km-category-three' | 'two-km-category-four'
 
@@ -20,7 +20,7 @@ const categoryEvents = {
 
 export function TwoKilometerView({ activeView }: { activeView: TwoKilometerViewId }) {
   const selected = categoryEvents[activeView]
-  return <div className="mx-auto w-full max-w-2xl"><TimerPanel event={selected.event} category={selected.category} /></div>
+  return <div className="mx-auto w-full max-w-2xl"><TimedTestPanel event={selected.event} category={selected.category} /></div>
 }
 
 export function TwoKilometerCategories({ openView }: { openView: (view: TwoKilometerViewId) => void }) {

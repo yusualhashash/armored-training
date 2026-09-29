@@ -1,34 +1,34 @@
 'use client'
 
-import { Medal } from 'lucide-react'
+import { Medal } from 'lucide-react';
 
-import { TimerPanel } from '@/components/timer/timer-panel'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button';
 
+import { TimedTestPanel } from '@/components/timer/timed-distance-panel';
 import {
-  SPRINT_4X100M_CATEGORY_ONE_DEFAULT,
-  SPRINT_4X100M_CATEGORY_ONE_EVENT,
-} from '@/lib/sports/4x100-meter/1'
+    SPRINT_4X100M_CATEGORY_ONE_DEFAULT,
+    SPRINT_4X100M_CATEGORY_ONE_EVENT,
+} from '@/lib/sports/4x100-meter/1';
 import {
-  SPRINT_4X100M_CATEGORY_TWO_DEFAULT,
-  SPRINT_4X100M_CATEGORY_TWO_EVENT,
-} from '@/lib/sports/4x100-meter/2'
+    SPRINT_4X100M_CATEGORY_TWO_DEFAULT,
+    SPRINT_4X100M_CATEGORY_TWO_EVENT,
+} from '@/lib/sports/4x100-meter/2';
 import {
-  SPRINT_4X100M_CATEGORY_THREE_DEFAULT,
-  SPRINT_4X100M_CATEGORY_THREE_EVENT,
-} from '@/lib/sports/4x100-meter/3'
+    SPRINT_4X100M_CATEGORY_THREE_DEFAULT,
+    SPRINT_4X100M_CATEGORY_THREE_EVENT,
+} from '@/lib/sports/4x100-meter/3';
 import {
-  SPRINT_4X100M_CATEGORY_FOUR_DEFAULT,
-  SPRINT_4X100M_CATEGORY_FOUR_EVENT,
-} from '@/lib/sports/4x100-meter/4'
+    SPRINT_4X100M_CATEGORY_FOUR_DEFAULT,
+    SPRINT_4X100M_CATEGORY_FOUR_EVENT,
+} from '@/lib/sports/4x100-meter/4';
 import {
-  SPRINT_4X100M_CATEGORY_FIVE_DEFAULT,
-  SPRINT_4X100M_CATEGORY_FIVE_EVENT,
-} from '@/lib/sports/4x100-meter/5'
+    SPRINT_4X100M_CATEGORY_FIVE_DEFAULT,
+    SPRINT_4X100M_CATEGORY_FIVE_EVENT,
+} from '@/lib/sports/4x100-meter/5';
 import {
-  SPRINT_4X100M_CATEGORY_SIX_DEFAULT,
-  SPRINT_4X100M_CATEGORY_SIX_EVENT,
-} from '@/lib/sports/4x100-meter/6'
+    SPRINT_4X100M_CATEGORY_SIX_DEFAULT,
+    SPRINT_4X100M_CATEGORY_SIX_EVENT,
+} from '@/lib/sports/4x100-meter/6';
 
 export type FourXHundredMeterViewId =
   | '4x100-category-one'
@@ -74,7 +74,7 @@ export function FourXHundredMeterView({
 
   return (
     <div className="mx-auto w-full max-w-2xl">
-      <TimerPanel event={event} category={category} />
+      <TimedTestPanel event={event} category={category} />
     </div>
   )
 }

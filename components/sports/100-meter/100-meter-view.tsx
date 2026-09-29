@@ -2,7 +2,7 @@
 
 import { Medal } from 'lucide-react'
 
-import { TimerPanel } from '@/components/timer/timer-panel'
+import { TimedTestPanel } from '@/components/timer/timed-distance-panel'
 import { Button } from '@/components/ui/button'
 import { RUN_100M_CATEGORY_TWO_DEFAULT, RUN_100M_CATEGORY_TWO_EVENT } from '@/lib/sports/100-meter/2'
 import { RUN_100M_CATEGORY_THREE_DEFAULT, RUN_100M_CATEGORY_THREE_EVENT } from '@/lib/sports/100-meter/3'
@@ -17,13 +17,13 @@ export type HundredMeterViewId = 'category-one' | 'category-two' | 'category-thr
 export function HundredMeterView({ activeView, openView }: { activeView: HundredMeterViewId; openView: (view: HundredMeterViewId) => void }) {
   return (
     <div className="mx-auto w-full max-w-2xl">
-      {activeView === 'category-one' && <TimerPanel event={RUN_100M_CATEGORY_ONE_EVENT} category={RUN_100M_CATEGORY_ONE_DEFAULT} />}
-      {activeView === 'category-two' && <TimerPanel event={RUN_100M_CATEGORY_TWO_EVENT} category={RUN_100M_CATEGORY_TWO_DEFAULT} />}
-      {activeView === 'category-three' && <TimerPanel event={RUN_100M_CATEGORY_THREE_EVENT} category={RUN_100M_CATEGORY_THREE_DEFAULT} />}
-      {activeView === 'category-four' && <TimerPanel event={RUN_100M_CATEGORY_FOUR_EVENT} category={RUN_100M_CATEGORY_FOUR_DEFAULT} />}
-      {activeView === 'category-five' && <TimerPanel event={RUN_100M_CATEGORY_FIVE_EVENT} category={RUN_100M_CATEGORY_FIVE_DEFAULT} />}
-      {activeView === 'category-six' && <TimerPanel event={RUN_100M_CATEGORY_SIX_EVENT} category={RUN_100M_CATEGORY_SIX_DEFAULT} />}
-      {activeView === 'category-seven' && <TimerPanel event={RUN_100M_CATEGORY_SEVEN_EVENT} category={RUN_100M_CATEGORY_SEVEN_DEFAULT} />}
+      {activeView === 'category-one' && <TimedTestPanel event={RUN_100M_CATEGORY_ONE_EVENT} category={RUN_100M_CATEGORY_ONE_DEFAULT} />}
+      {activeView === 'category-two' && <TimedTestPanel event={RUN_100M_CATEGORY_TWO_EVENT} category={RUN_100M_CATEGORY_TWO_DEFAULT} />}
+      {activeView === 'category-three' && <TimedTestPanel event={RUN_100M_CATEGORY_THREE_EVENT} category={RUN_100M_CATEGORY_THREE_DEFAULT} />}
+      {activeView === 'category-four' && <TimedTestPanel event={RUN_100M_CATEGORY_FOUR_EVENT} category={RUN_100M_CATEGORY_FOUR_DEFAULT} />}
+      {activeView === 'category-five' && <TimedTestPanel event={RUN_100M_CATEGORY_FIVE_EVENT} category={RUN_100M_CATEGORY_FIVE_DEFAULT} />}
+      {activeView === 'category-six' && <TimedTestPanel event={RUN_100M_CATEGORY_SIX_EVENT} category={RUN_100M_CATEGORY_SIX_DEFAULT} />}
+      {activeView === 'category-seven' && <TimedTestPanel event={RUN_100M_CATEGORY_SEVEN_EVENT} category={RUN_100M_CATEGORY_SEVEN_DEFAULT} />}
     </div>
   )
 }

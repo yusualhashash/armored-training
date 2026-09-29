@@ -1,12 +1,12 @@
 'use client'
 
-import { Medal } from 'lucide-react'
+import { Medal } from 'lucide-react';
 
-import { TimerPanel } from '@/components/timer/timer-panel'
-import { Button } from '@/components/ui/button'
-import { RUN_3KM_CATEGORY_ONE_DEFAULT, RUN_3KM_CATEGORY_ONE_EVENT } from '@/lib/sports/3-km/1'
-import { RUN_3KM_CATEGORY_TWO_DEFAULT, RUN_3KM_CATEGORY_TWO_EVENT } from '@/lib/sports/3-km/2'
-import { RUN_3KM_CATEGORY_THREE_DEFAULT, RUN_3KM_CATEGORY_THREE_EVENT } from '@/lib/sports/3-km/3'
+import { TimedTestPanel } from '@/components/timer/timed-distance-panel';
+import { Button } from '@/components/ui/button';
+import { RUN_3KM_CATEGORY_ONE_DEFAULT, RUN_3KM_CATEGORY_ONE_EVENT } from '@/lib/sports/3-km/1';
+import { RUN_3KM_CATEGORY_TWO_DEFAULT, RUN_3KM_CATEGORY_TWO_EVENT } from '@/lib/sports/3-km/2';
+import { RUN_3KM_CATEGORY_THREE_DEFAULT, RUN_3KM_CATEGORY_THREE_EVENT } from '@/lib/sports/3-km/3';
 
 export type ThreeKilometerViewId = 'three-km-category-one' | 'three-km-category-two' | 'three-km-category-three'
 
@@ -24,7 +24,7 @@ const categories = [
 
 export function ThreeKilometerView({ activeView }: { activeView: ThreeKilometerViewId }) {
   const { event, category } = categoryData[activeView]
-  return <div className="mx-auto w-full max-w-2xl"><TimerPanel event={event} category={category} /></div>
+  return <div className="mx-auto w-full max-w-2xl"><TimedTestPanel event={event} category={category} /></div>
 }
 
 export function ThreeKilometerCategories({ openView }: { openView: (view: ThreeKilometerViewId) => void }) {
