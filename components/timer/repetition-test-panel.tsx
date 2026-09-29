@@ -2,15 +2,16 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Download, History, Share2, Trash2 } from 'lucide-react'
+import { Download, FileSpreadsheet, History, MessageCircle, Send, Share2, Trash2, X } from 'lucide-react'
 import { StopwatchDisplay } from '@/components/timer/stopwatch-display'
 import { TimerControls } from '@/components/timer/timer-controls'
 import { useStopwatch } from '@/components/timer/use-stopwatch'
-import { buildXlsx, isMobileDevice, saveOrShare, type Cell } from '@/lib/xlsx-writer'
+import { buildXlsx, downloadBlob, isMobileDevice, shareFile, type Cell } from '@/lib/xlsx-writer'
 import type { PerformanceLevel, PerformanceStandard } from '@/lib/types'
 
 type StandardLevel = PerformanceLevel
 type TraineeResult = { count: number; score: number }
+type ShareTarget = { kind: 'entry'; entry: HistoryEntry } | { kind: 'all' }
 type HistoryEntry = {
   id: string
   savedAt: string // ISO date-time
@@ -100,6 +101,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
   const [historyLoaded, setHistoryLoaded] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [shareTarget, setShareTarget] = useState<ShareTarget | null>(null)
   const standardRanges = getStandardRanges(standards)
   const ExportIcon = isMobile ? Share2 : Download
 
@@ -183,7 +185,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
 
   const historyHeader: Cell[] = ['التاريخ', 'الوقت', 'الاختبار', 'الفئة العمرية', 'مدة الاختبار', 'رقم المتدرب', 'عدد التكرارات', 'النتيجة', 'التقدير'].map((v) => ({ v, s: 'header' as const }))
 
-  const exportEntry = (entry: HistoryEntry) => {
+  const makeEntryFile = (entry: HistoryEntry) => {
     const average = entry.results.reduce((sum, result) => sum + result.count, 0) / entry.results.length
     const blob = buildXlsx([
       {
@@ -214,11 +216,10 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
         rows: [historyHeader, ...historyRows(relevantHistory)],
       },
     ])
-    void saveOrShare(blob, `نتائج-${eventName}-${category.name}-${fileStamp(entry.savedAt)}.xlsx`)
+    return { blob, name: `نتائج-${eventName}-${category.name}-${fileStamp(entry.savedAt)}.xlsx` }
   }
 
-  const exportAllHistory = () => {
-    if (relevantHistory.length === 0) return
+  const makeAllFile = () => {
     const blob = buildXlsx([
       {
         name: 'السجل',
@@ -226,8 +227,65 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
         rows: [historyHeader, ...historyRows(relevantHistory)],
       },
     ])
-    void saveOrShare(blob, `سجل-${eventName}-${category.name}.xlsx`)
+    return { blob, name: `سجل-${eventName}-${category.name}.xlsx` }
   }
+
+
+  const fileFor = (target: ShareTarget) => (target.kind === 'entry' ? makeEntryFile(target.entry) : makeAllFile())
+
+  // Phone: open the share sheet. Computer: download straight away.
+  const requestExport = (target: ShareTarget) => {
+    if (isMobile) {
+      setShareTarget(target)
+      return
+    }
+    const file = fileFor(target)
+    downloadBlob(file.blob, file.name)
+  }
+
+  const summaryText = (entry: HistoryEntry) => {
+    const lines = [
+      `اختبار ${entry.eventName}`,
+      `الفئة العمرية: ${entry.categoryName}`,
+      `التاريخ: ${formatDate(entry.savedAt)} ${formatClock(entry.savedAt)}`,
+      ...(entry.durationMs !== null ? [`مدة الاختبار: ${formatDuration(entry.durationMs)}`] : []),
+      '',
+      ...entry.results.map((result, index) => `المتدرب ${index + 1}: ${result.count} تكرار - ${result.score} نتيجة - ${standardLabels[levelOf(result.count)]}`),
+    ]
+    return lines.join('\n')
+  }
+
+  const sendToApp = (app: 'whatsapp' | 'telegram') => {
+    if (shareTarget?.kind !== 'entry') return
+    const text = summaryText(shareTarget.entry)
+    const url =
+      app === 'whatsapp'
+        ? `https://wa.me/?text=${encodeURIComponent(text)}`
+        : `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(text)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+    setShareTarget(null)
+  }
+
+  const shareExcelFile = async () => {
+    if (!shareTarget) return
+    const file = fileFor(shareTarget)
+    setShareTarget(null)
+    await shareFile(file.blob, file.name)
+  }
+
+  const saveExcelFile = () => {
+    if (!shareTarget) return
+    const file = fileFor(shareTarget)
+    setShareTarget(null)
+    downloadBlob(file.blob, file.name)
+  }
+
+  useEffect(() => {
+    if (!shareTarget) return
+    const onKey = (event: KeyboardEvent) => event.key === 'Escape' && setShareTarget(null)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [shareTarget])
 
   return (
     <div className="flex flex-col gap-5">
@@ -253,7 +311,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
           {current && (
             <div className="mt-5 border-t border-white/10 pt-5">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-                <Button type="button" variant="outline" onClick={() => exportEntry(current)} className="h-10 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة ملف Excel' : 'تصدير النتائج إلى Excel'}</Button>
+                <Button type="button" variant="outline" onClick={() => requestExport({ kind: 'entry', entry: current })} className="h-10 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة ملف Excel' : 'تصدير النتائج إلى Excel'}</Button>
                 <p className="text-xs text-white/50"><EntryMeta entry={current} /></p>
               </div>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
@@ -281,7 +339,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
             ) : (
               <>
                 <div className="mb-3 flex gap-2">
-                  <Button type="button" variant="outline" onClick={exportAllHistory} className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة السجل' : 'تصدير السجل كاملا'}</Button>
+                  <Button type="button" variant="outline" onClick={() => requestExport({ kind: 'all' })} className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة السجل' : 'تصدير السجل كاملا'}</Button>
                   <Button type="button" variant="outline" onClick={clearHistory} className="h-10 rounded-xl border-rose-300/30 bg-transparent text-rose-200 hover:bg-rose-300/10"><Trash2 className="ml-2 size-4" aria-hidden="true" />مسح السجل</Button>
                 </div>
                 <ul className="flex max-h-96 flex-col gap-2 overflow-y-auto">
@@ -295,7 +353,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
                             <p className="mt-1 text-xs text-white/50">{entry.results.length} متدرب · أفضل نتيجة {best} تكرار</p>
                           </div>
                           <div className="flex gap-1">
-                            <Button type="button" variant="outline" size="icon" aria-label={isMobile ? 'حفظ أو مشاركة هذه الجلسة' : 'تصدير هذه الجلسة'} onClick={() => exportEntry(entry)} className="size-9 rounded-lg border-white/15 bg-transparent text-white hover:bg-white/10"><ExportIcon className="size-4" aria-hidden="true" /></Button>
+                            <Button type="button" variant="outline" size="icon" aria-label={isMobile ? 'حفظ أو مشاركة هذه الجلسة' : 'تصدير هذه الجلسة'} onClick={() => requestExport({ kind: 'entry', entry })} className="size-9 rounded-lg border-white/15 bg-transparent text-white hover:bg-white/10"><ExportIcon className="size-4" aria-hidden="true" /></Button>
                             <Button type="button" variant="outline" size="icon" aria-label="حذف هذه الجلسة" onClick={() => deleteEntry(entry.id)} className="size-9 rounded-lg border-white/15 bg-transparent text-rose-200 hover:bg-rose-300/10"><Trash2 className="size-4" aria-hidden="true" /></Button>
                           </div>
                         </div>
@@ -311,6 +369,38 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
           </div>
         )}
       </section>
+      {shareTarget && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 sm:items-center" onClick={() => setShareTarget(null)}>
+          <div role="dialog" aria-modal="true" aria-labelledby="share-title" onClick={(event) => event.stopPropagation()} className="w-full max-w-md rounded-t-[2rem] border border-white/10 bg-[#101216] p-5 pb-8 sm:rounded-[2rem]">
+            <div className="mb-4 flex items-center justify-between">
+              <h2 id="share-title" className="text-base font-bold text-white">حفظ أو مشاركة</h2>
+              <button type="button" aria-label="إغلاق" onClick={() => setShareTarget(null)} className="flex size-9 items-center justify-center rounded-full bg-white/[0.06] text-white/70"><X className="size-4" aria-hidden="true" /></button>
+            </div>
+            <div className="flex flex-col gap-2">
+              {shareTarget.kind === 'entry' && (
+                <>
+                  <button type="button" onClick={() => sendToApp('whatsapp')} className="flex h-14 items-center gap-3 rounded-2xl bg-white/[0.06] px-4 text-right text-white active:bg-white/10">
+                    <span className="flex size-9 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300"><MessageCircle className="size-5" aria-hidden="true" /></span>
+                    <span className="flex-1"><span className="block text-sm font-bold">واتساب</span><span className="block text-[11px] text-white/50">إرسال ملخص النتائج كرسالة</span></span>
+                  </button>
+                  <button type="button" onClick={() => sendToApp('telegram')} className="flex h-14 items-center gap-3 rounded-2xl bg-white/[0.06] px-4 text-right text-white active:bg-white/10">
+                    <span className="flex size-9 items-center justify-center rounded-full bg-sky-500/20 text-sky-300"><Send className="size-5" aria-hidden="true" /></span>
+                    <span className="flex-1"><span className="block text-sm font-bold">تيليجرام</span><span className="block text-[11px] text-white/50">إرسال ملخص النتائج كرسالة</span></span>
+                  </button>
+                </>
+              )}
+              <button type="button" onClick={shareExcelFile} className="flex h-14 items-center gap-3 rounded-2xl bg-white/[0.06] px-4 text-right text-white active:bg-white/10">
+                <span className="flex size-9 items-center justify-center rounded-full bg-rose-200/20 text-rose-200"><Share2 className="size-5" aria-hidden="true" /></span>
+                <span className="flex-1"><span className="block text-sm font-bold">مشاركة ملف Excel</span><span className="block text-[11px] text-white/50">اختر واتساب أو تيليجرام أو أي تطبيق وسيُرفق الملف</span></span>
+              </button>
+              <button type="button" onClick={saveExcelFile} className="flex h-14 items-center gap-3 rounded-2xl bg-white/[0.06] px-4 text-right text-white active:bg-white/10">
+                <span className="flex size-9 items-center justify-center rounded-full bg-emerald-300/20 text-emerald-200"><FileSpreadsheet className="size-5" aria-hidden="true" /></span>
+                <span className="flex-1"><span className="block text-sm font-bold">حفظ على الجهاز</span><span className="block text-[11px] text-white/50">تنزيل ملف Excel</span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -143,11 +143,11 @@ export const downloadBlob = (blob: Blob, fileName: string) => {
 export const isMobileDevice = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches
 
-// Mobile: opens the phone's share sheet (WhatsApp, Telegram, email, "Save to Files", Drive...).
-// Desktop or unsupported browsers: normal download.
-export const saveOrShare = async (blob: Blob, fileName: string) => {
+// Opens the phone's share sheet with the file attached (WhatsApp, Telegram, email, "Save to Files", Drive...).
+// If the browser cannot share files, it falls back to a normal download.
+export const shareFile = async (blob: Blob, fileName: string) => {
   const safeName = fileName.replace(/[\\/:*?"<>|]/g, '-')
-  if (isMobileDevice() && typeof navigator !== 'undefined' && 'share' in navigator) {
+  if (typeof navigator !== 'undefined' && 'share' in navigator) {
     const file = new File([blob], safeName, { type: blob.type })
     if (navigator.canShare?.({ files: [file] })) {
       try {
