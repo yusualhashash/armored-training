@@ -19,6 +19,8 @@ export interface GeneratedFile {
 const RESULTS_SHEET = 'النتائج'
 const HISTORY_SHEET = 'السجل'
 const SECOND_COLUMN = 'الزمن (ثانية)'
+const TRAINEE_INFO_HEADERS = ['اسم المتدرب', 'الرقم العسكري', 'مكان العمل']
+const TRAINEE_INFO_EMPTY: Cell[] = ['', '', '']
 
 const HISTORY_HEADERS = ['التاريخ', 'الوقت', 'الاختبار', 'الفئة العمرية', 'مدة الاختبار', 'رقم المتدرب', SECOND_COLUMN, 'النتيجة', 'التقدير']
 
@@ -49,7 +51,7 @@ export function buildTimedEntryFile(event: SportEvent, category: AgeCategory, en
   const blob = buildXlsx([
     {
       name: RESULTS_SHEET,
-      widths: [22, 16, 14, 16],
+      widths: [14, 22, 16, 18, 16, 12, 16],
       rows: [
         [{ v: `اختبار ${event.name}`, s: 'title' }],
         [],
@@ -60,8 +62,14 @@ export function buildTimedEntryFile(event: SportEvent, category: AgeCategory, en
         [{ v: 'مدة الاختبار', s: 'label' }, formatDuration(entry.durationMs)],
         [{ v: 'عدد المتدربين', s: 'label' }, entry.results.length],
         [],
-        headerRow(['رقم المتدرب', SECOND_COLUMN, 'النتيجة', 'التقدير']),
-        ...entry.results.map((result, index): Cell[] => [index + 1, toTenthNumber(result.seconds), result.score, getPerformanceLevelLabel(resolvePerformanceLevel(event, result.seconds))]),
+        headerRow(['رقم المتدرب', ...TRAINEE_INFO_HEADERS, SECOND_COLUMN, 'النتيجة', 'التقدير']),
+        ...entry.results.map((result, index): Cell[] => [
+          index + 1,
+          ...TRAINEE_INFO_EMPTY,
+          toTenthNumber(result.seconds),
+          result.score,
+          getPerformanceLevelLabel(resolvePerformanceLevel(event, result.seconds)),
+        ]),
         [],
         [{ v: 'معايير الأداء', s: 'title' }],
         headerRow(['النطاق الزمني', 'التقدير']),
