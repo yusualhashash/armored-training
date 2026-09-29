@@ -129,31 +129,15 @@ export const buildXlsx = (sheets: Sheet[]) => {
   return zip(files.map((f) => ({ name: f.name, data: enc.encode(f.text) })))
 }
 
-// Builds a file name that WhatsApp, Telegram and Android/iOS accept without replacing it with "download1":
-// keeps the Arabic test name, but removes direction marks, forbidden characters and spaces, and limits the length.
-export const cleanFileName = (name: string, extension = 'xlsx') => {
-  const base = name
-    .replace(new RegExp(`\\.${extension}$`, 'i'), '')
-    .normalize('NFC')
-    .replace(/[\u200B-\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/g, '')
-    .replace(/[\u0000-\u001F\\/:*?"<>|#%&{}$!'@+`=~[\]();,]+/g, '-')
-    .replace(/\s+/g, '_')
-    .replace(/[-_]{2,}/g, (match) => match[0])
-    .replace(/^[-_.]+|[-_.]+$/g, '')
-    .slice(0, 80)
-    .replace(/[-_.]+$/g, '')
-  return `${base || 'results'}.${extension}`
-}
-
 export const downloadBlob = (blob: Blob, fileName: string) => {
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
   link.href = url
-  link.download = cleanFileName(fileName)
+  link.download = fileName
   document.body.appendChild(link)
   link.click()
   link.remove()
-  setTimeout(() => URL.revokeObjectURL(url), 60000)
+  setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
 
 export const isMobileDevice = () =>
@@ -162,12 +146,12 @@ export const isMobileDevice = () =>
 // Opens the phone's share sheet with the file attached (WhatsApp, Telegram, email, "Save to Files", Drive...).
 // If the browser cannot share files, it falls back to a normal download.
 export const shareFile = async (blob: Blob, fileName: string) => {
-  const safeName = cleanFileName(fileName)
+  const safeName = fileName.replace(/[\\/:*?"<>|]/g, '-')
   if (typeof navigator !== 'undefined' && 'share' in navigator) {
     const file = new File([blob], safeName, { type: blob.type })
     if (navigator.canShare?.({ files: [file] })) {
       try {
-        await navigator.share({ files: [file], title: safeName.replace(/\.xlsx$/i, '') })
+        await navigator.share({ files: [file], title: safeName })
         return
       } catch (error) {
         if (error instanceof DOMException && error.name === 'AbortError') return // user closed the sheet

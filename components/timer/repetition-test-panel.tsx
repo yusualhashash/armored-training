@@ -2,11 +2,11 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Check, Download, FileSpreadsheet, History, MessageCircle, Send, Share2, Trash2, X } from 'lucide-react'
+import { Download, FileSpreadsheet, History, MessageCircle, Send, Share2, Trash2, X } from 'lucide-react'
 import { StopwatchDisplay } from '@/components/timer/stopwatch-display'
 import { TimerControls } from '@/components/timer/timer-controls'
 import { useStopwatch } from '@/components/timer/use-stopwatch'
-import { buildXlsx, cleanFileName, downloadBlob, isMobileDevice, shareFile, type Cell } from '@/lib/xlsx-writer'
+import { buildXlsx, downloadBlob, isMobileDevice, shareFile, type Cell } from '@/lib/xlsx-writer'
 import type { PerformanceLevel, PerformanceStandard } from '@/lib/types'
 
 type StandardLevel = PerformanceLevel
@@ -102,7 +102,6 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
   const [showHistory, setShowHistory] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [shareTarget, setShareTarget] = useState<ShareTarget | null>(null)
-  const [savedName, setSavedName] = useState<string | null>(null)
   const standardRanges = getStandardRanges(standards)
   const ExportIcon = isMobile ? Share2 : Download
 
@@ -201,7 +200,6 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
           [{ v: 'الوقت', s: 'label' }, formatClock(entry.savedAt)],
           [{ v: 'مدة الاختبار', s: 'label' }, formatDuration(entry.durationMs)],
           [{ v: 'عدد المتدربين', s: 'label' }, entry.results.length],
-          [{ v: 'متوسط التكرارات', s: 'label' }, Math.round(average * 10) / 10],
           [],
           ['رقم المتدرب', 'عدد التكرارات', 'النتيجة', 'التقدير'].map((v) => ({ v, s: 'header' as const })),
           ...sessionRows(entry),
@@ -217,7 +215,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
         rows: [historyHeader, ...historyRows(relevantHistory)],
       },
     ])
-    return { blob, name: `${eventName}_${category.name}_${fileStamp(entry.savedAt)}.xlsx` }
+    return { blob, name: `نتائج-${eventName}-${category.name}-${fileStamp(entry.savedAt)}.xlsx` }
   }
 
   const makeAllFile = () => {
@@ -228,15 +226,9 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
         rows: [historyHeader, ...historyRows(relevantHistory)],
       },
     ])
-    return { blob, name: `${eventName}_${category.name}_السجل.xlsx` }
+    return { blob, name: `سجل-${eventName}-${category.name}.xlsx` }
   }
 
-
-  // Downloads straight to the device and shows a confirmation message.
-  const saveToDevice = (file: { blob: Blob; name: string }) => {
-    downloadBlob(file.blob, file.name)
-    setSavedName(cleanFileName(file.name))
-  }
 
   const fileFor = (target: ShareTarget) => (target.kind === 'entry' ? makeEntryFile(target.entry) : makeAllFile())
 
@@ -246,7 +238,8 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
       setShareTarget(target)
       return
     }
-    saveToDevice(fileFor(target))
+    const file = fileFor(target)
+    downloadBlob(file.blob, file.name)
   }
 
   const summaryText = (entry: HistoryEntry) => {
@@ -283,14 +276,8 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
     if (!shareTarget) return
     const file = fileFor(shareTarget)
     setShareTarget(null)
-    saveToDevice(file)
+    downloadBlob(file.blob, file.name)
   }
-
-  useEffect(() => {
-    if (!savedName) return
-    const timer = window.setTimeout(() => setSavedName(null), 5000)
-    return () => window.clearTimeout(timer)
-  }, [savedName])
 
   useEffect(() => {
     if (!shareTarget) return
@@ -389,10 +376,6 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
               <button type="button" aria-label="إغلاق" onClick={() => setShareTarget(null)} className="flex size-9 items-center justify-center rounded-full bg-white/[0.06] text-white/70"><X className="size-4" aria-hidden="true" /></button>
             </div>
             <div className="flex flex-col gap-2">
-              <button type="button" onClick={saveExcelFile} className="flex h-14 items-center gap-3 rounded-2xl bg-white/[0.06] px-4 text-right text-white active:bg-white/10">
-                <span className="flex size-9 items-center justify-center rounded-full bg-emerald-300/20 text-emerald-200"><FileSpreadsheet className="size-5" aria-hidden="true" /></span>
-                <span className="flex-1"><span className="block text-sm font-bold">حفظ على الجهاز</span><span className="block text-[11px] text-white/50">يُحفظ الملف مباشرة في تنزيلات الهاتف</span></span>
-              </button>
               {shareTarget.kind === 'entry' && (
                 <>
                   <button type="button" onClick={() => sendToApp('whatsapp')} className="flex h-14 items-center gap-3 rounded-2xl bg-white/[0.06] px-4 text-right text-white active:bg-white/10">
@@ -409,15 +392,12 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
                 <span className="flex size-9 items-center justify-center rounded-full bg-rose-200/20 text-rose-200"><Share2 className="size-5" aria-hidden="true" /></span>
                 <span className="flex-1"><span className="block text-sm font-bold">مشاركة ملف Excel</span><span className="block text-[11px] text-white/50">اختر واتساب أو تيليجرام أو أي تطبيق وسيُرفق الملف</span></span>
               </button>
+              <button type="button" onClick={saveExcelFile} className="flex h-14 items-center gap-3 rounded-2xl bg-white/[0.06] px-4 text-right text-white active:bg-white/10">
+                <span className="flex size-9 items-center justify-center rounded-full bg-emerald-300/20 text-emerald-200"><FileSpreadsheet className="size-5" aria-hidden="true" /></span>
+                <span className="flex-1"><span className="block text-sm font-bold">حفظ على الجهاز</span><span className="block text-[11px] text-white/50">تنزيل ملف Excel</span></span>
+              </button>
             </div>
           </div>
-        </div>
-      )}
-      {savedName && (
-        <div role="status" aria-live="polite" className="fixed inset-x-4 bottom-6 z-[60] mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-emerald-300/30 bg-[#0d1512] px-4 py-3 text-white shadow-lg">
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-emerald-300/20 text-emerald-200"><Check className="size-4" aria-hidden="true" /></span>
-          <span className="min-w-0 flex-1"><span className="block text-sm font-bold">تم حفظ الملف</span><bdi dir="ltr" className="block truncate text-[11px] text-white/60">{savedName}</bdi><span className="block text-[11px] text-white/50">تجده في مجلد التنزيلات (Downloads)</span></span>
-          <button type="button" aria-label="إغلاق" onClick={() => setSavedName(null)} className="flex size-8 shrink-0 items-center justify-center rounded-full bg-white/[0.06] text-white/70"><X className="size-4" aria-hidden="true" /></button>
         </div>
       )}
     </div>
