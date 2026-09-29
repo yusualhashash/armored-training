@@ -68,7 +68,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
     ]
   const csv = rows
     .map((row) => row.map((cell) => `"${String(cell ?? '').replaceAll('"', '""')}"`).join(';'))
-    .join('\\r\\n')
+    .join('\r\n')
 
   // Excel on Arabic/Windows locales reliably detects UTF-16LE and semicolon columns.
   const utf16 = new Uint8Array(2 + csv.length * 2)
