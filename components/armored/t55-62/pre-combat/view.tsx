@@ -11,9 +11,33 @@ import { TimerPanel } from '@/components/timer/timer-panel'
 
 export type T55_62PreCombatViewId =
   | 't55-62-pre-combat'
-  | 't55-62-pre-combat-طاقم'
-  | 't55-62-pre-combat-فصيلة'
   | 't55-62-pre-combat-سرية'
+  | 't55-62-pre-combat-كتيبة'
+
+const UNIT_SUBJECT: Record<T55_62PreCombatUnit, string> = {
+  سرية: 'السرية',
+  كتيبة: 'الكتيبة',
+}
+
+const UNIT_RATINGS: Record<T55_62PreCombatUnit, { score: string; rating: string }[]> = {
+  سرية: [
+    { score: '2:00 دقيقة', rating: 'ممتاز' },
+    { score: '2:15 دقيقة', rating: 'جيد' },
+    { score: '2:45 دقيقة', rating: 'مقبول' },
+  ],
+  كتيبة: [
+    { score: '3:30 دقيقة', rating: 'ممتاز' },
+    { score: '4:00 دقيقة', rating: 'جيد' },
+    { score: '4:50 دقيقة', rating: 'مقبول' },
+  ],
+}
+
+function getInstructions(unit: T55_62PreCombatUnit) {
+  const subject = UNIT_SUBJECT[unit]
+  if (!subject) return 'لا يوجد تعليمات خاصة بهذا القسم'
+
+  return `تقوم ${subject} بالمسير في الرتل. تنفتح الوحدات بإيعاز (إشارة) وتتابع الحركة بترتيب ما قبل القتال.`
+}
 
 export function T55_62PreCombatView({
   activeView,
@@ -41,18 +65,13 @@ export function T55_62PreCombatView({
               aria-hidden="true"
             />
 
-            <span
-              dir="rtl"
-              className="order-2 flex items-center gap-4"
-            >
+            <span dir="rtl" className="order-2 flex items-center gap-4">
               <span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
                 <Shield aria-hidden="true" />
               </span>
 
               <span className="flex flex-col items-start gap-1">
-                <span className="text-lg font-semibold">
-                  {unit.label}
-                </span>
+                <span className="text-lg font-semibold">{unit.label}</span>
               </span>
             </span>
           </Button>
@@ -62,7 +81,7 @@ export function T55_62PreCombatView({
   }
 
   const unit = activeView.replace(
-    't55-62-',
+    't55-62-pre-combat-',
     '',
   ) as T55_62PreCombatUnit
 
@@ -70,6 +89,9 @@ export function T55_62PreCombatView({
     <TimerPanel
       event={createT55_62PreCombatEvent(unit)}
       showRecord={false}
+      trainerInstructions={getInstructions(unit)}
+      trainerRatings={UNIT_RATINGS[unit]}
+      ratingsTitle="التقدير حسب الزمن"
     />
   )
 }

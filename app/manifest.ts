@@ -1,11 +1,16 @@
 import type { MetadataRoute } from 'next'
 
+export const dynamic = 'force-static'
+export const revalidate = false
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'تطبيق المسابقات',
-    short_name: 'المسابقات',
+    name: 'المعدلات الزمنية',
+    short_name: 'المعدلات الزمنية',
     description: 'تطبيق تدريبي يعمل دون اتصال بالإنترنت',
+    id: '/',
     start_url: '/',
+    scope: '/',
     display: 'standalone',
     background_color: '#ffffff',
     theme_color: '#ffffff',
@@ -17,6 +22,3 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
   }
 }
-
-export const dynamic = 'force-static'
-export const revalidate = false

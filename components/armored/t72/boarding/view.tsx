@@ -12,6 +12,37 @@ export type T72ViewId =
   | 't72-فصيلة'
   | 't72-سرية'
 
+const UNIT_SUBJECT: Record<T72Unit, string> = {
+  طاقم: 'الطواقم',
+  فصيلة: 'الفصائل',
+  سرية: 'السرية',
+}
+
+const UNIT_RATINGS: Record<T72Unit, { score: string; rating: string }[]> = {
+  طاقم: [
+    { score: '8 ثا', rating: 'ممتاز' },
+    { score: '9 ثا', rating: 'جيد' },
+    { score: '10 ثا', rating: 'مقبول' },
+  ],
+  فصيلة: [
+    { score: '9 ثا', rating: 'ممتاز' },
+    { score: '10 ثا', rating: 'جيد' },
+    { score: '12 ثا', rating: 'مقبول' },
+  ],
+  سرية: [
+    { score: '11 ثا', rating: 'ممتاز' },
+    { score: '12 ثا', rating: 'جيد' },
+    { score: '14 ثا', rating: 'مقبول' },
+  ],
+}
+
+function getInstructions(unit: T72Unit) {
+  const subject = UNIT_SUBJECT[unit]
+  if (!subject) return 'لا يوجد تعليمات خاصة بهذا القسم'
+
+  return `${subject} على بعد ٢ - ٤ خطوات في صف واحد (مع الكمامات وحقائب القادة) أمام (خلف) الدبابات، الوجه إلى الأمام (نحو الدبابات). فتحات الدخول محررة من الرتاج، وبعد الركوب تُغلق الفتحات بالرتاج.\nيُحسب الوقت من إيعاز (إشارة) «إلى أماكنكم» حتى إغلاق الفتحات بالرتاج. وعند ارتداء ${subject} الألبسة الشتوية يُزاد الزمن بمقدار ٢ ثانية.`
+}
+
 export function T72View({
   activeView,
   openView,
@@ -27,9 +58,7 @@ export function T72View({
             key={unit.id}
             type="button"
             variant="ghost"
-            onClick={() =>
-              openView(`t72-${unit.id}` as T72ViewId)
-            }
+            onClick={() => openView(`t72-${unit.id}` as T72ViewId)}
             dir="ltr"
             className="group flex h-auto w-full items-center justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]"
           >
@@ -38,18 +67,13 @@ export function T72View({
               aria-hidden="true"
             />
 
-            <span
-              dir="rtl"
-              className="order-2 flex items-center gap-4"
-            >
+            <span dir="rtl" className="order-2 flex items-center gap-4">
               <span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
                 <Shield aria-hidden="true" />
               </span>
 
               <span className="flex flex-col items-start gap-1">
-                <span className="text-lg font-semibold">
-                  {unit.label}
-                </span>
+                <span className="text-lg font-semibold">{unit.label}</span>
               </span>
             </span>
           </Button>
@@ -64,21 +88,9 @@ export function T72View({
     <TimerPanel
       event={createT72Event(unit)}
       showRecord={false}
-      trainerInstructions={
-        unit === 'طاقم'
-          ? 'الطواقم على بعد ٢–٤ خطوات في صف واحد أمام الدبابات، بالكمامات وحقائب القادة، والوجه نحو الدبابات. تكون فتحات الدخول مفتوحة، وبعد الركوب تُغلق بالرتاج.\nيُحسب الوقت من إشارة «إلى أماكنكم» حتى إغلاق الفتحات. عند ارتداء الألبسة الشتوية يُضاف ثانيتان.'
-          : unit === 'فصيلة'
-          ? 'الفصائل على بعد ٢–٤ خطوات في صف واحد أمام الدبابات، بالكمامات وحقائب القادة، والوجه نحو الدبابات. تكون فتحات الدخول مفتوحة، وبعد الركوب تُغلق بالرتاج.\nيُحسب الوقت من إشارة «إلى أماكنكم» حتى إغلاق الفتحات. عند ارتداء الألبسة الشتوية يُضاف ثانيتان.'
-          : unit === 'سرية'
-          ? 'السرية على بعد ٢–٤ خطوات في صف واحد أمام الدبابات، بالكمامات وحقائب القادة، والوجه نحو الدبابات. تكون فتحات الدخول مفتوحة، وبعد الركوب تُغلق بالرتاج.\nيُحسب الوقت من إشارة «إلى أماكنكم» حتى إغلاق الفتحات. عند ارتداء الألبسة الشتوية يُضاف ثانيتان.'
-  : 'لا يوجد تعليمات خاصة بهذا القسم'
-  }
-  trainerRatings={unit === 'طاقم' ? [
-    { score: '8', rating: 'ممتاز' },
-    { score: '9', rating: 'جيد' },
-    { score: '10', rating: 'مقبول' },
-  ] : undefined}
-
+      trainerInstructions={getInstructions(unit)}
+      trainerRatings={UNIT_RATINGS[unit]}
+      ratingsTitle="التقدير حسب الزمن"
     />
   )
 }

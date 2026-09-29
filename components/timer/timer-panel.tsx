@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ArrivalsList } from '@/components/timer/arrivals-list'
+import { RatingsTable, type RatingRow } from '@/components/timer/ratings-table'
 import { ResultSummary } from '@/components/timer/result-summary'
 import { StandardsTable } from '@/components/timer/standards-table'
 import { StopwatchDisplay } from '@/components/timer/stopwatch-display'
@@ -17,7 +18,8 @@ interface TimerPanelProps {
   category?: AgeCategory
   showRecord?: boolean
   trainerInstructions?: string
-  trainerRatings?: Array<{ score: string; rating: string }>
+  trainerRatings?: RatingRow[]
+  ratingsTitle?: string
 }
 
 /** شاشة اختبار كاملة: ساعة إيقاف وتسجيل أوقات الوصول والنتيجة النهائية. */
@@ -27,6 +29,7 @@ export function TimerPanel({
   showRecord = true,
   trainerInstructions,
   trainerRatings,
+  ratingsTitle,
 }: TimerPanelProps) {
   const stopwatch = useStopwatch()
   const [showInstructions, setShowInstructions] = useState(false)
@@ -37,57 +40,17 @@ export function TimerPanel({
   return (
     <div className="flex flex-col gap-5">
       <div className="rounded-[2rem] border border-white/10 bg-[#101216] p-4 sm:p-6">
-<p className="text-center text-xs font-semibold text-white/70">اختبار {event.name}</p>
-        {category && <p className="mt-1.5 text-center text-sm text-white/50">{category.name} · مواليد {category.birthYears}</p>}
+        <p className="text-center text-xs font-semibold text-white/70">اختبار {event.name}</p>
+        {category && (
+          <p className="mt-1.5 text-center text-sm text-white/50">
+            {category.name} · مواليد {category.birthYears}
+          </p>
+        )}
         <div className="mt-5">
           <StopwatchDisplay elapsedMs={stopwatch.elapsedMs} />
         </div>
         {stopwatch.isFinished && <ResultSummary level={level} score={score} maxScore={event.maxScore} />}
       </div>
-
-      {trainerInstructions && (
-        <section className="overflow-hidden rounded-3xl border border-emerald-200/10 bg-[#101216]" dir="rtl">
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={() => setShowInstructions((visible) => !visible)}
-            aria-expanded={showInstructions}
-            className="flex h-auto w-full items-center justify-between px-5 py-4 text-right text-white hover:bg-white/5"
-          >
-            <span className="flex items-center gap-3">
-              <BookOpen className="size-5 text-emerald-300" aria-hidden="true" />
-              <span className="font-semibold">تعليمات المدرب</span>
-            </span>
-            <ChevronDown className={`size-5 text-white/50 transition-transform ${showInstructions ? 'rotate-180' : ''}`} aria-hidden="true" />
-          </Button>
-          {showInstructions && (
-            <div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-8 text-white/70">
-              {trainerInstructions.split('\\n').map((line) => (
-                <p key={line} className="not-last:mb-2">{line}</p>
-              ))}
-              {trainerRatings && (
-                <table className="mt-4 w-full overflow-hidden rounded-xl border border-white/10 text-right text-sm">
-                  <caption className="sr-only">جدول درجات التقييم</caption>
-                  <thead className="bg-white/5 text-white/90">
-                    <tr>
-                      <th scope="col" className="px-4 py-2 font-semibold">الزمن</th>
-                      <th scope="col" className="px-4 py-2 font-semibold">التقييم</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {trainerRatings.map((item) => (
-                      <tr key={item.score} className="border-t border-white/10">
-                        <td className="px-4 py-2 text-white/80">{item.score}</td>
-                        <td className="px-4 py-2 text-white/80">{item.rating}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
-            </div>
-          )}
-        </section>
-      )}
 
       <TimerControls
         isRunning={stopwatch.isRunning}
@@ -104,6 +67,45 @@ export function TimerPanel({
       {stopwatch.arrivals.length > 0 && <ArrivalsList event={event} arrivals={stopwatch.arrivals} />}
 
       {stopwatch.isFinished && <StandardsTable event={event} />}
+
+      {trainerInstructions && (
+        <section className="overflow-hidden rounded-3xl border border-emerald-200/10 bg-[#101216]" dir="rtl">
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={() => setShowInstructions((visible) => !visible)}
+            aria-expanded={showInstructions}
+            className="flex h-auto w-full items-center justify-between px-5 py-4 text-right text-white hover:bg-white/5"
+          >
+            <span className="flex items-center gap-3">
+              <BookOpen className="size-5 text-emerald-300" aria-hidden="true" />
+              <span className="font-semibold">تعليمات المتدرب</span>
+            </span>
+            <ChevronDown
+              className={`size-5 text-white/50 transition-transform ${showInstructions ? 'rotate-180' : ''}`}
+              aria-hidden="true"
+            />
+          </Button>
+
+          {showInstructions && (
+            <div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-8 text-white/70">
+              {trainerInstructions.split('\n').map((line, index) => (
+                <p key={index} className="not-last:mb-2">
+                  {line}
+                </p>
+              ))}
+
+              {trainerRatings && trainerRatings.length > 0 && (
+                <RatingsTable
+                  className="mt-4"
+                  rows={trainerRatings}
+                  title={ratingsTitle}
+                />
+              )}
+            </div>
+          )}
+        </section>
+      )}
     </div>
   )
 }

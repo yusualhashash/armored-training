@@ -15,6 +15,37 @@ export type T55_62CombatToPreCombatViewId =
   | 't55-62-combat-to-pre-combat-سرية'
   | 't55-62-combat-to-pre-combat-كتيبة'
 
+const UNIT_SUBJECT: Record<T55_62CombatToPreCombatUnit, string> = {
+  فصيلة: 'الفصيلة',
+  سرية: 'السرية',
+  كتيبة: 'الكتيبة',
+}
+
+const UNIT_RATINGS: Record <T55_62CombatToPreCombatUnit, Array<{ score: string; rating: string }>> = {
+  فصيلة: [
+    { score: '40 ثا', rating: 'ممتاز' },
+    { score: '45 ثا', rating: 'جيد' },
+    { score: '55 ثا', rating: 'مقبول' },
+  ],
+  سرية: [
+    { score: '55 ثا', rating: 'ممتاز' },
+    { score: '1:00 دقيقة', rating: 'جيد' },
+    { score: '2:10 دقيقة', rating: 'مقبول' },
+  ],
+  كتيبة: [
+    { score: '3:10 دقيقة', rating: 'ممتاز' },
+    { score: '3:30 دقيقة', rating: 'جيد' },
+    { score: '4:10 دقيقة', rating: 'مقبول' },
+  ],
+}
+
+function getInstructions(unit: T55_62CombatToPreCombatUnit) {
+  const subject = UNIT_SUBJECT[unit]
+  if (!subject) return 'لا يوجد تعليمات خاصة بهذا القسم'
+
+  return `${subject} تهاجم بترتيب القتال. وبإيعاز (إشارة) تغيّر الوحدات تشكيلها إلى ترتيب ما قبل القتال (الفصيلة إلى الرتل) وتتابع الحركة.`
+}
+
 export function T55_62CombatToPreCombatView({
   activeView,
   openView,
@@ -31,7 +62,9 @@ export function T55_62CombatToPreCombatView({
             type="button"
             variant="ghost"
             onClick={() =>
-              openView(`t55-62-combat-to-pre-combat-${unit.id}` as T55_62CombatToPreCombatViewId)
+              openView(
+                `t55-62-combat-to-pre-combat-${unit.id}` as T55_62CombatToPreCombatViewId,
+              )
             }
             dir="ltr"
             className="group flex h-auto w-full items-center justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]"
@@ -54,7 +87,18 @@ export function T55_62CombatToPreCombatView({
     )
   }
 
-  const unit = activeView.replace('t55-62-combat-to-pre-combat-', '') as T55_62CombatToPreCombatUnit
+  const unit = activeView.replace(
+    't55-62-combat-to-pre-combat-',
+    '',
+  ) as T55_62CombatToPreCombatUnit
 
-  return <TimerPanel event={createT55_62CombatToPreCombatEvent(unit)} showRecord={false} />
+  return (
+    <TimerPanel
+      event={createT55_62CombatToPreCombatEvent(unit)}
+      showRecord={false}
+      trainerInstructions={getInstructions(unit)}
+      trainerRatings={UNIT_RATINGS[unit]}
+      ratingsTitle="التقدير حسب الزمن"
+    />
+  )
 }

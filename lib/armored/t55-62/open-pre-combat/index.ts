@@ -4,7 +4,7 @@ export type T55_62OpenPreCombatUnit = 'فصيلة' | 'سرية' | 'كتيبة'
 
 export const T55_62_OPEN_PRE_COMBAT_UNITS: Array<{ id: T55_62OpenPreCombatUnit; label: string; thresholds: [number, number, number] }> = [
   { id: 'فصيلة', label: 'الفصيلة', thresholds: [45, 50, 60] },
-  { id: 'سرية', label: 'السرية', thresholds: [60, 70, 95] },
+  { id: 'سرية', label: 'السرية', thresholds: [60, 70, 85] },
   { id: 'كتيبة', label: 'الكتيبة', thresholds: [190, 210, 250] },
 ]
 
