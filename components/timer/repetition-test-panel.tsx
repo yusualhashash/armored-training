@@ -6,8 +6,8 @@ import { Download, History, Trash2 } from 'lucide-react'
 import { StopwatchDisplay } from '@/components/timer/stopwatch-display'
 import { TimerControls } from '@/components/timer/timer-controls'
 import { useStopwatch } from '@/components/timer/use-stopwatch'
+import { buildXlsx, downloadBlob, type Cell } from '@/lib/xlsx-writer'
 import type { PerformanceLevel, PerformanceStandard } from '@/lib/types'
-import { buildXlsx, Cell, downloadBlob } from './xlsx-writer';
 
 type StandardLevel = PerformanceLevel
 type TraineeResult = { count: number; score: number }
@@ -21,7 +21,7 @@ type HistoryEntry = {
 }
 
 const HISTORY_KEY = 'repetition-test-history-v1'
-const MAX_HISTORY = 100
+const MAX_PER_TEST = 500 // latest sessions kept per test + age group
 
 const standardLabels: Record<StandardLevel, string> = {
   excellent: 'ممتاز',
@@ -119,7 +119,14 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
       results: enteredCounts.map((count) => ({ count, score: scoreResolver(count) })),
     }
     setCurrent(entry)
-    setHistory((existing) => [entry, ...existing].slice(0, MAX_HISTORY))
+    setHistory((existing) => {
+      let kept = 0
+      return [entry, ...existing].filter((item) => {
+        if (item.eventName !== entry.eventName || item.categoryName !== entry.categoryName) return true
+        kept += 1
+        return kept <= MAX_PER_TEST
+      })
+    })
   }
 
   const deleteEntry = (id: string) => {
