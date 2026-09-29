@@ -2,11 +2,11 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Download, History, Trash2 } from 'lucide-react'
+import { Download, History, Share2, Trash2 } from 'lucide-react'
 import { StopwatchDisplay } from '@/components/timer/stopwatch-display'
 import { TimerControls } from '@/components/timer/timer-controls'
 import { useStopwatch } from '@/components/timer/use-stopwatch'
-import { buildXlsx, downloadBlob, type Cell } from '@/lib/xlsx-writer'
+import { buildXlsx, isMobileDevice, saveOrShare, type Cell } from '@/lib/xlsx-writer'
 import type { PerformanceLevel, PerformanceStandard } from '@/lib/types'
 
 type StandardLevel = PerformanceLevel
@@ -78,11 +78,14 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
   const [history, setHistory] = useState<HistoryEntry[]>([])
   const [historyLoaded, setHistoryLoaded] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const standardRanges = getStandardRanges(standards)
+  const ExportIcon = isMobile ? Share2 : Download
 
   // Load history once on the client, then persist every change.
   useEffect(() => {
     setHistory(loadHistory())
+    setIsMobile(isMobileDevice())
     setHistoryLoaded(true)
   }, [])
   useEffect(() => {
@@ -174,6 +177,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
           [{ v: 'الوقت', s: 'label' }, formatClock(entry.savedAt)],
           [{ v: 'مدة الاختبار', s: 'label' }, formatDuration(entry.durationMs)],
           [{ v: 'عدد المتدربين', s: 'label' }, entry.results.length],
+          [{ v: 'متوسط التكرارات', s: 'label' }, Math.round(average * 10) / 10],
           [],
           ['رقم المتدرب', 'عدد التكرارات', 'النتيجة', 'التقدير'].map((v) => ({ v, s: 'header' as const })),
           ...sessionRows(entry),
@@ -189,7 +193,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
         rows: [historyHeader, ...historyRows(relevantHistory)],
       },
     ])
-    downloadBlob(blob, `نتائج-${eventName}-${category.name}-${fileStamp(entry.savedAt)}.xlsx`)
+    void saveOrShare(blob, `نتائج-${eventName}-${category.name}-${fileStamp(entry.savedAt)}.xlsx`)
   }
 
   const exportAllHistory = () => {
@@ -201,7 +205,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
         rows: [historyHeader, ...historyRows(relevantHistory)],
       },
     ])
-    downloadBlob(blob, `سجل-${eventName}-${category.name}.xlsx`)
+    void saveOrShare(blob, `سجل-${eventName}-${category.name}.xlsx`)
   }
 
   return (
@@ -228,7 +232,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
           {current && (
             <div className="mt-5 border-t border-white/10 pt-5">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-                <Button type="button" variant="outline" onClick={() => exportEntry(current)} className="h-10 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><Download className="ml-2 size-4" aria-hidden="true" />تصدير النتائج إلى Excel</Button>
+                <Button type="button" variant="outline" onClick={() => exportEntry(current)} className="h-10 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة ملف Excel' : 'تصدير النتائج إلى Excel'}</Button>
                 <p className="text-xs text-white/50" dir="ltr">{formatDate(current.savedAt)} · {formatClock(current.savedAt)}{current.durationMs !== null && ` · ${formatDuration(current.durationMs)}`}</p>
               </div>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
@@ -256,7 +260,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
             ) : (
               <>
                 <div className="mb-3 flex gap-2">
-                  <Button type="button" variant="outline" onClick={exportAllHistory} className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><Download className="ml-2 size-4" aria-hidden="true" />تصدير السجل كاملا</Button>
+                  <Button type="button" variant="outline" onClick={exportAllHistory} className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة السجل' : 'تصدير السجل كاملا'}</Button>
                   <Button type="button" variant="outline" onClick={clearHistory} className="h-10 rounded-xl border-rose-300/30 bg-transparent text-rose-200 hover:bg-rose-300/10"><Trash2 className="ml-2 size-4" aria-hidden="true" />مسح السجل</Button>
                 </div>
                 <ul className="flex max-h-96 flex-col gap-2 overflow-y-auto">
@@ -270,7 +274,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
                             <p className="mt-1 text-xs text-white/50">{entry.results.length} متدرب · أفضل نتيجة {best} تكرار{entry.durationMs !== null && ` · المدة ${formatDuration(entry.durationMs)}`}</p>
                           </div>
                           <div className="flex gap-1">
-                            <Button type="button" variant="outline" size="icon" aria-label="تصدير هذه الجلسة" onClick={() => exportEntry(entry)} className="size-9 rounded-lg border-white/15 bg-transparent text-white hover:bg-white/10"><Download className="size-4" aria-hidden="true" /></Button>
+                            <Button type="button" variant="outline" size="icon" aria-label={isMobile ? 'حفظ أو مشاركة هذه الجلسة' : 'تصدير هذه الجلسة'} onClick={() => exportEntry(entry)} className="size-9 rounded-lg border-white/15 bg-transparent text-white hover:bg-white/10"><ExportIcon className="size-4" aria-hidden="true" /></Button>
                             <Button type="button" variant="outline" size="icon" aria-label="حذف هذه الجلسة" onClick={() => deleteEntry(entry.id)} className="size-9 rounded-lg border-white/15 bg-transparent text-rose-200 hover:bg-rose-300/10"><Trash2 className="size-4" aria-hidden="true" /></Button>
                           </div>
                         </div>

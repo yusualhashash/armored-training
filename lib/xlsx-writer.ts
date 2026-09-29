@@ -139,3 +139,25 @@ export const downloadBlob = (blob: Blob, fileName: string) => {
   link.remove()
   setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
+
+export const isMobileDevice = () =>
+  typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches
+
+// Mobile: opens the phone's share sheet (WhatsApp, Telegram, email, "Save to Files", Drive...).
+// Desktop or unsupported browsers: normal download.
+export const saveOrShare = async (blob: Blob, fileName: string) => {
+  const safeName = fileName.replace(/[\\/:*?"<>|]/g, '-')
+  if (isMobileDevice() && typeof navigator !== 'undefined' && 'share' in navigator) {
+    const file = new File([blob], safeName, { type: blob.type })
+    if (navigator.canShare?.({ files: [file] })) {
+      try {
+        await navigator.share({ files: [file], title: safeName })
+        return
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') return // user closed the sheet
+        // any other error: fall back to a normal download below
+      }
+    }
+  }
+  downloadBlob(blob, safeName)
+}
