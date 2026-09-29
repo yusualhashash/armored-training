@@ -164,7 +164,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
     const blob = buildXlsx([
       {
         name: 'النتائج',
-        widths: [18, 16, 14, 14, 16],
+        widths: [20, 16, 14, 14, 16],
         rows: [
           [{ v: `اختبار ${entry.eventName}`, s: 'title' }],
           [],
@@ -174,10 +174,13 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
           [{ v: 'الوقت', s: 'label' }, formatClock(entry.savedAt)],
           [{ v: 'مدة الاختبار', s: 'label' }, formatDuration(entry.durationMs)],
           [{ v: 'عدد المتدربين', s: 'label' }, entry.results.length],
-          [{ v: 'متوسط التكرارات', s: 'label' }, Math.round(average * 10) / 10],
           [],
           ['رقم المتدرب', 'عدد التكرارات', 'النتيجة', 'التقدير'].map((v) => ({ v, s: 'header' as const })),
           ...sessionRows(entry),
+          [],
+          [{ v: 'معايير الأداء', s: 'title' }],
+          ['عدد التكرارات', 'التقدير'].map((v) => ({ v, s: 'header' as const })),
+          ...standards.map((standard, index): Cell[] => [`${standardRanges[index]} تكرار`, standardLabels[standard.level]]),
         ],
       },
       {
