@@ -200,7 +200,6 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
           [{ v: 'الوقت', s: 'label' }, formatClock(entry.savedAt)],
           [{ v: 'مدة الاختبار', s: 'label' }, formatDuration(entry.durationMs)],
           [{ v: 'عدد المتدربين', s: 'label' }, entry.results.length],
-          [{ v: 'متوسط التكرارات', s: 'label' }, Math.round(average * 10) / 10],
           [],
           ['رقم المتدرب', 'عدد التكرارات', 'النتيجة', 'التقدير'].map((v) => ({ v, s: 'header' as const })),
           ...sessionRows(entry),
