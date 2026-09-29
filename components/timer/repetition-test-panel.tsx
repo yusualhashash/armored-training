@@ -49,9 +49,16 @@ const getStandardRanges = (standards: PerformanceStandard[]) => standards.map((s
   return `${standard.time} – ${nextThreshold - 1}`
 })
 
-// ---- date / time helpers (Latin digits so Excel and the UI stay consistent) ----
-const formatDate = (iso: string) => new Date(iso).toLocaleDateString('ar-u-nu-latn', { year: 'numeric', month: '2-digit', day: '2-digit' })
-const formatClock = (iso: string) => new Date(iso).toLocaleTimeString('ar-u-nu-latn', { hour: '2-digit', minute: '2-digit', hour12: false })
+// ---- date / time helpers (built by hand so Arabic RTL never reorders the numbers) ----
+const pad2 = (value: number) => String(value).padStart(2, '0')
+const formatDate = (iso: string) => {
+  const date = new Date(iso)
+  return `${pad2(date.getDate())}/${pad2(date.getMonth() + 1)}/${date.getFullYear()}`
+}
+const formatClock = (iso: string) => {
+  const date = new Date(iso)
+  return `${pad2(date.getHours())}:${pad2(date.getMinutes())}`
+}
 const formatDuration = (ms: number | null) => {
   if (ms === null) return '—'
   const totalCentis = Math.floor(ms / 10)
@@ -69,6 +76,20 @@ const loadHistory = (): HistoryEntry[] => {
   } catch {
     return []
   }
+}
+
+function EntryMeta({ entry, className }: { entry: HistoryEntry; className?: string }) {
+  const values = [formatDate(entry.savedAt), formatClock(entry.savedAt), ...(entry.durationMs !== null ? [formatDuration(entry.durationMs)] : [])]
+  return (
+    <span className={`inline-flex flex-wrap items-center gap-x-2 gap-y-1 ${className ?? ''}`}>
+      {values.map((value, index) => (
+        <span key={index} className="inline-flex items-center gap-x-2">
+          {index > 0 && <span aria-hidden="true" className="opacity-40">•</span>}
+          <bdi dir="ltr" className="tabular-nums">{value}</bdi>
+        </span>
+      ))}
+    </span>
+  )
 }
 
 export function RepetitionTestPanel({ eventName, category, standards, scoreResolver, showTimer = true }: { eventName: string; category: { name: string; birthYears: string }; standards: PerformanceStandard[]; scoreResolver: (count: number) => number; showTimer?: boolean }) {
@@ -233,7 +254,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
             <div className="mt-5 border-t border-white/10 pt-5">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
                 <Button type="button" variant="outline" onClick={() => exportEntry(current)} className="h-10 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة ملف Excel' : 'تصدير النتائج إلى Excel'}</Button>
-                <p className="text-xs text-white/50" dir="ltr">{formatDate(current.savedAt)} · {formatClock(current.savedAt)}{current.durationMs !== null && ` · ${formatDuration(current.durationMs)}`}</p>
+                <p className="text-xs text-white/50"><EntryMeta entry={current} /></p>
               </div>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
                 {current.results.map((result, index) => {
@@ -270,8 +291,8 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
                       <li key={entry.id} className="rounded-xl bg-white/[0.05] px-3 py-3">
                         <div className="flex items-center justify-between gap-2">
                           <div>
-                            <p className="text-sm font-semibold text-white" dir="ltr">{formatDate(entry.savedAt)} · {formatClock(entry.savedAt)}</p>
-                            <p className="mt-1 text-xs text-white/50">{entry.results.length} متدرب · أفضل نتيجة {best} تكرار{entry.durationMs !== null && ` · المدة ${formatDuration(entry.durationMs)}`}</p>
+                            <p className="text-sm font-semibold text-white"><EntryMeta entry={entry} /></p>
+                            <p className="mt-1 text-xs text-white/50">{entry.results.length} متدرب · أفضل نتيجة {best} تكرار</p>
                           </div>
                           <div className="flex gap-1">
                             <Button type="button" variant="outline" size="icon" aria-label={isMobile ? 'حفظ أو مشاركة هذه الجلسة' : 'تصدير هذه الجلسة'} onClick={() => exportEntry(entry)} className="size-9 rounded-lg border-white/15 bg-transparent text-white hover:bg-white/10"><ExportIcon className="size-4" aria-hidden="true" /></Button>
