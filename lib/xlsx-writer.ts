@@ -153,7 +153,7 @@ export const downloadBlob = (blob: Blob, fileName: string) => {
   document.body.appendChild(link)
   link.click()
   link.remove()
-  setTimeout(() => URL.revokeObjectURL(url), 1000)
+  setTimeout(() => URL.revokeObjectURL(url), 60000)
 }
 
 export const isMobileDevice = () =>
