@@ -66,10 +66,20 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
         return [index + 1, result.count, result.score, standardLabels[level]]
       }),
     ]
-    const csv = rows
-      .map((row) => row.map((cell) => `"${String(cell ?? '').replaceAll('"', '""')}"`).join(','))
-      .join('\\r\\n')
-    const blob = new Blob([`\\uFEFF${csv}`], { type: 'text/csv;charset=utf-8;' })
+  const csv = rows
+    .map((row) => row.map((cell) => `"${String(cell ?? '').replaceAll('"', '""')}"`).join(';'))
+    .join('\\r\\n')
+
+  // Excel on Arabic/Windows locales reliably detects UTF-16LE and semicolon columns.
+  const utf16 = new Uint8Array(2 + csv.length * 2)
+  utf16[0] = 0xff
+  utf16[1] = 0xfe
+  for (let index = 0; index < csv.length; index += 1) {
+    const code = csv.charCodeAt(index)
+    utf16[2 + index * 2] = code & 0xff
+    utf16[3 + index * 2] = code >> 8
+  }
+  const blob = new Blob([utf16], { type: 'text/csv;charset=utf-16le;' })
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url
