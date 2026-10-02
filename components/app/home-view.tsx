@@ -89,11 +89,11 @@ export function HomeHeader() {
 
       <div className="min-w-0">
         <p className="truncate text-xs font-medium tracking-[0.18em] text-white/45">
-          مساحتك اليومية
+        فرع تدريب المدرعات
         </p>
 
         <h1 className="mt-1 truncate text-lg font-semibold tracking-tight text-white">
-          ابدأ من هنا
+         المعدلات الزمنية
         </h1>
       </div>
     </div>
