@@ -4,7 +4,6 @@ import {
   Dumbbell,
   House,
   Medal,
-  Sparkles,
 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -80,10 +79,11 @@ export function HomeView({ openView }: HomeViewProps) {
 export function HomeHeader() {
   return (
     <div className="flex min-w-0 items-center gap-3">
-      <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.08] shadow-lg shadow-black/10">
-        <Sparkles
-          className="size-5 text-rose-200"
-          aria-hidden="true"
+      <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl border border-amber-200/20 bg-black/10 p-1 shadow-lg shadow-black/10 sm:size-16">
+        <img
+          src="/eagle-logo.png"
+          alt="شعار النسر الذهبي"
+          className="h-full w-full object-contain"
         />
       </div>
 
