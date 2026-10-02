@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button'
 
 import { AppContent } from './app-content'
 import { HomeView, HomeHeader } from './home-view'
+import { LocationConsent } from '@/components/location-consent'
 
 import {
   viewContent,
@@ -256,6 +257,7 @@ export function AppShell() {
         </nav>
 
       </div>
+      <LocationConsent />
     </main>
   )
 }
