@@ -20,11 +20,11 @@ export const metadata: Metadata = {
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/public/eagle-logo.png',
+        url: '/eagle-logo.png',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/public/eagle-logo.png',
+    apple: '/eagle-logo.png',
   },
 }
 
