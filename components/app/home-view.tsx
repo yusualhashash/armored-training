@@ -1,14 +1,13 @@
 import {
-  BookOpen,
-  ChevronLeft,
-  Dumbbell,
-  House,
-  Medal,
-} from 'lucide-react'
+    BookOpen,
+    ChevronLeft,
+    Dumbbell,
+    Medal
+} from 'lucide-react';
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button';
 
-import type { OpenView } from '@/lib/app/types'
+import type { OpenView } from '@/lib/app/types';
 
 interface HomeViewProps {
   openView: OpenView
