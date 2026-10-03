@@ -17,8 +17,8 @@ export default function manifest(): MetadataRoute.Manifest {
     dir: 'rtl',
     lang: 'ar',
     icons: [
-      { src: '/icon-light-32x32.png', sizes: '32x32', type: 'image/png' },
-      { src: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+      { src: '/eagle-logo.png', sizes: '32x32', type: 'image/png' },
+      { src: '/eagle-logo.png', sizes: '180x180', type: 'image/png' },
     ],
   }
 }

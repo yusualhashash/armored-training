@@ -3,10 +3,10 @@ const CACHE_NAME = "armored-training-v3";
 const APP_SHELL = [
   "/",
   "/manifest.webmanifest",
-  "/icon.svg",
-  "/icon-light-32x32.png",
-  "/icon-dark-32x32.png",
-  "/apple-icon.png",
+  "/eagle-logo",
+  "/eagle-logo.png",
+  "/eagle-logo.png.png",
+  "/eagle-logo.png",
 ];
 
 async function precacheAppShell() {
