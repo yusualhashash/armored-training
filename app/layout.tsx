@@ -16,15 +16,15 @@ export const metadata: Metadata = {
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/eagle-logo.png.png',
+        url: '/eagle-logo.png',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/eagle-logo',
+        url: '/public/eagle-logo.png',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/eagle-logo.png',
+    apple: '/public/eagle-logo.png',
   },
 }
 
