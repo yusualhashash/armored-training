@@ -1,11 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-}
+  async headers() {
+    const noCache = [
+      { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
+    ];
 
-export default nextConfig
+    return [
+      { source: "/sw.js", headers: noCache },
+      { source: "/manifest.webmanifest", headers: noCache },
+    ];
+  },
+};
+
+export default nextConfig;

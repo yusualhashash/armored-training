@@ -1,7 +1,7 @@
 'use client'
 
 import { ChevronLeft, Star } from 'lucide-react';
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import type { OpenView, View } from '@/lib/app/types';
@@ -18,40 +18,50 @@ const storageKey = 'armored-training-favorites'
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const [favorites, setFavorites] = useState<View[]>([])
-  const hasHydrated = useRef(false)
+  const [hydrated, setHydrated] = useState(false)
 
+  // Load saved favorites once.
   useEffect(() => {
     try {
       const stored = JSON.parse(window.localStorage.getItem(storageKey) ?? '[]')
       if (Array.isArray(stored)) {
-        setFavorites(stored.filter((item): item is View => typeof item === 'string'))
+        setFavorites(
+          stored.filter(
+            (item): item is View =>
+              typeof item === 'string' &&
+              Object.prototype.hasOwnProperty.call(viewContent, item),
+          ),
+        )
       }
     } catch {
-      setFavorites([])
-    } finally {
-      hasHydrated.current = true
+      // corrupted storage: start empty
     }
+    setHydrated(true)
   }, [])
 
+  // Save only after loading finished, so saved data is never overwritten by [].
   useEffect(() => {
-    if (!hasHydrated.current) return
-    window.localStorage.setItem(storageKey, JSON.stringify(favorites))
-  }, [favorites])
+    if (!hydrated) return
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify(favorites))
+    } catch {
+      // storage full or blocked; keep working in memory
+    }
+  }, [favorites, hydrated])
+
+  const toggleFavorite = useCallback((view: View) => {
+    setFavorites((current) =>
+      current.includes(view) ? current.filter((item) => item !== view) : [...current, view],
+    )
+  }, [])
 
   const value = useMemo(
     () => ({
       favorites,
       isFavorite: (view: View) => favorites.includes(view),
-      toggleFavorite: (view: View) =>
-        setFavorites((current) => {
-          const next = current.includes(view)
-            ? current.filter((item) => item !== view)
-            : [...current, view]
-          window.localStorage.setItem(storageKey, JSON.stringify(next))
-          return next
-        }),
+      toggleFavorite,
     }),
-    [favorites],
+    [favorites, toggleFavorite],
   )
 
   return <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>

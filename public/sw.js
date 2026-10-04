@@ -1,24 +1,24 @@
-const CACHE_NAME = "armored-training-v4";
-
-const APP_SHELL = [
-  "/",
-  "/manifest.webmanifest",
-  "/eagle-logo.png",
-  "/eagle-logo.png",
-  "/eagle-logo.png",
-];
+const CACHE_NAME = "armored-training-v6"; // change this number on every deploy
+const APP_SHELL = ["/", "/manifest.webmanifest", "/eagle-logo.png"];
 
 async function precacheAppShell() {
   const cache = await caches.open(CACHE_NAME);
 
-  // Add entries individually: one missing asset must not abort the whole install.
   await Promise.all(
     APP_SHELL.map((url) =>
-      cache.add(url).catch(() => {
-        // Ignore assets that are unavailable; the runtime cache covers them later.
-      }),
+      cache.add(new Request(url, { cache: "reload" })).catch(() => {}),
     ),
   );
+
+  // Also cache the JS/CSS files the home page uses, so the app works offline.
+  try {
+    const home = await cache.match("/");
+    const html = home ? await home.text() : "";
+    const assets = new Set(html.match(/\/_next\/static\/[^"'\\\s)<>]+/g) ?? []);
+    await Promise.all([...assets].map((url) => cache.add(url).catch(() => {})));
+  } catch {
+    // ignore; runtime caching covers the rest
+  }
 }
 
 async function deleteOutdatedCaches() {
@@ -28,68 +28,118 @@ async function deleteOutdatedCaches() {
   );
 }
 
-function isCacheableRequest(request) {
-  if (request.method !== "GET") return false;
-  if (!request.url.startsWith(self.location.origin)) return false;
-
-  const { pathname } = new URL(request.url);
-  if (pathname.startsWith("/_next/") || pathname === "/sw.js") return false;
-  if (request.mode === "navigate" || request.destination === "document") return false;
-
-  return true;
-}
-
 function isCacheableResponse(response) {
   return (
     response &&
     response.status === 200 &&
-    response.type !== "opaque" &&
+    response.type === "basic" &&
     !response.headers.get("cache-control")?.includes("no-store")
   );
 }
 
-async function respondWithCacheFallback(request) {
-  const cachedResponse = await caches.match(request);
-  if (cachedResponse) return cachedResponse;
-
-  if (request.mode === "navigate") {
-    const appShell = await caches.match("/");
-    if (appShell) return appShell;
+async function putInCache(request, response) {
+  try {
+    const cache = await caches.open(CACHE_NAME);
+    await cache.put(request, response);
+  } catch {
+    // storage full or blocked; ignore
   }
+}
 
-  return new Response("", { status: 503, statusText: "Offline" });
+function fetchWithTimeout(request, ms) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error("timeout")), ms);
+    fetch(request).then(
+      (response) => {
+        clearTimeout(timer);
+        resolve(response);
+      },
+      (error) => {
+        clearTimeout(timer);
+        reject(error);
+      },
+    );
+  });
+}
+
+// Build files with hashed names never change: cache first.
+async function cacheFirst(event) {
+  const cached = await caches.match(event.request);
+  if (cached) return cached;
+
+  const response = await fetch(event.request);
+  if (isCacheableResponse(response)) {
+    event.waitUntil(putInCache(event.request, response.clone()));
+  }
+  return response;
+}
+
+// Pages: always try the network first so updates appear immediately,
+// fall back to the saved page (or the home page) when offline.
+async function pageNetworkFirst(event) {
+  try {
+    const response = await fetchWithTimeout(event.request, 4000);
+    if (isCacheableResponse(response)) {
+      event.waitUntil(putInCache(event.request, response.clone()));
+    }
+    return response;
+  } catch {
+    return (
+      (await caches.match(event.request, {
+        ignoreSearch: true,
+        ignoreVary: true,
+      })) ||
+      (await caches.match("/", { ignoreVary: true })) ||
+      new Response("Offline", { status: 503, statusText: "Offline" })
+    );
+  }
+}
+
+// Everything else (images, manifest, data files): network first, cache fallback.
+async function networkFirst(event) {
+  try {
+    const response = await fetch(event.request);
+    if (isCacheableResponse(response)) {
+      event.waitUntil(putInCache(event.request, response.clone()));
+    }
+    return response;
+  } catch {
+    return (
+      (await caches.match(event.request, { ignoreVary: true })) ||
+      new Response("", { status: 503, statusText: "Offline" })
+    );
+  }
 }
 
 self.addEventListener("install", (event) => {
   event.waitUntil(precacheAppShell());
-  self.skipWaiting();
+  self.skipWaiting(); // activate the new version immediately
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    deleteOutdatedCaches().then(() => self.clients.claim()), // take over open pages now
+  );
 });
 
 self.addEventListener("message", (event) => {
   if (event.data?.type === "SKIP_WAITING") self.skipWaiting();
 });
 
-self.addEventListener("activate", (event) => {
-  event.waitUntil(deleteOutdatedCaches());
-  self.clients.claim();
-});
-
 self.addEventListener("fetch", (event) => {
-  if (!isCacheableRequest(event.request)) return;
+  const { request } = event;
+  if (request.method !== "GET") return;
 
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        if (isCacheableResponse(response)) {
-          const responseCopy = response.clone();
-          event.waitUntil(
-            caches
-              .open(CACHE_NAME)
-              .then((cache) => cache.put(event.request, responseCopy)),
-          );
-        }
-        return response;
-      })
-      .catch(() => respondWithCacheFallback(event.request)),
-  );
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+  if (url.pathname === "/sw.js" || url.pathname.startsWith("/api/")) return;
+  if (request.headers.get("RSC")) return; // Next.js client-navigation payloads
+
+  if (url.pathname.startsWith("/_next/static/")) {
+    event.respondWith(cacheFirst(event));
+  } else if (request.mode === "navigate") {
+    event.respondWith(pageNetworkFirst(event));
+  } else {
+    event.respondWith(networkFirst(event));
+  }
 });
