@@ -76,7 +76,9 @@ export function FavoriteButton({ view }: { view: View }) {
         event.stopPropagation()
         toggleFavorite(view)
       }}
-      className="size-10 shrink-0 rounded-full text-amber-200/80 hover:bg-amber-200/10 hover:text-amber-200"
+      className={favorite
+        ? 'size-10 shrink-0 rounded-full text-emerald-400 hover:bg-emerald-400/10 hover:text-emerald-300'
+        : 'size-10 shrink-0 rounded-full text-white/45 hover:bg-emerald-400/10 hover:text-emerald-300'}
     >
       <Star className={favorite ? 'fill-current' : ''} aria-hidden="true" />
     </Button>
@@ -121,8 +123,8 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
                     {getFavoriteSectionLabel(view)}
                   </span>
                 </span>
-                <FavoriteButton view={view} />
               </span>
+              <FavoriteButton view={view} />
               <ChevronLeft className="size-5 shrink-0 text-white/35 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
             </Button>
           ))}
@@ -152,11 +154,11 @@ function getArmoredFavoriteDetails(view: View) {
   const match = String(view).match(/^(?:t72|t55\+62)-(.+?)(?:-(طاقم|فصيلة|سرية|كتيبة))?$/)
   if (!match) return undefined
 
-  const [, testKey, section] = match
+  const [, vehicle, testKey, section] = match
   const title = armoredTestTitles.find(([key]) => testKey === key || testKey.startsWith(`${key}-`))?.[1]
   if (!title) return undefined
 
-  return { title, section }
+  return { title: `${vehicle.toUpperCase()} - ${title}`, section }
 }
 
 export function getFavoriteTitle(view: View) {
