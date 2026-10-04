@@ -12,6 +12,8 @@ import { Button } from '@/components/ui/button'
 
 import { AppContent } from './app-content'
 import { HomeView, HomeHeader } from './home-view'
+import { FavoriteButton, FavoritesPanel, FavoritesProvider } from './favorites'
+
 
 import {
   viewContent,
@@ -106,8 +108,9 @@ export function AppShell() {
       : viewContent[activeView]
 
   return (
-    <main
-      dir="rtl"
+    <FavoritesProvider>
+      <main
+        dir="rtl"
       className="min-h-svh w-full max-w-full overflow-x-hidden bg-green-950 text-white"
     >
       <div className="relative flex min-h-svh w-full max-w-full flex-col">
@@ -150,6 +153,7 @@ export function AppShell() {
                   </h1>
                 </div>
 
+                <FavoriteButton view={activeView} />
               </div>
             </div>
           ) : activeView === 'guide' ? (
@@ -256,6 +260,7 @@ export function AppShell() {
         </nav>
 
       </div>
-    </main>
+      </main>
+    </FavoritesProvider>
   )
 }

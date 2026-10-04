@@ -1,15 +1,21 @@
 import type { LucideIcon } from 'lucide-react'
 
+import { FavoritesPanel } from './favorites'
+import type { OpenView } from '@/lib/app/types'
+
+
 interface InfoPanelProps {
   title: string
   text: string
   icon: LucideIcon
+  openView: OpenView
 }
 
 export function InfoPanel({
   title,
   text,
   icon: Icon,
+  openView,
 }: InfoPanelProps) {
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col items-center justify-center py-16 text-center">
@@ -24,6 +30,8 @@ export function InfoPanel({
       <p className="mt-5 max-w-md text-sm leading-8 text-white/55">
         {text}
       </p>
+
+      <FavoritesPanel openView={openView} />
     </div>
   )
 }

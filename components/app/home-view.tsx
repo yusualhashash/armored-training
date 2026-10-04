@@ -7,7 +7,10 @@ import {
 
 import { Button } from '@/components/ui/button';
 
-import type { OpenView } from '@/lib/app/types';
+import type { OpenView } from '@/lib/app/types'
+
+import { FavoritesPanel } from './favorites'
+;
 
 interface HomeViewProps {
   openView: OpenView
@@ -71,6 +74,8 @@ export function HomeView({ openView }: HomeViewProps) {
           ),
         )}
       </div>
+
+      <FavoritesPanel openView={openView} />
     </div>
   )
 }
