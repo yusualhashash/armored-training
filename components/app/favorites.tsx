@@ -111,6 +111,9 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
                   <Timer className="size-6" aria-hidden="true" />
                 </span>
                 <span className="flex min-w-0 flex-1 flex-col items-start gap-1">
+                  <span className="block text-[11px] font-medium leading-5 text-amber-200/65">
+                    اسم الاختبار
+                  </span>
                   <span className="block whitespace-normal break-words text-sm font-semibold leading-7 sm:text-lg sm:leading-normal">
                     {viewContent[view]?.title ?? view}
                   </span>
