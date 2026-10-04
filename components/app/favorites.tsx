@@ -118,7 +118,7 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
                     {getFavoriteTitle(view)}
                   </span>
                   <span className="block text-xs font-normal leading-5 text-white/50">
-                    {viewContent[view]?.title ?? 'اختبار محفوظ للوصول السريع'}
+                    {getFavoriteSectionLabel(view)}
                   </span>
                 </span>
                 <FavoriteButton view={view} />
@@ -145,5 +145,11 @@ export function getFavoriteTitle(view: View) {
   return parentTitle ?? content?.title ?? view
 }
 
+export function getFavoriteSectionLabel(view: View) {
+  const content = viewContent[view]
+  return content?.title && content.backTo
+    ? `القسم: ${content.title}`
+    : 'اختبار محفوظ للوصول السريع'
+}
 
 export type { View }
