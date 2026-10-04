@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 const SERVICE_WORKER_URL = '/sw.js'
 const SKIP_WAITING_MESSAGE = { type: 'SKIP_WAITING' } as const
@@ -41,6 +41,8 @@ function watchForUpdates(registration: ServiceWorkerRegistration): void {
 }
 
 export function useServiceWorker(): void {
+  const hasReloadedForUpdate = useRef(false)
+
   useEffect(() => {
     if (!supportsServiceWorker()) return
 
@@ -62,6 +64,14 @@ export function useServiceWorker(): void {
       void registration.update().catch(() => {})
     }
 
+    const handleControllerChange = () => {
+      if (isCancelled || hasReloadedForUpdate.current) return
+      hasReloadedForUpdate.current = true
+      window.location.reload()
+    }
+
+    navigator.serviceWorker.addEventListener('controllerchange', handleControllerChange)
+
     navigator.serviceWorker
       .register(SERVICE_WORKER_URL, { updateViaCache: 'none' })
       .then((registered) => {
@@ -69,6 +79,7 @@ export function useServiceWorker(): void {
         registration = registered
         watchForUpdates(registered)
         document.addEventListener('visibilitychange', refreshRegistration)
+        void registered.update().catch(() => {})
       })
       .catch(() => {
         // Offline support is optional; ignore registration failures.
@@ -77,6 +88,7 @@ export function useServiceWorker(): void {
     return () => {
       isCancelled = true
       document.removeEventListener('visibilitychange', refreshRegistration)
+      navigator.serviceWorker.removeEventListener('controllerchange', handleControllerChange)
     }
   }, [])
 }
