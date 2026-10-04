@@ -95,7 +95,7 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
           <p className="text-xs tracking-[0.18em] text-amber-200/60">وصول سريع</p>
           <h2 id="favorites-title" className="mt-1 text-lg font-semibold text-white">اختباراتي المفضلة</h2>
         </div>
-        <Star className="size-5 fill-amber-200 text-amber-200" aria-hidden="true" />
+        <Star className="size-5 fill-emerald-400 text-emerald-400" aria-hidden="true" />
       </div>
 
       {favorites.length > 0 ? (
@@ -151,19 +151,24 @@ const armoredTestTitles: Array<[string, string]> = [
 ]
 
 function getArmoredFavoriteDetails(view: View) {
-  const match = String(view).match(/^(?:t72|t55\+62)-(.+?)(?:-(طاقم|فصيلة|سرية|كتيبة))?$/)
+  const match = String(view).match(/^(t72|t55\+62)-(.+?)(?:-(طاقم|فصيلة|سرية|كتيبة))?$/)
   if (!match) return undefined
 
   const [, vehicle, testKey, section] = match
+  if (!vehicle || !testKey) return undefined
+
   const title = armoredTestTitles.find(([key]) => testKey === key || testKey.startsWith(`${key}-`))?.[1]
   if (!title) return undefined
 
-  return { title: `${vehicle.toUpperCase()} - ${title}`, section }
+  const vehicleLabel = vehicle === 't72' ? 'T72' : 'T55+62'
+  const cleanTitle = title.replace(/^T72\s*[-–—:]\s*/i, '').replace(/^T55\+62\s*[-–—:]\s*/i, '')
+
+  return { vehicleLabel, title: cleanTitle, section }
 }
 
 export function getFavoriteTitle(view: View) {
   const armoredDetails = getArmoredFavoriteDetails(view)
-  if (armoredDetails) return armoredDetails.title
+  if (armoredDetails) return armoredDetails.vehicleLabel
 
   const content = viewContent[view]
   const parentTitle = content?.backTo ? viewContent[content.backTo]?.title : undefined
@@ -173,7 +178,9 @@ export function getFavoriteTitle(view: View) {
 
 export function getFavoriteSectionLabel(view: View) {
   const armoredDetails = getArmoredFavoriteDetails(view)
-  if (armoredDetails?.section) return `القسم: ${armoredDetails.section}`
+  if (armoredDetails) {
+    return `القسم: ${armoredDetails.section ?? armoredDetails.title}`
+  }
 
   const content = viewContent[view]
   return content?.title && content.backTo
