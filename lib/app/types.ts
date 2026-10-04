@@ -1,6 +1,7 @@
 export type View =
   | 'home'
   | 'guide'
+  | 'favorites'
   | 'sports'
   | 'armored'
 

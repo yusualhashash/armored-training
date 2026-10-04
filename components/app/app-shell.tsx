@@ -4,6 +4,7 @@ import {
   ArrowRight,
   BookOpen,
   House,
+  Star,
 } from 'lucide-react'
 
 import { useEffect, useState } from 'react'
@@ -29,6 +30,12 @@ const navigationItems = [
     id: 'home' as const,
     label: 'الرئيسية',
     icon: House,
+  },
+
+  {
+    id: 'favorites' as const,
+    label: 'المفضلة',
+    icon: Star,
   },
 
   {
@@ -103,7 +110,8 @@ export function AppShell() {
 
   const currentSection =
     activeView === 'home' ||
-    activeView === 'guide'
+    activeView === 'guide' ||
+    activeView === 'favorites'
       ? null
       : viewContent[activeView]
 
@@ -154,6 +162,25 @@ export function AppShell() {
                 </div>
 
                 <FavoriteButton view={activeView} />
+              </div>
+            </div>
+          ) : activeView === 'favorites' ? (
+            <div className="flex min-w-0 items-center gap-3">
+              <div className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.08]">
+                <Star
+                  className="size-5 fill-amber-200 text-amber-200"
+                  aria-hidden="true"
+                />
+              </div>
+
+              <div className="min-w-0">
+                <p className="truncate text-xs font-medium tracking-[0.18em] text-white/45">
+                  وصول سريع
+                </p>
+
+                <h1 className="mt-1 truncate text-lg font-semibold tracking-tight text-white">
+                  المفضلة
+                </h1>
               </div>
             </div>
           ) : activeView === 'guide' ? (
