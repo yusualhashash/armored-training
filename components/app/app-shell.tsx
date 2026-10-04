@@ -147,7 +147,7 @@ export function AppShell() {
                 />
               </Button>
 
-              <div className="min-w-0 flex-1 text-center">
+              <div className="min-w-0 flex-1 text-right">
                 <p className="truncate text-xs font-medium text-white/50">
                   رجوع إلى{' '}
                   {currentSection.backLabel}
