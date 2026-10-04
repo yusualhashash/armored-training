@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 
 const SERVICE_WORKER_URL = '/sw.js'
 const SKIP_WAITING_MESSAGE = { type: 'SKIP_WAITING' } as const
+const UPDATE_INTERVAL_MS = 60_000
 
 function supportsServiceWorker(): boolean {
   return typeof navigator !== 'undefined' && 'serviceWorker' in navigator
@@ -53,6 +54,9 @@ export function useServiceWorker(): void {
       return
     }
 
+    // Reload only when an OLD version is being replaced, never on first install.
+    const hadController = Boolean(navigator.serviceWorker.controller)
+
     let registration: ServiceWorkerRegistration | null = null
     let isCancelled = false
 
@@ -65,20 +69,24 @@ export function useServiceWorker(): void {
     }
 
     const handleControllerChange = () => {
-      if (isCancelled || hasReloadedForUpdate.current) return
+      if (isCancelled || !hadController || hasReloadedForUpdate.current) return
       hasReloadedForUpdate.current = true
       window.location.reload()
     }
 
     navigator.serviceWorker.addEventListener('controllerchange', handleControllerChange)
 
+    const intervalId = window.setInterval(refreshRegistration, UPDATE_INTERVAL_MS)
+
     navigator.serviceWorker
-      .register(SERVICE_WORKER_URL, { updateViaCache: 'none' })
+      .register(SERVICE_WORKER_URL, { scope: '/', updateViaCache: 'none' })
       .then((registered) => {
         if (isCancelled) return
         registration = registered
         watchForUpdates(registered)
+        activateWaitingWorker(registered) // a new version may already be waiting
         document.addEventListener('visibilitychange', refreshRegistration)
+        window.addEventListener('online', refreshRegistration)
         void registered.update().catch(() => {})
       })
       .catch(() => {
@@ -87,7 +95,9 @@ export function useServiceWorker(): void {
 
     return () => {
       isCancelled = true
+      window.clearInterval(intervalId)
       document.removeEventListener('visibilitychange', refreshRegistration)
+      window.removeEventListener('online', refreshRegistration)
       navigator.serviceWorker.removeEventListener('controllerchange', handleControllerChange)
     }
   }, [])
