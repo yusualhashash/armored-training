@@ -112,13 +112,9 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
                 className="h-auto min-w-0 flex-1 justify-start rounded-2xl p-0 text-right text-white hover:bg-transparent"
               >
                 <span className="flex min-w-0 flex-1 items-center gap-3">
-                  <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
-                    <Timer className="size-6" aria-hidden="true" />
-                  </span>
+  
                   <span className="flex min-w-0 flex-1 flex-col items-start gap-1">
-                    <span className="block text-[11px] font-medium leading-5 text-amber-200/65">
-                      اسم الاختبار
-                    </span>
+
                     <span className="block whitespace-normal break-words text-sm font-semibold leading-7 sm:text-lg sm:leading-normal">
                       {getFavoriteTitle(view)}
                     </span>
