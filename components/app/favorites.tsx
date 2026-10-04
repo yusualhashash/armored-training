@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react'
-import { Star } from 'lucide-react'
+import { ChevronLeft, Star, Timer } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { viewContent } from '@/lib/app/view-content'
@@ -104,10 +104,23 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
               type="button"
               variant="ghost"
               onClick={() => openView(view)}
-              className="h-auto justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-3 text-right text-white hover:bg-white/[0.08]"
+              className="group h-auto w-full min-w-0 justify-between rounded-3xl border border-white/10 bg-[#101216] px-3 py-4 text-right text-white hover:bg-[#17191f] sm:p-5"
             >
-              <span className="min-w-0 truncate text-sm">{viewContent[view]?.title ?? view}</span>
-              <span className="text-xs text-white/40">فتح</span>
+              <span className="flex min-w-0 flex-1 items-center gap-3">
+                <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
+                  <Timer className="size-6" aria-hidden="true" />
+                </span>
+                <span className="flex min-w-0 flex-1 flex-col items-start gap-1">
+                  <span className="block whitespace-normal break-words text-sm font-semibold leading-7 sm:text-lg sm:leading-normal">
+                    {viewContent[view]?.title ?? view}
+                  </span>
+                  <span className="block text-xs font-normal leading-5 text-white/50">
+                    اختبار محفوظ للوصول السريع
+                  </span>
+                </span>
+                <FavoriteButton view={view} />
+              </span>
+              <ChevronLeft className="size-5 shrink-0 text-white/35 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
             </Button>
           ))}
         </div>
