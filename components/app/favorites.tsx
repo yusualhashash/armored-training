@@ -138,7 +138,31 @@ export function FavoriteViewButton({ view }: { view: View }) {
   return <FavoriteButton view={view} />
 }
 
+const armoredTestTitles: Array<[string, string]> = [
+  ['combat-to-pre-combat', 'الانتقال من ترتيب القتال الى ترتيب ما قبل القتال'],
+  ['pre-combat-to-column', 'الانتقال من ترتيب ما قبل القتال الى الرتل'],
+  ['column-to-combat', 'الانتقال من الرتل الى ترتيب القتال'],
+  ['open-pre-combat', 'فتح ترتيب ما قبل القتال'],
+  ['boarding', 'ركوب الدبابة'],
+  ['disembarking', 'نزول الدبابة'],
+  ['pre-combat', 'ترتيب ما قبل القتال'],
+]
+
+function getArmoredFavoriteDetails(view: View) {
+  const match = String(view).match(/^(?:t72|t55-62)-(.+?)(?:-(طاقم|فصيلة|سرية|كتيبة))?$/)
+  if (!match) return undefined
+
+  const [, testKey, section] = match
+  const title = armoredTestTitles.find(([key]) => testKey === key || testKey.startsWith(`${key}-`))?.[1]
+  if (!title) return undefined
+
+  return { title, section }
+}
+
 export function getFavoriteTitle(view: View) {
+  const armoredDetails = getArmoredFavoriteDetails(view)
+  if (armoredDetails) return armoredDetails.title
+
   const content = viewContent[view]
   const parentTitle = content?.backTo ? viewContent[content.backTo]?.title : undefined
 
@@ -146,6 +170,9 @@ export function getFavoriteTitle(view: View) {
 }
 
 export function getFavoriteSectionLabel(view: View) {
+  const armoredDetails = getArmoredFavoriteDetails(view)
+  if (armoredDetails?.section) return `القسم: ${armoredDetails.section}`
+
   const content = viewContent[view]
   return content?.title && content.backTo
     ? `القسم: ${content.title}`
