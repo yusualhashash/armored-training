@@ -95,7 +95,7 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
           <p className="text-xs tracking-[0.18em] text-amber-200/60">وصول سريع</p>
           <h2 id="favorites-title" className="mt-1 text-lg font-semibold text-white">اختباراتي المفضلة</h2>
         </div>
-        <Star className="size-5 fill-amber-200 text-amber-200" aria-hidden="true" />
+        <Star className="size-5 fill-emerald-400 text-emerald-400" aria-hidden="true" />
       </div>
 
       {favorites.length > 0 ? (
