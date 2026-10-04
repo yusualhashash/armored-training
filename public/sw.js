@@ -1,4 +1,4 @@
-const CACHE_NAME = "armored-training-v3";
+const CACHE_NAME = "armored-training-v4";
 
 const APP_SHELL = [
   "/",
@@ -33,7 +33,8 @@ function isCacheableRequest(request) {
   if (!request.url.startsWith(self.location.origin)) return false;
 
   const { pathname } = new URL(request.url);
-  if (pathname.startsWith("/_next/webpack-hmr")) return false;
+  if (pathname.startsWith("/_next/") || pathname === "/sw.js") return false;
+  if (request.mode === "navigate" || request.destination === "document") return false;
 
   return true;
 }
