@@ -106,7 +106,7 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
               type="button"
               variant="ghost"
               onClick={() => openView(view)}
-              className="group h-auto w-full min-w-0 justify-between rounded-3xl border border-white/10 bg-[#101216] px-3 py-4 text-right text-white hover:bg-[#17191f] sm:p-5"
+              className="group h-auto w-full min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-[#101216] px-3 py-4 text-right text-white hover:bg-[#17191f] sm:p-5"
             >
               <span className="flex min-w-0 flex-1 items-center gap-3">
                 <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
@@ -119,7 +119,7 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
                   <span className="block whitespace-normal break-words text-sm font-semibold leading-7 sm:text-lg sm:leading-normal">
                     {getFavoriteTitle(view)}
                   </span>
-                  <span className="block text-xs font-normal leading-5 text-white/50">
+                  <span className="block min-w-0 max-w-full whitespace-normal break-all text-xs font-normal leading-5 text-white/50">
                     {getFavoriteSectionLabel(view)}
                   </span>
                 </span>
