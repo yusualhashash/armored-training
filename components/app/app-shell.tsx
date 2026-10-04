@@ -130,7 +130,7 @@ export function AppShell() {
         <header className="relative flex w-full max-w-full items-center justify-between gap-3 px-3 pb-4 pt-5 sm:gap-4 sm:px-10 sm:pt-10">
 
           {currentSection ? (
-            <div className="flex w-full min-w-0 items-center justify-between gap-4">
+            <div className="flex w-full min-w-0 items-center gap-3">
               <Button
                 type="button"
                 variant="ghost"
