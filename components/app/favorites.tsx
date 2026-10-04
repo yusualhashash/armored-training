@@ -79,8 +79,8 @@ export function FavoriteButton({ view }: { view: View }) {
         toggleFavorite(view)
       }}
       className={favorite
-        ? 'size-10 shrink-0 rounded-full text-emerald-400 hover:bg-emerald-400/10 hover:text-emerald-300'
-        : 'size-10 shrink-0 rounded-full text-white/45 hover:bg-emerald-400/10 hover:text-emerald-300'}
+        ? 'size-10 shrink-0 rounded-full text-yellow-400 hover:bg-yellow-400/10 hover:text-yellow-300'
+        : 'size-10 shrink-0 rounded-full text-white/45 hover:bg-yellow-400/10 hover:text-yellow-300'}
     >
       <Star className={favorite ? 'fill-current' : ''} aria-hidden="true" />
     </Button>
@@ -97,7 +97,7 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
           <p className="text-xs tracking-[0.18em] text-amber-200/60">وصول سريع</p>
           <h2 id="favorites-title" className="mt-1 text-lg font-semibold text-white">اختباراتي المفضلة</h2>
         </div>
-        <Star className="size-5 fill-emerald-400 text-emerald-400" aria-hidden="true" />
+        <Star className="size-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
       </div>
 
       {favorites.length > 0 ? (
