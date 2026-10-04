@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Armored Training</string>
+    <string name="title_activity_main">Armored Training</string>
+    <string name="package_name">com.armoredtraining.app</string>
+    <string name="custom_url_scheme">com.armoredtraining.app</string>
+</resources>
