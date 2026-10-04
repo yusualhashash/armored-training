@@ -68,7 +68,23 @@ export function useServiceWorker(): void {
         if (isCancelled) return
         registration = registered
         watchForUpdates(registered)
+        activateWaitingWorker(registered)
         document.addEventListener('visibilitychange', refreshRegistration)
+
+        const reloadAfterActivation = () => {
+          if (navigator.serviceWorker.controller) window.location.reload()
+        }
+        navigator.serviceWorker.addEventListener('controllerchange', reloadAfterActivation)
+        void registered.update().catch(() => {})
+
+        registered.addEventListener('updatefound', () => {
+          const installing = registered.installing
+          installing?.addEventListener('statechange', () => {
+            if (installing.state === 'installed' && registered.waiting) {
+              activateWaitingWorker(registered)
+            }
+          })
+        })
       })
       .catch(() => {
         // Offline support is optional; ignore registration failures.
