@@ -54,6 +54,7 @@ export function useServiceWorker(): void {
     }
 
     let registration: ServiceWorkerRegistration | null = null
+    let updateInterval: number | undefined
     let isCancelled = false
 
     const refreshRegistration = () => {
@@ -79,6 +80,9 @@ export function useServiceWorker(): void {
         registration = registered
         watchForUpdates(registered)
         document.addEventListener('visibilitychange', refreshRegistration)
+        window.addEventListener('online', refreshRegistration)
+        window.addEventListener('pageshow', refreshRegistration)
+        updateInterval = window.setInterval(refreshRegistration, 60_000)
         void registered.update().catch(() => {})
       })
       .catch(() => {
@@ -88,6 +92,9 @@ export function useServiceWorker(): void {
     return () => {
       isCancelled = true
       document.removeEventListener('visibilitychange', refreshRegistration)
+      window.removeEventListener('online', refreshRegistration)
+      window.removeEventListener('pageshow', refreshRegistration)
+      if (updateInterval !== undefined) window.clearInterval(updateInterval)
       navigator.serviceWorker.removeEventListener('controllerchange', handleControllerChange)
     }
   }, [])
