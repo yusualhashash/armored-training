@@ -112,9 +112,7 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
                 className="h-auto min-w-0 flex-1 justify-start rounded-2xl p-0 text-right text-white hover:bg-transparent"
               >
                 <span className="flex min-w-0 flex-1 items-center gap-3">
-  
                   <span className="flex min-w-0 flex-1 flex-col items-start gap-1">
-
                     <span className="block whitespace-normal break-words text-sm font-semibold leading-7 sm:text-lg sm:leading-normal">
                       {getFavoriteTitle(view)}
                     </span>
