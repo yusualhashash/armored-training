@@ -163,12 +163,12 @@ function getArmoredFavoriteDetails(view: View) {
   const vehicleLabel = vehicle === 't72' ? 'T72' : 'T55+62'
   const cleanTitle = title.replace(/^T72\s*[-–—:]\s*/i, '').replace(/^T55\+62\s*[-–—:]\s*/i, '')
 
-  return { title: `${vehicleLabel} - ${cleanTitle}`, section }
+  return { vehicleLabel, title: cleanTitle, section }
 }
 
 export function getFavoriteTitle(view: View) {
   const armoredDetails = getArmoredFavoriteDetails(view)
-  if (armoredDetails) return armoredDetails.title
+  if (armoredDetails) return armoredDetails.vehicleLabel
 
   const content = viewContent[view]
   const parentTitle = content?.backTo ? viewContent[content.backTo]?.title : undefined
@@ -178,7 +178,9 @@ export function getFavoriteTitle(view: View) {
 
 export function getFavoriteSectionLabel(view: View) {
   const armoredDetails = getArmoredFavoriteDetails(view)
-  if (armoredDetails?.section) return `القسم: ${armoredDetails.section}`
+  if (armoredDetails) {
+    return `القسم: ${armoredDetails.section ?? armoredDetails.title}`
+  }
 
   const content = viewContent[view]
   return content?.title && content.backTo
