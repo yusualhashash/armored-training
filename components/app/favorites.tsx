@@ -160,7 +160,10 @@ function getArmoredFavoriteDetails(view: View) {
   const title = armoredTestTitles.find(([key]) => testKey === key || testKey.startsWith(`${key}-`))?.[1]
   if (!title) return undefined
 
-  return { title: `${vehicle.toUpperCase()} - ${title}`, section }
+  const vehicleLabel = vehicle === 't72' ? 'T72' : 'T55+62'
+  const cleanTitle = title.replace(/^T72\s*[-–—:]\s*/i, '').replace(/^T55\+62\s*[-–—:]\s*/i, '')
+
+  return { title: `${vehicleLabel} - ${cleanTitle}`, section }
 }
 
 export function getFavoriteTitle(view: View) {
