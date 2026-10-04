@@ -24,6 +24,7 @@ export function InfoPanel({
       <p className="mt-5 max-w-md text-sm leading-8 text-white/55">
         {text}
       </p>
+
     </div>
   )
 }

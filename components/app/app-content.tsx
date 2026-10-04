@@ -5,6 +5,7 @@ import {
   Timer,
 } from 'lucide-react'
 
+import { FavoritesPanel } from './favorites'
 import { InfoPanel } from './info-panel'
 import { SectionButton } from './section-button'
 
@@ -22,6 +23,10 @@ export function AppContent({
 }: AppContentProps) {
   if (activeView === 'home') {
     return null
+  }
+
+  if (activeView === 'favorites') {
+    return <FavoritesPanel openView={openView} />
   }
 
   if (activeView === 'guide') {

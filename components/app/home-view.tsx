@@ -7,7 +7,8 @@ import {
 
 import { Button } from '@/components/ui/button';
 
-import type { OpenView } from '@/lib/app/types';
+import type { OpenView } from '@/lib/app/types'
+
 
 interface HomeViewProps {
   openView: OpenView
@@ -71,6 +72,7 @@ export function HomeView({ openView }: HomeViewProps) {
           ),
         )}
       </div>
+
     </div>
   )
 }
