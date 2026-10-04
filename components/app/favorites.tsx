@@ -101,32 +101,40 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
       {favorites.length > 0 ? (
         <div className="grid gap-2">
           {favorites.map((view) => (
-            <Button
+            <div
               key={view}
-              type="button"
-              variant="ghost"
-              onClick={() => openView(view)}
-              className="group h-auto w-full min-w-0 overflow-hidden rounded-3xl border border-white/10 bg-[#101216] px-3 py-4 text-right text-white hover:bg-[#17191f] sm:p-5"
+              className="group flex min-w-0 items-center gap-2 overflow-hidden rounded-3xl border border-white/10 bg-[#101216] px-3 py-4 text-white transition-colors hover:bg-[#17191f] sm:p-5"
             >
-              <span className="flex min-w-0 flex-1 items-center gap-3">
-                <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
-                  <Timer className="size-6" aria-hidden="true" />
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={() => openView(view)}
+                className="h-auto min-w-0 flex-1 justify-start rounded-2xl p-0 text-right text-white hover:bg-transparent"
+              >
+                <span className="flex min-w-0 flex-1 items-center gap-3">
+                  <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
+                    <Timer className="size-6" aria-hidden="true" />
+                  </span>
+                  <span className="flex min-w-0 flex-1 flex-col items-start gap-1">
+                    <span className="block text-[11px] font-medium leading-5 text-amber-200/65">
+                      اسم الاختبار
+                    </span>
+                    <span className="block whitespace-normal break-words text-sm font-semibold leading-7 sm:text-lg sm:leading-normal">
+                      {getFavoriteTitle(view)}
+                    </span>
+                    <span className="block min-w-0 max-w-full whitespace-normal break-words text-xs font-normal leading-5 text-white/50">
+                      {getFavoriteSectionLabel(view)}
+                    </span>
+                  </span>
                 </span>
-                <span className="flex min-w-0 flex-1 flex-col items-start gap-1">
-                  <span className="block text-[11px] font-medium leading-5 text-amber-200/65">
-                    اسم الاختبار
-                  </span>
-                  <span className="block whitespace-normal break-words text-sm font-semibold leading-7 sm:text-lg sm:leading-normal">
-                    {getFavoriteTitle(view)}
-                  </span>
-                  <span className="block min-w-0 max-w-full whitespace-normal break-all text-xs font-normal leading-5 text-white/50">
-                    {getFavoriteSectionLabel(view)}
-                  </span>
-                </span>
-              </span>
+              </Button>
+
               <FavoriteButton view={view} />
-              <ChevronLeft className="size-5 shrink-0 text-white/35 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
-            </Button>
+              <ChevronLeft
+                className="size-5 shrink-0 text-white/35 transition-transform group-hover:-translate-x-1"
+                aria-hidden="true"
+              />
+            </div>
           ))}
         </div>
       ) : (
@@ -140,51 +148,53 @@ export function FavoriteViewButton({ view }: { view: View }) {
   return <FavoriteButton view={view} />
 }
 
-const armoredTestTitles: Array<[string, string]> = [
-  ['combat-to-pre-combat', 'الانتقال من ترتيب القتال الى ترتيب ما قبل القتال'],
-  ['pre-combat-to-column', 'الانتقال من ترتيب ما قبل القتال الى الرتل'],
-  ['column-to-combat', 'الانتقال من الرتل الى ترتيب القتال'],
-  ['open-pre-combat', 'فتح ترتيب ما قبل القتال'],
-  ['boarding', 'ركوب الدبابة'],
-  ['disembarking', 'نزول الدبابة'],
-  ['pre-combat', 'ترتيب ما قبل القتال'],
-]
+const vehiclePattern = /T72|T55\+62/i
 
-function getArmoredFavoriteDetails(view: View) {
-  const match = String(view).match(/^(t72|t55\+62)-(.+?)(?:-(طاقم|فصيلة|سرية|كتيبة))?$/)
-  if (!match) return undefined
+// Titles from the favorite up to the root: [leaf, parent, grandparent, ...]
+function getFavoriteChain(view: View) {
+  const titles: string[] = []
+  const seen = new Set<string>()
+  let current: View | undefined = view
 
-  const [, vehicle, testKey, section] = match
-  if (!vehicle || !testKey) return undefined
+  while (current && !seen.has(String(current)) && titles.length < 10) {
+    seen.add(String(current))
+    const content = viewContent[current]
+    if (!content) break
+    titles.push(content.title)
+    current = content.backTo as View | undefined
+  }
 
-  const title = armoredTestTitles.find(([key]) => testKey === key || testKey.startsWith(`${key}-`))?.[1]
-  if (!title) return undefined
+  return titles
+}
 
-  const vehicleLabel = vehicle === 't72' ? 'T72' : 'T55+62'
-  const cleanTitle = title.replace(/^T72\s*[-–—:]\s*/i, '').replace(/^T55\+62\s*[-–—:]\s*/i, '')
+function getFavoriteDetails(view: View) {
+  const chain = getFavoriteChain(view)
+  if (chain.length === 0) return { title: String(view), path: [] as string[] }
 
-  return { vehicleLabel, title: cleanTitle, section }
+  // T72 / T55+62: the vehicle is the title, everything between it and the
+  // favorite (test name, then level) is the label, using the real titles.
+  const vehicleIndex = chain.findIndex((title) => vehiclePattern.test(title))
+  if (vehicleIndex > 0) {
+    return {
+      title: chain[vehicleIndex],
+      path: chain.slice(0, vehicleIndex).reverse(),
+    }
+  }
+
+  // Anything else: direct parent as the title, the view's own title as the label.
+  if (chain.length > 1) return { title: chain[1], path: [chain[0]] }
+
+  return { title: chain[0], path: [] as string[] }
 }
 
 export function getFavoriteTitle(view: View) {
-  const armoredDetails = getArmoredFavoriteDetails(view)
-  if (armoredDetails) return armoredDetails.vehicleLabel
-
-  const content = viewContent[view]
-  const parentTitle = content?.backTo ? viewContent[content.backTo]?.title : undefined
-
-  return parentTitle ?? content?.title ?? view
+  return getFavoriteDetails(view).title
 }
 
 export function getFavoriteSectionLabel(view: View) {
-  const armoredDetails = getArmoredFavoriteDetails(view)
-  if (armoredDetails) {
-    return `القسم: ${armoredDetails.section ?? armoredDetails.title}`
-  }
-
-  const content = viewContent[view]
-  return content?.title && content.backTo
-    ? `القسم: ${content.title}`
+  const { path } = getFavoriteDetails(view)
+  return path.length > 0
+    ? `القسم: ${path.join(' — ')}`
     : 'اختبار محفوظ للوصول السريع'
 }
 
