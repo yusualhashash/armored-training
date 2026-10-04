@@ -149,7 +149,7 @@ const armoredTestTitles: Array<[string, string]> = [
 ]
 
 function getArmoredFavoriteDetails(view: View) {
-  const match = String(view).match(/^(?:t72|t55-62)-(.+?)(?:-(طاقم|فصيلة|سرية|كتيبة))?$/)
+  const match = String(view).match(/^(?:t72|t55\+62)-(.+?)(?:-(طاقم|فصيلة|سرية|كتيبة))?$/)
   if (!match) return undefined
 
   const [, testKey, section] = match
