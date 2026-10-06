@@ -105,22 +105,27 @@ export function formatLocationMessage(params: {
 }): string {
   const parts: string[] = []
 
-  parts.push(`📍 *موقع التدريب الميداني - المعدلات الزمنية*`)
+  parts.push(`📍 *موقع التدريب الميداني *`)
   if (params.title) {
     parts.push(`🏷️ المعسكر / الميدان: ${params.title}`)
   }
 
-  if (params.extraNotes) {
+    if (params.extraNotes) {
     parts.push(`\n📝 ملاحظات التدريب: ${params.extraNotes}`)
+  }
+
+  const mapLink =
+    params.primaryMapUrl ||
+    (params.coords ? buildGoogleMapsUrl(params.coords.latitude, params.coords.longitude) : '')
+
+  if (mapLink) {
+    parts.push(`🗺️ رابط خرائط Google:\n${mapLink}`)
   }
 
   if (params.groundedText) {
     parts.push(`\n📌 تفاصيل الموقع والمعالم (بيانات خرائط Google):\n${params.groundedText.trim()}`)
   }
 
-  if (params.testSummary) {
-    parts.push(`\n📊 ملخص نتيجة الاختبار:\n${params.testSummary}`)
-  }
 
   parts.push(`\n⏱️ تم الإرسال عبر تطبيق المعدلات الزمنية`)
 
