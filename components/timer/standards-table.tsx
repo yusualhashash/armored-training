@@ -16,9 +16,6 @@ export function StandardsTable({ event }: StandardsTableProps) {
     <section className="rounded-3xl border border-white/10 bg-[#101216] p-5">
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-base font-bold text-white">معايير الأداء</h2>
-        <span className="text-xs text-white/50">
-          {isMinuteEvent ? '( ثواني : دقائق)' : '(بالثواني)'}
-        </span>
       </div>
       <div className="flex flex-col gap-2">
         {ranges.map((range) => (
