@@ -110,21 +110,12 @@ export function formatLocationMessage(params: {
     parts.push(`🏷️ المعسكر / الميدان: ${params.title}`)
   }
 
-
-  const mapLink =
-    params.primaryMapUrl ||
-    (params.coords ? buildGoogleMapsUrl(params.coords.latitude, params.coords.longitude) : '')
-
-  if (mapLink) {
-    parts.push(`🗺️ رابط خرائط Google:\n${mapLink}`)
+  if (params.extraNotes) {
+    parts.push(`\n📝 ملاحظات التدريب: ${params.extraNotes}`)
   }
 
   if (params.groundedText) {
     parts.push(`\n📌 تفاصيل الموقع والمعالم (بيانات خرائط Google):\n${params.groundedText.trim()}`)
-  }
-
-  if (params.extraNotes) {
-    parts.push(`\n📝 ملاحظات التدريب: ${params.extraNotes}`)
   }
 
   if (params.testSummary) {
