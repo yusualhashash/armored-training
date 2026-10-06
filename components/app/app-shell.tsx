@@ -164,7 +164,7 @@ export function AppShell() {
                 </h1>
               </div>
 
-              <FavoriteButton view={activeView} />
+              {activeView !== 'history' && <FavoriteButton view={activeView} />}
             </div>
           ) : activeView === 'favorites' ? (
             <div className="flex min-w-0 items-center gap-3">
