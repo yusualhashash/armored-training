@@ -41,7 +41,7 @@ const sanitizeSecondsInput = (raw: string) => {
 export function TimedTestPanel({ event, category, showTimer = true }: { event: SportEvent; category: AgeCategory; showTimer?: boolean }) {
   const stopwatch = useStopwatch()
   const history = useTestHistory<TimedHistoryEntry>(HISTORY_KEY, event.name, category.name, MAX_PER_TEST)
-  const [times, setTimes] = useState<string[]>([''])
+  const [times, setTimes] = useState<string[]>([])
   const [current, setCurrent] = useState<TimedHistoryEntry | null>(null)
   const [showHistory, setShowHistory] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -54,7 +54,7 @@ export function TimedTestPanel({ event, category, showTimer = true }: { event: S
   // إذا انتهى العداد دون تسجيل أي زمن، يُعتمد زمن الإنهاء كمتدرب واحد.
   useEffect(() => {
     if (!showTimer || !stopwatch.isFinished) return
-    setTimes((existing) => (existing.some((value) => value !== '') ? existing : [formatSecondsValue(stopwatch.elapsedMs / 1000)]))
+    setTimes((existing) => (existing.length > 0 ? existing : [formatSecondsValue(stopwatch.elapsedMs / 1000)]))
   }, [showTimer, stopwatch.isFinished, stopwatch.elapsedMs])
 
   useEffect(() => {
@@ -64,29 +64,26 @@ export function TimedTestPanel({ event, category, showTimer = true }: { event: S
     return () => window.removeEventListener('keydown', onKey)
   }, [shareTarget])
 
-  const updateTime = (index: number, raw: string) => {
-    setTimes((existing) => existing.map((value, valueIndex) => (valueIndex === index ? sanitizeSecondsInput(raw) : value)))
+  const removeTime = (index: number) => {
+    setTimes((existing) => existing.filter((_, i) => i !== index))
     setCurrent(null)
   }
 
-  const addTrainee = () => setTimes((existing) => (existing.length >= MAX_TRAINEES ? existing : [...existing, '']))
-
-  // يسجّل زمن المتدرب الحالي أثناء التشغيل في أول خانة فارغة.
+  // يسجّل زمن المتدرب الحالي فور الضغط على زر تسجيل وصول
   const recordTime = () => {
     if (!stopwatch.isRunning) return
     const value = formatSecondsValue(stopwatch.elapsedMs / 1000)
     setTimes((existing) => {
-      const emptyIndex = existing.indexOf('')
-      if (emptyIndex >= 0) return existing.map((item, index) => (index === emptyIndex ? value : item))
-      if (existing.length >= MAX_TRAINEES) return existing
-      return [...existing, value]
+      const valid = existing.filter((item) => item !== '')
+      if (valid.length >= MAX_TRAINEES) return valid
+      return [...valid, value]
     })
     setCurrent(null)
   }
 
   const resetSession = () => {
     stopwatch.reset()
-    setTimes([''])
+    setTimes([])
     setCurrent(null)
   }
 
@@ -194,7 +191,7 @@ export function TimedTestPanel({ event, category, showTimer = true }: { event: S
         />
       )}
 
-      <TimedTimeInputs times={times} maxTrainees={MAX_TRAINEES} onChange={updateTime} onAdd={addTrainee} onSubmit={showResult}>
+      <TimedTimeInputs times={times} maxTrainees={MAX_TRAINEES} onRemove={removeTime} onSubmit={showResult}>
         {current && <TimedResultCard event={event} entry={current} isMobile={isMobile} onExport={() => requestExport({ kind: 'entry', entry: current })} />}
       </TimedTimeInputs>
 
