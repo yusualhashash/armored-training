@@ -216,7 +216,7 @@ export function LocationSharePanel({
 
         <div>
           <label className="block text-xs font-semibold text-white/60 mb-1.5">
-            اسم المعسكر / الميدان أو النقطة
+            اسم المعسكر أو النقطة
           </label>
           <input
             type="text"
@@ -235,77 +235,12 @@ export function LocationSharePanel({
             type="text"
             value={extraNotes}
             onChange={(e) => setExtraNotes(e.target.value)}
-            placeholder="مثال: جاهزية الطواقم 100%، نقطة تجمع الفصائل"
+            placeholder="ملاحظات إضافية حول الموقع"
             className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-3.5 py-2.5 text-sm text-white placeholder-white/30 focus:border-emerald-500 focus:outline-none"
           />
         </div>
       </div>
 
-      {/* Google Maps Grounding Section (Gemini 3.5 Flash) */}
-      <div className="rounded-[2rem] border border-white/10 bg-[#101216] p-5 sm:p-6 shadow-xl flex flex-col gap-4">
-        <div className="flex items-center justify-between">
-
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={() => enrichWithMaps()}
-            disabled={isLoadingGrounding}
-            className="h-8 rounded-xl border border-white/10 bg-white/[0.05] px-2.5 text-xs text-white/80 hover:bg-white/[0.1]"
-          >
-            {isLoadingGrounding ? (
-              <Loader2 className="size-3.5 animate-spin" />
-            ) : (
-              <RefreshCw className="size-3.5" />
-            )}
-            <span className="mr-1">تحديث البيانات</span>
-          </Button>
-        </div>
-
-        {groundingError && (
-          <div className="rounded-xl border border-amber-500/20 bg-amber-500/10 p-3 text-xs text-amber-200">
-            {groundingError}
-          </div>
-        )}
-
-        {groundedText ? (
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-xs leading-6 text-white/85 whitespace-pre-line">
-            {groundedText}
-          </div>
-        ) : (
-          !isLoadingGrounding && (
-            <div className="rounded-2xl border border-dashed border-white/10 p-4 text-center text-xs text-white/40">
-              اضغط على «تحديث البيانات» أو فعّل الـ GPS للبحث عن المعالم والمواقع المحيطة عبر خرائط Google.
-            </div>
-          )
-        )}
-
-        {/* Display extracted Google Maps links from groundingChunks */}
-        {mapSources.length > 0 && (
-          <div className="flex flex-col gap-2 pt-1">
-            <span className="text-xs font-semibold text-white/60">
-              روابط ومعالم خرائط Google المستخرجة:
-            </span>
-            <div className="flex flex-col gap-2">
-              {mapSources.map((source, idx) => (
-                <a
-                  key={idx}
-                  href={source.uri}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.05] px-3.5 py-2.5 text-xs text-emerald-300 hover:bg-white/[0.09] transition-colors"
-                >
-                  <span className="flex items-center gap-2 font-medium truncate">
-                    <MapPin className="size-4 shrink-0 text-emerald-400" />
-                    <span className="truncate">{source.title || 'عرض على خرائط Google'}</span>
-                  </span>
-                  <ExternalLink className="size-3.5 shrink-0 opacity-70" />
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
 
       {/* Share Actions - WhatsApp & Telegram */}
       <div className="rounded-[2rem] border border-white/10 bg-[#101216] p-5 sm:p-6 shadow-xl flex flex-col gap-3">
