@@ -35,9 +35,9 @@ export function TestHistorySection({ count, isMobile, open, onToggle, onExportAl
             <p className="py-4 text-center text-sm text-white/50">{emptyMessage}</p>
           ) : (
             <>
-              <div className="mb-3 flex gap-2">
-                <Button type="button" variant="outline" onClick={onExportAll} className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة السجل' : 'تصدير السجل كاملا'}</Button>
-                <Button type="button" variant="outline" onClick={onClear} className="h-10 rounded-xl border-rose-300/30 bg-transparent text-rose-200 hover:bg-rose-300/10"><Trash2 className="ml-2 size-4" aria-hidden="true" />مسح السجل</Button>
+              <div className="mb-3 flex flex-col sm:flex-row gap-2">
+                <Button type="button" variant="outline" onClick={onExportAll} className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10 text-xs sm:text-sm whitespace-normal"><ExportIcon className="ml-2 size-4 shrink-0" aria-hidden="true" /><span className="truncate">{isMobile ? 'حفظ أو مشاركة السجل' : 'تصدير السجل كاملا'}</span></Button>
+                <Button type="button" variant="outline" onClick={onClear} className="h-10 rounded-xl border-rose-300/30 bg-transparent text-rose-200 hover:bg-rose-300/10 text-xs sm:text-sm whitespace-normal"><Trash2 className="ml-2 size-4 shrink-0" aria-hidden="true" /><span>مسح السجل</span></Button>
               </div>
               <ul className="flex max-h-96 flex-col gap-2 overflow-y-auto">{children}</ul>
             </>

@@ -46,7 +46,7 @@ export function AppContent({
 
   if (activeView === 'armored') {
     return (
-      <div className="grid gap-4">
+      <div className="grid gap-3 sm:gap-4">
         <SectionButton
           label="T72"
           description="اختبار ركوب الطواقم في الدبابة"
@@ -66,7 +66,7 @@ export function AppContent({
 
   if (activeView === 't72') {
     return (
-      <div className="grid gap-4">
+      <div className="grid gap-3 sm:gap-4">
         <SectionButton
           label="ركوب الطواقم في الدبابة"
           description="الطاقم والفصيلة والسرية"
@@ -150,7 +150,7 @@ export function AppContent({
 
   if (activeView === 't55-62') {
     return (
-      <div className="grid gap-4">
+      <div className="grid gap-3 sm:gap-4">
         <SectionButton
           label="ركوب الطواقم في الدبابة"
           description="الطاقم والفصيلة والسرية"
@@ -240,7 +240,7 @@ export function AppContent({
 
   if (activeView === 'sports') {
     return (
-      <div className="grid gap-4">
+      <div className="grid gap-3 sm:gap-4">
         <SectionButton
           label="تمرين المعدة"
           description="اختبار التكرارات مع إدخال النتائج"

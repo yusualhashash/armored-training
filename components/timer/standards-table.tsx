@@ -13,20 +13,20 @@ export function StandardsTable({ event }: StandardsTableProps) {
   const isMinuteEvent = ranges.some((range) => range.upperSeconds >= 60 || range.lowerSeconds >= 60)
 
   return (
-    <section className="rounded-3xl border border-white/10 bg-[#101216] p-5">
-      <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-base font-bold text-white">معايير الأداء</h2>
+    <section className="rounded-2xl sm:rounded-3xl border border-white/10 bg-[#101216] p-3.5 sm:p-5">
+      <div className="mb-3 sm:mb-4 flex items-center justify-between">
+        <h2 className="text-sm sm:text-base font-bold text-white">معايير الأداء</h2>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1.5 sm:gap-2">
         {ranges.map((range) => (
-          <div key={`${range.level}-${range.lowerSeconds}`} className="flex items-center justify-between gap-3 rounded-xl bg-[#17191f] px-3 py-2">
-            <span className={`text-sm font-semibold ${getPerformanceLevelColor(range.level)}`}>{getPerformanceLevelLabel(range.level)}</span>
+          <div key={`${range.level}-${range.lowerSeconds}`} className="flex items-center justify-between gap-2 rounded-xl bg-[#17191f] px-2.5 py-2 text-xs sm:text-sm sm:px-3">
+            <span className={`text-xs sm:text-sm font-semibold truncate ${getPerformanceLevelColor(range.level)}`}>{getPerformanceLevelLabel(range.level)}</span>
             {Number.isFinite(range.upperSeconds) ? (
-              <span dir="ltr" className="font-mono text-xs text-white/70">
+              <span dir="ltr" className="font-mono text-[11px] sm:text-xs text-white/70 whitespace-nowrap">
                 {formatStandardSeconds(range.lowerSeconds, isMinuteEvent)} - {formatStandardSeconds(range.upperSeconds, isMinuteEvent)}
               </span>
             ) : (
-              <span className="flex items-center gap-1.5 text-xs text-white/70">
+              <span className="flex items-center gap-1 text-[11px] sm:text-xs text-white/70 whitespace-nowrap">
                 <span dir="ltr" className="font-mono">{formatStandardSeconds(range.lowerSeconds, isMinuteEvent)}</span>
                 <span>فأكثر</span>
               </span>

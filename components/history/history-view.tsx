@@ -142,38 +142,38 @@ export function HistoryView({ openView }: HistoryViewProps) {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 pb-12">
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-5 pb-12">
       {/* Header Info */}
-      <div className="rounded-[2.5rem] border border-white/10 bg-[#101216] p-6 sm:p-8">
+      <div className="rounded-[2rem] border border-white/10 bg-[#101216] p-4 sm:p-8 sm:rounded-[2.5rem]">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-4">
-            <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200 shadow-inner">
-              <History className="size-7" aria-hidden="true" />
+          <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
+            <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200 shadow-inner sm:size-14">
+              <History className="size-6 sm:size-7" aria-hidden="true" />
             </div>
-            <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-white">سجل التدريبات السابقة</h1>
-              <p className="mt-1 text-xs sm:text-sm text-white/50">
+            <div className="min-w-0 flex-1">
+              <h1 className="text-lg font-bold text-white break-words sm:text-2xl">سجل التدريبات السابقة</h1>
+              <p className="mt-1 text-xs text-white/50 break-words sm:text-sm">
                 مراجعة الأداء وتفاصيل النتائج المحفوظة محلياً على جهازك
               </p>
             </div>
           </div>
 
           {sessions.length > 0 && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-auto">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => exportAllSessionsToExcel(sessions, isMobile)}
-                className="h-11 rounded-xl border-emerald-300/30 bg-emerald-500/10 text-xs sm:text-sm font-semibold text-emerald-300 hover:bg-emerald-500/20"
+                className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-emerald-500/10 text-xs font-semibold text-emerald-300 hover:bg-emerald-500/20 sm:h-11 sm:flex-initial sm:text-sm whitespace-normal"
               >
-                {isMobile ? <Share2 className="ml-2 size-4" /> : <Download className="ml-2 size-4" />}
-                <span>تصدير السجل كاملاً</span>
+                {isMobile ? <Share2 className="ml-2 size-4 shrink-0" /> : <Download className="ml-2 size-4 shrink-0" />}
+                <span className="truncate">تصدير السجل كاملاً</span>
               </Button>
               <Button
                 type="button"
                 variant="outline"
                 onClick={handleClearAll}
-                className="h-11 rounded-xl border-rose-300/30 bg-rose-500/10 text-xs sm:text-sm font-semibold text-rose-300 hover:bg-rose-500/20"
+                className="h-10 rounded-xl border-rose-300/30 bg-rose-500/10 text-xs font-semibold text-rose-300 hover:bg-rose-500/20 sm:h-11 sm:text-sm shrink-0"
               >
                 <Trash2 className="size-4" />
               </Button>
@@ -182,30 +182,30 @@ export function HistoryView({ openView }: HistoryViewProps) {
         </div>
 
         {/* Quick Stats Grid */}
-        <div className="mt-6 grid grid-cols-3 gap-3 border-t border-white/10 pt-6 text-center">
-          <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-3 sm:p-4">
-            <span className="text-xl sm:text-2xl font-black text-rose-200 tabular-nums">
+        <div className="mt-5 grid grid-cols-3 gap-2 border-t border-white/10 pt-5 text-center sm:mt-6 sm:gap-3 sm:pt-6">
+          <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-2.5 sm:p-4">
+            <span className="text-lg font-black text-rose-200 tabular-nums sm:text-2xl">
               {stats.totalSessions}
             </span>
-            <span className="mt-1 block text-[11px] sm:text-xs text-white/50 font-medium">
+            <span className="mt-1 block text-[10px] font-medium text-white/50 sm:text-xs">
               جلسة منجزة
             </span>
           </div>
 
-          <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-3 sm:p-4">
-            <span className="text-xl sm:text-2xl font-black text-emerald-300 tabular-nums">
+          <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-2.5 sm:p-4">
+            <span className="text-lg font-black text-emerald-300 tabular-nums sm:text-2xl">
               {stats.totalTrainees}
             </span>
-            <span className="mt-1 block text-[11px] sm:text-xs text-white/50 font-medium">
+            <span className="mt-1 block text-[10px] font-medium text-white/50 sm:text-xs">
               متدرب تم تقييمهم
             </span>
           </div>
 
-          <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-3 sm:p-4">
-            <span className="text-xl sm:text-2xl font-black text-sky-300 tabular-nums">
-              {stats.avgScore} <span className="text-xs font-normal text-white/40">/ 100</span>
+          <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-2.5 sm:p-4">
+            <span className="text-lg font-black text-sky-300 tabular-nums sm:text-2xl">
+              {stats.avgScore} <span className="text-[10px] font-normal text-white/40 sm:text-xs">/ 100</span>
             </span>
-            <span className="mt-1 block text-[11px] sm:text-xs text-white/50 font-medium">
+            <span className="mt-1 block text-[10px] font-medium text-white/50 sm:text-xs">
               متوسط العلامات
             </span>
           </div>
@@ -215,11 +215,11 @@ export function HistoryView({ openView }: HistoryViewProps) {
       {/* Filter and Search Bar */}
       {sessions.length > 0 && (
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex rounded-2xl border border-white/10 bg-[#101216] p-1 gap-1">
+          <div className="flex overflow-x-auto rounded-2xl border border-white/10 bg-[#101216] p-1 gap-1">
             <button
               type="button"
               onClick={() => setFilter('all')}
-              className={`flex-1 sm:flex-initial rounded-xl px-4 py-2 text-xs font-semibold transition ${
+              className={`shrink-0 whitespace-nowrap rounded-xl px-3 py-2 text-xs font-semibold transition sm:px-4 ${
                 filter === 'all'
                   ? 'bg-rose-200 text-[#24131b] shadow'
                   : 'text-white/60 hover:text-white'
@@ -230,7 +230,7 @@ export function HistoryView({ openView }: HistoryViewProps) {
             <button
               type="button"
               onClick={() => setFilter('timed')}
-              className={`flex-1 sm:flex-initial rounded-xl px-4 py-2 text-xs font-semibold transition ${
+              className={`shrink-0 whitespace-nowrap rounded-xl px-3 py-2 text-xs font-semibold transition sm:px-4 ${
                 filter === 'timed'
                   ? 'bg-rose-200 text-[#24131b] shadow'
                   : 'text-white/60 hover:text-white'
@@ -241,7 +241,7 @@ export function HistoryView({ openView }: HistoryViewProps) {
             <button
               type="button"
               onClick={() => setFilter('repetition')}
-              className={`flex-1 sm:flex-initial rounded-xl px-4 py-2 text-xs font-semibold transition ${
+              className={`shrink-0 whitespace-nowrap rounded-xl px-3 py-2 text-xs font-semibold transition sm:px-4 ${
                 filter === 'repetition'
                   ? 'bg-rose-200 text-[#24131b] shadow'
                   : 'text-white/60 hover:text-white'
@@ -299,36 +299,36 @@ export function HistoryView({ openView }: HistoryViewProps) {
                 className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#101216] transition-all hover:border-white/20"
               >
                 {/* Session Main Bar */}
-                <div className="p-5 sm:p-6">
+                <div className="p-4 sm:p-6">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex items-start gap-3.5">
-                      <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-white/[0.06] text-rose-200 mt-0.5">
+                    <div className="flex min-w-0 flex-1 items-start gap-3 sm:gap-3.5">
+                      <div className="flex size-11 sm:size-12 shrink-0 items-center justify-center rounded-2xl bg-white/[0.06] text-rose-200 mt-0.5">
                         {session.type === 'timed' ? (
-                          <Timer className="size-6" />
+                          <Timer className="size-5 sm:size-6" />
                         ) : (
-                          <Dumbbell className="size-6" />
+                          <Dumbbell className="size-5 sm:size-6" />
                         )}
                       </div>
-                      <div>
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="text-base font-bold text-white">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                          <h3 className="text-sm sm:text-base font-bold text-white break-words">
                             اختبار {session.eventName}
                           </h3>
-                          <span className="rounded-full border border-white/10 bg-white/[0.06] px-2.5 py-0.5 text-[11px] text-white/60">
+                          <span className="rounded-full border border-white/10 bg-white/[0.06] px-2 py-0.5 text-[10px] sm:text-[11px] text-white/60 whitespace-nowrap">
                             {session.categoryName}
                           </span>
                         </div>
-                        <div className="mt-1.5 flex flex-wrap items-center gap-3 text-xs text-white/45">
-                          <span className="inline-flex items-center gap-1.5">
+                        <div className="mt-1.5 flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs text-white/45">
+                          <span className="inline-flex items-center gap-1">
                             <Calendar className="size-3.5" />
                             <span>{formatDate(session.savedAt)}</span>
                           </span>
-                          <span className="inline-flex items-center gap-1.5">
+                          <span className="inline-flex items-center gap-1">
                             <Clock className="size-3.5" />
                             <span>{formatClock(session.savedAt)}</span>
                           </span>
                           {session.durationMs !== null && (
-                            <span className="inline-flex items-center gap-1.5">
+                            <span className="inline-flex items-center gap-1">
                               <span>المدة: {formatDuration(session.durationMs)}</span>
                             </span>
                           )}
@@ -336,13 +336,13 @@ export function HistoryView({ openView }: HistoryViewProps) {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 self-end sm:self-center">
+                    <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
                       <Button
                         type="button"
                         variant="outline"
                         size="sm"
                         onClick={() => exportSingleSession(session)}
-                        className="h-9 rounded-xl border-white/15 bg-white/[0.04] text-xs font-semibold text-white hover:bg-white/10"
+                        className="h-8 sm:h-9 rounded-xl border-white/15 bg-white/[0.04] text-xs font-semibold text-white hover:bg-white/10"
                       >
                         {isMobile ? <Share2 className="size-3.5 ml-1.5" /> : <Download className="size-3.5 ml-1.5" />}
                         <span>Excel</span>
@@ -352,7 +352,7 @@ export function HistoryView({ openView }: HistoryViewProps) {
                         variant="outline"
                         size="sm"
                         onClick={() => handleDeleteSession(session)}
-                        className="h-9 size-9 p-0 rounded-xl border-rose-300/20 bg-rose-500/10 text-rose-300 hover:bg-rose-500/20"
+                        className="h-8 size-8 sm:h-9 sm:size-9 p-0 rounded-xl border-rose-300/20 bg-rose-500/10 text-rose-300 hover:bg-rose-500/20"
                         title="حذف هذه الجلسة"
                       >
                         <Trash2 className="size-3.5" />
@@ -361,17 +361,17 @@ export function HistoryView({ openView }: HistoryViewProps) {
                   </div>
 
                   {/* Highlights Summary Row */}
-                  <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/5 bg-white/[0.02] p-3 text-xs">
-                    <div className="flex items-center gap-2">
-                      <Users className="size-4 text-white/40" />
-                      <span className="text-white/60">
-                        العدد: <b className="text-white">{session.traineesCount} متدرب</b>
+                  <div className="mt-3.5 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center sm:justify-between rounded-2xl border border-white/5 bg-white/[0.02] p-2.5 sm:p-3 text-[11px] sm:text-xs">
+                    <div className="flex items-center gap-1.5">
+                      <Users className="size-3.5 text-white/40 shrink-0" />
+                      <span className="text-white/60 truncate">
+                        العدد: <b className="text-white">{session.traineesCount}</b>
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <Award className="size-4 text-rose-200" />
-                      <span className="text-white/60">
+                    <div className="flex items-center gap-1.5">
+                      <Award className="size-3.5 text-rose-200 shrink-0" />
+                      <span className="text-white/60 truncate">
                         أفضل أداء:{' '}
                         <b className="text-rose-200 font-mono font-bold">
                           {session.bestDisplay}
@@ -379,9 +379,9 @@ export function HistoryView({ openView }: HistoryViewProps) {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <span className="text-white/60">
-                        متوسط العلامات:{' '}
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-white/60 truncate">
+                        المتوسط:{' '}
                         <b className="text-emerald-300 font-bold">{session.averageScore} ن</b>
                       </span>
                     </div>
@@ -389,9 +389,9 @@ export function HistoryView({ openView }: HistoryViewProps) {
                     <button
                       type="button"
                       onClick={() => toggleExpand(session.id)}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-rose-200 hover:text-rose-100 transition"
+                      className="inline-flex items-center justify-end gap-1 text-[11px] sm:text-xs font-semibold text-rose-200 hover:text-rose-100 transition"
                     >
-                      <span>{isExpanded ? 'إخفاء التفاصيل' : 'عرض المتدربين'}</span>
+                      <span>{isExpanded ? 'إخفاء' : 'المتدربين'}</span>
                       <ChevronDown
                         className={`size-3.5 transition-transform ${
                           isExpanded ? 'rotate-180' : ''

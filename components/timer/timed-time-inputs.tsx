@@ -37,16 +37,16 @@ export function TimedTimeInputs({
     <section className="rounded-[2rem] border border-white/10 bg-[#101216] p-4 sm:p-6" aria-labelledby="times-title">
       {recordedTimes.length > 0 && (
         <>
-          <div className="mb-4 flex items-center justify-between">
-            <div>
-              <h2 id="times-title" className="text-base font-bold text-white">
+          <div className="mb-4 flex items-center justify-between gap-2">
+            <div className="min-w-0 flex-1">
+              <h2 id="times-title" className="text-sm sm:text-base font-bold text-white">
                 أزمنة الوصول المسجلة
               </h2>
-              <p className="mt-1 text-xs text-white/50">
+              <p className="mt-1 text-xs text-white/50 break-words">
                 سُجلت أزمنة المتدربين تلقائياً عبر ساعة الإيقاف ({recordedTimes.length} متدرب).
               </p>
             </div>
-            <span className="rounded-full border border-rose-200/20 bg-rose-200/10 px-3 py-1 text-xs font-semibold text-rose-200">
+            <span className="shrink-0 rounded-full border border-rose-200/20 bg-rose-200/10 px-2.5 py-1 text-xs font-semibold text-rose-200 whitespace-nowrap">
               {recordedTimes.length} وصول
             </span>
           </div>

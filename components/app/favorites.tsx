@@ -107,7 +107,7 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
           <p className="text-xs tracking-[0.18em] text-amber-200/60">وصول سريع</p>
           <h2 id="favorites-title" className="mt-1 text-lg font-semibold text-white">اختباراتي المفضلة</h2>
         </div>
-        <Star className="size-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+        <Star className="size-5 shrink-0 fill-yellow-400 text-yellow-400" aria-hidden="true" />
       </div>
 
       {favorites.length > 0 ? (
@@ -115,20 +115,20 @@ export function FavoritesPanel({ openView }: { openView: OpenView }) {
           {favorites.map((view) => (
             <div
               key={view}
-              className="group flex min-w-0 items-center gap-2 overflow-hidden rounded-3xl border border-white/10 bg-[#101216] px-3 py-4 text-white transition-colors hover:bg-[#17191f] sm:p-5"
+              className="group flex min-w-0 items-center gap-2 overflow-hidden rounded-3xl border border-white/10 bg-[#101216] px-3.5 py-3.5 text-white transition-colors hover:bg-[#17191f] sm:p-5"
             >
               <Button
                 type="button"
                 variant="ghost"
                 onClick={() => openView(view)}
-                className="h-auto min-w-0 flex-1 justify-start rounded-2xl p-0 text-right text-white hover:bg-transparent"
+                className="h-auto min-w-0 flex-1 justify-start rounded-2xl p-0 text-right text-white hover:bg-transparent whitespace-normal"
               >
                 <span className="flex min-w-0 flex-1 items-center gap-3">
                   <span className="flex min-w-0 flex-1 flex-col items-start gap-1">
-                    <span className="block whitespace-normal break-words text-sm font-semibold leading-7 sm:text-lg sm:leading-normal">
+                    <span className="block w-full min-w-0 whitespace-normal break-words text-sm font-semibold leading-snug sm:text-lg sm:leading-normal">
                       {getFavoriteTitle(view)}
                     </span>
-                    <span className="block min-w-0 max-w-full whitespace-normal break-words text-xs font-normal leading-5 text-white/50">
+                    <span className="block w-full min-w-0 max-w-full whitespace-normal break-words text-xs font-normal leading-relaxed text-white/50">
                       {getFavoriteSectionLabel(view)}
                     </span>
                   </span>

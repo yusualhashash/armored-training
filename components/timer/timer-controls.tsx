@@ -43,15 +43,15 @@ export function TimerControls({
   }
 
   return (
-    <div className="grid grid-cols-1 gap-3 min-[380px]:grid-cols-2">
+    <div className="grid grid-cols-2 gap-2 sm:gap-3">
       <Button
         type="button"
         variant="ghost"
         onClick={onToggle}
         className={
           isRunning
-            ? 'h-14 rounded-2xl border border-white/10 bg-[#101216] text-base font-bold text-white hover:bg-white/12 hover:text-white'
-            : 'h-14 rounded-2xl border border-white/10 bg-[#101216] text-base font-bold text-white shadow-lg shadow-black/20 hover:bg-[#17191f] hover:text-white'
+            ? 'h-13 sm:h-14 rounded-2xl border border-white/10 bg-[#101216] text-sm sm:text-base font-bold text-white hover:bg-white/12 hover:text-white px-2'
+            : 'h-13 sm:h-14 rounded-2xl border border-white/10 bg-[#101216] text-sm sm:text-base font-bold text-white shadow-lg shadow-black/20 hover:bg-[#17191f] hover:text-white px-2'
         }
       >
         {getToggleLabel(isRunning, hasStarted)}
@@ -62,7 +62,7 @@ export function TimerControls({
         variant="ghost"
         onClick={onFinish}
         disabled={!hasStarted}
-className="h-14 rounded-2xl border border-red-400/30 bg-red-600 text-white text-base font-bold shadow-lg shadow-red-950/25 hover:bg-red-500 hover:text-white"
+        className="h-13 sm:h-14 rounded-2xl border border-red-400/30 bg-red-600 text-white text-sm sm:text-base font-bold shadow-lg shadow-red-950/25 hover:bg-red-500 hover:text-white px-2"
       >
         <Check data-icon="inline-start" aria-hidden="true" />
         انتهى
@@ -74,7 +74,7 @@ className="h-14 rounded-2xl border border-red-400/30 bg-red-600 text-white text-
           variant="ghost"
           onClick={onRecord}
           disabled={!isRunning}
-          className="col-span-full h-14 rounded-2xl border border-orange-300/30 bg-orange-500 text-base font-bold text-white shadow-lg shadow-orange-950/25 hover:bg-orange-400 hover:text-white"
+          className="col-span-full h-13 sm:h-14 rounded-2xl border border-orange-300/30 bg-orange-500 text-sm sm:text-base font-bold text-white shadow-lg shadow-orange-950/25 hover:bg-orange-400 hover:text-white px-2"
         >
           <Flag data-icon="inline-start" aria-hidden="true" />
           تسجيل وصول {arrivalsCount > 0 ? `(${arrivalsCount})` : ''}

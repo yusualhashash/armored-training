@@ -29,11 +29,11 @@ export function TimedHistoryList({ event, entries, isMobile, onExport, onDelete 
         return (
           <li key={entry.id} className="rounded-xl bg-white/[0.05] px-3 py-3">
             <div className="flex items-center justify-between gap-2">
-              <div>
-                <p className="text-sm font-semibold text-white"><TestEntryMeta savedAt={entry.savedAt} durationMs={entry.durationMs} /></p>
-                <p className="mt-1 text-xs text-white/50">{entry.results.length} متدرب · أسرع زمن <bdi dir="ltr" className="tabular-nums">{formatDisplayTime(fastest)}</bdi> · {fastestScore} نتيجة</p>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-semibold text-white break-words"><TestEntryMeta savedAt={entry.savedAt} durationMs={entry.durationMs} /></p>
+                <p className="mt-1 text-xs text-white/50 break-words">{entry.results.length} متدرب · أسرع زمن <bdi dir="ltr" className="tabular-nums">{formatDisplayTime(fastest)}</bdi> · {fastestScore} نتيجة</p>
               </div>
-              <div className="flex gap-1">
+              <div className="flex gap-1 shrink-0">
                 <Button type="button" variant="outline" size="icon" aria-label={isMobile ? 'حفظ أو مشاركة هذه الجلسة' : 'تصدير هذه الجلسة'} onClick={() => onExport(entry)} className="size-9 rounded-lg border-white/15 bg-transparent text-white hover:bg-white/10"><ExportIcon className="size-4" aria-hidden="true" /></Button>
                 <Button type="button" variant="outline" size="icon" aria-label="حذف هذه الجلسة" onClick={() => onDelete(entry.id)} className="size-9 rounded-lg border-white/15 bg-transparent text-rose-200 hover:bg-rose-300/10"><Trash2 className="size-4" aria-hidden="true" /></Button>
               </div>

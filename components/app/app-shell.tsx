@@ -209,7 +209,7 @@ export function AppShell() {
           )}
 
           {!currentSection && (
-            <span className="shrink-0 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-xs text-white/55">
+            <span className="shrink-0 rounded-full border border-white/10 bg-white/[0.06] px-2.5 py-1 text-[11px] font-medium text-white/60 whitespace-nowrap sm:px-3 sm:py-1.5 sm:text-xs">
               يعمل دون إنترنت
             </span>
           )}
@@ -242,9 +242,9 @@ export function AppShell() {
 
         <nav
           aria-label="التنقل الرئيسي"
-          className="fixed inset-x-0 bottom-0 z-10 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-8 sm:pb-8"
+          className="fixed inset-x-0 bottom-0 z-30 px-2 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-8 sm:pb-6"
         >
-          <div className="mx-auto flex max-w-lg items-center gap-2 rounded-[1.75rem] border border-white/10 bg-[#101216]/95 p-2 shadow-[0_-10px_45px_rgba(0,0,0,0.24)] backdrop-blur-xl">
+          <div className="mx-auto flex max-w-lg items-center gap-1 rounded-2xl border border-white/10 bg-[#101216]/95 p-1.5 shadow-[0_-10px_45px_rgba(0,0,0,0.3)] backdrop-blur-xl sm:gap-2 sm:rounded-[1.75rem] sm:p-2">
 
             {navigationItems.map(
               ({
@@ -256,10 +256,9 @@ export function AppShell() {
                   activeView === id
 
                 return (
-                  <Button
+                  <button
                     key={id}
                     type="button"
-                    variant="ghost"
                     aria-current={
                       isActive
                         ? 'page'
@@ -268,19 +267,21 @@ export function AppShell() {
                     onClick={() =>
                       openView(id)
                     }
-                    className={`h-16 flex-1 rounded-2xl text-sm font-semibold transition-all duration-300 sm:h-[4.5rem] ${
+                    className={`relative flex h-13 flex-1 min-w-0 shrink flex-col items-center justify-center gap-1 rounded-xl px-1 py-1.5 text-center transition-all duration-200 select-none sm:h-14 sm:flex-row sm:gap-2 sm:rounded-2xl sm:px-3 ${
                       isActive
-                        ? 'bg-[#101216] text-white shadow-lg shadow-black/20 hover:bg-[#17191f]'
-                        : 'text-white/55 hover:bg-white/[0.07] hover:text-white'
+                        ? 'bg-white/[0.12] text-white shadow-md'
+                        : 'text-white/55 hover:bg-white/[0.06] hover:text-white'
                     }`}
                   >
                     <Icon
-                      data-icon="inline-start"
+                      className="size-5 shrink-0 transition-transform sm:size-5"
                       aria-hidden="true"
                     />
 
-                    <span>{label}</span>
-                  </Button>
+                    <span className="block w-full min-w-0 truncate text-[11px] font-semibold leading-tight sm:w-auto sm:text-xs">
+                      {label}
+                    </span>
+                  </button>
                 )
               },
             )}

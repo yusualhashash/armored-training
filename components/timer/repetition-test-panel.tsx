@@ -309,8 +309,8 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
 
           {current && (
             <div className="mt-5 border-t border-white/10 pt-5">
-              <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-                <Button type="button" variant="outline" onClick={() => requestExport({ kind: 'entry', entry: current })} className="h-10 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة ملف Excel' : 'تصدير النتائج إلى Excel'}</Button>
+              <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <Button type="button" variant="outline" onClick={() => requestExport({ kind: 'entry', entry: current })} className="h-10 w-full sm:w-auto rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10 text-xs sm:text-sm whitespace-normal"><ExportIcon className="ml-2 size-4 shrink-0" aria-hidden="true" /><span>{isMobile ? 'حفظ أو مشاركة ملف Excel' : 'تصدير النتائج إلى Excel'}</span></Button>
                 <p className="text-xs text-white/50"><EntryMeta entry={current} /></p>
               </div>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
@@ -337,9 +337,9 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
               <p className="py-4 text-center text-sm text-white/50">لا توجد جلسات محفوظة بعد. تُحفظ كل نتيجة تعرضها هنا تلقائيا.</p>
             ) : (
               <>
-                <div className="mb-3 flex gap-2">
-                  <Button type="button" variant="outline" onClick={() => requestExport({ kind: 'all' })} className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة السجل' : 'تصدير السجل كاملا'}</Button>
-                  <Button type="button" variant="outline" onClick={clearHistory} className="h-10 rounded-xl border-rose-300/30 bg-transparent text-rose-200 hover:bg-rose-300/10"><Trash2 className="ml-2 size-4" aria-hidden="true" />مسح السجل</Button>
+                <div className="mb-3 flex flex-col sm:flex-row gap-2">
+                  <Button type="button" variant="outline" onClick={() => requestExport({ kind: 'all' })} className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10 text-xs sm:text-sm whitespace-normal"><ExportIcon className="ml-2 size-4 shrink-0" aria-hidden="true" /><span className="truncate">{isMobile ? 'حفظ أو مشاركة السجل' : 'تصدير السجل كاملا'}</span></Button>
+                  <Button type="button" variant="outline" onClick={clearHistory} className="h-10 rounded-xl border-rose-300/30 bg-transparent text-rose-200 hover:bg-rose-300/10 text-xs sm:text-sm whitespace-normal"><Trash2 className="ml-2 size-4 shrink-0" aria-hidden="true" /><span>مسح السجل</span></Button>
                 </div>
                 <ul className="flex max-h-96 flex-col gap-2 overflow-y-auto">
                   {relevantHistory.map((entry) => {
@@ -347,11 +347,11 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
                     return (
                       <li key={entry.id} className="rounded-xl bg-white/[0.05] px-3 py-3">
                         <div className="flex items-center justify-between gap-2">
-                          <div>
-                            <p className="text-sm font-semibold text-white"><EntryMeta entry={entry} /></p>
-                            <p className="mt-1 text-xs text-white/50">{entry.results.length} متدرب · أفضل نتيجة {best} تكرار</p>
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-semibold text-white break-words"><EntryMeta entry={entry} /></p>
+                            <p className="mt-1 text-xs text-white/50 break-words">{entry.results.length} متدرب · أفضل نتيجة {best} تكرار</p>
                           </div>
-                          <div className="flex gap-1">
+                          <div className="flex gap-1 shrink-0">
                             <Button type="button" variant="outline" size="icon" aria-label={isMobile ? 'حفظ أو مشاركة هذه الجلسة' : 'تصدير هذه الجلسة'} onClick={() => requestExport({ kind: 'entry', entry })} className="size-9 rounded-lg border-white/15 bg-transparent text-white hover:bg-white/10"><ExportIcon className="size-4" aria-hidden="true" /></Button>
                             <Button type="button" variant="outline" size="icon" aria-label="حذف هذه الجلسة" onClick={() => deleteEntry(entry.id)} className="size-9 rounded-lg border-white/15 bg-transparent text-rose-200 hover:bg-rose-300/10"><Trash2 className="size-4" aria-hidden="true" /></Button>
                           </div>

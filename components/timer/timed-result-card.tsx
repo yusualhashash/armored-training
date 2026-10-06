@@ -22,8 +22,8 @@ export function TimedResultCard({ event, entry, isMobile, onExport }: TimedResul
 
   return (
     <div className="mt-5 border-t border-white/10 pt-5">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <Button type="button" variant="outline" onClick={onExport} className="h-10 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة ملف Excel' : 'تصدير النتائج إلى Excel'}</Button>
+      <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <Button type="button" variant="outline" onClick={onExport} className="h-10 w-full sm:w-auto rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10 text-xs sm:text-sm whitespace-normal"><ExportIcon className="ml-2 size-4 shrink-0" aria-hidden="true" /><span>{isMobile ? 'حفظ أو مشاركة ملف Excel' : 'تصدير النتائج إلى Excel'}</span></Button>
         <p className="text-xs text-white/50"><TestEntryMeta savedAt={entry.savedAt} durationMs={entry.durationMs} /></p>
       </div>
 
