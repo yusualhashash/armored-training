@@ -17,7 +17,7 @@ export function StandardsTable({ event }: StandardsTableProps) {
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-base font-bold text-white">معايير الأداء</h2>
         <span className="text-xs text-white/50">
-          {isMinuteEvent ? '(دقائق : ثواني)' : '(بالثواني)'}
+          {isMinuteEvent ? '( ثواني : دقائق)' : '(بالثواني)'}
         </span>
       </div>
       <div className="flex flex-col gap-2">
