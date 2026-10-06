@@ -382,7 +382,7 @@ export function HistoryView({ openView }: HistoryViewProps) {
                     <div className="flex items-center gap-1.5">
                       <span className="text-white/60 truncate">
                         المتوسط:{' '}
-                        <b className="text-emerald-300 font-bold">{session.averageScore} ن</b>
+                        <b className="text-emerald-300 font-bold">{session.averageScore}</b>
                       </span>
                     </div>
 
