@@ -9,6 +9,13 @@ const nextConfig = {
       { source: "/sw.js", headers: noCache },
       { source: "/manifest.webmanifest", headers: noCache },
       { source: "/manifest.json", headers: noCache },
+      {
+        source: "/.well-known/assetlinks.json",
+        headers: [
+          { key: "Content-Type", value: "application/json" },
+          { key: "Access-Control-Allow-Origin", value: "*" },
+        ],
+      },
     ];
   },
 };

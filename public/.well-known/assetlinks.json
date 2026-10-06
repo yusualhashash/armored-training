@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.vercel.armored_training_branch.twa",
+      "sha256_cert_fingerprints": ["12:01:4B:8A:48:A3:1F:E7:8A:CE:79:B5:5E:AD:20:F3:5B:11:61:7F:0A:0F:9E:C6:2C:EE:1E:F1:59:06:30:0F"]
+    }
+  }
+]
