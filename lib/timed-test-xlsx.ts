@@ -4,6 +4,7 @@ import {
   fileStamp,
   formatClock,
   formatDate,
+  formatDisplayTime,
   formatDuration,
   type TimedHistoryEntry,
 } from '@/lib/test-history'
@@ -18,14 +19,11 @@ export interface GeneratedFile {
 
 const RESULTS_SHEET = 'النتائج'
 const HISTORY_SHEET = 'السجل'
-const SECOND_COLUMN = 'الزمن (ثانية)'
+const TIME_COLUMN = 'الزمن'
 const TRAINEE_INFO_HEADERS = ['اسم المتدرب', 'الرقم العسكري', 'مكان العمل']
 const TRAINEE_INFO_EMPTY: Cell[] = ['', '', '']
 
-const HISTORY_HEADERS = ['التاريخ', 'الوقت', 'الاختبار', 'الفئة العمرية', 'مدة الاختبار', 'رقم المتدرب', SECOND_COLUMN, 'النتيجة', 'التقدير']
-
-/** يحوّل الزمن إلى رقم مضبوط على عُشر الثانية لخانة Excel رقمية. */
-const toTenthNumber = (seconds: number) => Math.round(seconds * 10) / 10
+const HISTORY_HEADERS = ['التاريخ', 'الوقت', 'الاختبار', 'الفئة العمرية', 'مدة الاختبار', 'رقم المتدرب', TIME_COLUMN, 'النتيجة', 'التقدير']
 
 const headerRow = (labels: string[]): Cell[] => labels.map((label) => ({ v: label, s: 'header' as const }))
 
@@ -36,7 +34,7 @@ const historyRow = (entry: TimedHistoryEntry, event: SportEvent, resultIndex: nu
   entry.categoryName,
   formatDuration(entry.durationMs),
   resultIndex + 1,
-  toTenthNumber(seconds),
+  formatDisplayTime(seconds),
   score,
   getPerformanceLevelLabel(resolvePerformanceLevel(event, seconds)),
 ]
@@ -62,11 +60,11 @@ export function buildTimedEntryFile(event: SportEvent, category: AgeCategory, en
         [{ v: 'مدة الاختبار', s: 'label' }, formatDuration(entry.durationMs)],
         [{ v: 'عدد المتدربين', s: 'label' }, entry.results.length],
         [],
-        headerRow(['رقم المتدرب', ...TRAINEE_INFO_HEADERS, SECOND_COLUMN, 'النتيجة', 'التقدير']),
+        headerRow(['رقم المتدرب', ...TRAINEE_INFO_HEADERS, TIME_COLUMN, 'النتيجة', 'التقدير']),
         ...entry.results.map((result, index): Cell[] => [
           index + 1,
           ...TRAINEE_INFO_EMPTY,
-          toTenthNumber(result.seconds),
+          formatDisplayTime(result.seconds),
           result.score,
           getPerformanceLevelLabel(resolvePerformanceLevel(event, result.seconds)),
         ]),
