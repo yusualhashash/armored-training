@@ -1,0 +1,5 @@
+{
+  "name": "المعدلات الزمنية - Armored Training",
+  "description": "تطبيق توقيت واختبارات اللياقة البدنية والتدريب التكتيكي للمدرعات ودبابات T-55/62 و T-72",
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

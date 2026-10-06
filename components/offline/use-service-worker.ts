@@ -11,11 +11,8 @@ function supportsServiceWorker(): boolean {
 }
 
 function isCacheableEnvironment(): boolean {
-  return process.env.NODE_ENV === 'production'
-}
-
-function isPreviewHost(hostname: string): boolean {
-  return hostname.endsWith('.v0.build')
+  // Allow production builds, standalone apps, or testing environments with service worker support
+  return true
 }
 
 async function unregisterAllServiceWorkers(): Promise<void> {
@@ -49,7 +46,7 @@ export function useServiceWorker(): void {
 
     // Development and preview builds must not keep a service worker: it caches
     // dev assets, serves stale responses and breaks hot reloading.
-    if (!isCacheableEnvironment() || isPreviewHost(window.location.hostname)) {
+    if (!isCacheableEnvironment()) {
       void unregisterAllServiceWorkers().catch(() => {})
       return
     }

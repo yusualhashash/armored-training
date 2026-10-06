@@ -5,20 +5,44 @@ export const revalidate = false
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'المعدلات الزمنية',
-    short_name: 'المعدلات الزمنية',
-    description: 'تطبيق تدريبي يعمل دون اتصال بالإنترنت',
     id: '/',
+    name: 'المعدلات الزمنية - تدريب المدرعات',
+    short_name: 'المعدلات',
+    description: 'تطبيق التوقيت والمعدلات القياسية واختبارات اللياقة والمدرعات يعمل دون اتصال بالإنترنت بالكامل ويحفظ البيانات محلياً',
     start_url: '/',
     scope: '/',
     display: 'standalone',
-    background_color: '#ffffff',
-    theme_color: '#ffffff',
+    orientation: 'portrait',
+    background_color: '#052e16',
+    theme_color: '#052e16',
     dir: 'rtl',
     lang: 'ar',
+    categories: ['sports', 'utilities', 'productivity'],
     icons: [
-      { src: '/eagle-logo.png', sizes: '32x32', type: 'image/png' },
-      { src: '/eagle-logo.png', sizes: '180x180', type: 'image/png' },
+      {
+        src: '/icon-192.png',
+        sizes: '192x192',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-maskable-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'maskable',
+      },
+      {
+        src: '/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
     ],
   }
 }
+

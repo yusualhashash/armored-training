@@ -5,35 +5,41 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'المعدلات الزمنية',
+    default: 'المعدلات الزمنية - Armored Training',
     template: '%s | المعدلات الزمنية',
   },
+  description: 'تطبيق توقيت واختبارات اللياقة البدنية والتدريب التكتيكي للمدرعات ودبابات T-55/62 و T-72',
   manifest: '/manifest.webmanifest',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'المعدلات',
+  },
   icons: {
     icon: [
       {
-        url: '/eagle-logo.png',
-        media: '(prefers-color-scheme: light)',
+        url: '/icon-192.png',
+        sizes: '192x192',
+        type: 'image/png',
       },
       {
-        url: '/eagle-logo.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/eagle-logo.png',
-        type: 'image/svg+xml',
+        url: '/icon-512.png',
+        sizes: '512x512',
+        type: 'image/png',
       },
     ],
-    apple: '/eagle-logo.png',
+    apple: '/apple-touch-icon.png',
   },
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+  themeColor: '#052e16',
+  colorScheme: 'dark light',
 }
 
 export default function RootLayout({

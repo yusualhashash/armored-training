@@ -1,23 +1,31 @@
-const CACHE_NAME = "armored-training-v6"; // change this number on every deploy
-const APP_SHELL = ["/", "/manifest.webmanifest", "/eagle-logo.png"];
+const CACHE_NAME = "armored-training-v8"; // update on each version bump
+const APP_SHELL = [
+  "/",
+  "/manifest.webmanifest",
+  "/eagle-logo.png",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/icon-maskable-512.png",
+  "/apple-touch-icon.png",
+];
 
 async function precacheAppShell() {
   const cache = await caches.open(CACHE_NAME);
 
-  await Promise.all(
+  await Promise.allSettled(
     APP_SHELL.map((url) =>
       cache.add(new Request(url, { cache: "reload" })).catch(() => {}),
     ),
   );
 
-  // Also cache the JS/CSS files the home page uses, so the app works offline.
+  // Cache static JS/CSS so app loads instantly offline
   try {
     const home = await cache.match("/");
     const html = home ? await home.text() : "";
     const assets = new Set(html.match(/\/_next\/static\/[^"'\\\s)<>]+/g) ?? []);
-    await Promise.all([...assets].map((url) => cache.add(url).catch(() => {})));
+    await Promise.allSettled([...assets].map((url) => cache.add(url).catch(() => {})));
   } catch {
-    // ignore; runtime caching covers the rest
+    // ignore
   }
 }
 
@@ -133,11 +141,10 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
   if (url.pathname === "/sw.js" || url.pathname.startsWith("/api/")) return;
-  if (request.headers.get("RSC")) return; // Next.js client-navigation payloads
 
   if (url.pathname.startsWith("/_next/static/")) {
     event.respondWith(cacheFirst(event));
-  } else if (request.mode === "navigate") {
+  } else if (request.mode === "navigate" || request.headers.get("RSC")) {
     event.respondWith(pageNetworkFirst(event));
   } else {
     event.respondWith(networkFirst(event));

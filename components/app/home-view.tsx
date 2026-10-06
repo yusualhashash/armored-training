@@ -72,7 +72,6 @@ export function HomeView({ openView }: HomeViewProps) {
           ),
         )}
       </div>
-
     </div>
   )
 }

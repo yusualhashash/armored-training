@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button'
 import { AppContent } from './app-content'
 import { HomeView, HomeHeader } from './home-view'
 import { FavoriteButton, FavoritesPanel, FavoritesProvider } from './favorites'
-
+import { OfflineIndicator } from '@/components/pwa/offline-indicator'
 
 import {
   viewContent,
@@ -208,6 +208,8 @@ export function AppShell() {
             </span>
           )}
         </header>
+
+        <OfflineIndicator />
 
         {/* =====================================================
             CONTENT
