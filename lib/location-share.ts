@@ -110,12 +110,6 @@ export function formatLocationMessage(params: {
     parts.push(`🏷️ المعسكر / الميدان: ${params.title}`)
   }
 
-  if (params.coords) {
-    parts.push(`🌐 الإحداثيات: ${params.coords.latitude.toFixed(6)}, ${params.coords.longitude.toFixed(6)}`)
-    if (params.coords.accuracy) {
-      parts.push(`🎯 الدقة: ±${Math.round(params.coords.accuracy)} متر`)
-    }
-  }
 
   const mapLink =
     params.primaryMapUrl ||

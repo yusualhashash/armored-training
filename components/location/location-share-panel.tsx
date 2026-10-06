@@ -34,10 +34,9 @@ interface LocationSharePanelProps {
 
 export function LocationSharePanel({
   initialTestSummary,
-  initialTitle = 'ميدان التدريب الميداني',
 }: LocationSharePanelProps) {
   const [coords, setCoords] = useState<Coordinates | null>(null)
-  const [siteName, setSiteName] = useState(initialTitle)
+  const [siteName, setSiteName] = useState('')
   const [extraNotes, setExtraNotes] = useState('')
   const [isLoadingGps, setIsLoadingGps] = useState(false)
   const [gpsError, setGpsError] = useState<string | null>(null)
