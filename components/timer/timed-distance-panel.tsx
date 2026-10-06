@@ -11,6 +11,8 @@ import { TimedTimeInputs } from '@/components/timer/timed-time-inputs'
 import { TimerControls } from '@/components/timer/timer-controls'
 import { useStopwatch } from '@/components/timer/use-stopwatch'
 import { useTestHistory } from '@/components/timer/use-test-history'
+import { LocationSharePanel } from '@/components/location/location-share-panel'
+import { X } from 'lucide-react'
 import { getPerformanceLevelLabel, getPerformanceScore, resolvePerformanceLevel } from '@/lib/performance'
 import {
   createEntryId,
@@ -47,6 +49,7 @@ export function TimedTestPanel({ event, category, showTimer = true }: { event: S
   const [showHistory, setShowHistory] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [shareTarget, setShareTarget] = useState<TimedShareTarget | null>(null)
+  const [locationShareText, setLocationShareText] = useState<string | null>(null)
 
   useEffect(() => {
     setIsMobile(isMobileDevice())
@@ -222,7 +225,42 @@ export function TimedTestPanel({ event, category, showTimer = true }: { event: S
           onSendTelegram={() => sendToApp('telegram')}
           onShareFile={shareExcelFile}
           onSaveFile={saveExcelFile}
+          onOpenLocationShare={() => {
+            if (shareTarget.kind === 'entry') {
+              setLocationShareText(summaryText(shareTarget.entry))
+              setShareTarget(null)
+            }
+          }}
         />
+      )}
+
+      {locationShareText && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-3 overflow-y-auto"
+          onClick={() => setLocationShareText(null)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-[2rem] border border-white/10 bg-[#101216] p-4 sm:p-6"
+          >
+            <div className="mb-4 flex items-center justify-between">
+              <span className="text-sm font-bold text-white">مشاركة نتيجة الاختبار مع الموقع الميداني</span>
+              <button
+                type="button"
+                onClick={() => setLocationShareText(null)}
+                className="flex size-8 items-center justify-center rounded-full bg-white/10 text-white/70 hover:bg-white/20"
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+            <LocationSharePanel
+              initialTestSummary={locationShareText}
+              initialTitle={`اختبار ${event.name} - ${category.name}`}
+            />
+          </div>
+        </div>
       )}
     </div>
   )

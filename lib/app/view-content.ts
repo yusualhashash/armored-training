@@ -11,6 +11,12 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 'home',
   },
 
+  location: {
+    title: 'مشاركة الموقع الميداني',
+    backLabel: 'الرئيسية',
+    backTo: 'home',
+  },
+
   sports: {
     title: 'الرياضة',
     backLabel: 'الرئيسية',

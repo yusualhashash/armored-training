@@ -2,10 +2,11 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Download, FileSpreadsheet, History, MessageCircle, Send, Share2, Trash2, X } from 'lucide-react'
+import { Download, FileSpreadsheet, History, MapPin, MessageCircle, Send, Share2, Trash2, X } from 'lucide-react'
 import { StopwatchDisplay } from '@/components/timer/stopwatch-display'
 import { TimerControls } from '@/components/timer/timer-controls'
 import { useStopwatch } from '@/components/timer/use-stopwatch'
+import { LocationSharePanel } from '@/components/location/location-share-panel'
 import { buildXlsx, downloadBlob, isMobileDevice, shareFile, type Cell } from '@/lib/xlsx-writer'
 import type { PerformanceLevel, PerformanceStandard } from '@/lib/types'
 
@@ -102,6 +103,7 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
   const [showHistory, setShowHistory] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [shareTarget, setShareTarget] = useState<ShareTarget | null>(null)
+  const [locationShareText, setLocationShareText] = useState<string | null>(null)
   const standardRanges = getStandardRanges(standards)
   const ExportIcon = isMobile ? Share2 : Download
 
@@ -386,6 +388,17 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
                     <span className="flex size-9 items-center justify-center rounded-full bg-sky-500/20 text-sky-300"><Send className="size-5" aria-hidden="true" /></span>
                     <span className="flex-1"><span className="block text-sm font-bold">تيليجرام</span><span className="block text-[11px] text-white/50">إرسال ملخص النتائج كرسالة</span></span>
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLocationShareText(summaryText(shareTarget.entry))
+                      setShareTarget(null)
+                    }}
+                    className="flex h-14 items-center gap-3 rounded-2xl bg-white/[0.06] px-4 text-right text-white active:bg-white/10"
+                  >
+                    <span className="flex size-9 items-center justify-center rounded-full bg-amber-500/20 text-amber-300"><MapPin className="size-5" aria-hidden="true" /></span>
+                    <span className="flex-1"><span className="block text-sm font-bold">مشاركة مع موقع التدريب</span><span className="block text-[11px] text-white/50">إرسال إحداثيات GPS ورابط خرائط Google عبر واتساب أو تيليجرام</span></span>
+                  </button>
                 </>
               )}
               <button type="button" onClick={shareExcelFile} className="flex h-14 items-center gap-3 rounded-2xl bg-white/[0.06] px-4 text-right text-white active:bg-white/10">
@@ -397,6 +410,34 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
                 <span className="flex-1"><span className="block text-sm font-bold">حفظ على الجهاز</span><span className="block text-[11px] text-white/50">تنزيل ملف Excel</span></span>
               </button>
             </div>
+          </div>
+        </div>
+      )}
+      {locationShareText && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-3 overflow-y-auto"
+          onClick={() => setLocationShareText(null)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-[2rem] border border-white/10 bg-[#101216] p-4 sm:p-6"
+          >
+            <div className="mb-4 flex items-center justify-between">
+              <span className="text-sm font-bold text-white">مشاركة نتيجة الاختبار مع الموقع الميداني</span>
+              <button
+                type="button"
+                onClick={() => setLocationShareText(null)}
+                className="flex size-8 items-center justify-center rounded-full bg-white/10 text-white/70 hover:bg-white/20"
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+            <LocationSharePanel
+              initialTestSummary={locationShareText}
+              initialTitle={`اختبار ${eventName} - ${category.name}`}
+            />
           </div>
         </div>
       )}

@@ -3,6 +3,7 @@ export type View =
   | 'guide'
   | 'favorites'
   | 'history'
+  | 'location'
   | 'sports'
   | 'armored'
 

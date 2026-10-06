@@ -9,6 +9,7 @@ import { FavoritesPanel } from './favorites'
 import { InfoPanel } from './info-panel'
 import { SectionButton } from './section-button'
 import { HistoryView } from '@/components/history/history-view'
+import { LocationSharePanel } from '@/components/location/location-share-panel'
 
 import { renderView } from '@/lib/app/view-renderers'
 import type { OpenView, View } from '@/lib/app/types'
@@ -28,6 +29,10 @@ export function AppContent({
 
   if (activeView === 'history') {
     return <HistoryView openView={openView} />
+  }
+
+  if (activeView === 'location') {
+    return <LocationSharePanel />
   }
 
   if (activeView === 'favorites') {

@@ -3,6 +3,7 @@ import {
     ChevronLeft,
     Dumbbell,
     History,
+    MapPin,
     Medal
 } from 'lucide-react';
 
@@ -29,6 +30,13 @@ const sectionCards = [
     description: 'اختبارات الدبابات والمهارات الميدانية.',
     icon: Medal,
     eyebrow: 'القسم الثاني',
+  },
+  {
+    view: 'location' as const,
+    label: 'مشاركة الموقع الميداني',
+    description: 'إرسال إحداثيات وموقع التدريب عبر واتساب وتيليجرام مدعومة بخرائط Google.',
+    icon: MapPin,
+    eyebrow: 'الميدان والخرائط',
   },
 ]
 
