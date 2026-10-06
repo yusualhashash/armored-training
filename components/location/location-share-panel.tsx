@@ -179,9 +179,6 @@ export function LocationSharePanel({
                   <span className="size-2 rounded-full bg-emerald-400 animate-pulse inline-block" />
                   تم رصد إشارة GPS بنجاح
                 </span>
-                {coords.accuracy && (
-                  <span>الدقة: ±{Math.round(coords.accuracy)} متر</span>
-                )}
               </div>
               <div className="grid grid-cols-2 gap-2 text-center pt-1 font-mono text-sm">
                 <div className="rounded-xl bg-black/30 p-2 border border-white/5">
@@ -247,19 +244,6 @@ export function LocationSharePanel({
       {/* Google Maps Grounding Section (Gemini 3.5 Flash) */}
       <div className="rounded-[2rem] border border-white/10 bg-[#101216] p-5 sm:p-6 shadow-xl flex flex-col gap-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="flex size-8 items-center justify-center rounded-xl bg-blue-500/20 text-blue-300 border border-blue-500/30">
-              <Sparkles className="size-4" />
-            </span>
-            <div>
-              <h3 className="text-sm font-bold text-white">
-                بيانات خرائط Google (Maps Grounding)
-              </h3>
-              <p className="text-[11px] text-white/50">
-                استخراج وتأكيد المعالم المحيطة بدقة بواسطة نموذج Gemini
-              </p>
-            </div>
-          </div>
 
           <Button
             type="button"
