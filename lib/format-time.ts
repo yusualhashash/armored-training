@@ -12,16 +12,17 @@ export function formatStopwatchTime(elapsedMs: number): string {
   return `${pad(minutes)}:${pad(seconds)}.${pad(hundredths)}`
 }
 
-/** يحوّل زمن المعيار بالثواني إلى نص مقروء. */
-export function formatStandardSeconds(seconds: number): string {
-  if (seconds >= SECONDS_PER_MINUTE) {
+/** يحوّل زمن المعيار بالثواني إلى نص مقروء (دقائق أو ثوانٍ). */
+export function formatStandardSeconds(seconds: number, forceMinuteFormat = false): string {
+  if (seconds >= SECONDS_PER_MINUTE || (forceMinuteFormat && seconds === 0)) {
     const minutes = Math.floor(seconds / SECONDS_PER_MINUTE)
     const rest = seconds % SECONDS_PER_MINUTE
-    return `${minutes}:${pad(rest)}`
+    const restFormatted = rest % 1 === 0 ? pad(rest) : `${pad(Math.floor(rest))}.${Math.round((rest % 1) * 10)}`
+    return `${pad(minutes)}:${restFormatted}`
   }
 
   const rounded = Math.round(seconds * TENTHS_PER_SECOND) / TENTHS_PER_SECOND
-  return `${rounded}s`
+  return `${rounded} ثا`
 }
 
 function pad(value: number): string {

@@ -23,8 +23,27 @@ export function buildStandardRanges(standards: PerformanceStandard[]): StandardR
   }))
 }
 
-/** نصّ عربي مقروء لنطاق معيار واحد، مثل «13.4 – 14.0 ثانية» أو «15.4 ثانية فأكثر». */
+/** نصّ عربي مقروء لنطاق معيار واحد، مثل «13.4 – 14.0 ثانية» أو «12:01 – 12:15 دقيقة». */
 export function formatStandardRange(range: StandardRange): string {
+  const isMinute = range.upperSeconds >= 60 || range.lowerSeconds >= 60
+
+  if (isMinute) {
+    const formatMin = (sec: number) => {
+      const m = Math.floor(sec / 60)
+      const s = sec % 60
+      const sStr = s % 1 === 0 ? String(s).padStart(2, '0') : s.toFixed(1).padStart(4, '0')
+      return `${String(m).padStart(2, '0')}:${sStr}`
+    }
+
+    const lower = range.lowerSeconds === 0 ? '00:00' : formatMin(roundToTenth(range.lowerSeconds))
+
+    if (!Number.isFinite(range.upperSeconds)) {
+      return `${lower} دقيقة فأكثر`
+    }
+
+    return `${lower} – ${formatMin(roundToTenth(range.upperSeconds))} دقيقة`
+  }
+
   const lower = roundToTenth(range.lowerSeconds).toFixed(1)
 
   if (!Number.isFinite(range.upperSeconds)) return `${lower} ثانية فأكثر`
