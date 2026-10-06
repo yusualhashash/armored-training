@@ -16,6 +16,7 @@ import {
   createEntryId,
   formatClock,
   formatDate,
+  formatDisplayTime,
   formatDuration,
   formatSecondsValue,
   type TimedHistoryEntry,
@@ -140,7 +141,7 @@ export function TimedTestPanel({ event, category, showTimer = true }: { event: S
       `التاريخ: ${formatDate(entry.savedAt)} ${formatClock(entry.savedAt)}`,
       ...(entry.durationMs !== null ? [`مدة الاختبار: ${formatDuration(entry.durationMs)}`] : []),
       '',
-      ...entry.results.map((result, index) => `المتدرب ${index + 1}: ${formatSecondsValue(result.seconds)} ثانية - ${result.score} نتيجة - ${getPerformanceLevelLabel(resolvePerformanceLevel(event, result.seconds))}`),
+      ...entry.results.map((result, index) => `المتدرب ${index + 1}: ${formatDisplayTime(result.seconds)} - ${result.score} نتيجة - ${getPerformanceLevelLabel(resolvePerformanceLevel(event, result.seconds))}`),
     ]
     return lines.join('\n')
   }

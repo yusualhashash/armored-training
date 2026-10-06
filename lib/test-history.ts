@@ -60,6 +60,26 @@ export function formatSecondsValue(seconds: number): string {
   return (Math.round(seconds * TENTHS_PER_SECOND) / TENTHS_PER_SECOND).toFixed(1)
 }
 
+/**
+ * ينسّق زمن المتدرب:
+ * - أقل من 60 ثانية: "14.5 ثانية"
+ * - 60 ثانية فأكثر: "01:02.2 دقيقة" بصيغة الدقائق مثل ساعة الإيقاف.
+ */
+export function formatDisplayTime(seconds: number | string): string {
+  const num = typeof seconds === 'string' ? parseFloat(seconds) : seconds
+  if (!Number.isFinite(num)) return String(seconds)
+
+  if (num >= 60) {
+    const minutes = Math.floor(num / 60)
+    const remSeconds = num % 60
+    const secStr = remSeconds.toFixed(1).padStart(4, '0')
+    const minStr = String(minutes).padStart(2, '0')
+    return `${minStr}:${secStr} دقيقة`
+  }
+
+  return `${num.toFixed(1)} ثانية`
+}
+
 /** طابع زمني آمن لاستخدامه في أسماء الملفات. */
 export function fileStamp(iso: string): string {
   return iso.slice(0, 16).replace('T', '_').replace(':', '-')

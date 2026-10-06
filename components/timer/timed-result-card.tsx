@@ -6,7 +6,7 @@ import { StandardsTable } from '@/components/timer/standards-table'
 import { TestEntryMeta } from '@/components/timer/test-entry-meta'
 import { Button } from '@/components/ui/button'
 import { getPerformanceLevelColor, getPerformanceLevelLabel, getPerformanceScore, resolvePerformanceLevel } from '@/lib/performance'
-import { formatSecondsValue, type TimedHistoryEntry } from '@/lib/test-history'
+import { formatDisplayTime, type TimedHistoryEntry } from '@/lib/test-history'
 import type { SportEvent } from '@/lib/types'
 
 interface TimedResultCardProps {
@@ -35,7 +35,7 @@ export function TimedResultCard({ event, entry, isMobile, onExport }: TimedResul
           return (
             <div key={index} className="rounded-xl bg-white/[0.05] px-2 py-3 text-center">
               <p className="text-[11px] text-white/45">المتدرب {index + 1}</p>
-              <p dir="ltr" className="mt-2 text-sm font-semibold text-white tabular-nums">{formatSecondsValue(result.seconds)} ثانية</p>
+              <p dir="ltr" className="mt-2 text-sm font-semibold text-white tabular-nums">{formatDisplayTime(result.seconds)}</p>
               <p className="mt-1 border-t border-white/10 pt-1 text-lg font-bold text-rose-100">{score ?? '—'} <span className="text-[11px] font-normal text-white/45">نتيجة</span></p>
               <p className={`mt-1 text-sm font-bold ${getPerformanceLevelColor(level)}`}>{getPerformanceLevelLabel(level)}</p>
             </div>

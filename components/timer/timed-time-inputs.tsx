@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 import { X, Trophy } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+import { formatDisplayTime } from '@/lib/test-history'
 
 interface TimedTimeInputsProps {
   /** أزمنة المتدربين المسجلة بالثواني. */
@@ -73,7 +74,7 @@ export function TimedTimeInputs({
                 <div
                   className="h-10 w-full flex items-center justify-center rounded-lg border border-white/10 bg-black/30 px-2 text-center text-sm font-mono font-bold text-rose-200 select-none cursor-default"
                 >
-                  {time} ثانية
+                  {formatDisplayTime(time)}
                 </div>
               </div>
             ))}
