@@ -3,6 +3,7 @@
 import {
   ArrowRight,
   BookOpen,
+  History,
   House,
   Star,
 } from 'lucide-react'
@@ -29,6 +30,12 @@ const navigationItems = [
     id: 'home' as const,
     label: 'الرئيسية',
     icon: House,
+  },
+
+  {
+    id: 'history' as const,
+    label: 'السجل',
+    icon: History,
   },
 
   {

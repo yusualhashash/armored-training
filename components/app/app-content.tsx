@@ -8,6 +8,7 @@ import {
 import { FavoritesPanel } from './favorites'
 import { InfoPanel } from './info-panel'
 import { SectionButton } from './section-button'
+import { HistoryView } from '@/components/history/history-view'
 
 import { renderView } from '@/lib/app/view-renderers'
 import type { OpenView, View } from '@/lib/app/types'
@@ -23,6 +24,10 @@ export function AppContent({
 }: AppContentProps) {
   if (activeView === 'home') {
     return null
+  }
+
+  if (activeView === 'history') {
+    return <HistoryView openView={openView} />
   }
 
   if (activeView === 'favorites') {

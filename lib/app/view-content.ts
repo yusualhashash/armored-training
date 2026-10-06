@@ -5,6 +5,12 @@ const stomachTitle = 'تمرين المعدة'
 export const viewContent: Partial<Record<View, ViewContent>> = {
   // Main sections
 
+  history: {
+    title: 'سجل التدريب',
+    backLabel: 'الرئيسية',
+    backTo: 'home',
+  },
+
   sports: {
     title: 'الرياضة',
     backLabel: 'الرئيسية',

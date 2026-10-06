@@ -2,6 +2,7 @@ import {
     BookOpen,
     ChevronLeft,
     Dumbbell,
+    History,
     Medal
 } from 'lucide-react';
 
@@ -28,6 +29,13 @@ const sectionCards = [
     description: 'اختبارات الدبابات والمهارات الميدانية.',
     icon: Medal,
     eyebrow: 'القسم الثاني',
+  },
+  {
+    view: 'history' as const,
+    label: 'سجل التدريب',
+    description: 'مراجعة أداء الجلسات السابقة وتصدير النتائج إلى Excel.',
+    icon: History,
+    eyebrow: 'السجل العام',
   },
 ]
 
