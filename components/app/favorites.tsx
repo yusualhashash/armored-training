@@ -29,6 +29,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
           stored.filter(
             (item): item is View =>
               typeof item === 'string' &&
+              item !== 'history' &&
               Object.prototype.hasOwnProperty.call(viewContent, item),
           ),
         )
