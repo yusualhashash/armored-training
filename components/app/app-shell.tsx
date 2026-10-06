@@ -5,7 +5,6 @@ import {
   BookOpen,
   History,
   House,
-  MapPin,
   Star,
 } from 'lucide-react'
 
@@ -210,21 +209,9 @@ export function AppShell() {
           )}
 
           {!currentSection && (
-            <div className="flex items-center gap-2 shrink-0">
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={() => openView('location')}
-                className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-1.5 text-xs font-semibold text-emerald-300 hover:bg-emerald-500/25 transition-colors"
-              >
-                <MapPin className="size-3.5" />
-                <span>موقع التدريب</span>
-              </Button>
-              <span className="hidden sm:inline-block rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-xs text-white/55">
-                يعمل دون إنترنت
-              </span>
-            </div>
+            <span className="shrink-0 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-xs text-white/55">
+              يعمل دون إنترنت
+            </span>
           )}
         </header>
 

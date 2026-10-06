@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { FileSpreadsheet, MapPin, MessageCircle, Send, Share2, X } from 'lucide-react'
+import { FileSpreadsheet, MessageCircle, Send, Share2, X } from 'lucide-react'
 
 interface TestShareSheetProps {
   /** إظهار خياري إرسال الملخص كرسالة (متاح لجلسة واحدة فقط). */
@@ -11,19 +11,10 @@ interface TestShareSheetProps {
   onSendTelegram: () => void
   onShareFile: () => void
   onSaveFile: () => void
-  onOpenLocationShare?: () => void
 }
 
 /** لوحة «حفظ أو مشاركة» التي تظهر على الجوال عند تصدير النتائج. */
-export function TestShareSheet({
-  showMessaging,
-  onClose,
-  onSendWhatsApp,
-  onSendTelegram,
-  onShareFile,
-  onSaveFile,
-  onOpenLocationShare,
-}: TestShareSheetProps) {
+export function TestShareSheet({ showMessaging, onClose, onSendWhatsApp, onSendTelegram, onShareFile, onSaveFile }: TestShareSheetProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 sm:items-center" onClick={onClose}>
       <div
@@ -55,15 +46,6 @@ export function TestShareSheet({
                 description="إرسال ملخص النتائج كرسالة"
                 onClick={onSendTelegram}
               />
-              {onOpenLocationShare && (
-                <ShareAction
-                  icon={<MapPin className="size-5" aria-hidden="true" />}
-                  iconClassName="bg-amber-500/20 text-amber-300"
-                  title="مشاركة مع موقع التدريب"
-                  description="إرسال إحداثيات GPS ورابط خرائط Google عبر واتساب أو تيليجرام"
-                  onClick={onOpenLocationShare}
-                />
-              )}
             </>
           )}
 

@@ -3,7 +3,6 @@ import {
     ChevronLeft,
     Dumbbell,
     History,
-    MapPin,
     Medal
 } from 'lucide-react';
 
