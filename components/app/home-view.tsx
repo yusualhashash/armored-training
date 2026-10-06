@@ -30,13 +30,6 @@ const sectionCards = [
     icon: Medal,
     eyebrow: 'القسم الثاني',
   },
-  {
-    view: 'history' as const,
-    label: 'سجل التدريب',
-    description: 'مراجعة أداء الجلسات السابقة وتصدير النتائج إلى Excel.',
-    icon: History,
-    eyebrow: 'السجل العام',
-  },
 ]
 
 export function HomeView({ openView }: HomeViewProps) {
