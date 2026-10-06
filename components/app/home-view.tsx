@@ -31,13 +31,6 @@ const sectionCards = [
     icon: Medal,
     eyebrow: 'القسم الثاني',
   },
-  {
-    view: 'location' as const,
-    label: 'مشاركة الموقع الميداني',
-    description: 'إرسال إحداثيات وموقع التدريب عبر واتساب وتيليجرام مدعومة بخرائط Google.',
-    icon: MapPin,
-    eyebrow: 'الميدان والخرائط',
-  },
 ]
 
 export function HomeView({ openView }: HomeViewProps) {
