@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     id: '/',
     name: 'المعدلات الزمنية - تدريب المدرعات',
-    short_name: 'المعدلات',
+    short_name: 'المعدلات الزمنية',
     description: 'تطبيق التوقيت والمعدلات القياسية واختبارات اللياقة والمدرعات يعمل دون اتصال بالإنترنت بالكامل ويحفظ البيانات محلياً',
     start_url: '/',
     scope: '/',
