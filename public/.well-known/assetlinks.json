@@ -4,7 +4,10 @@
     "target": {
       "namespace": "android_app",
       "package_name": "app.vercel.armored_training_branch.twa",
-      "sha256_cert_fingerprints": ["12:01:4B:8A:48:A3:1F:E7:8A:CE:79:B5:5E:AD:20:F3:5B:11:61:7F:0A:0F:9E:C6:2C:EE:1E:F1:59:06:30:0F"]
+      "sha256_cert_fingerprints": [
+        "AF:FF:24:9B:68:3B:9D:48:E0:4A:6D:CC:05:05:E5:D0:3C:1D:E8:03:BA:01:3F:F2:8F:DC:D4:BE:B5:0B:1E:48",
+        "12:01:4B:8A:48:A3:1F:E7:8A:CE:79:B5:5E:AD:20:F3:5B:11:61:7F:0A:0F:9E:C6:2C:EE:1E:F1:59:06:30:0F"
+      ]
     }
   }
 ]
