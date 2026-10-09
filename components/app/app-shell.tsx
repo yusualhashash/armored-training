@@ -99,71 +99,31 @@ export function AppShell() {
           ====================================================== */}
           <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-emerald-500/15 bg-[#09130e]/85 px-4 backdrop-blur-xl sm:px-8 shadow-sm">
             {activeView === 'history' ? (
-              <div className="flex min-w-0 items-center gap-2 sm:gap-3 flex-1">
-                <Button
-                  type="button"
-                  variant="ghost"
-                  onClick={() => openView('home')}
-                  className="flex h-10 shrink-0 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 sm:px-3 text-xs font-semibold text-white/80 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white active:scale-95"
-                  title="الرجوع إلى الرئيسية"
-                >
-                  <ArrowRight
-                    className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5"
-                    aria-hidden="true"
-                  />
-                  <span>الرئيسية</span>
-                </Button>
-
-                <div className="flex min-w-0 items-center gap-2.5">
-                  <div className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-emerald-400/25 bg-emerald-400/10 text-emerald-300 shadow-inner">
-                    <History className="size-5" aria-hidden="true" />
-                  </div>
-                  <h1 className="truncate text-sm sm:text-base md:text-lg font-bold text-white tracking-tight">
-                    سجل التدريب
-                  </h1>
+              <div className="flex min-w-0 items-center gap-2.5">
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-emerald-400/25 bg-emerald-400/10 text-emerald-300 shadow-inner">
+                  <History className="size-5" aria-hidden="true" />
                 </div>
+                <h1 className="truncate text-sm sm:text-base md:text-lg font-bold text-white tracking-tight">
+                  سجل التدريب
+                </h1>
               </div>
             ) : activeView === 'favorites' ? (
-              <div className="flex min-w-0 items-center gap-2 sm:gap-3 flex-1">
-                <Button
-                  type="button"
-                  variant="ghost"
-                  onClick={() => openView('home')}
-                  className="flex h-10 shrink-0 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 sm:px-3 text-xs font-semibold text-white/80 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white active:scale-95"
-                  title="الرجوع إلى الرئيسية"
-                >
-                  <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
-                  <span>الرئيسية</span>
-                </Button>
-                <div className="flex min-w-0 items-center gap-2.5">
-                  <div className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-amber-400/25 bg-amber-400/10 text-amber-300 shadow-inner">
-                    <Star className="size-5" aria-hidden="true" />
-                  </div>
-                  <h1 className="truncate text-base font-bold text-white tracking-tight">
-                    المفضلة
-                  </h1>
+              <div className="flex min-w-0 items-center gap-2.5">
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-amber-400/25 bg-amber-400/10 text-amber-300 shadow-inner">
+                  <Star className="size-5" aria-hidden="true" />
                 </div>
+                <h1 className="truncate text-sm sm:text-base md:text-lg font-bold text-white tracking-tight">
+                  المفضلة
+                </h1>
               </div>
             ) : activeView === 'guide' ? (
-              <div className="flex min-w-0 items-center gap-2 sm:gap-3 flex-1">
-                <Button
-                  type="button"
-                  variant="ghost"
-                  onClick={() => openView('home')}
-                  className="flex h-10 shrink-0 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 sm:px-3 text-xs font-semibold text-white/80 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white active:scale-95"
-                  title="الرجوع إلى الرئيسية"
-                >
-                  <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
-                  <span>الرئيسية</span>
-                </Button>
-                <div className="flex min-w-0 items-center gap-2.5">
-                  <div className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-sky-400/25 bg-sky-400/10 text-sky-300 shadow-inner">
-                    <BookOpen className="size-5" aria-hidden="true" />
-                  </div>
-                  <h1 className="truncate text-base font-bold text-white tracking-tight">
-                    التعليمات
-                  </h1>
+              <div className="flex min-w-0 items-center gap-2.5">
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-sky-400/25 bg-sky-400/10 text-sky-300 shadow-inner">
+                  <BookOpen className="size-5" aria-hidden="true" />
                 </div>
+                <h1 className="truncate text-sm sm:text-base md:text-lg font-bold text-white tracking-tight">
+                  التعليمات
+                </h1>
               </div>
             ) : currentSection ? (
               <div className="flex min-w-0 items-center gap-2 sm:gap-3 flex-1">

@@ -22,35 +22,6 @@ interface HomeViewProps {
 export function HomeView({ openView }: HomeViewProps) {
   return (
     <div className="mx-auto w-full max-w-2xl space-y-6">
-      {/* Tactical Hero Banner */}
-      <div className="relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-gradient-to-br from-[#0c1810] via-[#09130d] to-[#050a07] p-5 sm:p-7 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-        <div className="absolute -left-12 -top-12 size-40 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
-        <div className="absolute -right-12 -bottom-12 size-40 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 flex flex-col gap-2">
-          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400">
-            <span className="flex size-2 rounded-full bg-emerald-400" />
-            <span>منظومة قياس الكفاءة البدنية والتكتيكية</span>
-          </div>
-
-          <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white">
-            معدلات تدريب المدرعات والرياضة
-          </h2>
-
-          <p className="text-xs sm:text-sm text-white/60 leading-relaxed max-w-xl">
-            ساعة إيقاف عسكرية، حساب فوري للعلامات، معايير لـ 7 فئات عمرية، واختبارات دبابات T-72 و T-55/62 مع تصدير Excel وسجل محلي دون إنترنت.
-          </p>
-
-          <div className="mt-3 flex flex-wrap items-center gap-3 border-t border-white/10 pt-3 text-[11px] text-white/50 font-medium">
-            <span>10 مسابقات رياضية</span>
-            <span aria-hidden="true">·</span>
-            <span>طواقم وفصائل وسرايا</span>
-            <span aria-hidden="true">·</span>
-            <span className="text-emerald-400/90 font-semibold">حفظ أوفلاين 100%</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Core Sections */}
       <div className="grid gap-4">
         {/* Section 1: Sports */}
