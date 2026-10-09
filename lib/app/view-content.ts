@@ -967,3 +967,58 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
   },
 
 }
+
+/**
+ * Returns the comprehensive, full display title for any test or section.
+ * E.g., for 'stomach-category-one' -> 'تمرين المعدة - الفئة الأولى'
+ * For 't72-boarding' -> 'T72 - ركوب الطواقم في الدبابة'
+ * For 't72-طاقم' -> 'T72 - ركوب الطواقم في الدبابة (الطاقم)'
+ */
+export function getFullTestName(view: View): string {
+  const current = viewContent[view]
+  if (!current) return ''
+
+  // Top level sections
+  if (view === 'sports' || view === 'armored') {
+    return current.title
+  }
+
+  // 1. If it's a category test (e.g. stomach-category-one, pushups-category-two, etc.)
+  if (current.title.startsWith('الفئة')) {
+    const parent = current.backTo ? viewContent[current.backTo] : null
+    const testTitle = parent ? parent.title : current.backLabel
+    return `${testTitle} - ${current.title}`
+  }
+
+  // 2. If it's an armored unit-specific test (e.g. t72-طاقم, t72-فصيلة, t72-سرية)
+  const isUnitLeaf =
+    current.title === 'الطاقم' ||
+    current.title === 'الفصيلة' ||
+    current.title === 'السرية' ||
+    current.title === 'الكتيبة'
+
+  if (isUnitLeaf && current.backTo) {
+    const parent = viewContent[current.backTo]
+    if (parent) {
+      const grandparent = parent.backTo ? viewContent[parent.backTo] : null
+      const vehicle =
+        grandparent?.title && (grandparent.title === 'T72' || grandparent.title === 'T55+62')
+          ? grandparent.title
+          : null
+      if (vehicle) {
+        return `${vehicle} - ${parent.title} (${current.title})`
+      }
+      return `${parent.title} - ${current.title}`
+    }
+  }
+
+  // 3. If it's an armored drill category (e.g. t72-boarding)
+  if (current.backTo) {
+    const parent = viewContent[current.backTo]
+    if (parent && (parent.title === 'T72' || parent.title === 'T55+62')) {
+      return `${parent.title} - ${current.title}`
+    }
+  }
+
+  return current.title
+}

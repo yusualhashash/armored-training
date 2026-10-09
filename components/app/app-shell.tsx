@@ -3,8 +3,10 @@
 import {
   ArrowRight,
   BookOpen,
+  Dumbbell,
   History,
   House,
+  Medal,
   ShieldCheck,
   Star,
 } from 'lucide-react'
@@ -18,6 +20,7 @@ import { HomeView, HomeHeader } from './home-view'
 import { FavoriteButton, FavoritesPanel, FavoritesProvider } from './favorites'
 
 import {
+  getFullTestName,
   viewContent,
 } from '@/lib/app/view-content'
 
@@ -83,6 +86,11 @@ export function AppShell() {
   }
 
   const currentSection = viewContent[activeView]
+  const fullTestName = currentSection ? getFullTestName(activeView) : ''
+  const isArmored =
+    activeView === 'armored' ||
+    activeView.startsWith('t72') ||
+    activeView.startsWith('t55-62')
 
   return (
     <FavoritesProvider>
@@ -127,11 +135,12 @@ export function AppShell() {
               </div>
             ) : currentSection ? (
               <div className="flex min-w-0 items-center gap-2 sm:gap-3 flex-1">
+                {/* Comeback button: hidden on mobile, visible on sm+ screens */}
                 <Button
                   type="button"
                   variant="ghost"
                   onClick={() => openView(currentSection.backTo)}
-                  className="flex h-10 shrink-0 max-w-[150px] sm:max-w-[220px] items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 sm:px-3 text-xs font-semibold text-white/80 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white active:scale-95"
+                  className="hidden sm:flex h-10 shrink-0 max-w-[220px] items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-3 text-xs font-semibold text-white/80 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white active:scale-95"
                   title={`الرجوع إلى ${currentSection.backLabel}`}
                 >
                   <ArrowRight
@@ -139,15 +148,24 @@ export function AppShell() {
                     aria-hidden="true"
                   />
                   <span className="truncate">
-                    <span className="hidden sm:inline">
-                      {currentSection.backLabel.length > 18 ? 'رجوع' : currentSection.backLabel}
-                    </span>
-                    <span className="sm:hidden">رجوع</span>
+                    {currentSection.backLabel.length > 18 ? 'رجوع' : currentSection.backLabel}
                   </span>
                 </Button>
 
-                <h1 className="truncate text-sm sm:text-base md:text-lg font-bold text-white tracking-tight">
-                  {currentSection.title}
+                {/* Mobile tactical icon badge */}
+                <div className="sm:hidden flex size-9 shrink-0 items-center justify-center rounded-xl border border-emerald-400/25 bg-emerald-400/10 text-emerald-300 shadow-inner">
+                  {isArmored ? (
+                    <Medal className="size-5" aria-hidden="true" />
+                  ) : (
+                    <Dumbbell className="size-5" aria-hidden="true" />
+                  )}
+                </div>
+
+                <h1
+                  className="truncate text-sm sm:text-base md:text-lg font-bold text-white tracking-tight"
+                  title={fullTestName}
+                >
+                  {fullTestName}
                 </h1>
               </div>
             ) : (
