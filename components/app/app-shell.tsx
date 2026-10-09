@@ -98,78 +98,118 @@ export function AppShell() {
               TOP NAVIGATION HEADER
           ====================================================== */}
           <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-emerald-500/15 bg-[#09130e]/85 px-4 backdrop-blur-xl sm:px-8 shadow-sm">
-            {currentSection ? (
-              <div className="flex min-w-0 items-center gap-3">
+            {activeView === 'history' ? (
+              <div className="flex min-w-0 items-center gap-2 sm:gap-3 flex-1">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => openView('home')}
+                  className="flex h-10 shrink-0 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 sm:px-3 text-xs font-semibold text-white/80 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white active:scale-95"
+                  title="الرجوع إلى الرئيسية"
+                >
+                  <ArrowRight
+                    className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                  <span>الرئيسية</span>
+                </Button>
+
+                <div className="flex min-w-0 items-center gap-2.5">
+                  <div className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-emerald-400/25 bg-emerald-400/10 text-emerald-300 shadow-inner">
+                    <History className="size-5" aria-hidden="true" />
+                  </div>
+                  <h1 className="truncate text-sm sm:text-base md:text-lg font-bold text-white tracking-tight">
+                    سجل التدريب
+                  </h1>
+                </div>
+              </div>
+            ) : activeView === 'favorites' ? (
+              <div className="flex min-w-0 items-center gap-2 sm:gap-3 flex-1">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => openView('home')}
+                  className="flex h-10 shrink-0 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 sm:px-3 text-xs font-semibold text-white/80 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white active:scale-95"
+                  title="الرجوع إلى الرئيسية"
+                >
+                  <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
+                  <span>الرئيسية</span>
+                </Button>
+                <div className="flex min-w-0 items-center gap-2.5">
+                  <div className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-amber-400/25 bg-amber-400/10 text-amber-300 shadow-inner">
+                    <Star className="size-5" aria-hidden="true" />
+                  </div>
+                  <h1 className="truncate text-base font-bold text-white tracking-tight">
+                    المفضلة
+                  </h1>
+                </div>
+              </div>
+            ) : activeView === 'guide' ? (
+              <div className="flex min-w-0 items-center gap-2 sm:gap-3 flex-1">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => openView('home')}
+                  className="flex h-10 shrink-0 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 sm:px-3 text-xs font-semibold text-white/80 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white active:scale-95"
+                  title="الرجوع إلى الرئيسية"
+                >
+                  <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
+                  <span>الرئيسية</span>
+                </Button>
+                <div className="flex min-w-0 items-center gap-2.5">
+                  <div className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-sky-400/25 bg-sky-400/10 text-sky-300 shadow-inner">
+                    <BookOpen className="size-5" aria-hidden="true" />
+                  </div>
+                  <h1 className="truncate text-base font-bold text-white tracking-tight">
+                    التعليمات
+                  </h1>
+                </div>
+              </div>
+            ) : currentSection ? (
+              <div className="flex min-w-0 items-center gap-2 sm:gap-3 flex-1">
                 <Button
                   type="button"
                   variant="ghost"
                   onClick={() => openView(currentSection.backTo)}
-                  className="flex h-10 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-3 text-xs font-semibold text-white/80 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white active:scale-95"
+                  className="flex h-10 shrink-0 max-w-[150px] sm:max-w-[220px] items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-2.5 sm:px-3 text-xs font-semibold text-white/80 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white active:scale-95"
+                  title={`الرجوع إلى ${currentSection.backLabel}`}
                 >
                   <ArrowRight
-                    className="size-4 transition-transform group-hover:translate-x-0.5"
+                    className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5"
                     aria-hidden="true"
                   />
-                  <span>{currentSection.backLabel}</span>
+                  <span className="truncate">
+                    <span className="hidden sm:inline">
+                      {currentSection.backLabel.length > 18 ? 'رجوع' : currentSection.backLabel}
+                    </span>
+                    <span className="sm:hidden">رجوع</span>
+                  </span>
                 </Button>
 
-                <h1 className="truncate text-base font-bold text-white tracking-tight sm:text-lg">
+                <h1 className="truncate text-sm sm:text-base md:text-lg font-bold text-white tracking-tight">
                   {currentSection.title}
                 </h1>
-              </div>
-            ) : activeView === 'favorites' ? (
-              <div className="flex min-w-0 items-center gap-3">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-amber-400/25 bg-amber-400/10 text-amber-300 shadow-inner">
-                  <Star className="size-5" aria-hidden="true" />
-                </div>
-                <div className="min-w-0">
-                  <h1 className="truncate text-base font-bold text-white tracking-tight">
-                    المفضلة
-                  </h1>
-                  <p className="truncate text-[11px] text-white/45">
-                    الوصول السريع للاختبارات المثبتة
-                  </p>
-                </div>
-              </div>
-            ) : activeView === 'history' ? (
-              <div className="flex min-w-0 items-center gap-3">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-emerald-400/25 bg-emerald-400/10 text-emerald-300 shadow-inner">
-                  <History className="size-5" aria-hidden="true" />
-                </div>
-                <div className="min-w-0">
-                  <h1 className="truncate text-base font-bold text-white tracking-tight">
-                    سجل التدريبات
-                  </h1>
-                  <p className="truncate text-[11px] text-white/45">
-                    مراجعة أداء الجلسات السابقة
-                  </p>
-                </div>
-              </div>
-            ) : activeView === 'guide' ? (
-              <div className="flex min-w-0 items-center gap-3">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-sky-400/25 bg-sky-400/10 text-sky-300 shadow-inner">
-                  <BookOpen className="size-5" aria-hidden="true" />
-                </div>
-                <div className="min-w-0">
-                  <h1 className="truncate text-base font-bold text-white tracking-tight">
-                    التعليمات
-                  </h1>
-                  <p className="truncate text-[11px] text-white/45">
-                    دليل استخدام المنظومة
-                  </p>
-                </div>
               </div>
             ) : (
               <HomeHeader />
             )}
 
-            <div className="flex items-center gap-2">
-              {currentSection && <FavoriteButton view={activeView} />}
+            <div className="flex items-center gap-2 shrink-0">
+              {currentSection &&
+                activeView !== 'history' &&
+                activeView !== 'favorites' &&
+                activeView !== 'guide' &&
+                activeView !== 'sports' &&
+                activeView !== 'armored' &&
+                activeView !== 'home' && (
+                  <FavoriteButton view={activeView} />
+                )}
 
-              {!currentSection && (
+              {(!currentSection || activeView === 'history' || activeView === 'favorites' || activeView === 'guide') && (
                 <div className="flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/[0.08] px-3 py-1 text-xs text-emerald-300">
                   <ShieldCheck className="size-3.5" aria-hidden="true" />
-                  <span className="font-medium">يعمل دون إنترنت</span>
+                  <span className="font-medium hidden sm:inline">يعمل دون إنترنت</span>
+                  <span className="font-medium sm:hidden">محلي</span>
                 </div>
               )}
             </div>

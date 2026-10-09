@@ -73,7 +73,20 @@ export function useFavorites() {
   return context
 }
 
+const NON_FAVORITABLE_VIEWS = new Set<string>([
+  'home',
+  'history',
+  'favorites',
+  'guide',
+  'sports',
+  'armored',
+])
+
 export function FavoriteButton({ view }: { view: View }) {
+  if (NON_FAVORITABLE_VIEWS.has(view)) {
+    return null
+  }
+
   const { isFavorite, toggleFavorite } = useFavorites()
   const favorite = isFavorite(view)
 

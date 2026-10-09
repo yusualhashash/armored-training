@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, useRef } from 'react'
 import {
   History,
   Timer,
@@ -17,6 +17,10 @@ import {
   Filter,
   Play,
   RotateCcw,
+  FileJson,
+  FileSpreadsheet,
+  FileText,
+  Upload,
 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -25,6 +29,11 @@ import {
   deleteTrainingSession,
   clearAllTrainingSessions,
   exportAllSessionsToExcel,
+  exportAllSessionsToCsv,
+  exportAllSessionsToJson,
+  exportSingleSessionToCsv,
+  exportSingleSessionToJson,
+  importSessionsFromJson,
   type UnifiedTrainingSession,
 } from '@/lib/training-history'
 import { formatDate, formatClock, formatDuration } from '@/lib/test-history'
@@ -44,6 +53,8 @@ export function HistoryView({ openView }: HistoryViewProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [expandedSessions, setExpandedSessions] = useState<Record<string, boolean>>({})
   const [isMobile, setIsMobile] = useState(false)
+  const [importNotice, setImportNotice] = useState<string | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const reloadSessions = () => {
     setSessions(getUnifiedTrainingHistory())
@@ -92,6 +103,27 @@ export function HistoryView({ openView }: HistoryViewProps) {
       clearAllTrainingSessions()
       reloadSessions()
     }
+  }
+
+  const handleImportFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      const text = event.target?.result as string
+      if (!text) return
+      const res = importSessionsFromJson(text)
+      if (res.success) {
+        setImportNotice(`تم استيراد ${res.importedCount} جلسة تدريب بنجاح!`)
+        setTimeout(() => setImportNotice(null), 5000)
+        reloadSessions()
+      } else {
+        alert(res.message)
+      }
+    }
+    reader.readAsText(file)
+    e.target.value = ''
   }
 
   const exportSingleSession = (session: UnifiedTrainingSession) => {
@@ -145,37 +177,112 @@ export function HistoryView({ openView }: HistoryViewProps) {
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 pb-12">
       {/* Header Info */}
       <div className="rounded-[2.5rem] border border-white/10 bg-[#101216] p-6 sm:p-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-4">
-            <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200 shadow-inner">
-              <History className="size-7" aria-hidden="true" />
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200 shadow-inner">
+                <History className="size-7" aria-hidden="true" />
+              </div>
+              <div>
+                <h1 className="text-xl sm:text-2xl font-bold text-white">سجل التدريبات السابقة</h1>
+                <p className="mt-1 text-xs sm:text-sm text-white/50">
+                  مراجعة الأداء وتصدير النسخ الاحتياطية للنتائج (JSON / CSV / Excel)
+                </p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-white">سجل التدريبات السابقة</h1>
-              <p className="mt-1 text-xs sm:text-sm text-white/50">
-                مراجعة الأداء وتفاصيل النتائج المحفوظة محلياً على جهازك
-              </p>
+
+            {/* Hidden file input for importing JSON backup */}
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleImportFile}
+              accept=".json,application/json"
+              className="hidden"
+            />
+
+            <div className="flex flex-wrap items-center gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => fileInputRef.current?.click()}
+                className="h-10 rounded-xl border-white/15 bg-white/[0.04] text-xs font-semibold text-white/80 hover:bg-white/10 hover:text-white"
+                title="استعادة جلسات التدريب من ملف نسخة احتياطية JSON"
+              >
+                <Upload className="ml-1.5 size-4 text-sky-400" />
+                <span>استيراد JSON</span>
+              </Button>
+
+              {sessions.length > 0 && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleClearAll}
+                  className="h-10 rounded-xl border-rose-300/30 bg-rose-500/10 text-xs font-semibold text-rose-300 hover:bg-rose-500/20"
+                  title="مسح جميع الجلسات"
+                >
+                  <Trash2 className="ml-1 size-4" />
+                  <span>مسح السجل</span>
+                </Button>
+              )}
             </div>
           </div>
 
+          {/* Import Notification Banner */}
+          {importNotice && (
+            <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/15 p-3 text-xs sm:text-sm font-semibold text-emerald-300 flex items-center justify-between">
+              <span>{importNotice}</span>
+              <button
+                type="button"
+                onClick={() => setImportNotice(null)}
+                className="text-white/60 hover:text-white text-xs"
+              >
+                إغلاق
+              </button>
+            </div>
+          )}
+
+          {/* Backup & Export Toolbar */}
           {sessions.length > 0 && (
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-3">
+              <span className="text-xs font-bold text-white/60 ml-2">تصدير ونسخ احتياطي:</span>
+
+              {/* JSON Export */}
               <Button
                 type="button"
                 variant="outline"
-                onClick={() => exportAllSessionsToExcel(sessions, isMobile)}
-                className="h-11 rounded-xl border-emerald-300/30 bg-emerald-500/10 text-xs sm:text-sm font-semibold text-emerald-300 hover:bg-emerald-500/20"
+                size="sm"
+                onClick={() => exportAllSessionsToJson(sessions, isMobile)}
+                className="h-9 rounded-xl border-amber-400/30 bg-amber-400/10 text-xs font-semibold text-amber-300 hover:bg-amber-400/20 hover:text-amber-200"
+                title="تصدير نسخة احتياطية كاملة بصيغة JSON لحفظ واستعادة البيانات"
               >
-                {isMobile ? <Share2 className="ml-2 size-4" /> : <Download className="ml-2 size-4" />}
-                <span>تصدير السجل كاملاً</span>
+                {isMobile ? <Share2 className="ml-1.5 size-3.5" /> : <FileJson className="ml-1.5 size-3.5" />}
+                <span>نسخة احتياطية (JSON)</span>
               </Button>
+
+              {/* CSV Export */}
               <Button
                 type="button"
                 variant="outline"
-                onClick={handleClearAll}
-                className="h-11 rounded-xl border-rose-300/30 bg-rose-500/10 text-xs sm:text-sm font-semibold text-rose-300 hover:bg-rose-500/20"
+                size="sm"
+                onClick={() => exportAllSessionsToCsv(sessions, isMobile)}
+                className="h-9 rounded-xl border-sky-400/30 bg-sky-400/10 text-xs font-semibold text-sky-300 hover:bg-sky-400/20 hover:text-sky-200"
+                title="تصدير البيانات كجدول CSV متوافق مع البرامج الإحصائية"
               >
-                <Trash2 className="size-4" />
+                {isMobile ? <Share2 className="ml-1.5 size-3.5" /> : <FileText className="ml-1.5 size-3.5" />}
+                <span>ملف (CSV)</span>
+              </Button>
+
+              {/* Excel Export */}
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => exportAllSessionsToExcel(sessions, isMobile)}
+                className="h-9 rounded-xl border-emerald-400/30 bg-emerald-400/10 text-xs font-semibold text-emerald-300 hover:bg-emerald-400/20 hover:text-emerald-200"
+                title="تصدير السجل كاملاً كجدول بيانات إكسل متقدم"
+              >
+                {isMobile ? <Share2 className="ml-1.5 size-3.5" /> : <FileSpreadsheet className="ml-1.5 size-3.5" />}
+                <span>جدول Excel (XLSX)</span>
               </Button>
             </div>
           )}
@@ -336,15 +443,38 @@ export function HistoryView({ openView }: HistoryViewProps) {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 self-end sm:self-center">
+                    <div className="flex flex-wrap items-center gap-1.5 self-end sm:self-center">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => exportSingleSessionToJson(session, isMobile)}
+                        className="h-8 rounded-lg border-amber-400/25 bg-amber-400/10 px-2 text-[11px] font-semibold text-amber-300 hover:bg-amber-400/20"
+                        title="تصدير هذه الجلسة بصيغة JSON"
+                      >
+                        <FileJson className="size-3 ml-1" />
+                        <span>JSON</span>
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => exportSingleSessionToCsv(session, isMobile)}
+                        className="h-8 rounded-lg border-sky-400/25 bg-sky-400/10 px-2 text-[11px] font-semibold text-sky-300 hover:bg-sky-400/20"
+                        title="تصدير هذه الجلسة بصيغة CSV"
+                      >
+                        <FileText className="size-3 ml-1" />
+                        <span>CSV</span>
+                      </Button>
                       <Button
                         type="button"
                         variant="outline"
                         size="sm"
                         onClick={() => exportSingleSession(session)}
-                        className="h-9 rounded-xl border-white/15 bg-white/[0.04] text-xs font-semibold text-white hover:bg-white/10"
+                        className="h-8 rounded-lg border-emerald-400/25 bg-emerald-400/10 px-2 text-[11px] font-semibold text-emerald-300 hover:bg-emerald-400/20"
+                        title="تصدير هذه الجلسة بصيغة Excel"
                       >
-                        {isMobile ? <Share2 className="size-3.5 ml-1.5" /> : <Download className="size-3.5 ml-1.5" />}
+                        <FileSpreadsheet className="size-3 ml-1" />
                         <span>Excel</span>
                       </Button>
                       <Button
@@ -352,10 +482,10 @@ export function HistoryView({ openView }: HistoryViewProps) {
                         variant="outline"
                         size="sm"
                         onClick={() => handleDeleteSession(session)}
-                        className="h-9 size-9 p-0 rounded-xl border-rose-300/20 bg-rose-500/10 text-rose-300 hover:bg-rose-500/20"
+                        className="h-8 size-8 p-0 rounded-lg border-rose-300/20 bg-rose-500/10 text-rose-300 hover:bg-rose-500/20"
                         title="حذف هذه الجلسة"
                       >
-                        <Trash2 className="size-3.5" />
+                        <Trash2 className="size-3" />
                       </Button>
                     </div>
                   </div>
