@@ -3,7 +3,7 @@
 import { Dumbbell } from 'lucide-react'
 
 import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel'
-import { Button } from '@/components/ui/button'
+import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card'
 import { PUSH_UPS_CATEGORY_ONE_EVENT } from '@/lib/sports/pushups/1'
 import { PUSH_UPS_CATEGORY_ONE_DEFAULT } from '@/lib/sports/pushups/1/categories'
 import { PUSH_UPS_CATEGORY_TWO_DEFAULT } from '@/lib/sports/pushups/2/categories'
@@ -44,16 +44,37 @@ export function PushupsView({ categoryId = 'pushups-category-one' }: { categoryI
 }
 
 export function PushupsCategories({ openView }: { openView: (view: 'pushups-category-one' | 'pushups-category-two' | 'pushups-category-three' | 'pushups-category-four' | 'pushups-category-five' | 'pushups-category-six' | 'pushups-category-seven') => void }) {
+  const categories = [
+    { id: 'pushups-category-one', title: 'الفئة الأولى', birthYears: 'مواليد 2001 – 2008', num: 1 },
+    { id: 'pushups-category-two', title: 'الفئة الثانية', birthYears: 'مواليد 1996 – 2000', num: 2 },
+    { id: 'pushups-category-three', title: 'الفئة الثالثة', birthYears: 'مواليد 1991 – 1995', num: 3 },
+    { id: 'pushups-category-four', title: 'الفئة الرابعة', birthYears: 'مواليد 1986 – 1990', num: 4 },
+    { id: 'pushups-category-five', title: 'الفئة الخامسة', birthYears: 'مواليد 1981 – 1985', num: 5 },
+    { id: 'pushups-category-six', title: 'الفئة السادسة', birthYears: 'مواليد 1976 – 1980', num: 6 },
+    { id: 'pushups-category-seven', title: 'الفئة السابعة', birthYears: 'مواليد 1971 – 1975', num: 7 },
+  ] as const
+
   return (
-    <div className="grid gap-4">
-      {Object.values(pushupEvents).map(({ category }) => (
-        <Button key={category.id} type="button" variant="ghost" onClick={() => openView(`pushups-category-${['one', 'two', 'three', 'four', 'five', 'six', 'seven'][category.id - 1]}` as 'pushups-category-one' | 'pushups-category-two' | 'pushups-category-three' | 'pushups-category-four' | 'pushups-category-five' | 'pushups-category-six' | 'pushups-category-seven')} className="group flex h-auto w-full items-center justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]">
-          <span className="flex items-center gap-4">
-            <span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200"><Dumbbell aria-hidden="true" /></span>
-            <span className="flex flex-col items-start gap-1"><span className="text-lg font-semibold">{category.name.replace('العمرية ', '')} <span className="text-sm font-normal text-white/60">(ثني ومد الذراعين)</span></span><span className="text-xs text-white/50">مواليد {category.birthYears}</span></span>
-          </span>
-        </Button>
-      ))}
+    <div className="mx-auto w-full max-w-2xl space-y-4">
+      <SportsTestHeroHeader
+        title="التمرين السادس (ثني ومد الذراعين - الضغط)"
+        subtitle="اختر الفئة العمرية للبدء في احتساب التكرارات واستعراض المعايير الرسمية المعتمدة."
+        unitBadge="تمرين القوة العضلية"
+      />
+
+      <div className="grid gap-3.5 sm:gap-4">
+        {categories.map((cat) => (
+          <SportsCategoryCard
+            key={cat.id}
+            title={cat.title}
+            subtitle="ثني ومد الذراعين من وضع الانبطاح المائل"
+            birthYears={cat.birthYears}
+            categoryNumber={cat.num}
+            icon={Dumbbell}
+            onClick={() => openView(cat.id as any)}
+          />
+        ))}
+      </div>
     </div>
   )
 }

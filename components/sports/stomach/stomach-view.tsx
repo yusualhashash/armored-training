@@ -1,9 +1,9 @@
 'use client'
 
-import { Medal } from 'lucide-react'
+import { Dumbbell } from 'lucide-react'
 
 import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel'
-import { Button } from '@/components/ui/button'
+import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card'
 
 import { STOMACH_CATEGORY_ONE_DEFAULT } from '@/lib/sports/stomach/1/categories'
 import { STOMACH_CATEGORY_ONE_EVENT } from '@/lib/sports/stomach/1'
@@ -132,35 +132,26 @@ export function StomachCategories({
   ] as const
 
   return (
-    <div className="mx-auto grid w-full max-w-2xl gap-4">
-      {categories.map(([view, title, description, birthYears]) => (
-        <Button
-          key={view}
-          type="button"
-          variant="ghost"
-          onClick={() => openView(view)}
-          className="group h-auto w-full justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]"
-        >
-          <span className="flex items-center gap-4">
-            <span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
-              <Medal className="size-6" aria-hidden="true" />
-            </span>
+    <div className="mx-auto w-full max-w-2xl space-y-4">
+      <SportsTestHeroHeader
+        title="تمرين المعدة (ثني الجذع من الاستلقاء)"
+        subtitle="اختر الفئة العمرية للبدء في احتساب التكرارات واستعراض المعايير الرسمية المعتمدة."
+        unitBadge="تمرين اللياقة الأول"
+      />
 
-            <span className="flex flex-col items-start gap-1">
-              <span className="text-lg font-semibold">
-                {title}{' '}
-                <span className="text-sm font-normal text-white/60">
-                  ({description})
-                </span>
-              </span>
-
-              <span className="text-xs font-normal text-white/50">
-                {birthYears}
-              </span>
-            </span>
-          </span>
-        </Button>
-      ))}
+      <div className="grid gap-3.5 sm:gap-4">
+        {categories.map(([view, title, description, birthYears], index) => (
+          <SportsCategoryCard
+            key={view}
+            title={title}
+            subtitle={`وضعية التمرين: ${description}`}
+            birthYears={birthYears}
+            categoryNumber={index + 1}
+            icon={Dumbbell}
+            onClick={() => openView(view)}
+          />
+        ))}
+      </div>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import {
 import { FavoritesPanel } from './favorites'
 import { InfoPanel } from './info-panel'
 import { SectionButton } from './section-button'
+import { SportsMainView } from '@/components/sports/sports-main-view'
 import { HistoryView } from '@/components/history/history-view'
 
 import { renderView } from '@/lib/app/view-renderers'
@@ -239,79 +240,7 @@ export function AppContent({
   }
 
   if (activeView === 'sports') {
-    return (
-      <div className="grid gap-4">
-        <SectionButton
-          label="تمرين المعدة"
-          description="اختبار التكرارات مع إدخال النتائج"
-          icon={Dumbbell}
-          onClick={() => openView('stomach')}
-        />
-
-        <SectionButton
-          label="التمرين السادس"
-          description="ثني ومد الذراعين"
-          icon={Dumbbell}
-          onClick={() => openView('pushups')}
-        />
-
-        <SectionButton
-          label="القوة المركبة"
-          description="اختبار القوة المركبة"
-          icon={Dumbbell}
-          onClick={() => openView('compound-strength')}
-        />
-
-        <SectionButton
-          label="سحب الجسم على الثابت"
-          description="اختبار العقلة والتكرارات"
-          icon={Dumbbell}
-          onClick={() => openView('pullups')}
-        />
-
-        <SectionButton
-          label="100 متر"
-          description="سباق السرعة لمسافة مئة متر"
-          icon={Timer}
-          onClick={() => openView('hundred')}
-        />
-
-        <SectionButton
-          label="1 كم"
-          description="سباق الجري لمسافة كيلومتر واحد"
-          icon={Timer}
-          onClick={() => openView('one-km')}
-        />
-
-        <SectionButton
-          label="2 كم"
-          description="سباق الجري لمسافة كيلومترين اثنين"
-          icon={Timer}
-          onClick={() => openView('two-km')}
-        />
-
-        <SectionButton
-          label="3 كم"
-          description="سباق الجري لمسافة ثلاثة كيلومترات"
-          icon={Timer}
-          onClick={() => openView('three-km')}
-        />
-
-        <SectionButton
-          label="5 كم"
-          description="سباق الجري لمسافة خمسة كيلومترات"
-          icon={Timer}
-          onClick={() => openView('five-km')}
-        />
-
-        <SectionButton
-          label="4×100 متر"
-          description="سباق التتابع لمسافة 4×100 متر"
-          icon={Timer}
-          onClick={() => openView('4x100')}
-        />
-      </div>
-    )
+    return <SportsMainView openView={openView} />
   }
 
   const renderedView = renderView(

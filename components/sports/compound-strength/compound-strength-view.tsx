@@ -3,7 +3,7 @@
 import { Dumbbell } from 'lucide-react'
 
 import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel'
-import { Button } from '@/components/ui/button'
+import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card'
 import { COMPOUND_STRENGTH_CATEGORY_ONE_DEFAULT } from '@/lib/sports/compound-strength/1/categories'
 import { COMPOUND_STRENGTH_CATEGORY_ONE_EVENT } from '@/lib/sports/compound-strength/1'
 import { COMPOUND_STRENGTH_CATEGORY_TWO_DEFAULT } from '@/lib/sports/compound-strength/2/categories'
@@ -30,12 +30,51 @@ const compoundEvents = {
 } as const
 
 export function CompoundStrengthCategories({ openView }: { openView: (view: keyof typeof compoundEvents) => void }) {
-  return <div className="grid gap-4">
-    {Object.entries(compoundEvents).map(([view, { category }]) => <Button key={view} type="button" variant="ghost" onClick={() => openView(view as keyof typeof compoundEvents)} className="group flex h-auto w-full items-center justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]"><span className="flex items-center gap-4"><span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200"><Dumbbell aria-hidden="true" /></span><span className="flex flex-col items-start gap-1"><span className="text-lg font-semibold">{category.name.replace('العمرية ', '')} <span className="text-sm font-normal text-white/60">(القوة المركبة)</span></span><span className="text-xs text-white/50">مواليد {category.birthYears}</span></span></span></Button>)}
-  </div>
+  const categories = [
+    { id: 'compound-strength-category-one', title: 'الفئة الأولى', birthYears: 'مواليد 2001 – 2008', num: 1 },
+    { id: 'compound-strength-category-two', title: 'الفئة الثانية', birthYears: 'مواليد 1996 – 2000', num: 2 },
+    { id: 'compound-strength-category-three', title: 'الفئة الثالثة', birthYears: 'مواليد 1991 – 1995', num: 3 },
+    { id: 'compound-strength-category-four', title: 'الفئة الرابعة', birthYears: 'مواليد 1986 – 1990', num: 4 },
+    { id: 'compound-strength-category-five', title: 'الفئة الخامسة', birthYears: 'مواليد 1981 – 1985', num: 5 },
+    { id: 'compound-strength-category-six', title: 'الفئة السادسة', birthYears: 'مواليد 1976 – 1980', num: 6 },
+    { id: 'compound-strength-category-seven', title: 'الفئة السابعة', birthYears: 'مواليد 1971 – 1975', num: 7 },
+  ] as const
+
+  return (
+    <div className="mx-auto w-full max-w-2xl space-y-4">
+      <SportsTestHeroHeader
+        title="اختبار القوة المركبة (الشامل)"
+        subtitle="اختر الفئة العمرية للبدء في احتساب التكرارات واستعراض المعايير الرسمية المعتمدة."
+        unitBadge="تمرين القوة الشاملة"
+      />
+
+      <div className="grid gap-3.5 sm:gap-4">
+        {categories.map((cat) => (
+          <SportsCategoryCard
+            key={cat.id}
+            title={cat.title}
+            subtitle="اختبار القدرة والقوة العضلية المركبة"
+            birthYears={cat.birthYears}
+            categoryNumber={cat.num}
+            icon={Dumbbell}
+            onClick={() => openView(cat.id as keyof typeof compoundEvents)}
+          />
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export function CompoundStrengthView({ categoryId = 'compound-strength-category-one' }: { categoryId?: keyof typeof compoundEvents }) {
   const { event, category } = compoundEvents[categoryId]
-  return <RepetitionTestPanel eventName={event.name} category={category} standards={event.standards} scoreResolver={(count) => event.scores.find((entry) => entry.count !== undefined && count >= entry.count)?.score ?? 0} />
+  return (
+    <RepetitionTestPanel
+      eventName={event.name}
+      category={category}
+      standards={event.standards}
+      scoreResolver={(count) =>
+        event.scores.find((entry) => entry.count !== undefined && count >= entry.count)?.score ?? 0
+      }
+    />
+  )
 }

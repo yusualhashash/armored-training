@@ -1,34 +1,15 @@
 'use client'
 
-import { Medal } from 'lucide-react';
+import { Timer } from 'lucide-react'
 
-import { Button } from '@/components/ui/button';
-
-import { TimedTestPanel } from '@/components/timer/timed-distance-panel';
-import {
-    SPRINT_4X100M_CATEGORY_ONE_DEFAULT,
-    SPRINT_4X100M_CATEGORY_ONE_EVENT,
-} from '@/lib/sports/4x100-meter/1';
-import {
-    SPRINT_4X100M_CATEGORY_TWO_DEFAULT,
-    SPRINT_4X100M_CATEGORY_TWO_EVENT,
-} from '@/lib/sports/4x100-meter/2';
-import {
-    SPRINT_4X100M_CATEGORY_THREE_DEFAULT,
-    SPRINT_4X100M_CATEGORY_THREE_EVENT,
-} from '@/lib/sports/4x100-meter/3';
-import {
-    SPRINT_4X100M_CATEGORY_FOUR_DEFAULT,
-    SPRINT_4X100M_CATEGORY_FOUR_EVENT,
-} from '@/lib/sports/4x100-meter/4';
-import {
-    SPRINT_4X100M_CATEGORY_FIVE_DEFAULT,
-    SPRINT_4X100M_CATEGORY_FIVE_EVENT,
-} from '@/lib/sports/4x100-meter/5';
-import {
-    SPRINT_4X100M_CATEGORY_SIX_DEFAULT,
-    SPRINT_4X100M_CATEGORY_SIX_EVENT,
-} from '@/lib/sports/4x100-meter/6';
+import { TimedTestPanel } from '@/components/timer/timed-distance-panel'
+import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card'
+import { SPRINT_4X100M_CATEGORY_ONE_DEFAULT, SPRINT_4X100M_CATEGORY_ONE_EVENT } from '@/lib/sports/4x100-meter/1'
+import { SPRINT_4X100M_CATEGORY_TWO_DEFAULT, SPRINT_4X100M_CATEGORY_TWO_EVENT } from '@/lib/sports/4x100-meter/2'
+import { SPRINT_4X100M_CATEGORY_THREE_DEFAULT, SPRINT_4X100M_CATEGORY_THREE_EVENT } from '@/lib/sports/4x100-meter/3'
+import { SPRINT_4X100M_CATEGORY_FOUR_DEFAULT, SPRINT_4X100M_CATEGORY_FOUR_EVENT } from '@/lib/sports/4x100-meter/4'
+import { SPRINT_4X100M_CATEGORY_FIVE_DEFAULT, SPRINT_4X100M_CATEGORY_FIVE_EVENT } from '@/lib/sports/4x100-meter/5'
+import { SPRINT_4X100M_CATEGORY_SIX_DEFAULT, SPRINT_4X100M_CATEGORY_SIX_EVENT } from '@/lib/sports/4x100-meter/6'
 
 export type FourXHundredMeterViewId =
   | '4x100-category-one'
@@ -38,7 +19,7 @@ export type FourXHundredMeterViewId =
   | '4x100-category-five'
   | '4x100-category-six'
 
-const categoryData = {
+const categoryEvents = {
   '4x100-category-one': {
     event: SPRINT_4X100M_CATEGORY_ONE_EVENT,
     category: SPRINT_4X100M_CATEGORY_ONE_DEFAULT,
@@ -63,18 +44,18 @@ const categoryData = {
     event: SPRINT_4X100M_CATEGORY_SIX_EVENT,
     category: SPRINT_4X100M_CATEGORY_SIX_DEFAULT,
   },
-}
+} as const
 
 export function FourXHundredMeterView({
   activeView,
 }: {
   activeView: FourXHundredMeterViewId
 }) {
-  const { event, category } = categoryData[activeView]
+  const selected = categoryEvents[activeView]
 
   return (
     <div className="mx-auto w-full max-w-2xl">
-      <TimedTestPanel event={event} category={category} />
+      <TimedTestPanel event={selected.event} category={selected.category} />
     </div>
   )
 }
@@ -85,38 +66,35 @@ export function FourXHundredMeterCategories({
   openView: (view: FourXHundredMeterViewId) => void
 }) {
   const categories = [
-    ['4x100-category-one', 'الفئة الأولى', 'مواليد 2001 – 2008'],
-    ['4x100-category-two', 'الفئة الثانية', 'مواليد 1996 – 2000'],
-    ['4x100-category-three', 'الفئة الثالثة', 'مواليد 1991 – 1995'],
-    ['4x100-category-four', 'الفئة الرابعة', 'مواليد 1986 – 1990'],
-    ['4x100-category-five', 'الفئة الخامسة', 'مواليد 1981 – 1985'],
-    ['4x100-category-six', 'الفئة السادسة', 'مواليد 1976 – 1980'],
+    { id: '4x100-category-one', title: 'الفئة الأولى', birthYears: 'مواليد 2001 – 2008', num: 1 },
+    { id: '4x100-category-two', title: 'الفئة الثانية', birthYears: 'مواليد 1996 – 2000', num: 2 },
+    { id: '4x100-category-three', title: 'الفئة الثالثة', birthYears: 'مواليد 1991 – 1995', num: 3 },
+    { id: '4x100-category-four', title: 'الفئة الرابعة', birthYears: 'مواليد 1986 – 1990', num: 4 },
+    { id: '4x100-category-five', title: 'الفئة الخامسة', birthYears: 'مواليد 1981 – 1985', num: 5 },
+    { id: '4x100-category-six', title: 'الفئة السادسة', birthYears: 'مواليد 1976 – 1980', num: 6 },
   ] as const
 
   return (
-    <div className="mx-auto grid w-full max-w-2xl gap-4">
-      {categories.map(([view, title, birthYears]) => (
-        <Button
-          key={view}
-          type="button"
-          variant="ghost"
-          onClick={() => openView(view)}
-          className="group h-auto w-full justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]"
-        >
-          <span className="flex items-center gap-4">
-            <span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
-              <Medal className="size-6" aria-hidden="true" />
-            </span>
+    <div className="mx-auto w-full max-w-2xl space-y-4">
+      <SportsTestHeroHeader
+        title="سباق التتابع 4×100 متر (العمل الجماعي)"
+        subtitle="اختر الفئة العمرية للبدء في توقيت سباق التتابع وتسجيل النتائج التقديرية للفريق."
+        unitBadge="اختبار التتابع السريع"
+      />
 
-            <span className="flex flex-col items-start gap-1">
-              <span className="text-lg font-semibold">{title}</span>
-              <span className="text-xs font-normal text-white/50">
-                {birthYears}
-              </span>
-            </span>
-          </span>
-        </Button>
-      ))}
+      <div className="grid gap-3.5 sm:gap-4">
+        {categories.map((cat) => (
+          <SportsCategoryCard
+            key={cat.id}
+            title={cat.title}
+            subtitle="سباق التتابع 4 في 100 متر"
+            birthYears={cat.birthYears}
+            categoryNumber={cat.num}
+            icon={Timer}
+            onClick={() => openView(cat.id as FourXHundredMeterViewId)}
+          />
+        ))}
+      </div>
     </div>
   )
 }
