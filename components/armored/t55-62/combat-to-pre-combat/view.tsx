@@ -1,6 +1,7 @@
 'use client'
 
-import { ArmoredUnitButton } from '@/components/armored/armored-unit-button'
+import { Button } from '@/components/ui/button'
+import { ChevronLeft, Shield } from 'lucide-react'
 import {
   createT55_62CombatToPreCombatEvent,
   type T55_62CombatToPreCombatUnit,
@@ -54,13 +55,33 @@ export function T55_62CombatToPreCombatView({
 }) {
   if (activeView === 't55-62-combat-to-pre-combat') {
     return (
-      <div className="grid gap-3 sm:gap-4">
+      <div className="grid gap-4">
         {T55_62_COMBAT_TO_PRE_COMBAT_UNITS.map((unit) => (
-          <ArmoredUnitButton
+          <Button
             key={unit.id}
-            label={unit.label}
-            onClick={() => openView(`t55-62-combat-to-pre-combat-${unit.id}` as T55_62CombatToPreCombatViewId)}
-          />
+            type="button"
+            variant="ghost"
+            onClick={() =>
+              openView(
+                `t55-62-combat-to-pre-combat-${unit.id}` as T55_62CombatToPreCombatViewId,
+              )
+            }
+            dir="ltr"
+            className="group flex h-auto w-full items-center justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]"
+          >
+            <ChevronLeft
+              className="order-1 text-white/40 transition-transform group-hover:-translate-x-1"
+              aria-hidden="true"
+            />
+            <span dir="rtl" className="order-2 flex items-center gap-4">
+              <span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200">
+                <Shield aria-hidden="true" />
+              </span>
+              <span className="flex flex-col items-start gap-1">
+                <span className="text-lg font-semibold">{unit.label}</span>
+              </span>
+            </span>
+          </Button>
         ))}
       </div>
     )

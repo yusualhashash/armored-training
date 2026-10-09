@@ -288,9 +288,18 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="rounded-[2rem] border border-white/10 bg-[#101216] p-4 sm:p-6">
-        <p className="text-center text-xs font-semibold text-white/70">اختبار {eventName}</p>
-        <p className="mt-1.5 text-center text-sm text-white/50">{category.name} · مواليد {category.birthYears}</p>
+      <div className="rounded-[2.25rem] border border-emerald-500/20 bg-[#0c1610] p-5 sm:p-7 shadow-md">
+        <div className="text-center">
+          <span className="inline-block rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-300">
+            اختبار {eventName}
+          </span>
+          <p className="mt-2 text-sm sm:text-base font-bold text-white tracking-tight">
+            {category.name}
+          </p>
+          <p className="mt-0.5 text-xs text-white/50">
+            مواليد {category.birthYears}
+          </p>
+        </div>
         {showTimer && <div className="mt-5"><StopwatchDisplay elapsedMs={stopwatch.elapsedMs} /></div>}
       </div>
 
@@ -309,8 +318,8 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
 
           {current && (
             <div className="mt-5 border-t border-white/10 pt-5">
-              <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                <Button type="button" variant="outline" onClick={() => requestExport({ kind: 'entry', entry: current })} className="h-10 w-full sm:w-auto rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10 text-xs sm:text-sm whitespace-normal"><ExportIcon className="ml-2 size-4 shrink-0" aria-hidden="true" /><span>{isMobile ? 'حفظ أو مشاركة ملف Excel' : 'تصدير النتائج إلى Excel'}</span></Button>
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+                <Button type="button" variant="outline" onClick={() => requestExport({ kind: 'entry', entry: current })} className="h-10 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة ملف Excel' : 'تصدير النتائج إلى Excel'}</Button>
                 <p className="text-xs text-white/50"><EntryMeta entry={current} /></p>
               </div>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
@@ -337,9 +346,9 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
               <p className="py-4 text-center text-sm text-white/50">لا توجد جلسات محفوظة بعد. تُحفظ كل نتيجة تعرضها هنا تلقائيا.</p>
             ) : (
               <>
-                <div className="mb-3 flex flex-col sm:flex-row gap-2">
-                  <Button type="button" variant="outline" onClick={() => requestExport({ kind: 'all' })} className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10 text-xs sm:text-sm whitespace-normal"><ExportIcon className="ml-2 size-4 shrink-0" aria-hidden="true" /><span className="truncate">{isMobile ? 'حفظ أو مشاركة السجل' : 'تصدير السجل كاملا'}</span></Button>
-                  <Button type="button" variant="outline" onClick={clearHistory} className="h-10 rounded-xl border-rose-300/30 bg-transparent text-rose-200 hover:bg-rose-300/10 text-xs sm:text-sm whitespace-normal"><Trash2 className="ml-2 size-4 shrink-0" aria-hidden="true" /><span>مسح السجل</span></Button>
+                <div className="mb-3 flex gap-2">
+                  <Button type="button" variant="outline" onClick={() => requestExport({ kind: 'all' })} className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10"><ExportIcon className="ml-2 size-4" aria-hidden="true" />{isMobile ? 'حفظ أو مشاركة السجل' : 'تصدير السجل كاملا'}</Button>
+                  <Button type="button" variant="outline" onClick={clearHistory} className="h-10 rounded-xl border-rose-300/30 bg-transparent text-rose-200 hover:bg-rose-300/10"><Trash2 className="ml-2 size-4" aria-hidden="true" />مسح السجل</Button>
                 </div>
                 <ul className="flex max-h-96 flex-col gap-2 overflow-y-auto">
                   {relevantHistory.map((entry) => {
@@ -347,11 +356,11 @@ export function RepetitionTestPanel({ eventName, category, standards, scoreResol
                     return (
                       <li key={entry.id} className="rounded-xl bg-white/[0.05] px-3 py-3">
                         <div className="flex items-center justify-between gap-2">
-                          <div className="min-w-0 flex-1">
-                            <p className="text-sm font-semibold text-white break-words"><EntryMeta entry={entry} /></p>
-                            <p className="mt-1 text-xs text-white/50 break-words">{entry.results.length} متدرب · أفضل نتيجة {best} تكرار</p>
+                          <div>
+                            <p className="text-sm font-semibold text-white"><EntryMeta entry={entry} /></p>
+                            <p className="mt-1 text-xs text-white/50">{entry.results.length} متدرب · أفضل نتيجة {best} تكرار</p>
                           </div>
-                          <div className="flex gap-1 shrink-0">
+                          <div className="flex gap-1">
                             <Button type="button" variant="outline" size="icon" aria-label={isMobile ? 'حفظ أو مشاركة هذه الجلسة' : 'تصدير هذه الجلسة'} onClick={() => requestExport({ kind: 'entry', entry })} className="size-9 rounded-lg border-white/15 bg-transparent text-white hover:bg-white/10"><ExportIcon className="size-4" aria-hidden="true" /></Button>
                             <Button type="button" variant="outline" size="icon" aria-label="حذف هذه الجلسة" onClick={() => deleteEntry(entry.id)} className="size-9 rounded-lg border-white/15 bg-transparent text-rose-200 hover:bg-rose-300/10"><Trash2 className="size-4" aria-hidden="true" /></Button>
                           </div>

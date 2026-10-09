@@ -75,22 +75,22 @@ export function TimerPanel({
             variant="ghost"
             onClick={() => setShowInstructions((visible) => !visible)}
             aria-expanded={showInstructions}
-            className="flex h-auto w-full min-w-0 items-center justify-between px-4 py-3.5 sm:px-5 sm:py-4 text-right text-white hover:bg-white/5 whitespace-normal"
+            className="flex h-auto w-full items-center justify-between px-5 py-4 text-right text-white hover:bg-white/5"
           >
-            <span className="flex min-w-0 items-center gap-2.5 sm:gap-3">
-              <BookOpen className="size-5 shrink-0 text-emerald-300" aria-hidden="true" />
-              <span className="font-semibold text-sm sm:text-base">تعليمات المتدرب</span>
+            <span className="flex items-center gap-3">
+              <BookOpen className="size-5 text-emerald-300" aria-hidden="true" />
+              <span className="font-semibold">تعليمات المتدرب</span>
             </span>
             <ChevronDown
-              className={`size-5 shrink-0 text-white/50 transition-transform ${showInstructions ? 'rotate-180' : ''}`}
+              className={`size-5 text-white/50 transition-transform ${showInstructions ? 'rotate-180' : ''}`}
               aria-hidden="true"
             />
           </Button>
 
           {showInstructions && (
-            <div className="border-t border-white/10 px-4 pb-4 pt-3 sm:px-5 sm:pb-5 sm:pt-4 text-xs sm:text-sm leading-relaxed sm:leading-8 text-white/70">
+            <div className="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-8 text-white/70">
               {trainerInstructions.split('\n').map((line, index) => (
-                <p key={index} className="not-last:mb-2 break-words">
+                <p key={index} className="not-last:mb-2">
                   {line}
                 </p>
               ))}

@@ -2,8 +2,8 @@
 
 import { Dumbbell } from 'lucide-react'
 
-import { SectionButton } from '@/components/app/section-button'
 import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel'
+import { Button } from '@/components/ui/button'
 import { PULL_UPS_CATEGORY_ONE_DEFAULT } from '@/lib/sports/pullups/1/categories'
 import { PULL_UPS_CATEGORY_ONE_EVENT } from '@/lib/sports/pullups/1'
 import { PULL_UPS_CATEGORY_TWO_DEFAULT } from '@/lib/sports/pullups/2/categories'
@@ -31,16 +31,14 @@ const pullupEvents = {
 
 export function PullupsCategories({ openView }: { openView: (view: keyof typeof pullupEvents) => void }) {
   return (
-    <div className="mx-auto grid w-full max-w-2xl gap-3 sm:gap-4">
+    <div className="grid gap-4">
       {Object.entries(pullupEvents).map(([view, { category }]) => (
-        <SectionButton
-          key={view}
-          label={category.name.replace('العمرية ', '')}
-          subLabel="سحب الجسم على الثابت"
-          description={`مواليد ${category.birthYears}`}
-          icon={Dumbbell}
-          onClick={() => openView(view as keyof typeof pullupEvents)}
-        />
+        <Button key={view} type="button" variant="ghost" onClick={() => openView(view as keyof typeof pullupEvents)} className="group flex h-auto w-full items-center justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]">
+          <span className="flex items-center gap-4">
+            <span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200"><Dumbbell aria-hidden="true" /></span>
+            <span className="flex flex-col items-start gap-1"><span className="text-lg font-semibold">{category.name.replace('العمرية ', '')} <span className="text-sm font-normal text-white/60">(سحب الجسم على الثابت)</span></span><span className="text-xs text-white/50">مواليد {category.birthYears}</span></span>
+          </span>
+        </Button>
       ))}
     </div>
   )

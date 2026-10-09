@@ -2,8 +2,8 @@
 
 import { Dumbbell } from 'lucide-react'
 
-import { SectionButton } from '@/components/app/section-button'
 import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel'
+import { Button } from '@/components/ui/button'
 import { COMPOUND_STRENGTH_CATEGORY_ONE_DEFAULT } from '@/lib/sports/compound-strength/1/categories'
 import { COMPOUND_STRENGTH_CATEGORY_ONE_EVENT } from '@/lib/sports/compound-strength/1'
 import { COMPOUND_STRENGTH_CATEGORY_TWO_DEFAULT } from '@/lib/sports/compound-strength/2/categories'
@@ -30,20 +30,9 @@ const compoundEvents = {
 } as const
 
 export function CompoundStrengthCategories({ openView }: { openView: (view: keyof typeof compoundEvents) => void }) {
-  return (
-    <div className="mx-auto grid w-full max-w-2xl gap-3 sm:gap-4">
-      {Object.entries(compoundEvents).map(([view, { category }]) => (
-        <SectionButton
-          key={view}
-          label={category.name.replace('العمرية ', '')}
-          subLabel="القوة المركبة"
-          description={`مواليد ${category.birthYears}`}
-          icon={Dumbbell}
-          onClick={() => openView(view as keyof typeof compoundEvents)}
-        />
-      ))}
-    </div>
-  )
+  return <div className="grid gap-4">
+    {Object.entries(compoundEvents).map(([view, { category }]) => <Button key={view} type="button" variant="ghost" onClick={() => openView(view as keyof typeof compoundEvents)} className="group flex h-auto w-full items-center justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]"><span className="flex items-center gap-4"><span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200"><Dumbbell aria-hidden="true" /></span><span className="flex flex-col items-start gap-1"><span className="text-lg font-semibold">{category.name.replace('العمرية ', '')} <span className="text-sm font-normal text-white/60">(القوة المركبة)</span></span><span className="text-xs text-white/50">مواليد {category.birthYears}</span></span></span></Button>)}
+  </div>
 }
 
 export function CompoundStrengthView({ categoryId = 'compound-strength-category-one' }: { categoryId?: keyof typeof compoundEvents }) {

@@ -2,8 +2,8 @@
 
 import { Dumbbell } from 'lucide-react'
 
-import { SectionButton } from '@/components/app/section-button'
 import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel'
+import { Button } from '@/components/ui/button'
 import { PUSH_UPS_CATEGORY_ONE_EVENT } from '@/lib/sports/pushups/1'
 import { PUSH_UPS_CATEGORY_ONE_DEFAULT } from '@/lib/sports/pushups/1/categories'
 import { PUSH_UPS_CATEGORY_TWO_DEFAULT } from '@/lib/sports/pushups/2/categories'
@@ -44,21 +44,15 @@ export function PushupsView({ categoryId = 'pushups-category-one' }: { categoryI
 }
 
 export function PushupsCategories({ openView }: { openView: (view: 'pushups-category-one' | 'pushups-category-two' | 'pushups-category-three' | 'pushups-category-four' | 'pushups-category-five' | 'pushups-category-six' | 'pushups-category-seven') => void }) {
-  const categoryIds = ['one', 'two', 'three', 'four', 'five', 'six', 'seven'] as const
-
   return (
-    <div className="mx-auto grid w-full max-w-2xl gap-3 sm:gap-4">
+    <div className="grid gap-4">
       {Object.values(pushupEvents).map(({ category }) => (
-        <SectionButton
-          key={category.id}
-          label={category.name.replace('العمرية ', '')}
-          subLabel="ثني ومد الذراعين"
-          description={`مواليد ${category.birthYears}`}
-          icon={Dumbbell}
-          onClick={() =>
-            openView(`pushups-category-${categoryIds[category.id - 1]}` as Parameters<typeof openView>[0])
-          }
-        />
+        <Button key={category.id} type="button" variant="ghost" onClick={() => openView(`pushups-category-${['one', 'two', 'three', 'four', 'five', 'six', 'seven'][category.id - 1]}` as 'pushups-category-one' | 'pushups-category-two' | 'pushups-category-three' | 'pushups-category-four' | 'pushups-category-five' | 'pushups-category-six' | 'pushups-category-seven')} className="group flex h-auto w-full items-center justify-between rounded-3xl border border-white/10 bg-[#101216] p-5 text-right text-white hover:bg-[#17191f]">
+          <span className="flex items-center gap-4">
+            <span className="flex size-14 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200"><Dumbbell aria-hidden="true" /></span>
+            <span className="flex flex-col items-start gap-1"><span className="text-lg font-semibold">{category.name.replace('العمرية ', '')} <span className="text-sm font-normal text-white/60">(ثني ومد الذراعين)</span></span><span className="text-xs text-white/50">مواليد {category.birthYears}</span></span>
+          </span>
+        </Button>
       ))}
     </div>
   )

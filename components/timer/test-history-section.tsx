@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { Download, History, Share2, Trash2 } from 'lucide-react'
+import { ChevronDown, Download, History, Share2, Trash2 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
@@ -18,28 +18,58 @@ interface TestHistorySectionProps {
   children: ReactNode
 }
 
-/** قسم قابل للطي يعرض سجل جلسات الاختبار مع تصدير الكل ومسح السجل. */
+/** قسم قابل للطي يعرض سجل جلسات الاختبار مع تصدير الكل ومسح السجل بتصميم تكتيكي. */
 export function TestHistorySection({ count, isMobile, open, onToggle, onExportAll, onClear, emptyMessage, children }: TestHistorySectionProps) {
   const ExportIcon = isMobile ? Share2 : Download
 
   return (
-    <section className="rounded-[2rem] border border-white/10 bg-[#101216] p-4 sm:p-6" aria-labelledby="history-title">
-      <button type="button" onClick={onToggle} aria-expanded={open} className="flex w-full items-center justify-between text-right">
-        <span className="flex items-center gap-2"><History className="size-4 text-white/60" aria-hidden="true" /><span id="history-title" className="text-base font-bold text-white">سجل الاختبارات</span></span>
-        <span className="text-xs text-white/50">{count} جلسة</span>
+    <section className="rounded-3xl border border-emerald-500/20 bg-[#0c1610] p-4 sm:p-6 shadow-sm" aria-labelledby="history-title">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between text-right transition hover:opacity-90 active:scale-[0.99]"
+      >
+        <span className="flex items-center gap-2.5">
+          <div className="flex size-8 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-300">
+            <History className="size-4" aria-hidden="true" />
+          </div>
+          <span id="history-title" className="text-base font-bold text-white tracking-tight">سجل هذا الاختبار</span>
+        </span>
+
+        <div className="flex items-center gap-2">
+          <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-xs font-semibold text-white/60">
+            {count} جلسة
+          </span>
+          <ChevronDown className={`size-4 text-white/40 transition-transform ${open ? 'rotate-180' : ''}`} />
+        </div>
       </button>
 
       {open && (
-        <div className="mt-4">
+        <div className="mt-5 border-t border-white/10 pt-4">
           {count === 0 ? (
-            <p className="py-4 text-center text-sm text-white/50">{emptyMessage}</p>
+            <p className="py-4 text-center text-xs sm:text-sm text-white/50">{emptyMessage}</p>
           ) : (
             <>
-              <div className="mb-3 flex flex-col sm:flex-row gap-2">
-                <Button type="button" variant="outline" onClick={onExportAll} className="h-10 flex-1 rounded-xl border-emerald-300/30 bg-transparent text-emerald-200 hover:bg-emerald-300/10 text-xs sm:text-sm whitespace-normal"><ExportIcon className="ml-2 size-4 shrink-0" aria-hidden="true" /><span className="truncate">{isMobile ? 'حفظ أو مشاركة السجل' : 'تصدير السجل كاملا'}</span></Button>
-                <Button type="button" variant="outline" onClick={onClear} className="h-10 rounded-xl border-rose-300/30 bg-transparent text-rose-200 hover:bg-rose-300/10 text-xs sm:text-sm whitespace-normal"><Trash2 className="ml-2 size-4 shrink-0" aria-hidden="true" /><span>مسح السجل</span></Button>
+              <div className="mb-3 flex gap-2">
+                <button
+                  type="button"
+                  onClick={onExportAll}
+                  className="flex h-10 flex-1 items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-xs font-bold text-emerald-300 hover:bg-emerald-500/20 active:scale-95 transition"
+                >
+                  <ExportIcon className="size-3.5" aria-hidden="true" />
+                  <span>{isMobile ? 'حفظ أو مشاركة السجل' : 'تصدير السجل كاملاً إلى Excel'}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={onClear}
+                  className="flex h-10 items-center justify-center gap-1.5 rounded-xl border border-red-500/30 bg-red-500/10 px-3 text-xs font-bold text-red-300 hover:bg-red-500/20 active:scale-95 transition"
+                >
+                  <Trash2 className="size-3.5" aria-hidden="true" />
+                  <span>مسح</span>
+                </button>
               </div>
-              <ul className="flex max-h-96 flex-col gap-2 overflow-y-auto">{children}</ul>
+              <ul className="flex max-h-96 flex-col gap-2 overflow-y-auto pr-1">{children}</ul>
             </>
           )}
         </div>

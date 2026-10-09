@@ -173,9 +173,18 @@ export function TimedTestPanel({ event, category, showTimer = true }: { event: S
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="rounded-[2rem] border border-white/10 bg-[#101216] p-4 sm:p-6">
-        <p className="text-center text-xs font-semibold text-white/70">اختبار {event.name}</p>
-        <p className="mt-1.5 text-center text-sm text-white/50">{category.name} · مواليد {category.birthYears}</p>
+      <div className="rounded-[2.25rem] border border-emerald-500/20 bg-[#0c1610] p-5 sm:p-7 shadow-md">
+        <div className="text-center">
+          <span className="inline-block rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-300">
+            اختبار {event.name}
+          </span>
+          <p className="mt-2 text-sm sm:text-base font-bold text-white tracking-tight">
+            {category.name}
+          </p>
+          <p className="mt-0.5 text-xs text-white/50">
+            مواليد {category.birthYears}
+          </p>
+        </div>
         {showTimer && <div className="mt-5"><StopwatchDisplay elapsedMs={stopwatch.elapsedMs} /></div>}
       </div>
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { Check, Flag, RotateCcw } from 'lucide-react'
+import { Check, Flag, Pause, Play, RotateCcw } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
@@ -16,7 +16,7 @@ interface TimerControlsProps {
   showRecord?: boolean
 }
 
-/** أزرار التحكم في ساعة الإيقاف. */
+/** أزرار التحكم في ساعة الإيقاف بتصميم تكتيكي عسكري مريح وسريع الاستجابة. */
 export function TimerControls({
   isRunning,
   isFinished,
@@ -30,61 +30,85 @@ export function TimerControls({
 }: TimerControlsProps) {
   if (isFinished) {
     return (
-      <Button
+      <button
         type="button"
-        variant="ghost"
         onClick={onReset}
-        className="h-14 w-full rounded-2xl border border-white/10 bg-[#101216] text-base font-bold text-white hover:bg-white/12 hover:text-white"
+        className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl border border-white/15 bg-[#0f1d14] text-base font-bold text-white shadow-md transition-all hover:bg-[#14261b] hover:border-emerald-500/30 active:scale-[0.98]"
       >
-        <RotateCcw data-icon="inline-start" aria-hidden="true" />
-        إعادة المحاولة
-      </Button>
+        <RotateCcw className="size-5 text-emerald-300" aria-hidden="true" />
+        <span>إعادة المحاولة والبدء من جديد</span>
+      </button>
     )
   }
 
   return (
-    <div className="grid grid-cols-2 gap-2 sm:gap-3">
-      <Button
+    <div className="grid grid-cols-1 gap-3 min-[380px]:grid-cols-2">
+      {/* Start / Pause / Resume button */}
+      <button
         type="button"
-        variant="ghost"
         onClick={onToggle}
-        className={
+        className={`flex h-14 items-center justify-center gap-2 rounded-2xl text-base font-bold transition-all shadow-lg active:scale-[0.98] ${
           isRunning
-            ? 'h-13 sm:h-14 rounded-2xl border border-white/10 bg-[#101216] text-sm sm:text-base font-bold text-white hover:bg-white/12 hover:text-white px-2'
-            : 'h-13 sm:h-14 rounded-2xl border border-white/10 bg-[#101216] text-sm sm:text-base font-bold text-white shadow-lg shadow-black/20 hover:bg-[#17191f] hover:text-white px-2'
-        }
+            ? 'border border-amber-400/30 bg-amber-500 text-slate-950 shadow-amber-950/30 hover:bg-amber-400'
+            : hasStarted
+            ? 'border border-emerald-400/30 bg-emerald-600 text-white shadow-emerald-950/40 hover:bg-emerald-500'
+            : 'border border-emerald-400/40 bg-emerald-600 text-white shadow-emerald-950/50 hover:bg-emerald-500'
+        }`}
       >
-        {getToggleLabel(isRunning, hasStarted)}
-      </Button>
+        {isRunning ? (
+          <>
+            <Pause className="size-5" aria-hidden="true" />
+            <span>إيقاف مؤقت</span>
+          </>
+        ) : hasStarted ? (
+          <>
+            <Play className="size-5 fill-current" aria-hidden="true" />
+            <span>متابعة العداد</span>
+          </>
+        ) : (
+          <>
+            <Play className="size-5 fill-current" aria-hidden="true" />
+            <span>ابدأ العداد</span>
+          </>
+        )}
+      </button>
 
-      <Button
+      {/* Finish button */}
+      <button
         type="button"
-        variant="ghost"
         onClick={onFinish}
         disabled={!hasStarted}
-        className="h-13 sm:h-14 rounded-2xl border border-red-400/30 bg-red-600 text-white text-sm sm:text-base font-bold shadow-lg shadow-red-950/25 hover:bg-red-500 hover:text-white px-2"
+        className={`flex h-14 items-center justify-center gap-2 rounded-2xl text-base font-bold transition-all active:scale-[0.98] ${
+          hasStarted
+            ? 'border border-red-500/40 bg-red-600 text-white shadow-lg shadow-red-950/40 hover:bg-red-500'
+            : 'border border-white/10 bg-white/[0.04] text-white/30 cursor-not-allowed'
+        }`}
       >
-        <Check data-icon="inline-start" aria-hidden="true" />
-        انتهى
-      </Button>
+        <Check className="size-5" aria-hidden="true" />
+        <span>انتهى الاختبار</span>
+      </button>
 
+      {/* Record Arrival button */}
       {showRecord && (
-        <Button
+        <button
           type="button"
-          variant="ghost"
           onClick={onRecord}
           disabled={!isRunning}
-          className="col-span-full h-13 sm:h-14 rounded-2xl border border-orange-300/30 bg-orange-500 text-sm sm:text-base font-bold text-white shadow-lg shadow-orange-950/25 hover:bg-orange-400 hover:text-white px-2"
+          className={`col-span-full flex h-14 items-center justify-center gap-2 rounded-2xl text-base font-bold transition-all active:scale-[0.98] ${
+            isRunning
+              ? 'border border-amber-400/40 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-lg shadow-amber-950/40 hover:brightness-105'
+              : 'border border-white/10 bg-white/[0.04] text-white/30 cursor-not-allowed'
+          }`}
         >
-          <Flag data-icon="inline-start" aria-hidden="true" />
-          تسجيل وصول {arrivalsCount > 0 ? `(${arrivalsCount})` : ''}
-        </Button>
+          <Flag className="size-5" aria-hidden="true" />
+          <span>تسجيل وصول متدرب</span>
+          {arrivalsCount > 0 && (
+            <span className="mr-1.5 flex size-6 items-center justify-center rounded-full bg-slate-950/30 text-xs font-mono font-bold text-slate-950">
+              {arrivalsCount}
+            </span>
+          )}
+        </button>
       )}
     </div>
   )
-}
-
-function getToggleLabel(isRunning: boolean, hasStarted: boolean): string {
-  if (isRunning) return 'إيقاف مؤقت'
-  return hasStarted ? 'متابعة' : 'ابدأ العداد'
 }

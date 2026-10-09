@@ -5,8 +5,7 @@ import { Button } from '@/components/ui/button'
 
 interface SectionButtonProps {
   label: string
-  description?: string
-  subLabel?: string
+  description: string
   icon?: LucideIcon
   onClick: () => void
 }
@@ -14,44 +13,34 @@ interface SectionButtonProps {
 export function SectionButton({
   label,
   description,
-  subLabel,
   icon: Icon = Timer,
   onClick,
 }: SectionButtonProps) {
   return (
-    <Button
+    <button
       type="button"
-      variant="ghost"
       onClick={onClick}
-      className="group h-auto w-full min-w-0 justify-between rounded-3xl border border-white/10 bg-[#101216] px-3.5 py-4 text-right text-white hover:bg-[#17191f] sm:p-5 whitespace-normal"
+      className="group relative flex w-full min-w-0 items-center justify-between rounded-2xl border border-emerald-500/15 bg-[#0c1610] p-4 text-right text-white shadow-sm transition-all duration-200 hover:border-emerald-500/35 hover:bg-[#101e16] hover:shadow-md active:scale-[0.99]"
     >
-      <span className="flex min-w-0 flex-1 items-center gap-3 sm:gap-4">
-        <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-rose-200/10 text-rose-200 sm:size-14">
-          <Icon className="size-5 sm:size-6" aria-hidden="true" />
-        </span>
+      <div className="flex min-w-0 flex-1 items-center gap-3.5">
+        <div className="flex size-12 shrink-0 items-center justify-center rounded-xl border border-emerald-400/20 bg-emerald-400/10 text-emerald-300 transition-colors group-hover:border-emerald-400/40 group-hover:bg-emerald-400/20">
+          <Icon className="size-6" aria-hidden="true" />
+        </div>
 
-        <span className="flex min-w-0 flex-1 flex-col items-start gap-1">
-          <span className="block w-full min-w-0 whitespace-normal break-words text-sm font-semibold leading-snug sm:text-lg sm:leading-normal">
+        <div className="flex min-w-0 flex-1 flex-col items-start gap-0.5">
+          <span className="block whitespace-normal break-words text-sm font-bold text-white sm:text-base">
             {label}
-            {subLabel && (
-              <span className="mr-1.5 text-xs font-normal text-white/60">
-                ({subLabel})
-              </span>
-            )}
           </span>
 
-          {description && (
-            <span className="block w-full min-w-0 whitespace-normal break-words text-xs font-normal leading-relaxed text-white/50">
-              {description}
-            </span>
-          )}
-        </span>
-      </span>
+          <span className="block whitespace-normal break-words text-xs text-white/55 leading-relaxed">
+            {description}
+          </span>
+        </div>
+      </div>
 
-      <ChevronLeft
-        className="size-5 shrink-0 text-white/35 transition-transform group-hover:-translate-x-1"
-        aria-hidden="true"
-      />
-    </Button>
+      <div className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-white/5 bg-white/[0.03] text-white/40 transition-transform group-hover:-translate-x-1 group-hover:text-emerald-300 group-hover:border-emerald-500/20">
+        <ChevronLeft className="size-4" aria-hidden="true" />
+      </div>
+    </button>
   )
 }

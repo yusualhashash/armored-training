@@ -4,16 +4,28 @@ interface StopwatchDisplayProps {
   elapsedMs: number
 }
 
-/** شاشة عرض زمن ساعة الإيقاف. */
+/** شاشة عرض زمن ساعة الإيقاف بتصميم كرونوغراف عسكري تكتيكي عالي الدقة. */
 export function StopwatchDisplay({ elapsedMs }: StopwatchDisplayProps) {
+  const isRunning = elapsedMs > 0
+
   return (
-    <div className="rounded-2xl sm:rounded-3xl border border-white/10 bg-black/25 px-2 py-6 sm:px-3 sm:py-8">
-      <p dir="ltr" className="w-full overflow-hidden whitespace-nowrap text-center font-mono text-[clamp(1.75rem,11.5vw,3.75rem)] font-bold leading-none tracking-tight text-white tabular-nums">
-        {formatStopwatchTime(elapsedMs)}
-      </p>
-      <p className="mt-2.5 sm:mt-3 text-center text-[11px] sm:text-xs text-white/40">
-        دقائق : ثواني . أجزاء من الثانية
-      </p>
+    <div className="relative overflow-hidden rounded-3xl border border-emerald-500/25 bg-[#040805] px-4 py-7 shadow-[inset_0_4px_20px_rgba(0,0,0,0.85),0_0_25px_rgba(16,185,129,0.08)]">
+      {/* Background LCD glow effect */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.08),transparent_70%)]" />
+
+      <div className="relative z-10 flex flex-col items-center">
+        <p
+          dir="ltr"
+          className="w-full overflow-hidden whitespace-nowrap text-center font-mono text-[clamp(2.2rem,13vw,4.4rem)] font-black leading-none tracking-widest text-emerald-300 tabular-nums drop-shadow-[0_0_15px_rgba(52,211,153,0.4)]"
+        >
+          {formatStopwatchTime(elapsedMs)}
+        </p>
+
+        <div className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold tracking-wider text-emerald-400/60 border-t border-emerald-500/15 pt-3 w-full max-w-xs">
+          <span className="flex size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span>دقائق : ثواني . أجزاء المئة</span>
+        </div>
+      </div>
     </div>
   )
 }
