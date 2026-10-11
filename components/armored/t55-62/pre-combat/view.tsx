@@ -3,7 +3,6 @@
 import { TimerPanel } from '@/components/timer/timer-panel'
 import {
   ArmoredUnitSelector,
-  ArmoredTimerHeader,
 } from '@/components/armored/armored-unit-selector'
 import {
   createT55_62PreCombatEvent,
@@ -65,16 +64,9 @@ export function T55_62PreCombatView({
     't55-62-pre-combat-',
     '',
   ) as T55_62PreCombatUnit
-  const unitLabel =
-    T55_62_PRE_COMBAT_UNITS.find((u) => u.id === unit)?.label ?? unit
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <ArmoredTimerHeader
-        drillTitle="الانتقال من تشكيلة الرتل إلى ترتيب ما قبل القتال (T-55 / T-62)"
-        unitLabel={unitLabel}
-        onBack={() => openView('t55-62-pre-combat')}
-      />
       <TimerPanel
         event={createT55_62PreCombatEvent(unit)}
         showRecord={false}

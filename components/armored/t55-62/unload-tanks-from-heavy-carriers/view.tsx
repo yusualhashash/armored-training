@@ -3,7 +3,6 @@
 import { TimerPanel } from '@/components/timer/timer-panel'
 import {
   ArmoredUnitSelector,
-  ArmoredTimerHeader,
 } from '@/components/armored/armored-unit-selector'
 import type { T55_62UnloadTanksFromHeavyCarriersUnit } from '@/lib/armored/t55-62/unload-tanks-from-heavy-carriers'
 import {
@@ -72,17 +71,9 @@ export function T55_62UnloadTanksFromHeavyCarriersView({
     't55-62-unload-tanks-from-heavy-carriers-',
     '',
   ) as T55_62UnloadTanksFromHeavyCarriersUnit
-  const unitLabel =
-    T55_62_UNLOAD_TANKS_FROM_HEAVY_CARRIERS_UNITS.find((u) => u.id === unit)
-      ?.label ?? unit
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <ArmoredTimerHeader
-        drillTitle="تفريغ الدبابات من الناقلات الثقيلة (T-55 / T-62)"
-        unitLabel={unitLabel}
-        onBack={() => openView('t55-62-unload-tanks-from-heavy-carriers')}
-      />
       <TimerPanel
         event={createT55_62UnloadTanksFromHeavyCarriersEvent(unit)}
         showRecord={false}

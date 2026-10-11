@@ -1,15 +1,14 @@
 'use client'
 
-import { TimerPanel } from '@/components/timer/timer-panel'
 import {
-  ArmoredUnitSelector,
-  ArmoredTimerHeader,
-} from '@/components/armored/armored-unit-selector'
-import type { T72MoveAndOccupyFiringLineUnit } from '@/lib/armored/t72/move-and-occupy-firing-line'
+    ArmoredUnitSelector,
+} from '@/components/armored/armored-unit-selector';
+import { TimerPanel } from '@/components/timer/timer-panel';
+import type { T72MoveAndOccupyFiringLineUnit } from '@/lib/armored/t72/move-and-occupy-firing-line';
 import {
-  createT72MoveAndOccupyFiringLineEvent,
-  T72_MOVE_AND_OCCUPY_FIRING_LINE_UNITS,
-} from '@/lib/armored/t72/move-and-occupy-firing-line'
+    createT72MoveAndOccupyFiringLineEvent,
+    T72_MOVE_AND_OCCUPY_FIRING_LINE_UNITS,
+} from '@/lib/armored/t72/move-and-occupy-firing-line';
 
 export type T72MoveAndOccupyFiringLineViewId =
   | 't72-move-and-occupy-firing-line'
@@ -67,17 +66,9 @@ export function T72MoveAndOccupyFiringLineView({
     't72-move-and-occupy-firing-line-',
     '',
   ) as T72MoveAndOccupyFiringLineUnit
-  const unitLabel =
-    T72_MOVE_AND_OCCUPY_FIRING_LINE_UNITS.find((u) => u.id === unit)?.label ??
-    unit
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <ArmoredTimerHeader
-        drillTitle="التقدم واحتلال خط إطلاق النار (T-72)"
-        unitLabel={unitLabel}
-        onBack={() => openView('t72-move-and-occupy-firing-line')}
-      />
       <TimerPanel
         event={createT72MoveAndOccupyFiringLineEvent(unit)}
         showRecord={false}

@@ -3,7 +3,6 @@
 import { TimerPanel } from '@/components/timer/timer-panel'
 import {
   ArmoredUnitSelector,
-  ArmoredTimerHeader,
 } from '@/components/armored/armored-unit-selector'
 import type { T72Unit } from '@/lib/armored/t72/boarding'
 import { createT72Event, T72_UNITS } from '@/lib/armored/t72/boarding'
@@ -64,15 +63,9 @@ export function T72View({
   }
 
   const unit = activeView.replace('t72-', '') as T72Unit
-  const unitLabel = T72_UNITS.find((u) => u.id === unit)?.label ?? unit
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <ArmoredTimerHeader
-        drillTitle="ركوب الطواقم في الدبابة (T-72)"
-        unitLabel={unitLabel}
-        onBack={() => openView('t72-boarding')}
-      />
       <TimerPanel
         event={createT72Event(unit)}
         showRecord={false}

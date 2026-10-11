@@ -3,7 +3,6 @@
 import { TimerPanel } from '@/components/timer/timer-panel'
 import {
   ArmoredUnitSelector,
-  ArmoredTimerHeader,
 } from '@/components/armored/armored-unit-selector'
 import type { T55_62ColumnToCombatUnit } from '@/lib/armored/t55-62/column-to-combat'
 import {
@@ -59,16 +58,9 @@ export function T55_62ColumnToCombatView({
     't55-62-column-to-combat-',
     '',
   ) as T55_62ColumnToCombatUnit
-  const unitLabel =
-    T55_62_COLUMN_TO_COMBAT_UNITS.find((u) => u.id === unit)?.label ?? unit
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <ArmoredTimerHeader
-        drillTitle="الفتح من رتل التحرك الى ترتيب القتال الصد هجوم معاد (باتجاه الجبهة) (T-55 / T-62)"
-        unitLabel={unitLabel}
-        onBack={() => openView('t55-62-column-to-combat')}
-      />
       <TimerPanel
         event={createT55_62ColumnToCombatEvent(unit)}
         showRecord={false}

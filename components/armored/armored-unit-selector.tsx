@@ -149,5 +149,3 @@ export function ArmoredUnitSelector({
     </div>
   )
 }
-
-

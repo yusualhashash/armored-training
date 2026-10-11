@@ -3,7 +3,6 @@
 import { TimerPanel } from '@/components/timer/timer-panel'
 import {
   ArmoredUnitSelector,
-  ArmoredTimerHeader,
 } from '@/components/armored/armored-unit-selector'
 import type { T55_62MoveAndOccupyFiringLineUnit } from '@/lib/armored/t55-62/move-and-occupy-firing-line'
 import {
@@ -67,17 +66,9 @@ export function T55_62MoveAndOccupyFiringLineView({
     't55-62-move-and-occupy-firing-line-',
     '',
   ) as T55_62MoveAndOccupyFiringLineUnit
-  const unitLabel =
-    T55_62_MOVE_AND_OCCUPY_FIRING_LINE_UNITS.find((u) => u.id === unit)
-      ?.label ?? unit
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <ArmoredTimerHeader
-        drillTitle="التقدم واحتلال خط إطلاق النار (T-55 / T-62)"
-        unitLabel={unitLabel}
-        onBack={() => openView('t55-62-move-and-occupy-firing-line')}
-      />
       <TimerPanel
         event={createT55_62MoveAndOccupyFiringLineEvent(unit)}
         showRecord={false}

@@ -3,7 +3,6 @@
 import { TimerPanel } from '@/components/timer/timer-panel'
 import {
   ArmoredUnitSelector,
-  ArmoredTimerHeader,
 } from '@/components/armored/armored-unit-selector'
 import type { T72DisembarkingUnit } from '@/lib/armored/t72/disembarking'
 import {
@@ -72,16 +71,9 @@ export function T72DisembarkingView({
     't72-disembarking-',
     '',
   ) as T72DisembarkingUnit
-  const unitLabel =
-    T72_DISEMBARKING_UNITS.find((u) => u.id === unit)?.label ?? unit
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <ArmoredTimerHeader
-        drillTitle="نزول الطواقم من الدبابة (T-72)"
-        unitLabel={unitLabel}
-        onBack={() => openView('t72-disembarking')}
-      />
       <TimerPanel
         event={createT72DisembarkingEvent(unit)}
         showRecord={false}

@@ -3,7 +3,6 @@
 import { TimerPanel } from '@/components/timer/timer-panel'
 import {
   ArmoredUnitSelector,
-  ArmoredTimerHeader,
 } from '@/components/armored/armored-unit-selector'
 import type { T72LoadTanksOnHeavyCarriersUnit } from '@/lib/armored/t72/load-tanks-on-heavy-carriers'
 import {
@@ -78,17 +77,9 @@ export function T72LoadTanksOnHeavyCarriersView({
     't72-load-tanks-on-heavy-carriers-',
     '',
   ) as T72LoadTanksOnHeavyCarriersUnit
-  const unitLabel =
-    T72_LOAD_TANKS_ON_HEAVY_CARRIERS_UNITS.find((u) => u.id === unit)?.label ??
-    unit
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <ArmoredTimerHeader
-        drillTitle="تحميل الدبابات على الناقلات الثقيلة (T-72)"
-        unitLabel={unitLabel}
-        onBack={() => openView('t72-load-tanks-on-heavy-carriers')}
-      />
       <TimerPanel
         event={createT72LoadTanksOnHeavyCarriersEvent(unit)}
         showRecord={false}
