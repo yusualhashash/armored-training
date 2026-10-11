@@ -55,7 +55,7 @@ export function T55_62UnloadTanksFromHeavyCarriersView({
   if (activeView === 't55-62-unload-tanks-from-heavy-carriers') {
     return (
       <ArmoredUnitSelector
-        drillTitle="تفريغ الدبابات من الناقلات الثقيلة"
+        drillTitle="تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن) "
         tankModel="T-55 / T-62"
         units={T55_62_UNLOAD_TANKS_FROM_HEAVY_CARRIERS_UNITS}
         onSelect={(unitId) =>

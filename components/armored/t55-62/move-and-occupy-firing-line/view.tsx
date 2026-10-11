@@ -50,7 +50,7 @@ export function T55_62MoveAndOccupyFiringLineView({
   if (activeView === 't55-62-move-and-occupy-firing-line') {
     return (
       <ArmoredUnitSelector
-        drillTitle="التقدم واحتلال خط إطلاق النار"
+        drillTitle="التحرك واحتلال خط رمي لصد هجمات العدو"
         tankModel="T-55 / T-62"
         units={T55_62_MOVE_AND_OCCUPY_FIRING_LINE_UNITS}
         onSelect={(unitId) =>
