@@ -50,9 +50,7 @@ export function TwoKilometerCategories({ openView }: { openView: (view: TwoKilom
           <SportsCategoryCard
             key={cat.id}
             title={cat.title}
-            subtitle="اختبار الجري مسافة 2000 متر"
             birthYears={cat.birthYears}
-            categoryNumber={cat.num}
             icon={Timer}
             onClick={() => openView(cat.id as TwoKilometerViewId)}
           />

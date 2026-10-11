@@ -65,9 +65,7 @@ export function PushupsCategories({ openView }: { openView: (view: 'pushups-cate
           <SportsCategoryCard
             key={cat.id}
             title={cat.title}
-            subtitle="ثني ومد الذراعين من وضع الانبطاح المائل"
             birthYears={cat.birthYears}
-            categoryNumber={cat.num}
             icon={Dumbbell}
             onClick={() => openView(cat.id as any)}
           />

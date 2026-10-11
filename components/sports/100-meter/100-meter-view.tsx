@@ -57,9 +57,7 @@ export function HundredMeterCategories({ openView }: { openView: (view: HundredM
           <SportsCategoryCard
             key={cat.id}
             title={cat.title}
-            subtitle="اختبار السرعة القصوى (100م)"
             birthYears={cat.birthYears}
-            categoryNumber={cat.num}
             icon={Timer}
             onClick={() => openView(cat.id as HundredMeterViewId)}
           />

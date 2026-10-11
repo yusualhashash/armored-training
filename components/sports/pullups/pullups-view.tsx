@@ -51,9 +51,7 @@ export function PullupsCategories({ openView }: { openView: (view: keyof typeof 
           <SportsCategoryCard
             key={cat.id}
             title={cat.title}
-            subtitle="سحب الجسم على الثابتة"
             birthYears={cat.birthYears}
-            categoryNumber={cat.num}
             icon={Dumbbell}
             onClick={() => openView(cat.id as keyof typeof pullupEvents)}
           />

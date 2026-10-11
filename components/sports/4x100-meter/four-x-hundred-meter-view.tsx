@@ -85,9 +85,7 @@ export function FourXHundredMeterCategories({
           <SportsCategoryCard
             key={cat.id}
             title={cat.title}
-            subtitle="سباق التتابع 4 في 100 متر"
             birthYears={cat.birthYears}
-            categoryNumber={cat.num}
             icon={Timer}
             onClick={() => openView(cat.id as FourXHundredMeterViewId)}
           />

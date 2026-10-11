@@ -46,9 +46,7 @@ export function FiveKilometerCategories({ openView }: { openView: (view: FiveKil
           <SportsCategoryCard
             key={cat.id}
             title={cat.title}
-            subtitle="اختبار الجري مسافة 5000 متر"
             birthYears={cat.birthYears}
-            categoryNumber={cat.num}
             icon={Timer}
             onClick={() => openView(cat.id as FiveKilometerViewId)}
           />

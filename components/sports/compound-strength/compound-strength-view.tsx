@@ -51,9 +51,7 @@ export function CompoundStrengthCategories({ openView }: { openView: (view: keyo
           <SportsCategoryCard
             key={cat.id}
             title={cat.title}
-            subtitle="اختبار القدرة والقوة العضلية المركبة"
             birthYears={cat.birthYears}
-            categoryNumber={cat.num}
             icon={Dumbbell}
             onClick={() => openView(cat.id as keyof typeof compoundEvents)}
           />

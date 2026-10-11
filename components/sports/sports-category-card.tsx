@@ -1,25 +1,21 @@
 'use client'
 
-import { ChevronLeft, Dumbbell, Medal, Timer, Sparkles } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react';
+import { ChevronLeft, Dumbbell, Medal, Timer } from 'lucide-react';
 
 export interface SportsCategoryCardProps {
   title: string
-  subtitle?: string
   birthYears?: string
   icon?: LucideIcon
   iconType?: 'dumbbell' | 'medal' | 'timer'
-  categoryNumber?: number | string
   onClick: () => void
 }
 
 export function SportsCategoryCard({
   title,
-  subtitle,
   birthYears,
   icon,
   iconType = 'medal',
-  categoryNumber,
   onClick,
 }: SportsCategoryCardProps) {
   const IconComponent =
@@ -44,12 +40,6 @@ export function SportsCategoryCard({
           </div>
 
           <div className="flex flex-col items-start gap-1 min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[11px] font-semibold tracking-wider text-emerald-400">
-                {subtitle ? subtitle : 'اللياقة البدنية · المعيار العسكري'}
-              </span>
-            </div>
-
             <div className="flex items-center gap-2 max-w-full">
               <span className="text-lg sm:text-md font-bold text-white tracking-tight truncate">
                 {title}

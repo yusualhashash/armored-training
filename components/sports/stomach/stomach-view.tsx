@@ -1,24 +1,24 @@
 'use client'
 
-import { Dumbbell } from 'lucide-react'
+import { Dumbbell } from 'lucide-react';
 
-import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel'
-import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card'
+import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card';
+import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel';
 
-import { STOMACH_CATEGORY_ONE_DEFAULT } from '@/lib/sports/stomach/1/categories'
-import { STOMACH_CATEGORY_ONE_EVENT } from '@/lib/sports/stomach/1'
-import { STOMACH_CATEGORY_TWO_DEFAULT } from '@/lib/sports/stomach/2/categories'
-import { STOMACH_CATEGORY_TWO_EVENT } from '@/lib/sports/stomach/2'
-import { STOMACH_CATEGORY_THREE_DEFAULT } from '@/lib/sports/stomach/3/categories'
-import { STOMACH_CATEGORY_THREE_EVENT } from '@/lib/sports/stomach/3'
-import { STOMACH_CATEGORY_FOUR_DEFAULT } from '@/lib/sports/stomach/4/categories'
-import { STOMACH_CATEGORY_FOUR_EVENT } from '@/lib/sports/stomach/4'
-import { STOMACH_CATEGORY_FIVE_DEFAULT } from '@/lib/sports/stomach/5/categories'
-import { STOMACH_CATEGORY_FIVE_EVENT } from '@/lib/sports/stomach/5'
-import { STOMACH_CATEGORY_SIX_DEFAULT } from '@/lib/sports/stomach/6/categories'
-import { STOMACH_CATEGORY_SIX_EVENT } from '@/lib/sports/stomach/6'
-import { STOMACH_CATEGORY_SEVEN_DEFAULT } from '@/lib/sports/stomach/7/categories'
-import { STOMACH_CATEGORY_SEVEN_EVENT } from '@/lib/sports/stomach/7'
+import { STOMACH_CATEGORY_ONE_EVENT } from '@/lib/sports/stomach/1';
+import { STOMACH_CATEGORY_ONE_DEFAULT } from '@/lib/sports/stomach/1/categories';
+import { STOMACH_CATEGORY_TWO_EVENT } from '@/lib/sports/stomach/2';
+import { STOMACH_CATEGORY_TWO_DEFAULT } from '@/lib/sports/stomach/2/categories';
+import { STOMACH_CATEGORY_THREE_EVENT } from '@/lib/sports/stomach/3';
+import { STOMACH_CATEGORY_THREE_DEFAULT } from '@/lib/sports/stomach/3/categories';
+import { STOMACH_CATEGORY_FOUR_EVENT } from '@/lib/sports/stomach/4';
+import { STOMACH_CATEGORY_FOUR_DEFAULT } from '@/lib/sports/stomach/4/categories';
+import { STOMACH_CATEGORY_FIVE_EVENT } from '@/lib/sports/stomach/5';
+import { STOMACH_CATEGORY_FIVE_DEFAULT } from '@/lib/sports/stomach/5/categories';
+import { STOMACH_CATEGORY_SIX_EVENT } from '@/lib/sports/stomach/6';
+import { STOMACH_CATEGORY_SIX_DEFAULT } from '@/lib/sports/stomach/6/categories';
+import { STOMACH_CATEGORY_SEVEN_EVENT } from '@/lib/sports/stomach/7';
+import { STOMACH_CATEGORY_SEVEN_DEFAULT } from '@/lib/sports/stomach/7/categories';
 
 export type StomachViewId =
   | 'stomach-category-one'
@@ -138,13 +138,11 @@ export function StomachCategories({
       />
 
       <div className="grid gap-3.5 sm:gap-4">
-        {categories.map(([view, title, description, birthYears], index) => (
+        {categories.map(([view, title, birthYears], index) => (
           <SportsCategoryCard
             key={view}
             title={title}
-            subtitle={`وضعية التمرين: ${description}`}
             birthYears={birthYears}
-            categoryNumber={index + 1}
             icon={Dumbbell}
             onClick={() => openView(view)}
           />
