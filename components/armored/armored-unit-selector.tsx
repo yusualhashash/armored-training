@@ -2,7 +2,6 @@
 
 import type { LucideIcon } from 'lucide-react';
 import {
-    ArrowRight,
     Award,
     ChevronLeft,
     Clock,
@@ -176,15 +175,6 @@ export function ArmoredTimerHeader({
           </div>
         </div>
       </div>
-
-      <button
-        type="button"
-        onClick={onBack}
-        className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-2 text-xs font-semibold text-emerald-300 transition-all hover:border-emerald-500/50 hover:bg-emerald-500/20 hover:text-white active:scale-95 shadow-sm"
-      >
-        <ArrowRight className="size-4" aria-hidden="true" />
-        <span>تغيير التشكيل (رجوع)</span>
-      </button>
     </div>
   )
 }
