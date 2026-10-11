@@ -169,7 +169,7 @@ export function ArmoredTimerHeader({
           <Shield className="size-5" aria-hidden="true" />
         </span>
         <div className="min-w-0">
-          <div className="text-xs sm:text-sm font-bold text-white truncate">{drillTitle}</div>
+          <div className="text-xs sm:text-sm font-bold text-white">{drillTitle}</div>
           <div className="text-[11px] sm:text-xs text-emerald-300/80 font-medium truncate">
             المستوى المحدد: <span className="font-bold text-white">{unitLabel}</span>
           </div>
