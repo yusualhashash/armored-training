@@ -28,7 +28,7 @@ const sportsTests = [
   },
   {
     id: 'pullups',
-    title: 'سحب الجسم على الثابت (العقلة)',
+    title: 'سحب الجسم على الثابت',
     icon: Dumbbell,
     accent: 'amber',
   },

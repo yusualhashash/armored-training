@@ -43,7 +43,7 @@ export function PullupsCategories({ openView }: { openView: (view: keyof typeof 
   return (
     <div className="mx-auto w-full max-w-2xl space-y-4">
       <SportsTestHeroHeader
-        title="سحب الجسم على الثابت (العقلة)"
+        title="سحب الجسم على الثابت"
         subtitle="اختر الفئة العمرية للبدء في احتساب التكرارات واستعراض المعايير الرسمية المعتمدة."
         unitBadge="تمرين القوة والشد"
       />
@@ -53,7 +53,7 @@ export function PullupsCategories({ openView }: { openView: (view: keyof typeof 
           <SportsCategoryCard
             key={cat.id}
             title={cat.title}
-            subtitle="سحب الجسم على العقلة الثابتة"
+            subtitle="سحب الجسم على الثابتة"
             birthYears={cat.birthYears}
             categoryNumber={cat.num}
             icon={Dumbbell}
