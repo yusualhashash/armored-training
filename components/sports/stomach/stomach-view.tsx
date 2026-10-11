@@ -1,10 +1,8 @@
 'use client'
 
 import { Dumbbell } from 'lucide-react';
-
-import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card';
+import { SportsCategoryCard } from '@/components/sports/sports-category-card';
 import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel';
-
 import { STOMACH_CATEGORY_ONE_EVENT } from '@/lib/sports/stomach/1';
 import { STOMACH_CATEGORY_ONE_DEFAULT } from '@/lib/sports/stomach/1/categories';
 import { STOMACH_CATEGORY_TWO_EVENT } from '@/lib/sports/stomach/2';
@@ -132,10 +130,6 @@ export function StomachCategories({
   ] as const
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-4">
-      <SportsTestHeroHeader
-        title="تمرين المعدة"
-      />
 
       <div className="grid gap-3.5 sm:gap-4">
         {categories.map(([view, title, birthYears], index) => (
@@ -148,6 +142,5 @@ export function StomachCategories({
           />
         ))}
       </div>
-    </div>
   )
 }

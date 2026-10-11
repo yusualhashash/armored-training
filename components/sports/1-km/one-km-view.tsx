@@ -3,7 +3,7 @@
 import { Timer } from 'lucide-react'
 
 import { TimedTestPanel } from '@/components/timer/timed-distance-panel'
-import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card'
+import { SportsCategoryCard } from '@/components/sports/sports-category-card'
 import { RUN_1KM_CATEGORY_ONE_DEFAULT, RUN_1KM_CATEGORY_ONE_EVENT } from '@/lib/sports/1-km/1'
 import { RUN_1KM_CATEGORY_TWO_DEFAULT, RUN_1KM_CATEGORY_TWO_EVENT } from '@/lib/sports/1-km/2'
 import { RUN_1KM_CATEGORY_THREE_DEFAULT, RUN_1KM_CATEGORY_THREE_EVENT } from '@/lib/sports/1-km/3'
@@ -52,11 +52,6 @@ export function OneKilometerCategories({ openView }: { openView: (view: OneKilom
   ] as const
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-4">
-      <SportsTestHeroHeader
-        title="سباق الجري 1 كم"
-      />
-
       <div className="grid gap-3.5 sm:gap-4">
         {categories.map((cat) => (
           <SportsCategoryCard
@@ -68,6 +63,5 @@ export function OneKilometerCategories({ openView }: { openView: (view: OneKilom
           />
         ))}
       </div>
-    </div>
   )
 }

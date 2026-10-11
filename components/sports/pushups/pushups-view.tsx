@@ -1,9 +1,8 @@
 'use client'
 
 import { Dumbbell } from 'lucide-react'
-
 import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel'
-import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card'
+import { SportsCategoryCard } from '@/components/sports/sports-category-card'
 import { PUSH_UPS_CATEGORY_ONE_EVENT } from '@/lib/sports/pushups/1'
 import { PUSH_UPS_CATEGORY_ONE_DEFAULT } from '@/lib/sports/pushups/1/categories'
 import { PUSH_UPS_CATEGORY_TWO_DEFAULT } from '@/lib/sports/pushups/2/categories'
@@ -55,11 +54,6 @@ export function PushupsCategories({ openView }: { openView: (view: 'pushups-cate
   ] as const
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-4">
-      <SportsTestHeroHeader
-        title="التمرين السادس (الضغط)"
-      />
-
       <div className="grid gap-3.5 sm:gap-4">
         {categories.map((cat) => (
           <SportsCategoryCard
@@ -71,6 +65,5 @@ export function PushupsCategories({ openView }: { openView: (view: 'pushups-cate
           />
         ))}
       </div>
-    </div>
   )
 }

@@ -1,9 +1,8 @@
 'use client'
 
 import { Dumbbell } from 'lucide-react'
-
 import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel'
-import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card'
+import { SportsCategoryCard } from '@/components/sports/sports-category-card'
 import { COMPOUND_STRENGTH_CATEGORY_ONE_DEFAULT } from '@/lib/sports/compound-strength/1/categories'
 import { COMPOUND_STRENGTH_CATEGORY_ONE_EVENT } from '@/lib/sports/compound-strength/1'
 import { COMPOUND_STRENGTH_CATEGORY_TWO_DEFAULT } from '@/lib/sports/compound-strength/2/categories'
@@ -41,11 +40,6 @@ export function CompoundStrengthCategories({ openView }: { openView: (view: keyo
   ] as const
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-4">
-      <SportsTestHeroHeader
-        title="اختبار القوة المركبة"
-      />
-
       <div className="grid gap-3.5 sm:gap-4">
         {categories.map((cat) => (
           <SportsCategoryCard
@@ -57,7 +51,6 @@ export function CompoundStrengthCategories({ openView }: { openView: (view: keyo
           />
         ))}
       </div>
-    </div>
   )
 }
 

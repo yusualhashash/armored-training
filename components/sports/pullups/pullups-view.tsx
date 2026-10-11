@@ -1,9 +1,8 @@
 'use client'
 
 import { Dumbbell } from 'lucide-react'
-
 import { RepetitionTestPanel } from '@/components/timer/repetition-test-panel'
-import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card'
+import { SportsCategoryCard } from '@/components/sports/sports-category-card'
 import { PULL_UPS_CATEGORY_ONE_DEFAULT } from '@/lib/sports/pullups/1/categories'
 import { PULL_UPS_CATEGORY_ONE_EVENT } from '@/lib/sports/pullups/1'
 import { PULL_UPS_CATEGORY_TWO_DEFAULT } from '@/lib/sports/pullups/2/categories'
@@ -41,11 +40,6 @@ export function PullupsCategories({ openView }: { openView: (view: keyof typeof 
   ] as const
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-4">
-      <SportsTestHeroHeader
-        title="سحب الجسم على الثابت"
-      />
-
       <div className="grid gap-3.5 sm:gap-4">
         {categories.map((cat) => (
           <SportsCategoryCard
@@ -57,7 +51,6 @@ export function PullupsCategories({ openView }: { openView: (view: keyof typeof 
           />
         ))}
       </div>
-    </div>
   )
 }
 

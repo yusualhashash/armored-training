@@ -67,28 +67,3 @@ export function SportsCategoryCard({
     </button>
   )
 }
-
-export function SportsTestHeroHeader({
-  title,
-}: {
-  title: string
-}) {
-  return (
-    <div className="relative overflow-hidden rounded-3xl border border-emerald-500/25 bg-[#0c1610] p-5 sm:p-6 shadow-[0_12px_30px_rgba(0,0,0,0.4)] mb-4">
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl border border-amber-400/30 bg-gradient-to-br from-amber-400/20 to-amber-500/5 text-amber-300 shadow-md">
-            <Dumbbell className="size-7" aria-hidden="true" />
-          </div>
-
-          <div className="flex flex-col items-start gap-1">
-            <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-              {title}
-            </h2>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  )
-}

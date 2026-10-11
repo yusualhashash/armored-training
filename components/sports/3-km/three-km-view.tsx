@@ -3,7 +3,7 @@
 import { Timer } from 'lucide-react'
 
 import { TimedTestPanel } from '@/components/timer/timed-distance-panel'
-import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card'
+import { SportsCategoryCard } from '@/components/sports/sports-category-card'
 import { RUN_3KM_CATEGORY_ONE_DEFAULT, RUN_3KM_CATEGORY_ONE_EVENT } from '@/lib/sports/3-km/1'
 import { RUN_3KM_CATEGORY_TWO_DEFAULT, RUN_3KM_CATEGORY_TWO_EVENT } from '@/lib/sports/3-km/2'
 import { RUN_3KM_CATEGORY_THREE_DEFAULT, RUN_3KM_CATEGORY_THREE_EVENT } from '@/lib/sports/3-km/3'
@@ -36,11 +36,6 @@ export function ThreeKilometerView({ activeView }: { activeView: ThreeKilometerV
 
 export function ThreeKilometerCategories({ openView }: { openView: (view: ThreeKilometerViewId) => void }) {
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-4">
-      <SportsTestHeroHeader
-        title="سباق الجري 3 كم"
-      />
-
       <div className="grid gap-3.5 sm:gap-4">
         {categories.map((cat) => (
           <SportsCategoryCard
@@ -52,6 +47,5 @@ export function ThreeKilometerCategories({ openView }: { openView: (view: ThreeK
           />
         ))}
       </div>
-    </div>
   )
 }

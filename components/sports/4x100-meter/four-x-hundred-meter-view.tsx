@@ -3,7 +3,7 @@
 import { Timer } from 'lucide-react'
 
 import { TimedTestPanel } from '@/components/timer/timed-distance-panel'
-import { SportsCategoryCard, SportsTestHeroHeader } from '@/components/sports/sports-category-card'
+import { SportsCategoryCard } from '@/components/sports/sports-category-card'
 import { SPRINT_4X100M_CATEGORY_ONE_DEFAULT, SPRINT_4X100M_CATEGORY_ONE_EVENT } from '@/lib/sports/4x100-meter/1'
 import { SPRINT_4X100M_CATEGORY_TWO_DEFAULT, SPRINT_4X100M_CATEGORY_TWO_EVENT } from '@/lib/sports/4x100-meter/2'
 import { SPRINT_4X100M_CATEGORY_THREE_DEFAULT, SPRINT_4X100M_CATEGORY_THREE_EVENT } from '@/lib/sports/4x100-meter/3'
@@ -75,11 +75,6 @@ export function FourXHundredMeterCategories({
   ] as const
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-4">
-      <SportsTestHeroHeader
-        title="سباق التتابع 4×100 متر"
-      />
-
       <div className="grid gap-3.5 sm:gap-4">
         {categories.map((cat) => (
           <SportsCategoryCard
@@ -91,6 +86,5 @@ export function FourXHundredMeterCategories({
           />
         ))}
       </div>
-    </div>
   )
 }
