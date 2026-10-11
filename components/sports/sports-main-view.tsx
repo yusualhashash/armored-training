@@ -16,7 +16,7 @@ const sportsTests = [
   },
   {
     id: 'pushups',
-    title: 'التمرين السادس (الضغط)',
+    title: 'التمرين السادس (ثني ومد الذراعين)',
     icon: Dumbbell,
     accent: 'amber',
   },

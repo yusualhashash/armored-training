@@ -434,7 +434,7 @@ export function HistoryView({ openView }: HistoryViewProps) {
                             session.type === 'timed' ? 'text-emerald-400' : 'text-amber-400'
                           }`}
                         >
-                          {session.type === 'timed' ? 'اختبار مسافات وجري' : 'اختبار قوة وتحمل'} · {session.categoryName}
+                          {session.categoryName}
                         </span>
                         <h3 className="text-base sm:text-lg font-bold text-white tracking-tight">
                           اختبار {session.eventName}
@@ -530,7 +530,7 @@ export function HistoryView({ openView }: HistoryViewProps) {
                   <div className="flex items-center gap-2">
                     <span className="text-white/60">
                       متوسط العلامات:{' '}
-                      <b className="text-emerald-300 font-bold">{session.averageScore} ن</b>
+                      <b className="text-emerald-300 font-bold">{session.averageScore}</b>
                     </span>
                   </div>
 
