@@ -131,7 +131,7 @@ export function ArmoredUnitSelector({
 
                 <div className="flex min-w-0 flex-1 flex-col items-start gap-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-base sm:text-lg font-bold text-white tracking-tight">
+                    <span className="text-base sm:text-md font-bold text-white tracking-tight">
                       {unit.label}
                     </span>
                   </div>
