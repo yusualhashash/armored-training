@@ -132,12 +132,20 @@ export function AppShell() {
                 </h1>
               </div>
             ) : currentSection ? (
-              <div className="relative flex size-12 shrink-0 items-center justify-center rounded-2xl border border-amber-400/30 bg-gradient-to-b from-amber-400/15 to-transparent p-1 shadow-sm">
-                <img
-                  src="/eagle-logo.png"
-                  alt="شعار النسر الذهبي"
-                  className="h-full w-full object-contain drop-shadow"
-                />
+              <div className="flex min-w-0 items-center gap-3">
+                <div className="relative flex size-12 shrink-0 items-center justify-center rounded-2xl border border-amber-400/30 bg-gradient-to-b from-amber-400/15 to-transparent p-1 shadow-sm">
+                  <img
+                    src="/eagle-logo.png"
+                    alt="شعار النسر الذهبي"
+                    className="h-full w-full object-contain drop-shadow"
+                  />
+                </div>
+
+                <div className="min-w-0">
+                  <h1 className="truncate text-base font-bold text-white tracking-tight sm:text-lg">
+                    المعدلات الزمنية
+                  </h1>
+                </div>
               </div>
             ) : (
               <HomeHeader />

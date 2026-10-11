@@ -87,7 +87,7 @@ export function HomeHeader() {
           المعدلات الزمنية
         </h1>
         <p className="truncate text-[11px] font-medium text-emerald-400/80">
-          فرع تدريب المدرعات · منظومة التقييم
+          فرع تدريب المدرعات - منظومة التقييم
         </p>
       </div>
     </div>
