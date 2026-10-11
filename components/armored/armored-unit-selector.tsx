@@ -102,7 +102,7 @@ export function ArmoredUnitSelector({
           </div>
 
           <div>
-            <h2 className="text-base sm:text-lg font-bold text-white tracking-tight">
+            <h2 className="text-base sm:text-md font-bold text-white tracking-tight">
               {drillTitle}
             </h2>
           </div>
