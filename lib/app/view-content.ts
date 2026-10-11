@@ -717,18 +717,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
   
 
   // ============================================================
-  // T55+62
+  // T(55 + 62)
   // ============================================================
 
   't55-62': {
-    title: 'T55+62',
+    title: 'T(55 + 62)',
     backLabel: 'أسلحة ورمي',
     backTo: 'armored',
   },
 
   't55-62-boarding': {
     title: 'ركوب الطواقم في الدبابة',
-    backLabel: 'T55+62',
+    backLabel: 'T(55 + 62)',
     backTo: 't55-62',
   },
 
@@ -752,7 +752,7 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't55-62-disembarking': {
     title: 'نزول الطواقم من الدبابة',
-    backLabel: 'T55+62',
+    backLabel: 'T(55 + 62)',
     backTo: 't55-62',
   },
 
@@ -776,7 +776,7 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't55-62-pre-combat': {
     title: 'الانتقال من تشكيلة الرتل إلى ترتيب ما قبل القتال',
-    backLabel: 'T55+62',
+    backLabel: 'T(55 + 62)',
     backTo: 't55-62',
   },
 
@@ -794,7 +794,7 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't55-62-combat-to-pre-combat': {
     title: 'الانتقال من ترتيب القتال الى ترتيب ما قبل القتال',
-    backLabel: 'T55+62',
+    backLabel: 'T(55 + 62)',
     backTo: 't55-62',
   },
 
@@ -818,7 +818,7 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't55-62-open-pre-combat': {
     title: 'الفتح من ترتيب ما قبل القتال',
-    backLabel: 'T55+62',
+    backLabel: 'T(55 + 62)',
     backTo: 't55-62',
   },
 
@@ -842,7 +842,7 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't55-62-pre-combat-to-column': {
     title: 'الانتقال من ترتيب ما قبل القتال الى الرتل',
-    backLabel: 'T55+62',
+    backLabel: 'T(55 + 62)',
     backTo: 't55-62',
   },
 
@@ -860,7 +860,7 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't55-62-column-to-combat': {
     title: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)',
-    backLabel: 'T55+62',
+    backLabel: 'T(55 + 62)',
     backTo: 't55-62',
   },
 
@@ -878,7 +878,7 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't55-62-column-to-combat-flank': {
     title: 'الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)',
-    backLabel: 'T55+62',
+    backLabel: 'T(55 + 62)',
     backTo: 't55-62',
   },
 
@@ -902,7 +902,7 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't55-62-move-and-occupy-firing-line': {
     title: 'التحرك واحتلال خط رمي لصد هجمات العدو',
-    backLabel: 'T55+62',
+    backLabel: 'T(55 + 62)',
     backTo: 't55-62',
   },
 
@@ -920,7 +920,7 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't55-62-load-tanks-on-heavy-carriers': {
     title: 'تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)',
-    backLabel: 'T55+62',
+    backLabel: 'T(55 + 62)',
     backTo: 't55-62',
   },
 
@@ -944,7 +944,7 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't55-62-unload-tanks-from-heavy-carriers': {
     title: 'تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)',
-    backLabel: 'T55+62',
+    backLabel: 'T(55 + 62)',
     backTo: 't55-62',
   },
 
@@ -1002,7 +1002,7 @@ export function getFullTestName(view: View): string {
     if (parent) {
       const grandparent = parent.backTo ? viewContent[parent.backTo] : null
       const vehicle =
-        grandparent?.title && (grandparent.title === 'T72' || grandparent.title === 'T55+62')
+        grandparent?.title && (grandparent.title === 'T72' || grandparent.title === 'T(55 + 62)')
           ? grandparent.title
           : null
       if (vehicle) {
@@ -1015,7 +1015,7 @@ export function getFullTestName(view: View): string {
   // 3. If it's an armored drill category (e.g. t72-boarding)
   if (current.backTo) {
     const parent = viewContent[current.backTo]
-    if (parent && (parent.title === 'T72' || parent.title === 'T55+62')) {
+    if (parent && (parent.title === 'T72' || parent.title === 'T(55 + 62)')) {
       return `${parent.title} - ${current.title}`
     }
   }

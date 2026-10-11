@@ -56,7 +56,7 @@ export function AppContent({
         />
 
         <SectionButton
-          label="T55+62"
+          label="T(55 + 62)"
           description=""
           icon={Medal}
           onClick={() => openView('t55-62')}

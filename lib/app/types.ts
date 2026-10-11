@@ -139,7 +139,7 @@ export type View =
   | 't72-unload-tanks-from-heavy-carriers-سرية'
 
   
-  // T55+62
+  // T(55 + 62)
   | 't55-62'
   | 't55-62-boarding'
   | 't55-62-طاقم'

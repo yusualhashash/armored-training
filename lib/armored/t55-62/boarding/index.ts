@@ -18,7 +18,7 @@ export function createT55_62Event(unit: T55_62Unit): SportEvent {
   ]
   return {
     id: `t55-62-${unit}`,
-    name: `ركوب ${unit} في الدبابة - T55-62`,
+    name: `ركوب ${unit} في الدبابة - T(55 + 62)`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],
