@@ -110,12 +110,6 @@ export function SportsMainView({ openView }: SportsSectionViewProps) {
                   <ChevronLeft className="size-5" aria-hidden="true" />
                 </div>
               </div>
-
-              <div className="mt-4 flex items-center justify-between border-t border-white/[0.06] pt-3 text-[11px] text-white/45 font-medium">
-                <span className="text-emerald-400/90 font-semibold group-hover:text-emerald-300">
-                  عرض الفئات العمرية
-                </span>
-              </div>
             </button>
           )
         })}
