@@ -17,7 +17,7 @@ export function createT55_62PreCombatToColumnEvent(unit: T55_62PreCombatToColumn
   ]
   return {
     id: `t55-62-pre-combat-to-column-${unit}`,
-    name: `الانتقال من ترتيب ما قبل القتال الى الرتل - ${unit}`,
+    name: `الانتقال من ترتيب ما قبل القتال الى الرتل - ${unit} - T(55 + 62)`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

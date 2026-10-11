@@ -18,7 +18,7 @@ export function createT72OpenPreCombatEvent(unit: T72OpenPreCombatUnit): SportEv
   ]
   return {
     id: `t72-open-pre-combat-${unit}`,
-    name: `الفتح من ترتيب ما قبل القتال - ${unit}`,
+    name: `الفتح من ترتيب ما قبل القتال - ${unit} - T72`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

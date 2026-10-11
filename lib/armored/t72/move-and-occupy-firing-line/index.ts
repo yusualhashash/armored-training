@@ -17,7 +17,7 @@ export function createT72MoveAndOccupyFiringLineEvent(unit: T72MoveAndOccupyFiri
   ]
   return {
     id: `t72-move-and-occupy-firing-line-${unit}`,
-    name: `التحرك واحتلال خط رمي لصد هجمات العدو - ${unit}`,
+    name: `التحرك واحتلال خط رمي لصد هجمات العدو - ${unit} - T72`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

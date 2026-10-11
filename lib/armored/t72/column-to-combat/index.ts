@@ -17,7 +17,7 @@ export function createT72ColumnToCombatEvent(unit: T72ColumnToCombatUnit): Sport
   ]
   return {
     id: `t72-column-to-combat-${unit}`,
-    name: `الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة) - ${unit}`,
+    name: `الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة) - ${unit} - T72`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

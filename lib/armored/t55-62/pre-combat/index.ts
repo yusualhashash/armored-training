@@ -17,7 +17,7 @@ export function createT55_62PreCombatEvent(unit: T55_62PreCombatUnit): SportEven
   ]
   return {
     id: `t55-62-pre-combat-${unit}`,
-    name: `الانتقال إلى ترتيب ما قبل القتال - T55-62`,
+    name: `الانتقال إلى ترتيب ما قبل القتال - ${unit} - T(55 + 62)`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

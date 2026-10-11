@@ -18,7 +18,7 @@ export function createT55_62CombatToPreCombatEvent(unit: T55_62CombatToPreCombat
   ]
   return {
     id: `t55-62-combat-to-pre-combat-${unit}`,
-    name: `الانتقال من ترتيب القتال الى ترتيب ما قبل القتال - ${unit}`,
+    name: `الانتقال من ترتيب القتال الى ترتيب ما قبل القتال - ${unit} - T(55 + 62)`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

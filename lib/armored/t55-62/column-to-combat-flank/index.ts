@@ -18,7 +18,7 @@ export function createT55_62ColumnToCombatFlankEvent(unit: T55_62ColumnToCombatF
   ]
   return {
     id: `t55-62-column-to-combat-flank-${unit}`,
-    name: `الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب) - ${unit}`,
+    name: `الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب) - ${unit} - T(55 + 62)`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

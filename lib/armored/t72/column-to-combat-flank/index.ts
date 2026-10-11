@@ -18,7 +18,7 @@ export function createT72ColumnToCombatFlankEvent(unit: T72ColumnToCombatFlankUn
   ]
   return {
     id: `t72-column-to-combat-flank-${unit}`,
-    name: `الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب) - ${unit}`,
+    name: `الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب) - ${unit} - T72`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

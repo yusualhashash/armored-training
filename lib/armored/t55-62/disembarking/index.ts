@@ -18,7 +18,7 @@ export function createT55_62DisembarkingEvent(unit: T55_62DisembarkingUnit): Spo
   ]
   return {
     id: `t55-62-disembarking-${unit}`,
-    name: `نزول ${unit} من الدبابة - T55-62`,
+    name: `نزول ${unit} من الدبابة - T55-62 - T(55 + 62)`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

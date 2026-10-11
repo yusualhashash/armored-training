@@ -18,7 +18,7 @@ export function createT55_62LoadTanksOnHeavyCarriersEvent(unit: T55_62LoadTanksO
   ]
   return {
     id: `t55-62-load-tanks-on-heavy-carriers-${unit}`,
-    name: `تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن) - ${unit}`,
+    name: `تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن) - ${unit} - T(55 + 62)`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

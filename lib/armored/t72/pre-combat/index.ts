@@ -17,7 +17,7 @@ export function createT72PreCombatEvent(unit: T72PreCombatUnit): SportEvent {
   ]
   return {
     id: `t72-pre-combat-${unit}`,
-    name: `الانتقال إلى ترتيب ما قبل القتال - T72`,
+    name: `الانتقال إلى ترتيب ما قبل القتال - ${unit} - T72`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

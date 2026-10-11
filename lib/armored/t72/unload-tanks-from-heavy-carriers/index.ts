@@ -18,7 +18,7 @@ export function createT72UnloadTanksFromHeavyCarriersEvent(unit: T72UnloadTanksF
   ]
   return {
     id: `t72-unload-tanks-from-heavy-carriers-${unit}`,
-    name: `تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن) - ${unit}`,
+    name: `تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن) - ${unit} - T72`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],

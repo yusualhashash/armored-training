@@ -18,7 +18,7 @@ export function createT55_62OpenPreCombatEvent(unit: T55_62OpenPreCombatUnit): S
   ]
   return {
     id: `t55-62-open-pre-combat-${unit}`,
-    name: `الفتح من ترتيب ما قبل القتال - ${unit}`,
+    name: `الفتح من ترتيب ما قبل القتال - ${unit} - T(55 + 62)`,
     description: 'قياس الزمن وفق معايير الأداء المعتمدة',
     maxScore: 0,
     categories: [],
