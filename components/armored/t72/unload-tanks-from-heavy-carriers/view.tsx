@@ -55,7 +55,7 @@ export function T72UnloadTanksFromHeavyCarriersView({
   if (activeView === 't72-unload-tanks-from-heavy-carriers') {
     return (
       <ArmoredUnitSelector
-        drillTitle="تفريغ الدبابات من الناقلات الثقيلة (T-72)"
+        drillTitle="تفريغ الدبابات من الناقلات الثقيلة"
         tankModel="T-72"
         units={T72_UNLOAD_TANKS_FROM_HEAVY_CARRIERS_UNITS}
         onSelect={(unitId) =>

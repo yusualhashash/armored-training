@@ -57,7 +57,7 @@ export function T72OpenPreCombatView({
   if (activeView === 't72-open-pre-combat') {
     return (
       <ArmoredUnitSelector
-        drillTitle="الفتح من ترتيب ما قبل القتال (T-72)"
+        drillTitle="الفتح من ترتيب ما قبل القتال"
         tankModel="T-72"
         units={T72_OPEN_PRE_COMBAT_UNITS}
         onSelect={(unitId) =>

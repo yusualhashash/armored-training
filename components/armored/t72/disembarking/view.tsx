@@ -57,7 +57,7 @@ export function T72DisembarkingView({
   if (activeView === 't72-disembarking') {
     return (
       <ArmoredUnitSelector
-        drillTitle="نزول الطواقم من الدبابة (T-72)"
+        drillTitle="نزول الطواقم من الدبابة"
         tankModel="T-72"
         units={T72_DISEMBARKING_UNITS}
         onSelect={(unitId) =>

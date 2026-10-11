@@ -57,7 +57,7 @@ export function T55_62CombatToPreCombatView({
   if (activeView === 't55-62-combat-to-pre-combat') {
     return (
       <ArmoredUnitSelector
-        drillTitle="الانتقال من ترتيب القتال الى ترتيب ما قبل القتال (T-55 / T-62)"
+        drillTitle="الانتقال من ترتيب القتال الى ترتيب ما قبل القتال"
         tankModel="T-55 / T-62"
         units={T55_62_COMBAT_TO_PRE_COMBAT_UNITS}
         onSelect={(unitId) =>

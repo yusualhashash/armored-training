@@ -50,7 +50,7 @@ export function T72PreCombatToColumnView({
   if (activeView === 't72-pre-combat-to-column') {
     return (
       <ArmoredUnitSelector
-        drillTitle="الانتقال من ترتيب ما قبل القتال الى الرتل (T-72)"
+        drillTitle="الانتقال من ترتيب ما قبل القتال الى الرتل"
         tankModel="T-72"
         units={T72_PRE_COMBAT_TO_COLUMN_UNITS}
         onSelect={(unitId) =>

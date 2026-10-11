@@ -48,7 +48,7 @@ export function T72ColumnToCombatFlankView({
   if (activeView === 't72-column-to-combat-flank') {
     return (
       <ArmoredUnitSelector
-        drillTitle="الفتح من رتل التحرك الى ترتيب القتال الصد هجوم معاد (باتجاه الجوانب) (T-72)"
+        drillTitle="الفتح من رتل التحرك الى ترتيب القتال الصد هجوم معاد (باتجاه الجوانب)"
         tankModel="T-72"
         units={T72_COLUMN_TO_COMBAT_FLANK_UNITS}
         onSelect={(unitId) =>

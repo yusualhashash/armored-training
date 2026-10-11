@@ -57,7 +57,7 @@ export function T55_62DisembarkingView({
   if (activeView === 't55-62-disembarking') {
     return (
       <ArmoredUnitSelector
-        drillTitle="نزول الطواقم من الدبابة (T-55 / T-62)"
+        drillTitle="نزول الطواقم من الدبابة"
         tankModel="T-55 / T-62"
         units={T55_62_DISEMBARKING_UNITS}
         onSelect={(unitId) =>

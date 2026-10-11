@@ -61,7 +61,7 @@ export function T55_62LoadTanksOnHeavyCarriersView({
   if (activeView === 't55-62-load-tanks-on-heavy-carriers') {
     return (
       <ArmoredUnitSelector
-        drillTitle="تحميل الدبابات على الناقلات الثقيلة (T-55 / T-62)"
+        drillTitle="تحميل الدبابات على الناقلات الثقيلة"
         tankModel="T-55 / T-62"
         units={T55_62_LOAD_TANKS_ON_HEAVY_CARRIERS_UNITS}
         onSelect={(unitId) =>

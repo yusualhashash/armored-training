@@ -57,7 +57,7 @@ export function T55_62View({
   if (activeView === 't55-62-boarding') {
     return (
       <ArmoredUnitSelector
-        drillTitle="ركوب الطواقم في الدبابة (T-55 / T-62)"
+        drillTitle="ركوب الطواقم في الدبابة"
         tankModel="T-55 / T-62"
         units={T55_62_UNITS}
         onSelect={(unitId) => openView(`t55-62-${unitId}` as T55_62ViewId)}
