@@ -150,31 +150,4 @@ export function ArmoredUnitSelector({
   )
 }
 
-/**
- * شريط ترويسة مع زر رجوع سريع عندما يفتح المستخدم المؤقت في الدروع
- */
-export function ArmoredTimerHeader({
-  drillTitle,
-  unitLabel,
-  onBack,
-}: {
-  drillTitle: string
-  unitLabel: string
-  onBack: () => void
-}) {
-  return (
-    <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-emerald-500/20 bg-[#0a140e] p-3 sm:p-4 shadow-sm">
-      <div className="flex items-center gap-3 min-w-0">
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-emerald-400/25 bg-emerald-400/10 text-emerald-300 shadow-inner">
-          <Shield className="size-5" aria-hidden="true" />
-        </span>
-        <div className="min-w-0">
-          <div className="text-xs sm:text-sm font-bold text-white">{drillTitle}</div>
-          <div className="text-[11px] sm:text-xs text-emerald-300/80 font-medium truncate">
-            المستوى المحدد: <span className="font-bold text-white">{unitLabel}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+
