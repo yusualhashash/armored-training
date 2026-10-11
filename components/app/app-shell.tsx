@@ -1,33 +1,31 @@
 'use client'
 
 import {
-  ArrowRight,
-  BookOpen,
-  Dumbbell,
-  History,
-  House,
-  Medal,
-  ShieldCheck,
-  Star,
-} from 'lucide-react'
+    BookOpen,
+    Dumbbell,
+    History,
+    House,
+    Medal,
+    ShieldCheck,
+    Star
+} from 'lucide-react';
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
-import { Button } from '@/components/ui/button'
 
-import { AppContent } from './app-content'
-import { HomeView, HomeHeader } from './home-view'
-import { FavoriteButton, FavoritesPanel, FavoritesProvider } from './favorites'
+import { AppContent } from './app-content';
+import { FavoriteButton, FavoritesProvider } from './favorites';
+import { HomeHeader, HomeView } from './home-view';
 
 import {
-  getFullTestName,
-  viewContent,
-} from '@/lib/app/view-content'
+    getFullTestName,
+    viewContent,
+} from '@/lib/app/view-content';
 
 import type {
-  OpenView,
-  View,
-} from '@/lib/app/types'
+    OpenView,
+    View,
+} from '@/lib/app/types';
 
 const navigationItems = [
   {
@@ -134,39 +132,12 @@ export function AppShell() {
                 </h1>
               </div>
             ) : currentSection ? (
-              <div className="flex min-w-0 items-center gap-2 sm:gap-3 flex-1">
-                {/* Comeback button: hidden on mobile, visible on sm+ screens */}
-                <Button
-                  type="button"
-                  variant="ghost"
-                  onClick={() => openView(currentSection.backTo)}
-                  className="hidden sm:flex h-10 shrink-0 max-w-[220px] items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-3 text-xs font-semibold text-white/80 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/10 hover:text-white active:scale-95"
-                  title={`الرجوع إلى ${currentSection.backLabel}`}
-                >
-                  <ArrowRight
-                    className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5"
-                    aria-hidden="true"
-                  />
-                  <span className="truncate">
-                    {currentSection.backLabel.length > 18 ? 'رجوع' : currentSection.backLabel}
-                  </span>
-                </Button>
-
-                {/* Mobile tactical icon badge */}
-                <div className="sm:hidden flex size-9 shrink-0 items-center justify-center rounded-xl border border-emerald-400/25 bg-emerald-400/10 text-emerald-300 shadow-inner">
-                  {isArmored ? (
-                    <Medal className="size-5" aria-hidden="true" />
-                  ) : (
-                    <Dumbbell className="size-5" aria-hidden="true" />
-                  )}
-                </div>
-
-                <h1
-                  className="truncate text-sm sm:text-base md:text-lg font-bold text-white tracking-tight"
-                  title={fullTestName}
-                >
-                  {fullTestName}
-                </h1>
+              <div className="relative flex size-12 shrink-0 items-center justify-center rounded-2xl border border-amber-400/30 bg-gradient-to-b from-amber-400/15 to-transparent p-1 shadow-sm">
+                <img
+                  src="/eagle-logo.png"
+                  alt="شعار النسر الذهبي"
+                  className="h-full w-full object-contain drop-shadow"
+                />
               </div>
             ) : (
               <HomeHeader />

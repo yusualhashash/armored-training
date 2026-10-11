@@ -100,7 +100,7 @@ export function SportsMainView({ openView }: SportsSectionViewProps) {
 
                   <div className="flex flex-col items-start gap-1 min-w-0 flex-1">
 
-                    <span className="text-lg sm:text-lg font-bold text-white tracking-tight truncate max-w-full">
+                    <span className="text-lg sm:text-md font-bold text-white tracking-tight truncate max-w-full">
                       {test.title}
                     </span>
                   </div>
