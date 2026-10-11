@@ -56,7 +56,7 @@ export function SportsCategoryCard({
             </div>
 
             <div className="flex items-center gap-2 max-w-full">
-              <span className="text-lg sm:text-lg font-bold text-white tracking-tight truncate">
+              <span className="text-lg sm:text-md font-bold text-white tracking-tight truncate">
                 {title}
               </span>
             </div>
