@@ -186,8 +186,7 @@ export function AppShell() {
               {(!currentSection || activeView === 'history' || activeView === 'favorites' || activeView === 'guide') && (
                 <div className="flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/[0.08] px-3 py-1 text-xs text-emerald-300">
                   <ShieldCheck className="size-3.5" aria-hidden="true" />
-                  <span className="font-medium hidden sm:inline">يعمل دون إنترنت</span>
-                  <span className="font-medium sm:hidden">محلي</span>
+                  <span className="font-medium">يعمل دون إنترنت</span>
                 </div>
               )}
             </div>
