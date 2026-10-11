@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 
 interface SectionButtonProps {
   label: string
-  description: string
+  description: string | null
   icon?: LucideIcon
   onClick: () => void
 }

@@ -50,14 +50,14 @@ export function AppContent({
       <div className="grid gap-4">
         <SectionButton
           label="T72"
-          description="اختبار ركوب الطواقم في الدبابة"
+          description=""
           icon={Medal}
           onClick={() => openView('t72')}
         />
 
         <SectionButton
           label="T55+62"
-          description="اختبار ركوب الطواقم في الدبابة"
+          description=""
           icon={Medal}
           onClick={() => openView('t55-62')}
         />
