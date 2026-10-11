@@ -1,17 +1,16 @@
 'use client'
 
+import type { LucideIcon } from 'lucide-react';
 import {
-  Users,
-  Layers,
-  Flag,
-  Award,
-  ChevronLeft,
-  ArrowRight,
-  Shield,
-  Clock,
-  Sparkles,
-} from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+    ArrowRight,
+    Award,
+    ChevronLeft,
+    Clock,
+    Flag,
+    Layers,
+    Shield,
+    Users
+} from 'lucide-react';
 
 export interface ArmoredUnitOption {
   id: string
@@ -28,8 +27,6 @@ interface ArmoredUnitSelectorProps {
 interface UnitDetail {
   icon: LucideIcon
   badge: string
-  spec: string
-  description: string
   accentColor: string
   bgBadge: string
   iconBorder: string
@@ -40,8 +37,6 @@ const UNIT_DETAILS: Record<string, UnitDetail> = {
   طاقم: {
     icon: Users,
     badge: 'مستوى الطاقم',
-    spec: '٣ – ٤ مقاتلين',
-    description: 'اختبار دقة وسرعة تنفيذ الإيعازات والعمل التكاملي لطاقم الدبابة',
     accentColor: 'text-emerald-300',
     bgBadge: 'bg-emerald-400/10 text-emerald-300 border-emerald-400/25',
     iconBorder: 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300',
@@ -50,8 +45,6 @@ const UNIT_DETAILS: Record<string, UnitDetail> = {
   فصيلة: {
     icon: Layers,
     badge: 'مستوى الفصيلة',
-    spec: '٣ دبابات',
-    description: 'اختبار التناغم والمناورة التكتيكية المتزامنة لفصيلة الدبابات',
     accentColor: 'text-cyan-300',
     bgBadge: 'bg-cyan-400/10 text-cyan-300 border-cyan-400/25',
     iconBorder: 'border-cyan-400/30 bg-cyan-400/10 text-cyan-300',
@@ -60,8 +53,6 @@ const UNIT_DETAILS: Record<string, UnitDetail> = {
   سرية: {
     icon: Flag,
     badge: 'مستوى السرية',
-    spec: '١٠ دبابات',
-    description: 'اختبار تشكيلات التحرك والانتشار التكتيكي وتغيير الأنساق للسرية',
     accentColor: 'text-amber-300',
     bgBadge: 'bg-amber-400/10 text-amber-300 border-amber-400/25',
     iconBorder: 'border-amber-400/30 bg-amber-400/10 text-amber-300',
@@ -70,8 +61,6 @@ const UNIT_DETAILS: Record<string, UnitDetail> = {
   كتيبة: {
     icon: Award,
     badge: 'مستوى الكتيبة',
-    spec: '٣١ دبابة',
-    description: 'اختبار القوة الضاربة التكتيكية وإدارة مناورة كامل تشكيل الكتيبة',
     accentColor: 'text-rose-300',
     bgBadge: 'bg-rose-400/10 text-rose-300 border-rose-400/25',
     iconBorder: 'border-rose-400/30 bg-rose-400/10 text-rose-300',
@@ -82,8 +71,6 @@ const UNIT_DETAILS: Record<string, UnitDetail> = {
 const DEFAULT_DETAIL: UnitDetail = {
   icon: Shield,
   badge: 'تشكيل قتالي',
-  spec: 'معايير معتمدة',
-  description: 'اختبار التوقيت والجاهزية التكتيكية الميدانية',
   accentColor: 'text-emerald-300',
   bgBadge: 'bg-emerald-400/10 text-emerald-300 border-emerald-400/25',
   iconBorder: 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300',
@@ -162,14 +149,8 @@ export function ArmoredUnitSelector({
                     >
                       {detail.badge}
                     </span>
-                    <span className="hidden sm:inline-block rounded-full border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[10px] text-white/50 font-mono">
-                      {detail.spec}
-                    </span>
                   </div>
 
-                  <p className="text-xs text-white/55 leading-relaxed line-clamp-2">
-                    {detail.description}
-                  </p>
                 </div>
               </div>
 
