@@ -49,9 +49,7 @@ export function HundredMeterCategories({ openView }: { openView: (view: HundredM
   return (
     <div className="mx-auto w-full max-w-2xl space-y-4">
       <SportsTestHeroHeader
-        title="سباق الجري 100 متر (سرعة انفجارية)"
-        subtitle="اختر الفئة العمرية للبدء في تشغيل ساعة التوقيت وتسجيل أزمنة المتدربين والنتائج التقديرية."
-        unitBadge="اختبار السرعة"
+        title="سباق الجري 100 متر"
       />
 
       <div className="grid gap-3.5 sm:gap-4">

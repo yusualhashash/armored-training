@@ -54,9 +54,7 @@ export function OneKilometerCategories({ openView }: { openView: (view: OneKilom
   return (
     <div className="mx-auto w-full max-w-2xl space-y-4">
       <SportsTestHeroHeader
-        title="سباق الجري 1 كم (القدرة والتحمل)"
-        subtitle="اختر الفئة العمرية للبدء في تشغيل العداد وتسجيل أزمنة المتدربين والنتائج التقديرية."
-        unitBadge="اختبار التحمل السريع"
+        title="سباق الجري 1 كم"
       />
 
       <div className="grid gap-3.5 sm:gap-4">

@@ -38,9 +38,7 @@ export function FiveKilometerCategories({ openView }: { openView: (view: FiveKil
   return (
     <div className="mx-auto w-full max-w-2xl space-y-4">
       <SportsTestHeroHeader
-        title="سباق الجري 5 كم (التحمل العالي والجلد)"
-        subtitle="اختر الفئة العمرية للبدء في توقيت الجري واحتساب الدرجات التقديرية بدقة."
-        unitBadge="اختبار التحمل الأقصى"
+        title="سباق الجري 5 كم"
       />
 
       <div className="grid gap-3.5 sm:gap-4">

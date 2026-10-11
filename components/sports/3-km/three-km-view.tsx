@@ -38,9 +38,7 @@ export function ThreeKilometerCategories({ openView }: { openView: (view: ThreeK
   return (
     <div className="mx-auto w-full max-w-2xl space-y-4">
       <SportsTestHeroHeader
-        title="سباق الجري 3 كم (المجهود البدني العام)"
-        subtitle="اختر الفئة العمرية للبدء في توقيت الجري واحتساب الدرجات التقديرية بدقة."
-        unitBadge="اختبار التحمل الميداني"
+        title="سباق الجري 3 كم"
       />
 
       <div className="grid gap-3.5 sm:gap-4">

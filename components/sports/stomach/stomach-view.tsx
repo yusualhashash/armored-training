@@ -134,9 +134,7 @@ export function StomachCategories({
   return (
     <div className="mx-auto w-full max-w-2xl space-y-4">
       <SportsTestHeroHeader
-        title="تمرين المعدة (ثني الجذع من الاستلقاء)"
-        subtitle="اختر الفئة العمرية للبدء في احتساب التكرارات واستعراض المعايير الرسمية المعتمدة."
-        unitBadge="تمرين اللياقة الأول"
+        title="تمرين المعدة"
       />
 
       <div className="grid gap-3.5 sm:gap-4">

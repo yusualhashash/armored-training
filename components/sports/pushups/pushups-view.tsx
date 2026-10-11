@@ -57,9 +57,7 @@ export function PushupsCategories({ openView }: { openView: (view: 'pushups-cate
   return (
     <div className="mx-auto w-full max-w-2xl space-y-4">
       <SportsTestHeroHeader
-        title="التمرين السادس (ثني ومد الذراعين - الضغط)"
-        subtitle="اختر الفئة العمرية للبدء في احتساب التكرارات واستعراض المعايير الرسمية المعتمدة."
-        unitBadge="تمرين القوة العضلية"
+        title="التمرين السادس (الضغط)"
       />
 
       <div className="grid gap-3.5 sm:gap-4">

@@ -43,9 +43,7 @@ export function CompoundStrengthCategories({ openView }: { openView: (view: keyo
   return (
     <div className="mx-auto w-full max-w-2xl space-y-4">
       <SportsTestHeroHeader
-        title="اختبار القوة المركبة (الشامل)"
-        subtitle="اختر الفئة العمرية للبدء في احتساب التكرارات واستعراض المعايير الرسمية المعتمدة."
-        unitBadge="تمرين القوة الشاملة"
+        title="اختبار القوة المركبة"
       />
 
       <div className="grid gap-3.5 sm:gap-4">

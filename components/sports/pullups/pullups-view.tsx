@@ -44,8 +44,6 @@ export function PullupsCategories({ openView }: { openView: (view: keyof typeof 
     <div className="mx-auto w-full max-w-2xl space-y-4">
       <SportsTestHeroHeader
         title="سحب الجسم على الثابت"
-        subtitle="اختر الفئة العمرية للبدء في احتساب التكرارات واستعراض المعايير الرسمية المعتمدة."
-        unitBadge="تمرين القوة والشد"
       />
 
       <div className="grid gap-3.5 sm:gap-4">

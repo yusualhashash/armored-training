@@ -48,11 +48,6 @@ export function SportsCategoryCard({
               <span className="text-[11px] font-semibold tracking-wider text-emerald-400">
                 {subtitle ? subtitle : 'اللياقة البدنية · المعيار العسكري'}
               </span>
-              {categoryNumber && (
-                <span className="inline-flex items-center rounded-md border border-amber-400/30 bg-amber-400/10 px-1.5 py-0.5 text-[10px] font-bold text-amber-300">
-                  الفئة {categoryNumber}
-                </span>
-              )}
             </div>
 
             <div className="flex items-center gap-2 max-w-full">
@@ -73,10 +68,7 @@ export function SportsCategoryCard({
         <div className="mt-4 flex items-center justify-between border-t border-white/[0.06] pt-3 text-[11px] text-white/50 font-medium">
           <div className="flex items-center gap-2">
             <span className="text-white/70">{birthYears}</span>
-            <span aria-hidden="true">·</span>
-            <span className="text-amber-300/80">معايير معتمدة</span>
           </div>
-
           <span className="text-emerald-400/90 font-semibold group-hover:text-emerald-300">
             بدء التقييم
           </span>
@@ -88,12 +80,8 @@ export function SportsCategoryCard({
 
 export function SportsTestHeroHeader({
   title,
-  subtitle,
-  unitBadge = 'اللياقة البدنية',
 }: {
   title: string
-  subtitle: string
-  unitBadge?: string
 }) {
   return (
     <div className="relative overflow-hidden rounded-3xl border border-emerald-500/25 bg-[#0c1610] p-5 sm:p-6 shadow-[0_12px_30px_rgba(0,0,0,0.4)] mb-4">
@@ -104,24 +92,13 @@ export function SportsTestHeroHeader({
           </div>
 
           <div className="flex flex-col items-start gap-1">
-            <span className="text-[11px] font-semibold tracking-wider text-emerald-400">
-              {unitBadge} · منظومة التقييم
-            </span>
             <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">
               {title}
             </h2>
           </div>
         </div>
-
-        <div className="flex items-center gap-1.5 rounded-xl border border-amber-400/25 bg-amber-400/10 px-3 py-1.5 text-xs font-bold text-amber-300">
-          <Sparkles className="size-3.5" aria-hidden="true" />
-          <span>7 فئات عمرية</span>
-        </div>
       </div>
 
-      <p className="mt-3 text-xs sm:text-sm text-white/65 leading-relaxed">
-        {subtitle}
-      </p>
     </div>
   )
 }
