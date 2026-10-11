@@ -1,19 +1,12 @@
 'use client'
 
 import {
-  ChevronLeft,
-  Dumbbell,
-  History,
-  Medal,
-  Shield,
-  Star,
-  Timer,
-  Zap,
-} from 'lucide-react'
+    ChevronLeft,
+    Dumbbell,
+    Medal
+} from 'lucide-react';
 
-import { Button } from '@/components/ui/button'
-
-import type { OpenView } from '@/lib/app/types'
+import type { OpenView } from '@/lib/app/types';
 
 interface HomeViewProps {
   openView: OpenView
@@ -37,9 +30,6 @@ export function HomeView({ openView }: HomeViewProps) {
               </div>
 
               <div className="flex flex-col items-start gap-1">
-                <span className="text-[11px] font-semibold tracking-wider text-emerald-400">
-                  القسم الأول · اللياقة البدنية
-                </span>
                 <span className="text-lg sm:text-xl font-bold text-white tracking-tight">
                   الرياضة
                 </span>
@@ -49,18 +39,6 @@ export function HomeView({ openView }: HomeViewProps) {
             <div className="flex size-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/60 transition-transform group-hover:-translate-x-1 group-hover:text-white group-hover:border-emerald-400/30">
               <ChevronLeft className="size-5" aria-hidden="true" />
             </div>
-          </div>
-
-          <p className="mt-3 text-xs sm:text-sm text-white/65 leading-relaxed">
-            اختبارات الجري (100م، 1كم، 2كم، 3كم، 5كم، 4×100م)، سحب الجسم على الثابت (العقلة)، ثني ومد الذراعين (الضغط)، وتمرين البطن.
-          </p>
-
-          <div className="mt-4 flex items-center gap-2 text-[11px] text-white/45 font-medium border-t border-white/[0.06] pt-3">
-            <span>7 فئات عمرية</span>
-            <span aria-hidden="true">·</span>
-            <span>توقيت بالدقائق والثواني</span>
-            <span aria-hidden="true">·</span>
-            <span className="text-amber-300/80">علامات معتمدة</span>
           </div>
         </button>
 
@@ -77,9 +55,6 @@ export function HomeView({ openView }: HomeViewProps) {
               </div>
 
               <div className="flex flex-col items-start gap-1">
-                <span className="text-[11px] font-semibold tracking-wider text-amber-400">
-                  القسم الثاني · المدرعات والميدان
-                </span>
                 <span className="text-lg sm:text-xl font-bold text-white tracking-tight">
                   أسلحة ورمي
                 </span>
@@ -89,49 +64,6 @@ export function HomeView({ openView }: HomeViewProps) {
             <div className="flex size-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/60 transition-transform group-hover:-translate-x-1 group-hover:text-white group-hover:border-emerald-400/30">
               <ChevronLeft className="size-5" aria-hidden="true" />
             </div>
-          </div>
-
-          <p className="mt-3 text-xs sm:text-sm text-white/65 leading-relaxed">
-            اختبارات ركوب وترجل طواقم وفصائل وسرايا دبابات T-72 و T-55/62، التشكيلات القتالية، احتلال خط الرمي، وتحميل الدبابات على الناقلات.
-          </p>
-
-          <div className="mt-4 flex items-center gap-2 text-[11px] text-white/45 font-medium border-t border-white/[0.06] pt-3">
-            <span>دبابات T-72</span>
-            <span aria-hidden="true">·</span>
-            <span>دبابات T-55 و T-62</span>
-            <span aria-hidden="true">·</span>
-            <span className="text-emerald-300/80">تعليمات تكتيكية</span>
-          </div>
-        </button>
-      </div>
-
-      {/* Quick Launch Strip */}
-      <div className="grid grid-cols-2 gap-3 pt-2">
-        <button
-          type="button"
-          onClick={() => openView('history')}
-          className="flex items-center gap-3 rounded-2xl border border-white/10 bg-[#0a140e] p-3.5 text-right transition hover:border-emerald-500/30 hover:bg-[#0f1d14]"
-        >
-          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-300">
-            <History className="size-5" />
-          </div>
-          <div className="min-w-0">
-            <span className="block text-xs font-bold text-white">سجل التدريب</span>
-            <span className="block text-[11px] text-white/45 truncate">مراجعة وتصدير Excel</span>
-          </div>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => openView('favorites')}
-          className="flex items-center gap-3 rounded-2xl border border-white/10 bg-[#0a140e] p-3.5 text-right transition hover:border-amber-500/30 hover:bg-[#0f1d14]"
-        >
-          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-300">
-            <Star className="size-5" />
-          </div>
-          <div className="min-w-0">
-            <span className="block text-xs font-bold text-white">المفضلة</span>
-            <span className="block text-[11px] text-white/45 truncate">الاختبارات المثبتة</span>
           </div>
         </button>
       </div>
