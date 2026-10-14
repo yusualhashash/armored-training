@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react';
 import { AppContent } from './app-content';
 import { FavoriteButton, FavoritesProvider } from './favorites';
 import { HomeHeader, HomeView } from './home-view';
+import { TopNotificationBar, NotificationHeaderButton } from '@/components/notifications/top-notification-bar';
 
 import {
     getFullTestName,
@@ -168,8 +169,15 @@ export function AppShell() {
                   <span className="font-medium">يعمل دون إنترنت</span>
                 </div>
               )}
+
+              <NotificationHeaderButton />
             </div>
           </header>
+
+          {/* =====================================================
+              TOP NOTIFICATION & BROADCAST SECTION
+          ====================================================== */}
+          <TopNotificationBar openView={openView} />
 
           {/* =====================================================
               MAIN CONTENT VIEWPORT

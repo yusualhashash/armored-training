@@ -6,6 +6,7 @@ import {
     Medal
 } from 'lucide-react';
 
+import { HomeBroadcastCard } from '@/components/notifications/home-broadcast-card';
 import type { OpenView } from '@/lib/app/types';
 
 interface HomeViewProps {
@@ -15,6 +16,9 @@ interface HomeViewProps {
 export function HomeView({ openView }: HomeViewProps) {
   return (
     <div className="mx-auto w-full max-w-2xl space-y-6">
+      {/* Field Announcements & Offline Broadcast Card */}
+      <HomeBroadcastCard />
+
       {/* Main Core Sections */}
       <div className="grid gap-4">
         {/* Section 1: Sports */}
