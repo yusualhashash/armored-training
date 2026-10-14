@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   async headers() {
     const noCache = [
       { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
