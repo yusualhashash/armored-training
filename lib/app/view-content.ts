@@ -798,6 +798,30 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T72',
     backTo: 't72',
   },
+
+  't72-combat-to-travel-with-stabilizer': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-combat-to-travel-with-stabilizer-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-combat-to-travel-with-stabilizer-and-night-vision': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-combat-to-travel-with-stabilizer-and-night-vision-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
   
 
   // ============================================================
@@ -1126,6 +1150,30 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't55',
   },
 
+  't55-combat-to-travel-with-stabilizer': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-combat-to-travel-with-stabilizer-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-combat-to-travel-with-stabilizer-and-night-vision': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-combat-to-travel-with-stabilizer-and-night-vision-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
   // ============================================================
   // T62
   // ============================================================
@@ -1192,6 +1240,30 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't62-combat-to-travel-with-stabilizer-off-طاقم': {
     title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع اطفاء جهاز الاستقرار)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-combat-to-travel-with-stabilizer': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-combat-to-travel-with-stabilizer-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-combat-to-travel-with-stabilizer-and-night-vision': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-combat-to-travel-with-stabilizer-and-night-vision-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
     backLabel: 'T62',
     backTo: 't62',
   },

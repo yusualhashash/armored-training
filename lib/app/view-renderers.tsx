@@ -56,16 +56,22 @@ import { T72TravelToCombatView } from '@/components/armored/t72/travel-to-combat
 import { T72TravelToCombatWithStabilizerView } from '@/components/armored/t72/travel-to-combat-with-stabilizer/view'
 import { T72TravelToCombatWithStabilizerAndNightVisionView } from '@/components/armored/t72/travel-to-combat-with-stabilizer-and-night-vision/view'
 import { T72CombatToTravelWithStabilizerOffView } from '@/components/armored/t72/combat-to-travel-with-stabilizer-off/view'
+import { T72CombatToTravelWithStabilizerView } from '@/components/armored/t72/combat-to-travel-with-stabilizer/view'
+import { T72CombatToTravelWithStabilizerAndNightVisionView } from '@/components/armored/t72/combat-to-travel-with-stabilizer-and-night-vision/view'
 import { T55AmmunitionStackingView } from '@/components/armored/t55/ammunition-stacking/view'
 import { T55TravelToCombatView } from '@/components/armored/t55/travel-to-combat-without-stabilizer/view'
 import { T55TravelToCombatWithStabilizerView } from '@/components/armored/t55/travel-to-combat-with-stabilizer/view'
 import { T55TravelToCombatWithStabilizerAndNightVisionView } from '@/components/armored/t55/travel-to-combat-with-stabilizer-and-night-vision/view'
 import { T55CombatToTravelWithStabilizerOffView } from '@/components/armored/t55/combat-to-travel-with-stabilizer-off/view'
+import { T55CombatToTravelWithStabilizerView } from '@/components/armored/t55/combat-to-travel-with-stabilizer/view'
+import { T55CombatToTravelWithStabilizerAndNightVisionView } from '@/components/armored/t55/combat-to-travel-with-stabilizer-and-night-vision/view'
 import { T62AmmunitionStackingView } from '@/components/armored/t62/ammunition-stacking/view'
 import { T62TravelToCombatView } from '@/components/armored/t62/travel-to-combat-without-stabilizer/view'
 import { T62TravelToCombatWithStabilizerView } from '@/components/armored/t62/travel-to-combat-with-stabilizer/view'
 import { T62TravelToCombatWithStabilizerAndNightVisionView } from '@/components/armored/t62/travel-to-combat-with-stabilizer-and-night-vision/view'
 import { T62CombatToTravelWithStabilizerOffView } from '@/components/armored/t62/combat-to-travel-with-stabilizer-off/view'
+import { T62CombatToTravelWithStabilizerView } from '@/components/armored/t62/combat-to-travel-with-stabilizer/view'
+import { T62CombatToTravelWithStabilizerAndNightVisionView } from '@/components/armored/t62/combat-to-travel-with-stabilizer-and-night-vision/view'
 import { T55_62AmmunitionStackingView } from '@/components/armored/t55-62/ammunition-stacking/view'
 
 
@@ -754,6 +760,20 @@ function renderArmoredView(
     return <T72CombatToTravelWithStabilizerOffView />
   }
 
+  if (
+    activeView === 't72-combat-to-travel-with-stabilizer' ||
+    activeView === 't72-combat-to-travel-with-stabilizer-طاقم'
+  ) {
+    return <T72CombatToTravelWithStabilizerView />
+  }
+
+  if (
+    activeView === 't72-combat-to-travel-with-stabilizer-and-night-vision' ||
+    activeView === 't72-combat-to-travel-with-stabilizer-and-night-vision-طاقم'
+  ) {
+    return <T72CombatToTravelWithStabilizerAndNightVisionView />
+  }
+
 
 
   // ============================================================
@@ -1004,6 +1024,20 @@ function renderArmoredView(
   }
 
   if (
+    activeView === 't55-combat-to-travel-with-stabilizer' ||
+    activeView === 't55-combat-to-travel-with-stabilizer-طاقم'
+  ) {
+    return <T55CombatToTravelWithStabilizerView />
+  }
+
+  if (
+    activeView === 't55-combat-to-travel-with-stabilizer-and-night-vision' ||
+    activeView === 't55-combat-to-travel-with-stabilizer-and-night-vision-طاقم'
+  ) {
+    return <T55CombatToTravelWithStabilizerAndNightVisionView />
+  }
+
+  if (
     activeView === 't62-travel-to-combat-with-stabilizer' ||
     activeView === 't62-travel-to-combat-with-stabilizer-طاقم'
   ) {
@@ -1022,6 +1056,20 @@ function renderArmoredView(
     activeView === 't62-combat-to-travel-with-stabilizer-off-طاقم'
   ) {
     return <T62CombatToTravelWithStabilizerOffView />
+  }
+
+  if (
+    activeView === 't62-combat-to-travel-with-stabilizer' ||
+    activeView === 't62-combat-to-travel-with-stabilizer-طاقم'
+  ) {
+    return <T62CombatToTravelWithStabilizerView />
+  }
+
+  if (
+    activeView === 't62-combat-to-travel-with-stabilizer-and-night-vision' ||
+    activeView === 't62-combat-to-travel-with-stabilizer-and-night-vision-طاقم'
+  ) {
+    return <T62CombatToTravelWithStabilizerAndNightVisionView />
   }
 
   if (activeView === 't55-62-ammunition-stacking') {
