@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  // Do not set output: 'standalone' on Vercel as Next.js 16+ causes ENOENT next-server.js.nft.json
+  ...(process.env.VERCEL ? {} : (process.env.BUILD_STANDALONE ? { output: 'standalone' } : {})),
   async headers() {
     const noCache = [
       { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
