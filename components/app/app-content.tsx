@@ -339,6 +339,12 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t62-combat-to-travel-with-stabilizer-and-night-vision')}
         />
+        <SectionButton
+          label="تبديل الطارق (القدّاح) آلية طارق مغلاق المدفع"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t62-replace-firing-pin')}
+        />
       </div>
     )
   }
