@@ -179,83 +179,6 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t55-ammunition-stacking')}
         />
-
-        <SectionButton
-          label="ركوب الطواقم في الدبابة"
-          description="الطاقم والفصيلة والسرية"
-          icon={Medal}
-          onClick={() => openView('t55-62-boarding')}
-        />
-
-        <SectionButton
-          label="نزول الطواقم من الدبابة"
-          description="الطاقم والفصيلة والسرية"
-          icon={Medal}
-          onClick={() => openView('t55-62-disembarking')}
-        />
-
-        <SectionButton
-          label="الانتقال من تشكيلة الرتل إلى ترتيب ما قبل القتال"
-          description="السرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-pre-combat')}
-        />
-
-        <SectionButton
-          label="الانتقال من ترتيب القتال الى ترتيب ما قبل القتال"
-          description="الفصيلة والسرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-combat-to-pre-combat')}
-        />
-
-        <SectionButton
-          label="الفتح من ترتيب ما قبل القتال"
-          description="الفصيلة والسرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-open-pre-combat')}
-        />
-
-        <SectionButton
-          label="الانتقال من ترتيب ما قبل القتال الى الرتل"
-          description="السرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-pre-combat-to-column')}
-        />
-
-        <SectionButton
-          label="الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)"
-          description="السرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-column-to-combat')}
-        />
-
-        <SectionButton
-          label="الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)"
-          description="الفصيلة والسرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-column-to-combat-flank')}
-        />
-
-        <SectionButton
-          label="التحرك واحتلال خط رمي لصد هجمات العدو"
-          description="الفصيلة والسرية"
-          icon={Medal}
-          onClick={() => openView('t55-62-move-and-occupy-firing-line')}
-        />
-
-        <SectionButton
-          label="تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)"
-          description="الطاقم والفصيلة والسرية"
-          icon={Medal}
-          onClick={() => openView('t55-62-load-tanks-on-heavy-carriers')}
-        />
-
-        <SectionButton
-          label="تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)"
-          description="الطاقم والفصيلة والسرية"
-          icon={Medal}
-          onClick={() => openView('t55-62-unload-tanks-from-heavy-carriers')}
-        />
       </div>
     )
   }
@@ -269,83 +192,6 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t62-ammunition-stacking')}
         />
-
-        <SectionButton
-          label="ركوب الطواقم في الدبابة"
-          description="الطاقم والفصيلة والسرية"
-          icon={Medal}
-          onClick={() => openView('t55-62-boarding')}
-        />
-
-        <SectionButton
-          label="نزول الطواقم من الدبابة"
-          description="الطاقم والفصيلة والسرية"
-          icon={Medal}
-          onClick={() => openView('t55-62-disembarking')}
-        />
-
-        <SectionButton
-          label="الانتقال من تشكيلة الرتل إلى ترتيب ما قبل القتال"
-          description="السرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-pre-combat')}
-        />
-
-        <SectionButton
-          label="الانتقال من ترتيب القتال الى ترتيب ما قبل القتال"
-          description="الفصيلة والسرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-combat-to-pre-combat')}
-        />
-
-        <SectionButton
-          label="الفتح من ترتيب ما قبل القتال"
-          description="الفصيلة والسرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-open-pre-combat')}
-        />
-
-        <SectionButton
-          label="الانتقال من ترتيب ما قبل القتال الى الرتل"
-          description="السرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-pre-combat-to-column')}
-        />
-
-        <SectionButton
-          label="الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجبهة)"
-          description="السرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-column-to-combat')}
-        />
-
-        <SectionButton
-          label="الفتح من رتل التحرك الى ترتيب القتال الصد هجوم مفاجئ معاد (باتجاه الجوانب)"
-          description="الفصيلة والسرية والكتيبة"
-          icon={Medal}
-          onClick={() => openView('t55-62-column-to-combat-flank')}
-        />
-
-        <SectionButton
-          label="التحرك واحتلال خط رمي لصد هجمات العدو"
-          description="الفصيلة والسرية"
-          icon={Medal}
-          onClick={() => openView('t55-62-move-and-occupy-firing-line')}
-        />
-
-        <SectionButton
-          label="تحميل الدبابات على الحاملات ذات الحمولة الكبيرة (50 طن)"
-          description="الطاقم والفصيلة والسرية"
-          icon={Medal}
-          onClick={() => openView('t55-62-load-tanks-on-heavy-carriers')}
-        />
-
-        <SectionButton
-          label="تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)"
-          description="الطاقم والفصيلة والسرية"
-          icon={Medal}
-          onClick={() => openView('t55-62-unload-tanks-from-heavy-carriers')}
-        />
       </div>
     )
   }
@@ -353,13 +199,6 @@ export function AppContent({
   if (activeView === 't55-62') {
     return (
       <div className="grid gap-4">
-        <SectionButton
-          label="تنضيد الوحدة النارية في الدبابة (الوحدة النارية بالكامل)"
-          description="الطاقم (T-55 / T-62)"
-          icon={Medal}
-          onClick={() => openView('t55-62-ammunition-stacking')}
-        />
-
         <SectionButton
           label="ركوب الطواقم في الدبابة"
           description="الطاقم والفصيلة والسرية"
