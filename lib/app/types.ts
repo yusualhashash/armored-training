@@ -148,6 +148,8 @@ export type View =
   | 't72-travel-to-combat-without-stabilizer-طاقم'
   | 't72-travel-to-combat-with-stabilizer'
   | 't72-travel-to-combat-with-stabilizer-طاقم'
+  | 't72-travel-to-combat-with-stabilizer-and-night-vision'
+  | 't72-travel-to-combat-with-stabilizer-and-night-vision-طاقم'
 
   // T55
   | 't55'
@@ -157,6 +159,8 @@ export type View =
   | 't55-travel-to-combat-without-stabilizer-طاقم'
   | 't55-travel-to-combat-with-stabilizer'
   | 't55-travel-to-combat-with-stabilizer-طاقم'
+  | 't55-travel-to-combat-with-stabilizer-and-night-vision'
+  | 't55-travel-to-combat-with-stabilizer-and-night-vision-طاقم'
 
   // T62
   | 't62'
@@ -166,6 +170,8 @@ export type View =
   | 't62-travel-to-combat-without-stabilizer-طاقم'
   | 't62-travel-to-combat-with-stabilizer'
   | 't62-travel-to-combat-with-stabilizer-طاقم'
+  | 't62-travel-to-combat-with-stabilizer-and-night-vision'
+  | 't62-travel-to-combat-with-stabilizer-and-night-vision-طاقم'
 
   // T(55 + 62)
   | 't55-62'

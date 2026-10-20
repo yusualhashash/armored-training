@@ -774,6 +774,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T72',
     backTo: 't72',
   },
+
+  't72-travel-to-combat-with-stabilizer-and-night-vision': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-travel-to-combat-with-stabilizer-and-night-vision-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
   
 
   // ============================================================
@@ -1078,6 +1090,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't55',
   },
 
+  't55-travel-to-combat-with-stabilizer-and-night-vision': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-travel-to-combat-with-stabilizer-and-night-vision-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
   // ============================================================
   // T62
   // ============================================================
@@ -1120,6 +1144,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't62-travel-to-combat-with-stabilizer-طاقم': {
     title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (مع تشغيل جهاز الاستقرار)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-travel-to-combat-with-stabilizer-and-night-vision': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-travel-to-combat-with-stabilizer-and-night-vision-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
     backLabel: 'T62',
     backTo: 't62',
   },
