@@ -90,6 +90,13 @@ export function AppContent({
         />
 
         <SectionButton
+          label="تنضيد الوحدة النارية في الدبابة (فقط في الحامل الدوار)"
+          description="الطاقم"
+          icon={Medal}
+          onClick={() => openView('t72-carousel-ammunition-stacking')}
+        />
+
+        <SectionButton
           label="ركوب الطواقم في الدبابة"
           description="الطاقم والفصيلة والسرية"
           icon={Medal}

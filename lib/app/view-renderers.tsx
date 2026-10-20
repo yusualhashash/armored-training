@@ -50,6 +50,7 @@ import {
 } from '@/components/armored/t72/combat-to-pre-combat/view'
 
 import { T72AmmunitionStackingView } from '@/components/armored/t72/ammunition-stacking/view'
+import { T72CarouselAmmunitionStackingView } from '@/components/armored/t72/carousel-ammunition-stacking/view'
 import { T55AmmunitionStackingView } from '@/components/armored/t55/ammunition-stacking/view'
 import { T62AmmunitionStackingView } from '@/components/armored/t62/ammunition-stacking/view'
 import { T55_62AmmunitionStackingView } from '@/components/armored/t55-62/ammunition-stacking/view'
@@ -696,6 +697,13 @@ function renderArmoredView(
     activeView === 't72-ammunition-stacking-طاقم'
   ) {
     return <T72AmmunitionStackingView />
+  }
+
+  if (
+    activeView === 't72-carousel-ammunition-stacking' ||
+    activeView === 't72-carousel-ammunition-stacking-طاقم'
+  ) {
+    return <T72CarouselAmmunitionStackingView />
   }
 
 

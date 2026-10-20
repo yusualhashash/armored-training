@@ -140,6 +140,8 @@ export type View =
 
   | 't72-ammunition-stacking'
   | 't72-ammunition-stacking-طاقم'
+  | 't72-carousel-ammunition-stacking'
+  | 't72-carousel-ammunition-stacking-طاقم'
 
   // T55
   | 't55'

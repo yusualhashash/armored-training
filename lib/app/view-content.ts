@@ -726,6 +726,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T72',
     backTo: 't72',
   },
+
+  't72-carousel-ammunition-stacking': {
+    title: 'تنضيد الوحدة النارية في الدبابة (فقط في الحامل الدوار)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-carousel-ammunition-stacking-طاقم': {
+    title: 'تنضيد الوحدة النارية في الدبابة (فقط في الحامل الدوار)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
   
 
   // ============================================================
