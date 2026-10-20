@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",
+  // output: 'standalone' is omitted because Next.js 16+ standalone mode omits next-server.js.nft.json which causes Vercel builds to fail with ENOENT
+  ...(process.env.BUILD_STANDALONE ? { output: 'standalone' } : {}),
   async headers() {
     const noCache = [
       { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
