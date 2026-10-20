@@ -750,6 +750,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T72',
     backTo: 't72',
   },
+
+  't72-travel-to-combat-without-stabilizer': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (دون تشغيل جهاز الاستقرار)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-travel-to-combat-without-stabilizer-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (دون تشغيل جهاز الاستقرار)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
   
 
   // ============================================================
@@ -1030,6 +1042,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't55',
   },
 
+  't55-travel-to-combat-without-stabilizer': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (دون تشغيل جهاز الاستقرار)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-travel-to-combat-without-stabilizer-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (دون تشغيل جهاز الاستقرار)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
   // ============================================================
   // T62
   // ============================================================
@@ -1048,6 +1072,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't62-ammunition-stacking-طاقم': {
     title: 'تنضيد الوحدة النارية في الدبابة (الوحدة النارية بالكامل)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-travel-to-combat-without-stabilizer': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (دون تشغيل جهاز الاستقرار)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-travel-to-combat-without-stabilizer-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (دون تشغيل جهاز الاستقرار)',
     backLabel: 'T62',
     backTo: 't62',
   },

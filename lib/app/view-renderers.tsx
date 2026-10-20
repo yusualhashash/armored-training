@@ -52,8 +52,11 @@ import {
 import { T72AmmunitionStackingView } from '@/components/armored/t72/ammunition-stacking/view'
 import { T72CarouselAmmunitionStackingView } from '@/components/armored/t72/carousel-ammunition-stacking/view'
 import { T72TransferRoundsToCarouselView } from '@/components/armored/t72/transfer-rounds-to-carousel/view'
+import { T72TravelToCombatView } from '@/components/armored/t72/travel-to-combat-without-stabilizer/view'
 import { T55AmmunitionStackingView } from '@/components/armored/t55/ammunition-stacking/view'
+import { T55TravelToCombatView } from '@/components/armored/t55/travel-to-combat-without-stabilizer/view'
 import { T62AmmunitionStackingView } from '@/components/armored/t62/ammunition-stacking/view'
+import { T62TravelToCombatView } from '@/components/armored/t62/travel-to-combat-without-stabilizer/view'
 import { T55_62AmmunitionStackingView } from '@/components/armored/t55-62/ammunition-stacking/view'
 
 
@@ -714,6 +717,13 @@ function renderArmoredView(
     return <T72TransferRoundsToCarouselView />
   }
 
+  if (
+    activeView === 't72-travel-to-combat-without-stabilizer' ||
+    activeView === 't72-travel-to-combat-without-stabilizer-طاقم'
+  ) {
+    return <T72TravelToCombatView />
+  }
+
 
 
   // ============================================================
@@ -926,6 +936,20 @@ function renderArmoredView(
     activeView === 't62-ammunition-stacking-طاقم'
   ) {
     return <T62AmmunitionStackingView />
+  }
+
+  if (
+    activeView === 't55-travel-to-combat-without-stabilizer' ||
+    activeView === 't55-travel-to-combat-without-stabilizer-طاقم'
+  ) {
+    return <T55TravelToCombatView />
+  }
+
+  if (
+    activeView === 't62-travel-to-combat-without-stabilizer' ||
+    activeView === 't62-travel-to-combat-without-stabilizer-طاقم'
+  ) {
+    return <T62TravelToCombatView />
   }
 
   if (activeView === 't55-62-ammunition-stacking') {

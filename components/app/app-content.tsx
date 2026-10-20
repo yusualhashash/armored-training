@@ -104,6 +104,13 @@ export function AppContent({
         />
 
         <SectionButton
+          label="تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (دون تشغيل جهاز الاستقرار)"
+          description="الطاقم"
+          icon={Medal}
+          onClick={() => openView('t72-travel-to-combat-without-stabilizer')}
+        />
+
+        <SectionButton
           label="ركوب الطواقم في الدبابة"
           description="الطاقم والفصيلة والسرية"
           icon={Medal}
@@ -193,6 +200,13 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t55-ammunition-stacking')}
         />
+
+        <SectionButton
+          label="تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (دون تشغيل جهاز الاستقرار)"
+          description="الطاقم"
+          icon={Medal}
+          onClick={() => openView('t55-travel-to-combat-without-stabilizer')}
+        />
       </div>
     )
   }
@@ -205,6 +219,13 @@ export function AppContent({
           description="الطاقم"
           icon={Medal}
           onClick={() => openView('t62-ammunition-stacking')}
+        />
+
+        <SectionButton
+          label="تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (دون تشغيل جهاز الاستقرار)"
+          description="الطاقم"
+          icon={Medal}
+          onClick={() => openView('t62-travel-to-combat-without-stabilizer')}
         />
       </div>
     )
