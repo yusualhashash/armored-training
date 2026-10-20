@@ -834,6 +834,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T72',
     backTo: 't72',
   },
+
+  't72-replace-spring': {
+    title: 'تبديل النابض آلية طارق مغلاق المدفع',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-replace-spring-طاقم': {
+    title: 'تبديل النابض آلية طارق مغلاق المدفع',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
   
 
   // ============================================================
@@ -1186,6 +1198,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't55',
   },
 
+  't55-replace-spring': {
+    title: 'تبديل النابض آلية طارق مغلاق المدفع',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-replace-spring-طاقم': {
+    title: 'تبديل النابض آلية طارق مغلاق المدفع',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
   // ============================================================
   // T62
   // ============================================================
@@ -1288,6 +1312,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't62-replace-firing-pin-طاقم': {
     title: 'تبديل الطارق (القدّاح) آلية طارق مغلاق المدفع',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-replace-spring': {
+    title: 'تبديل النابض آلية طارق مغلاق المدفع',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-replace-spring-طاقم': {
+    title: 'تبديل النابض آلية طارق مغلاق المدفع',
     backLabel: 'T62',
     backTo: 't62',
   },

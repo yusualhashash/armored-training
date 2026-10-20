@@ -158,6 +158,8 @@ export type View =
   | 't72-combat-to-travel-with-stabilizer-and-night-vision-طاقم'
   | 't72-replace-firing-pin'
   | 't72-replace-firing-pin-طاقم'
+  | 't72-replace-spring'
+  | 't72-replace-spring-طاقم'
 
   // T55
   | 't55'
@@ -175,6 +177,8 @@ export type View =
   | 't55-combat-to-travel-with-stabilizer-طاقم'
   | 't55-combat-to-travel-with-stabilizer-and-night-vision'
   | 't55-combat-to-travel-with-stabilizer-and-night-vision-طاقم'
+  | 't55-replace-spring'
+  | 't55-replace-spring-طاقم'
 
   // T62
   | 't62'
@@ -194,6 +198,8 @@ export type View =
   | 't62-combat-to-travel-with-stabilizer-and-night-vision-طاقم'
   | 't62-replace-firing-pin'
   | 't62-replace-firing-pin-طاقم'
+  | 't62-replace-spring'
+  | 't62-replace-spring-طاقم'
 
   // T(55 + 62)
   | 't55-62'

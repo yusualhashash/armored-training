@@ -153,6 +153,13 @@ export function AppContent({
         />
 
         <SectionButton
+          label="تبديل النابض آلية طارق مغلاق المدفع"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t72-replace-spring')}
+        />
+
+        <SectionButton
           label="ركوب الطواقم في الدبابة"
           description="الطاقم والفصيلة والسرية"
           icon={Medal}
@@ -284,6 +291,13 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t55-combat-to-travel-with-stabilizer-and-night-vision')}
         />
+
+        <SectionButton
+          label="تبديل النابض آلية طارق مغلاق المدفع"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t55-replace-spring')}
+        />
       </div>
     )
   }
@@ -344,6 +358,12 @@ export function AppContent({
           description="السدنة"
           icon={Medal}
           onClick={() => openView('t62-replace-firing-pin')}
+        />
+        <SectionButton
+          label="تبديل النابض آلية طارق مغلاق المدفع"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t62-replace-spring')}
         />
       </div>
     )

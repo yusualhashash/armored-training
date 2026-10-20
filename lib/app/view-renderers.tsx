@@ -59,6 +59,7 @@ import { T72CombatToTravelWithStabilizerOffView } from '@/components/armored/t72
 import { T72CombatToTravelWithStabilizerView } from '@/components/armored/t72/combat-to-travel-with-stabilizer/view'
 import { T72CombatToTravelWithStabilizerAndNightVisionView } from '@/components/armored/t72/combat-to-travel-with-stabilizer-and-night-vision/view'
 import { T72ReplaceFiringPinView } from '@/components/armored/t72/replace-firing-pin/view'
+import { T72ReplaceSpringView } from '@/components/armored/t72/replace-spring/view'
 import { T55AmmunitionStackingView } from '@/components/armored/t55/ammunition-stacking/view'
 import { T55TravelToCombatView } from '@/components/armored/t55/travel-to-combat-without-stabilizer/view'
 import { T55TravelToCombatWithStabilizerView } from '@/components/armored/t55/travel-to-combat-with-stabilizer/view'
@@ -66,6 +67,7 @@ import { T55TravelToCombatWithStabilizerAndNightVisionView } from '@/components/
 import { T55CombatToTravelWithStabilizerOffView } from '@/components/armored/t55/combat-to-travel-with-stabilizer-off/view'
 import { T55CombatToTravelWithStabilizerView } from '@/components/armored/t55/combat-to-travel-with-stabilizer/view'
 import { T55CombatToTravelWithStabilizerAndNightVisionView } from '@/components/armored/t55/combat-to-travel-with-stabilizer-and-night-vision/view'
+import { T55ReplaceSpringView } from '@/components/armored/t55/replace-spring/view'
 import { T62AmmunitionStackingView } from '@/components/armored/t62/ammunition-stacking/view'
 import { T62TravelToCombatView } from '@/components/armored/t62/travel-to-combat-without-stabilizer/view'
 import { T62TravelToCombatWithStabilizerView } from '@/components/armored/t62/travel-to-combat-with-stabilizer/view'
@@ -74,6 +76,7 @@ import { T62CombatToTravelWithStabilizerOffView } from '@/components/armored/t62
 import { T62CombatToTravelWithStabilizerView } from '@/components/armored/t62/combat-to-travel-with-stabilizer/view'
 import { T62CombatToTravelWithStabilizerAndNightVisionView } from '@/components/armored/t62/combat-to-travel-with-stabilizer-and-night-vision/view'
 import { T62ReplaceFiringPinView } from '@/components/armored/t62/replace-firing-pin/view'
+import { T62ReplaceSpringView } from '@/components/armored/t62/replace-spring/view'
 import { T55_62AmmunitionStackingView } from '@/components/armored/t55-62/ammunition-stacking/view'
 
 
@@ -783,6 +786,13 @@ function renderArmoredView(
     return <T72ReplaceFiringPinView />
   }
 
+  if (
+    activeView === 't72-replace-spring' ||
+    activeView === 't72-replace-spring-طاقم'
+  ) {
+    return <T72ReplaceSpringView />
+  }
+
 
 
   // ============================================================
@@ -1047,6 +1057,13 @@ function renderArmoredView(
   }
 
   if (
+    activeView === 't55-replace-spring' ||
+    activeView === 't55-replace-spring-طاقم'
+  ) {
+    return <T55ReplaceSpringView />
+  }
+
+  if (
     activeView === 't62-travel-to-combat-with-stabilizer' ||
     activeView === 't62-travel-to-combat-with-stabilizer-طاقم'
   ) {
@@ -1086,6 +1103,13 @@ function renderArmoredView(
     activeView === 't62-replace-firing-pin-طاقم'
   ) {
     return <T62ReplaceFiringPinView />
+  }
+
+  if (
+    activeView === 't62-replace-spring' ||
+    activeView === 't62-replace-spring-طاقم'
+  ) {
+    return <T62ReplaceSpringView />
   }
 
   if (activeView === 't55-62-ammunition-stacking') {
