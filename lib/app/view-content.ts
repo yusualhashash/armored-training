@@ -714,6 +714,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'تنزيل الدبابات عن الحاملات ذات الحمولة الكبيرة (50 طن)',
     backTo: 't72-unload-tanks-from-heavy-carriers',
   },
+
+  't72-ammunition-stacking': {
+    title: 'تنضيد الوحدة النارية في الدبابة (الوحدة النارية بالكامل)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-ammunition-stacking-طاقم': {
+    title: 'تنضيد الوحدة النارية في الدبابة (الوحدة النارية بالكامل)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
   
 
   // ============================================================
@@ -966,6 +978,56 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't55-62-unload-tanks-from-heavy-carriers',
   },
 
+  't55-62-ammunition-stacking': {
+    title: 'تنضيد الوحدة النارية في الدبابة (الوحدة النارية بالكامل)',
+    backLabel: 'T(55 + 62)',
+    backTo: 't55-62',
+  },
+
+  // ============================================================
+  // T55
+  // ============================================================
+
+  t55: {
+    title: 'T55',
+    backLabel: 'أسلحة ورمي',
+    backTo: 'armored',
+  },
+
+  't55-ammunition-stacking': {
+    title: 'تنضيد الوحدة النارية في الدبابة (الوحدة النارية بالكامل)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-ammunition-stacking-طاقم': {
+    title: 'تنضيد الوحدة النارية في الدبابة (الوحدة النارية بالكامل)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  // ============================================================
+  // T62
+  // ============================================================
+
+  t62: {
+    title: 'T62',
+    backLabel: 'أسلحة ورمي',
+    backTo: 'armored',
+  },
+
+  't62-ammunition-stacking': {
+    title: 'تنضيد الوحدة النارية في الدبابة (الوحدة النارية بالكامل)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-ammunition-stacking-طاقم': {
+    title: 'تنضيد الوحدة النارية في الدبابة (الوحدة النارية بالكامل)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
 }
 
 /**
@@ -1002,7 +1064,7 @@ export function getFullTestName(view: View): string {
     if (parent) {
       const grandparent = parent.backTo ? viewContent[parent.backTo] : null
       const vehicle =
-        grandparent?.title && (grandparent.title === 'T72' || grandparent.title === 'T(55 + 62)')
+        grandparent?.title && (grandparent.title === 'T72' || grandparent.title === 'T55' || grandparent.title === 'T62' || grandparent.title === 'T(55 + 62)')
           ? grandparent.title
           : null
       if (vehicle) {
@@ -1012,10 +1074,10 @@ export function getFullTestName(view: View): string {
     }
   }
 
-  // 3. If it's an armored drill category (e.g. t72-boarding)
+  // 3. If it's an armored drill category (e.g. t72-boarding or ammunition-stacking)
   if (current.backTo) {
     const parent = viewContent[current.backTo]
-    if (parent && (parent.title === 'T72' || parent.title === 'T(55 + 62)')) {
+    if (parent && (parent.title === 'T72' || parent.title === 'T55' || parent.title === 'T62' || parent.title === 'T(55 + 62)')) {
       return `${parent.title} - ${current.title}`
     }
   }

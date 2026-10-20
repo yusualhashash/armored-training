@@ -138,9 +138,22 @@ export type View =
   | 't72-unload-tanks-from-heavy-carriers-فصيلة'
   | 't72-unload-tanks-from-heavy-carriers-سرية'
 
-  
+  | 't72-ammunition-stacking'
+  | 't72-ammunition-stacking-طاقم'
+
+  // T55
+  | 't55'
+  | 't55-ammunition-stacking'
+  | 't55-ammunition-stacking-طاقم'
+
+  // T62
+  | 't62'
+  | 't62-ammunition-stacking'
+  | 't62-ammunition-stacking-طاقم'
+
   // T(55 + 62)
   | 't55-62'
+  | 't55-62-ammunition-stacking'
   | 't55-62-boarding'
   | 't55-62-طاقم'
   | 't55-62-فصيلة'

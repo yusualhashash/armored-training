@@ -49,6 +49,11 @@ import {
   type T72CombatToPreCombatViewId,
 } from '@/components/armored/t72/combat-to-pre-combat/view'
 
+import { T72AmmunitionStackingView } from '@/components/armored/t72/ammunition-stacking/view'
+import { T55AmmunitionStackingView } from '@/components/armored/t55/ammunition-stacking/view'
+import { T62AmmunitionStackingView } from '@/components/armored/t62/ammunition-stacking/view'
+import { T55_62AmmunitionStackingView } from '@/components/armored/t55-62/ammunition-stacking/view'
+
 
 
 import {
@@ -686,6 +691,13 @@ function renderArmoredView(
     )
   }
 
+  if (
+    activeView === 't72-ammunition-stacking' ||
+    activeView === 't72-ammunition-stacking-طاقم'
+  ) {
+    return <T72AmmunitionStackingView />
+  }
+
 
 
   // ============================================================
@@ -880,6 +892,28 @@ function renderArmoredView(
         openView={openView as (view: T55_62UnloadTanksFromHeavyCarriersViewId) => void}
       />
     )
+  }
+
+  // ============================================================
+  // T55 & T62 Ammunition Stacking
+  // ============================================================
+
+  if (
+    activeView === 't55-ammunition-stacking' ||
+    activeView === 't55-ammunition-stacking-طاقم'
+  ) {
+    return <T55AmmunitionStackingView />
+  }
+
+  if (
+    activeView === 't62-ammunition-stacking' ||
+    activeView === 't62-ammunition-stacking-طاقم'
+  ) {
+    return <T62AmmunitionStackingView />
+  }
+
+  if (activeView === 't55-62-ammunition-stacking') {
+    return <T55_62AmmunitionStackingView openView={openView} />
   }
 
   return null
