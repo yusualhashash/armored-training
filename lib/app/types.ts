@@ -146,6 +146,8 @@ export type View =
   | 't72-transfer-rounds-to-carousel-طاقم'
   | 't72-travel-to-combat-without-stabilizer'
   | 't72-travel-to-combat-without-stabilizer-طاقم'
+  | 't72-travel-to-combat-with-stabilizer'
+  | 't72-travel-to-combat-with-stabilizer-طاقم'
 
   // T55
   | 't55'
@@ -153,6 +155,8 @@ export type View =
   | 't55-ammunition-stacking-طاقم'
   | 't55-travel-to-combat-without-stabilizer'
   | 't55-travel-to-combat-without-stabilizer-طاقم'
+  | 't55-travel-to-combat-with-stabilizer'
+  | 't55-travel-to-combat-with-stabilizer-طاقم'
 
   // T62
   | 't62'
@@ -160,6 +164,8 @@ export type View =
   | 't62-ammunition-stacking-طاقم'
   | 't62-travel-to-combat-without-stabilizer'
   | 't62-travel-to-combat-without-stabilizer-طاقم'
+  | 't62-travel-to-combat-with-stabilizer'
+  | 't62-travel-to-combat-with-stabilizer-طاقم'
 
   // T(55 + 62)
   | 't55-62'
