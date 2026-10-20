@@ -97,6 +97,13 @@ export function AppContent({
         />
 
         <SectionButton
+          label="نقل جميع طلقات المدفع من المنضدة الآلية الى الحامل الدوار"
+          description="الطاقم"
+          icon={Medal}
+          onClick={() => openView('t72-transfer-rounds-to-carousel')}
+        />
+
+        <SectionButton
           label="ركوب الطواقم في الدبابة"
           description="الطاقم والفصيلة والسرية"
           icon={Medal}

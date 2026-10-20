@@ -738,6 +738,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T72',
     backTo: 't72',
   },
+
+  't72-transfer-rounds-to-carousel': {
+    title: 'نقل جميع طلقات المدفع من المنضدة الآلية الى الحامل الدوار',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-transfer-rounds-to-carousel-طاقم': {
+    title: 'نقل جميع طلقات المدفع من المنضدة الآلية الى الحامل الدوار',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
   
 
   // ============================================================
