@@ -146,6 +146,13 @@ export function AppContent({
         />
 
         <SectionButton
+          label="تبديل الطارق (القدّاح) آلية طارق مغلاق المدفع"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t72-replace-firing-pin')}
+        />
+
+        <SectionButton
           label="ركوب الطواقم في الدبابة"
           description="الطاقم والفصيلة والسرية"
           icon={Medal}

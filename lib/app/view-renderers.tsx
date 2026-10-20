@@ -58,6 +58,7 @@ import { T72TravelToCombatWithStabilizerAndNightVisionView } from '@/components/
 import { T72CombatToTravelWithStabilizerOffView } from '@/components/armored/t72/combat-to-travel-with-stabilizer-off/view'
 import { T72CombatToTravelWithStabilizerView } from '@/components/armored/t72/combat-to-travel-with-stabilizer/view'
 import { T72CombatToTravelWithStabilizerAndNightVisionView } from '@/components/armored/t72/combat-to-travel-with-stabilizer-and-night-vision/view'
+import { T72ReplaceFiringPinView } from '@/components/armored/t72/replace-firing-pin/view'
 import { T55AmmunitionStackingView } from '@/components/armored/t55/ammunition-stacking/view'
 import { T55TravelToCombatView } from '@/components/armored/t55/travel-to-combat-without-stabilizer/view'
 import { T55TravelToCombatWithStabilizerView } from '@/components/armored/t55/travel-to-combat-with-stabilizer/view'
@@ -72,6 +73,7 @@ import { T62TravelToCombatWithStabilizerAndNightVisionView } from '@/components/
 import { T62CombatToTravelWithStabilizerOffView } from '@/components/armored/t62/combat-to-travel-with-stabilizer-off/view'
 import { T62CombatToTravelWithStabilizerView } from '@/components/armored/t62/combat-to-travel-with-stabilizer/view'
 import { T62CombatToTravelWithStabilizerAndNightVisionView } from '@/components/armored/t62/combat-to-travel-with-stabilizer-and-night-vision/view'
+import { T62ReplaceFiringPinView } from '@/components/armored/t62/replace-firing-pin/view'
 import { T55_62AmmunitionStackingView } from '@/components/armored/t55-62/ammunition-stacking/view'
 
 
@@ -774,6 +776,13 @@ function renderArmoredView(
     return <T72CombatToTravelWithStabilizerAndNightVisionView />
   }
 
+  if (
+    activeView === 't72-replace-firing-pin' ||
+    activeView === 't72-replace-firing-pin-طاقم'
+  ) {
+    return <T72ReplaceFiringPinView />
+  }
+
 
 
   // ============================================================
@@ -1070,6 +1079,13 @@ function renderArmoredView(
     activeView === 't62-combat-to-travel-with-stabilizer-and-night-vision-طاقم'
   ) {
     return <T62CombatToTravelWithStabilizerAndNightVisionView />
+  }
+
+  if (
+    activeView === 't62-replace-firing-pin' ||
+    activeView === 't62-replace-firing-pin-طاقم'
+  ) {
+    return <T62ReplaceFiringPinView />
   }
 
   if (activeView === 't55-62-ammunition-stacking') {

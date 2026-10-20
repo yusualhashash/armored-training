@@ -822,6 +822,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T72',
     backTo: 't72',
   },
+
+  't72-replace-firing-pin': {
+    title: 'تبديل الطارق (القدّاح) آلية طارق مغلاق المدفع',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-replace-firing-pin-طاقم': {
+    title: 'تبديل الطارق (القدّاح) آلية طارق مغلاق المدفع',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
   
 
   // ============================================================
@@ -1264,6 +1276,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't62-combat-to-travel-with-stabilizer-and-night-vision-طاقم': {
     title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-replace-firing-pin': {
+    title: 'تبديل الطارق (القدّاح) آلية طارق مغلاق المدفع',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-replace-firing-pin-طاقم': {
+    title: 'تبديل الطارق (القدّاح) آلية طارق مغلاق المدفع',
     backLabel: 'T62',
     backTo: 't62',
   },
