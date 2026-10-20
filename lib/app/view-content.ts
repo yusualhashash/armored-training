@@ -786,6 +786,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T72',
     backTo: 't72',
   },
+
+  't72-combat-to-travel-with-stabilizer-off': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع اطفاء جهاز الاستقرار)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-combat-to-travel-with-stabilizer-off-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع اطفاء جهاز الاستقرار)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
   
 
   // ============================================================
@@ -1102,6 +1114,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't55',
   },
 
+  't55-combat-to-travel-with-stabilizer-off': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع اطفاء جهاز الاستقرار)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-combat-to-travel-with-stabilizer-off-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع اطفاء جهاز الاستقرار)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
   // ============================================================
   // T62
   // ============================================================
@@ -1156,6 +1180,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't62-travel-to-combat-with-stabilizer-and-night-vision-طاقم': {
     title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية الرحيل الى وضعية القتال (مع تشغيل جهاز الاستقرار واجهزة الرؤية الليلية)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-combat-to-travel-with-stabilizer-off': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع اطفاء جهاز الاستقرار)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-combat-to-travel-with-stabilizer-off-طاقم': {
+    title: 'تحويل حجرة القتال واسلحة الدبابة من وضعية القتال الى وضعية الرحيل (مع اطفاء جهاز الاستقرار)',
     backLabel: 'T62',
     backTo: 't62',
   },
