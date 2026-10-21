@@ -172,6 +172,8 @@ export type View =
   | 't72-assembly-machine-gun-طاقم'
   | 't72-assembly-aa-machine-gun'
   | 't72-assembly-aa-machine-gun-طاقم'
+  | 't72-load-machine-gun-belt'
+  | 't72-load-machine-gun-belt-طاقم'
 
   // T55
   | 't55'
@@ -203,6 +205,8 @@ export type View =
   | 't55-assembly-machine-gun-طاقم'
   | 't55-assembly-aa-machine-gun'
   | 't55-assembly-aa-machine-gun-طاقم'
+  | 't55-load-machine-gun-belt'
+  | 't55-load-machine-gun-belt-طاقم'
 
   // T62
   | 't62'
@@ -236,6 +240,8 @@ export type View =
   | 't62-assembly-machine-gun-طاقم'
   | 't62-assembly-aa-machine-gun'
   | 't62-assembly-aa-machine-gun-طاقم'
+  | 't62-load-machine-gun-belt'
+  | 't62-load-machine-gun-belt-طاقم'
 
   // T(55 + 62)
   | 't55-62'

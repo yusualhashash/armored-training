@@ -66,6 +66,9 @@ import { T72PartialDisassemblyMachineGunView } from '@/components/armored/t72/pa
 import { T72PartialDisassemblyAAMachineGunView } from '@/components/armored/t72/partial-disassembly-aa-machine-gun/view'
 import { T72AssemblyMachineGunView } from '@/components/armored/t72/assembly-machine-gun/view'
 import { T72AssemblyAAMachineGunView } from '@/components/armored/t72/assembly-aa-machine-gun/view'
+import { T72LoadMachineGunBeltView } from '@/components/armored/t72/load-machine-gun-belt/view'
+import { T55LoadMachineGunBeltView } from '@/components/armored/t55/load-machine-gun-belt/view'
+import { T62LoadMachineGunBeltView } from '@/components/armored/t62/load-machine-gun-belt/view'
 import { T55AmmunitionStackingView } from '@/components/armored/t55/ammunition-stacking/view'
 import { T55TravelToCombatView } from '@/components/armored/t55/travel-to-combat-without-stabilizer/view'
 import { T55TravelToCombatWithStabilizerView } from '@/components/armored/t55/travel-to-combat-with-stabilizer/view'
@@ -853,6 +856,13 @@ function renderArmoredView(
     return <T72AssemblyAAMachineGunView />
   }
 
+  if (
+    activeView === 't72-load-machine-gun-belt' ||
+    activeView === 't72-load-machine-gun-belt-طاقم'
+  ) {
+    return <T72LoadMachineGunBeltView />
+  }
+
 
 
 
@@ -1169,6 +1179,13 @@ function renderArmoredView(
     return <T55AssemblyAAMachineGunView />
   }
 
+  if (
+    activeView === 't55-load-machine-gun-belt' ||
+    activeView === 't55-load-machine-gun-belt-طاقم'
+  ) {
+    return <T55LoadMachineGunBeltView />
+  }
+
 
 
 
@@ -1262,6 +1279,13 @@ function renderArmoredView(
     activeView === 't62-assembly-aa-machine-gun-طاقم'
   ) {
     return <T62AssemblyAAMachineGunView />
+  }
+
+  if (
+    activeView === 't62-load-machine-gun-belt' ||
+    activeView === 't62-load-machine-gun-belt-طاقم'
+  ) {
+    return <T62LoadMachineGunBeltView />
   }
 
 
