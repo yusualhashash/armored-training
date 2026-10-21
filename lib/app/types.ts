@@ -180,6 +180,8 @@ export type View =
   | 't72-load-aa-machine-gun-belt-طاقم'
   | 't72-draw-envelope-helix'
   | 't72-draw-envelope-helix-طاقم'
+  | 't72-draw-envelope-helix-elevation-direction'
+  | 't72-draw-envelope-helix-elevation-direction-طاقم'
 
   // T55
   | 't55'
@@ -219,6 +221,8 @@ export type View =
   | 't55-load-aa-machine-gun-belt-طاقم'
   | 't55-draw-envelope-helix'
   | 't55-draw-envelope-helix-طاقم'
+  | 't55-draw-envelope-helix-elevation-direction'
+  | 't55-draw-envelope-helix-elevation-direction-طاقم'
 
   // T62
   | 't62'
@@ -260,6 +264,8 @@ export type View =
   | 't62-load-aa-machine-gun-belt-طاقم'
   | 't62-draw-envelope-helix'
   | 't62-draw-envelope-helix-طاقم'
+  | 't62-draw-envelope-helix-elevation-direction'
+  | 't62-draw-envelope-helix-elevation-direction-طاقم'
 
   // T(55 + 62)
   | 't55-62'
