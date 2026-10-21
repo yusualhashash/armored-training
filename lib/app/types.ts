@@ -160,6 +160,10 @@ export type View =
   | 't72-replace-firing-pin-طاقم'
   | 't72-replace-spring'
   | 't72-replace-spring-طاقم'
+  | 't72-partial-disassembly-machine-gun'
+  | 't72-partial-disassembly-machine-gun-طاقم'
+  | 't72-partial-disassembly-aa-machine-gun'
+  | 't72-partial-disassembly-aa-machine-gun-طاقم'
 
   // T55
   | 't55'
@@ -179,6 +183,10 @@ export type View =
   | 't55-combat-to-travel-with-stabilizer-and-night-vision-طاقم'
   | 't55-replace-spring'
   | 't55-replace-spring-طاقم'
+  | 't55-partial-disassembly-machine-gun'
+  | 't55-partial-disassembly-machine-gun-طاقم'
+  | 't55-partial-disassembly-aa-machine-gun'
+  | 't55-partial-disassembly-aa-machine-gun-طاقم'
 
   // T62
   | 't62'
@@ -200,6 +208,10 @@ export type View =
   | 't62-replace-firing-pin-طاقم'
   | 't62-replace-spring'
   | 't62-replace-spring-طاقم'
+  | 't62-partial-disassembly-machine-gun'
+  | 't62-partial-disassembly-machine-gun-طاقم'
+  | 't62-partial-disassembly-aa-machine-gun'
+  | 't62-partial-disassembly-aa-machine-gun-طاقم'
 
   // T(55 + 62)
   | 't55-62'

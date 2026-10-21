@@ -846,6 +846,32 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T72',
     backTo: 't72',
   },
+
+  't72-partial-disassembly-machine-gun': {
+    title: 'الفك الجزئي للرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-partial-disassembly-machine-gun-طاقم': {
+    title: 'الفك الجزئي للرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-partial-disassembly-aa-machine-gun': {
+    title: 'الفك الجزئي للرشاش (الرشاش م / ط)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-partial-disassembly-aa-machine-gun-طاقم': {
+    title: 'الفك الجزئي للرشاش (الرشاش م / ط)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+
   
 
   // ============================================================
@@ -1210,6 +1236,32 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't55',
   },
 
+  't55-partial-disassembly-machine-gun': {
+    title: 'الفك الجزئي للرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-partial-disassembly-machine-gun-طاقم': {
+    title: 'الفك الجزئي للرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-partial-disassembly-aa-machine-gun': {
+    title: 'الفك الجزئي للرشاش (الرشاش م / ط)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-partial-disassembly-aa-machine-gun-طاقم': {
+    title: 'الفك الجزئي للرشاش (الرشاش م / ط)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+
+
   // ============================================================
   // T62
   // ============================================================
@@ -1327,6 +1379,32 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T62',
     backTo: 't62',
   },
+
+  't62-partial-disassembly-machine-gun': {
+    title: 'الفك الجزئي للرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-partial-disassembly-machine-gun-طاقم': {
+    title: 'الفك الجزئي للرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-partial-disassembly-aa-machine-gun': {
+    title: 'الفك الجزئي للرشاش (الرشاش م / ط)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-partial-disassembly-aa-machine-gun-طاقم': {
+    title: 'الفك الجزئي للرشاش (الرشاش م / ط)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+
 
 }
 
