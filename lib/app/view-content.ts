@@ -955,6 +955,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't72',
   },
 
+  't72-draw-envelope-helix': {
+    title: 'رسم الظرف - اللولب (بواسطة كتلة التحكم)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-draw-envelope-helix-طاقم': {
+    title: 'رسم الظرف - اللولب (بواسطة كتلة التحكم)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
 
 
 
@@ -1430,6 +1442,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't55',
   },
 
+  't55-draw-envelope-helix': {
+    title: 'رسم الظرف - اللولب (بواسطة كتلة التحكم)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-draw-envelope-helix-طاقم': {
+    title: 'رسم الظرف - اللولب (بواسطة كتلة التحكم)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
 
 
 
@@ -1656,6 +1680,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't62-load-aa-machine-gun-belt-طاقم': {
     title: 'تعبئة شريط الرشاش (بالنسبة للرشاش م/ط ٥٠ طلقة ( عدا الدبابة ت ٧٢ – ٦٠ طلقة ) تعبأ يدويا)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-draw-envelope-helix': {
+    title: 'رسم الظرف - اللولب (بواسطة كتلة التحكم)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-draw-envelope-helix-طاقم': {
+    title: 'رسم الظرف - اللولب (بواسطة كتلة التحكم)',
     backLabel: 'T62',
     backTo: 't62',
   },

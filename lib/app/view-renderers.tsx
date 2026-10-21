@@ -69,12 +69,15 @@ import { T72AssemblyAAMachineGunView } from '@/components/armored/t72/assembly-a
 import { T72LoadMachineGunBeltView } from '@/components/armored/t72/load-machine-gun-belt/view'
 import { T72LoadMachineGunBeltRakovaView } from '@/components/armored/t72/load-machine-gun-belt-rakova/view'
 import { T72LoadAAMachineGunBeltView } from '@/components/armored/t72/load-aa-machine-gun-belt/view'
+import { T72DrawEnvelopeHelixView } from '@/components/armored/t72/draw-envelope-helix/view'
 import { T55LoadMachineGunBeltView } from '@/components/armored/t55/load-machine-gun-belt/view'
 import { T55LoadMachineGunBeltRakovaView } from '@/components/armored/t55/load-machine-gun-belt-rakova/view'
 import { T55LoadAAMachineGunBeltView } from '@/components/armored/t55/load-aa-machine-gun-belt/view'
+import { T55DrawEnvelopeHelixView } from '@/components/armored/t55/draw-envelope-helix/view'
 import { T62LoadMachineGunBeltView } from '@/components/armored/t62/load-machine-gun-belt/view'
 import { T62LoadMachineGunBeltRakovaView } from '@/components/armored/t62/load-machine-gun-belt-rakova/view'
 import { T62LoadAAMachineGunBeltView } from '@/components/armored/t62/load-aa-machine-gun-belt/view'
+import { T62DrawEnvelopeHelixView } from '@/components/armored/t62/draw-envelope-helix/view'
 import { T55AmmunitionStackingView } from '@/components/armored/t55/ammunition-stacking/view'
 import { T55TravelToCombatView } from '@/components/armored/t55/travel-to-combat-without-stabilizer/view'
 import { T55TravelToCombatWithStabilizerView } from '@/components/armored/t55/travel-to-combat-with-stabilizer/view'
@@ -883,6 +886,13 @@ function renderArmoredView(
     return <T72LoadAAMachineGunBeltView />
   }
 
+  if (
+    activeView === 't72-draw-envelope-helix' ||
+    activeView === 't72-draw-envelope-helix-طاقم'
+  ) {
+    return <T72DrawEnvelopeHelixView />
+  }
+
 
 
 
@@ -1220,6 +1230,13 @@ function renderArmoredView(
     return <T55LoadAAMachineGunBeltView />
   }
 
+  if (
+    activeView === 't55-draw-envelope-helix' ||
+    activeView === 't55-draw-envelope-helix-طاقم'
+  ) {
+    return <T55DrawEnvelopeHelixView />
+  }
+
 
 
 
@@ -1334,6 +1351,13 @@ function renderArmoredView(
     activeView === 't62-load-aa-machine-gun-belt-طاقم'
   ) {
     return <T62LoadAAMachineGunBeltView />
+  }
+
+  if (
+    activeView === 't62-draw-envelope-helix' ||
+    activeView === 't62-draw-envelope-helix-طاقم'
+  ) {
+    return <T62DrawEnvelopeHelixView />
   }
 
 

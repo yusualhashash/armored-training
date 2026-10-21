@@ -223,6 +223,13 @@ export function AppContent({
         />
 
         <SectionButton
+          label="رسم الظرف - اللولب (بواسطة كتلة التحكم)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t72-draw-envelope-helix')}
+        />
+
+        <SectionButton
           label="ركوب الطواقم في الدبابة"
           description="الطاقم والفصيلة والسرية"
           icon={Medal}
@@ -424,6 +431,13 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t55-load-aa-machine-gun-belt')}
         />
+
+        <SectionButton
+          label="رسم الظرف - اللولب (بواسطة كتلة التحكم)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t55-draw-envelope-helix')}
+        />
       </div>
     )
   }
@@ -553,6 +567,13 @@ export function AppContent({
           description="السدنة"
           icon={Medal}
           onClick={() => openView('t62-load-aa-machine-gun-belt')}
+        />
+
+        <SectionButton
+          label="رسم الظرف - اللولب (بواسطة كتلة التحكم)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t62-draw-envelope-helix')}
         />
       </div>
     )
