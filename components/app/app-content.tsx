@@ -160,6 +160,20 @@ export function AppContent({
         />
 
         <SectionButton
+          label="تبديل سبطانة الرشاش (الرشاش الموازي للمدفع)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t72-replace-machine-gun-barrel')}
+        />
+
+        <SectionButton
+          label="تبديل سبطانة الرشاش (الرشاش كبير العيار (للآليات التي يركب فيها))"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t72-replace-heavy-machine-gun-barrel')}
+        />
+
+        <SectionButton
           label="الفك الجزئي للرشاش (الرشاش الموازي للمدفع)"
           description="السدنة"
           icon={Medal}
@@ -332,6 +346,20 @@ export function AppContent({
         />
 
         <SectionButton
+          label="تبديل سبطانة الرشاش (الرشاش الموازي للمدفع)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t55-replace-machine-gun-barrel')}
+        />
+
+        <SectionButton
+          label="تبديل سبطانة الرشاش (الرشاش كبير العيار (للآليات التي يركب فيها))"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t55-replace-heavy-machine-gun-barrel')}
+        />
+
+        <SectionButton
           label="الفك الجزئي للرشاش (الرشاش الموازي للمدفع)"
           description="السدنة"
           icon={Medal}
@@ -428,6 +456,20 @@ export function AppContent({
           description="السدنة"
           icon={Medal}
           onClick={() => openView('t62-replace-spring')}
+        />
+
+        <SectionButton
+          label="تبديل سبطانة الرشاش (الرشاش الموازي للمدفع)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t62-replace-machine-gun-barrel')}
+        />
+
+        <SectionButton
+          label="تبديل سبطانة الرشاش (الرشاش كبير العيار (للآليات التي يركب فيها))"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t62-replace-heavy-machine-gun-barrel')}
         />
 
         <SectionButton

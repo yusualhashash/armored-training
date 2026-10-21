@@ -847,6 +847,30 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't72',
   },
 
+  't72-replace-machine-gun-barrel': {
+    title: 'تبديل سبطانة الرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-replace-machine-gun-barrel-طاقم': {
+    title: 'تبديل سبطانة الرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-replace-heavy-machine-gun-barrel': {
+    title: 'تبديل سبطانة الرشاش (الرشاش كبير العيار (للآليات التي يركب فيها))',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-replace-heavy-machine-gun-barrel-طاقم': {
+    title: 'تبديل سبطانة الرشاش (الرشاش كبير العيار (للآليات التي يركب فيها))',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
   't72-partial-disassembly-machine-gun': {
     title: 'الفك الجزئي للرشاش (الرشاش الموازي للمدفع)',
     backLabel: 'T72',
@@ -1262,6 +1286,30 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't55',
   },
 
+  't55-replace-machine-gun-barrel': {
+    title: 'تبديل سبطانة الرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-replace-machine-gun-barrel-طاقم': {
+    title: 'تبديل سبطانة الرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-replace-heavy-machine-gun-barrel': {
+    title: 'تبديل سبطانة الرشاش (الرشاش كبير العيار (للآليات التي يركب فيها))',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-replace-heavy-machine-gun-barrel-طاقم': {
+    title: 'تبديل سبطانة الرشاش (الرشاش كبير العيار (للآليات التي يركب فيها))',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
   't55-partial-disassembly-machine-gun': {
     title: 'الفك الجزئي للرشاش (الرشاش الموازي للمدفع)',
     backLabel: 'T55',
@@ -1428,6 +1476,30 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't62-replace-spring-طاقم': {
     title: 'تبديل النابض آلية طارق مغلاق المدفع',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-replace-machine-gun-barrel': {
+    title: 'تبديل سبطانة الرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-replace-machine-gun-barrel-طاقم': {
+    title: 'تبديل سبطانة الرشاش (الرشاش الموازي للمدفع)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-replace-heavy-machine-gun-barrel': {
+    title: 'تبديل سبطانة الرشاش (الرشاش كبير العيار (للآليات التي يركب فيها))',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-replace-heavy-machine-gun-barrel-طاقم': {
+    title: 'تبديل سبطانة الرشاش (الرشاش كبير العيار (للآليات التي يركب فيها))',
     backLabel: 'T62',
     backTo: 't62',
   },

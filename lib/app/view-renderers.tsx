@@ -60,6 +60,8 @@ import { T72CombatToTravelWithStabilizerView } from '@/components/armored/t72/co
 import { T72CombatToTravelWithStabilizerAndNightVisionView } from '@/components/armored/t72/combat-to-travel-with-stabilizer-and-night-vision/view'
 import { T72ReplaceFiringPinView } from '@/components/armored/t72/replace-firing-pin/view'
 import { T72ReplaceSpringView } from '@/components/armored/t72/replace-spring/view'
+import { T72ReplaceMachineGunBarrelView } from '@/components/armored/t72/replace-machine-gun-barrel/view'
+import { T72ReplaceHeavyMachineGunBarrelView } from '@/components/armored/t72/replace-heavy-machine-gun-barrel/view'
 import { T72PartialDisassemblyMachineGunView } from '@/components/armored/t72/partial-disassembly-machine-gun/view'
 import { T72PartialDisassemblyAAMachineGunView } from '@/components/armored/t72/partial-disassembly-aa-machine-gun/view'
 import { T72AssemblyMachineGunView } from '@/components/armored/t72/assembly-machine-gun/view'
@@ -72,6 +74,8 @@ import { T55CombatToTravelWithStabilizerOffView } from '@/components/armored/t55
 import { T55CombatToTravelWithStabilizerView } from '@/components/armored/t55/combat-to-travel-with-stabilizer/view'
 import { T55CombatToTravelWithStabilizerAndNightVisionView } from '@/components/armored/t55/combat-to-travel-with-stabilizer-and-night-vision/view'
 import { T55ReplaceSpringView } from '@/components/armored/t55/replace-spring/view'
+import { T55ReplaceMachineGunBarrelView } from '@/components/armored/t55/replace-machine-gun-barrel/view'
+import { T55ReplaceHeavyMachineGunBarrelView } from '@/components/armored/t55/replace-heavy-machine-gun-barrel/view'
 import { T55PartialDisassemblyMachineGunView } from '@/components/armored/t55/partial-disassembly-machine-gun/view'
 import { T55PartialDisassemblyAAMachineGunView } from '@/components/armored/t55/partial-disassembly-aa-machine-gun/view'
 import { T55AssemblyMachineGunView } from '@/components/armored/t55/assembly-machine-gun/view'
@@ -85,6 +89,8 @@ import { T62CombatToTravelWithStabilizerView } from '@/components/armored/t62/co
 import { T62CombatToTravelWithStabilizerAndNightVisionView } from '@/components/armored/t62/combat-to-travel-with-stabilizer-and-night-vision/view'
 import { T62ReplaceFiringPinView } from '@/components/armored/t62/replace-firing-pin/view'
 import { T62ReplaceSpringView } from '@/components/armored/t62/replace-spring/view'
+import { T62ReplaceMachineGunBarrelView } from '@/components/armored/t62/replace-machine-gun-barrel/view'
+import { T62ReplaceHeavyMachineGunBarrelView } from '@/components/armored/t62/replace-heavy-machine-gun-barrel/view'
 import { T62PartialDisassemblyMachineGunView } from '@/components/armored/t62/partial-disassembly-machine-gun/view'
 import { T62PartialDisassemblyAAMachineGunView } from '@/components/armored/t62/partial-disassembly-aa-machine-gun/view'
 import { T62AssemblyMachineGunView } from '@/components/armored/t62/assembly-machine-gun/view'
@@ -806,6 +812,20 @@ function renderArmoredView(
   }
 
   if (
+    activeView === 't72-replace-machine-gun-barrel' ||
+    activeView === 't72-replace-machine-gun-barrel-طاقم'
+  ) {
+    return <T72ReplaceMachineGunBarrelView />
+  }
+
+  if (
+    activeView === 't72-replace-heavy-machine-gun-barrel' ||
+    activeView === 't72-replace-heavy-machine-gun-barrel-طاقم'
+  ) {
+    return <T72ReplaceHeavyMachineGunBarrelView />
+  }
+
+  if (
     activeView === 't72-partial-disassembly-machine-gun' ||
     activeView === 't72-partial-disassembly-machine-gun-طاقم'
   ) {
@@ -1108,6 +1128,20 @@ function renderArmoredView(
   }
 
   if (
+    activeView === 't55-replace-machine-gun-barrel' ||
+    activeView === 't55-replace-machine-gun-barrel-طاقم'
+  ) {
+    return <T55ReplaceMachineGunBarrelView />
+  }
+
+  if (
+    activeView === 't55-replace-heavy-machine-gun-barrel' ||
+    activeView === 't55-replace-heavy-machine-gun-barrel-طاقم'
+  ) {
+    return <T55ReplaceHeavyMachineGunBarrelView />
+  }
+
+  if (
     activeView === 't55-partial-disassembly-machine-gun' ||
     activeView === 't55-partial-disassembly-machine-gun-طاقم'
   ) {
@@ -1186,6 +1220,20 @@ function renderArmoredView(
     activeView === 't62-replace-spring-طاقم'
   ) {
     return <T62ReplaceSpringView />
+  }
+
+  if (
+    activeView === 't62-replace-machine-gun-barrel' ||
+    activeView === 't62-replace-machine-gun-barrel-طاقم'
+  ) {
+    return <T62ReplaceMachineGunBarrelView />
+  }
+
+  if (
+    activeView === 't62-replace-heavy-machine-gun-barrel' ||
+    activeView === 't62-replace-heavy-machine-gun-barrel-طاقم'
+  ) {
+    return <T62ReplaceHeavyMachineGunBarrelView />
   }
 
   if (
