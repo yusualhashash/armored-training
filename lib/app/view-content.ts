@@ -931,6 +931,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't72',
   },
 
+  't72-load-machine-gun-belt-rakova': {
+    title: 'تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (بواسطة آلة راكوفا)))',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-load-machine-gun-belt-rakova-طاقم': {
+    title: 'تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (بواسطة آلة راكوفا)))',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
 
 
 
@@ -1382,6 +1394,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't55',
   },
 
+  't55-load-machine-gun-belt-rakova': {
+    title: 'تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (بواسطة آلة راكوفا)))',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-load-machine-gun-belt-rakova-طاقم': {
+    title: 'تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (بواسطة آلة راكوفا)))',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
 
 
 
@@ -1584,6 +1608,18 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
 
   't62-load-machine-gun-belt-طاقم': {
     title: 'تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (يدويا)))',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-load-machine-gun-belt-rakova': {
+    title: 'تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (بواسطة آلة راكوفا)))',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-load-machine-gun-belt-rakova-طاقم': {
+    title: 'تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (بواسطة آلة راكوفا)))',
     backLabel: 'T62',
     backTo: 't62',
   },

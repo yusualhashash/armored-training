@@ -201,9 +201,19 @@ export function AppContent({
           onClick={() => openView('t72-assembly-aa-machine-gun')}
         />
 
+        <SectionButton
+          label="تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (يدويا)))"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t72-load-machine-gun-belt')}
+        />
 
-
-
+        <SectionButton
+          label="تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (بواسطة آلة راكوفا)))"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t72-load-machine-gun-belt-rakova')}
+        />
 
         <SectionButton
           label="ركوب الطواقم في الدبابة"
@@ -387,9 +397,19 @@ export function AppContent({
           onClick={() => openView('t55-assembly-aa-machine-gun')}
         />
 
+        <SectionButton
+          label="تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (يدويا)))"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t55-load-machine-gun-belt')}
+        />
 
-
-
+        <SectionButton
+          label="تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (بواسطة آلة راكوفا)))"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t55-load-machine-gun-belt-rakova')}
+        />
       </div>
     )
   }
@@ -500,9 +520,19 @@ export function AppContent({
           onClick={() => openView('t62-assembly-aa-machine-gun')}
         />
 
+        <SectionButton
+          label="تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (يدويا)))"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t62-load-machine-gun-belt')}
+        />
 
-
-
+        <SectionButton
+          label="تعبئة شريط الرشاش (بالنسبة للرشاش الموازي مع المدفع (٢٥٠ طلقة تعبأ (بواسطة آلة راكوفا)))"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t62-load-machine-gun-belt-rakova')}
+        />
       </div>
     )
   }

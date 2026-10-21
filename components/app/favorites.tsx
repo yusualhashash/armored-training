@@ -289,7 +289,7 @@ export function FavoriteViewButton({ view }: { view: View }) {
   return <FavoriteButton view={view} />
 }
 
-const vehiclePattern = /T72|T55\+62/i
+const vehiclePattern = /T72|T62|T55|T55\+62/i
 
 function getFavoriteCategory(view: View) {
   const chain = getFavoriteChain(view)
