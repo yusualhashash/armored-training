@@ -173,6 +173,22 @@ export function AppContent({
           onClick={() => openView('t72-partial-disassembly-aa-machine-gun')}
         />
 
+        <SectionButton
+          label="تركيب الرشاش بعد الفك الجزئي (الرشاش الموازي للمدفع)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t72-assembly-machine-gun')}
+        />
+
+        <SectionButton
+          label="تركيب الرشاش بعد الفك الجزئي (الرشاش م / ط)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t72-assembly-aa-machine-gun')}
+        />
+
+
+
 
 
         <SectionButton
@@ -329,6 +345,22 @@ export function AppContent({
           onClick={() => openView('t55-partial-disassembly-aa-machine-gun')}
         />
 
+        <SectionButton
+          label="تركيب الرشاش بعد الفك الجزئي (الرشاش الموازي للمدفع)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t55-assembly-machine-gun')}
+        />
+
+        <SectionButton
+          label="تركيب الرشاش بعد الفك الجزئي (الرشاش م / ط)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t55-assembly-aa-machine-gun')}
+        />
+
+
+
 
       </div>
     )
@@ -411,6 +443,22 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t62-partial-disassembly-aa-machine-gun')}
         />
+
+        <SectionButton
+          label="تركيب الرشاش بعد الفك الجزئي (الرشاش الموازي للمدفع)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t62-assembly-machine-gun')}
+        />
+
+        <SectionButton
+          label="تركيب الرشاش بعد الفك الجزئي (الرشاش م / ط)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t62-assembly-aa-machine-gun')}
+        />
+
+
 
 
       </div>

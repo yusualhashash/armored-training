@@ -62,6 +62,8 @@ import { T72ReplaceFiringPinView } from '@/components/armored/t72/replace-firing
 import { T72ReplaceSpringView } from '@/components/armored/t72/replace-spring/view'
 import { T72PartialDisassemblyMachineGunView } from '@/components/armored/t72/partial-disassembly-machine-gun/view'
 import { T72PartialDisassemblyAAMachineGunView } from '@/components/armored/t72/partial-disassembly-aa-machine-gun/view'
+import { T72AssemblyMachineGunView } from '@/components/armored/t72/assembly-machine-gun/view'
+import { T72AssemblyAAMachineGunView } from '@/components/armored/t72/assembly-aa-machine-gun/view'
 import { T55AmmunitionStackingView } from '@/components/armored/t55/ammunition-stacking/view'
 import { T55TravelToCombatView } from '@/components/armored/t55/travel-to-combat-without-stabilizer/view'
 import { T55TravelToCombatWithStabilizerView } from '@/components/armored/t55/travel-to-combat-with-stabilizer/view'
@@ -72,6 +74,8 @@ import { T55CombatToTravelWithStabilizerAndNightVisionView } from '@/components/
 import { T55ReplaceSpringView } from '@/components/armored/t55/replace-spring/view'
 import { T55PartialDisassemblyMachineGunView } from '@/components/armored/t55/partial-disassembly-machine-gun/view'
 import { T55PartialDisassemblyAAMachineGunView } from '@/components/armored/t55/partial-disassembly-aa-machine-gun/view'
+import { T55AssemblyMachineGunView } from '@/components/armored/t55/assembly-machine-gun/view'
+import { T55AssemblyAAMachineGunView } from '@/components/armored/t55/assembly-aa-machine-gun/view'
 import { T62AmmunitionStackingView } from '@/components/armored/t62/ammunition-stacking/view'
 import { T62TravelToCombatView } from '@/components/armored/t62/travel-to-combat-without-stabilizer/view'
 import { T62TravelToCombatWithStabilizerView } from '@/components/armored/t62/travel-to-combat-with-stabilizer/view'
@@ -83,6 +87,8 @@ import { T62ReplaceFiringPinView } from '@/components/armored/t62/replace-firing
 import { T62ReplaceSpringView } from '@/components/armored/t62/replace-spring/view'
 import { T62PartialDisassemblyMachineGunView } from '@/components/armored/t62/partial-disassembly-machine-gun/view'
 import { T62PartialDisassemblyAAMachineGunView } from '@/components/armored/t62/partial-disassembly-aa-machine-gun/view'
+import { T62AssemblyMachineGunView } from '@/components/armored/t62/assembly-machine-gun/view'
+import { T62AssemblyAAMachineGunView } from '@/components/armored/t62/assembly-aa-machine-gun/view'
 import { T55_62AmmunitionStackingView } from '@/components/armored/t55-62/ammunition-stacking/view'
 
 
@@ -813,6 +819,22 @@ function renderArmoredView(
     return <T72PartialDisassemblyAAMachineGunView />
   }
 
+  if (
+    activeView === 't72-assembly-machine-gun' ||
+    activeView === 't72-assembly-machine-gun-طاقم'
+  ) {
+    return <T72AssemblyMachineGunView />
+  }
+
+  if (
+    activeView === 't72-assembly-aa-machine-gun' ||
+    activeView === 't72-assembly-aa-machine-gun-طاقم'
+  ) {
+    return <T72AssemblyAAMachineGunView />
+  }
+
+
+
 
 
 
@@ -1099,6 +1121,22 @@ function renderArmoredView(
     return <T55PartialDisassemblyAAMachineGunView />
   }
 
+  if (
+    activeView === 't55-assembly-machine-gun' ||
+    activeView === 't55-assembly-machine-gun-طاقم'
+  ) {
+    return <T55AssemblyMachineGunView />
+  }
+
+  if (
+    activeView === 't55-assembly-aa-machine-gun' ||
+    activeView === 't55-assembly-aa-machine-gun-طاقم'
+  ) {
+    return <T55AssemblyAAMachineGunView />
+  }
+
+
+
 
 
   if (
@@ -1163,6 +1201,22 @@ function renderArmoredView(
   ) {
     return <T62PartialDisassemblyAAMachineGunView />
   }
+
+  if (
+    activeView === 't62-assembly-machine-gun' ||
+    activeView === 't62-assembly-machine-gun-طاقم'
+  ) {
+    return <T62AssemblyMachineGunView />
+  }
+
+  if (
+    activeView === 't62-assembly-aa-machine-gun' ||
+    activeView === 't62-assembly-aa-machine-gun-طاقم'
+  ) {
+    return <T62AssemblyAAMachineGunView />
+  }
+
+
 
 
 

@@ -164,6 +164,10 @@ export type View =
   | 't72-partial-disassembly-machine-gun-طاقم'
   | 't72-partial-disassembly-aa-machine-gun'
   | 't72-partial-disassembly-aa-machine-gun-طاقم'
+  | 't72-assembly-machine-gun'
+  | 't72-assembly-machine-gun-طاقم'
+  | 't72-assembly-aa-machine-gun'
+  | 't72-assembly-aa-machine-gun-طاقم'
 
   // T55
   | 't55'
@@ -187,6 +191,10 @@ export type View =
   | 't55-partial-disassembly-machine-gun-طاقم'
   | 't55-partial-disassembly-aa-machine-gun'
   | 't55-partial-disassembly-aa-machine-gun-طاقم'
+  | 't55-assembly-machine-gun'
+  | 't55-assembly-machine-gun-طاقم'
+  | 't55-assembly-aa-machine-gun'
+  | 't55-assembly-aa-machine-gun-طاقم'
 
   // T62
   | 't62'
@@ -212,6 +220,10 @@ export type View =
   | 't62-partial-disassembly-machine-gun-طاقم'
   | 't62-partial-disassembly-aa-machine-gun'
   | 't62-partial-disassembly-aa-machine-gun-طاقم'
+  | 't62-assembly-machine-gun'
+  | 't62-assembly-machine-gun-طاقم'
+  | 't62-assembly-aa-machine-gun'
+  | 't62-assembly-aa-machine-gun-طاقم'
 
   // T(55 + 62)
   | 't55-62'

@@ -871,6 +871,32 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't72',
   },
 
+  't72-assembly-machine-gun': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش الموازي للمدفع)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-assembly-machine-gun-طاقم': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش الموازي للمدفع)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-assembly-aa-machine-gun': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش م / ط)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+  't72-assembly-aa-machine-gun-طاقم': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش م / ط)',
+    backLabel: 'T72',
+    backTo: 't72',
+  },
+
+
+
 
   
 
@@ -1260,6 +1286,32 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backTo: 't55',
   },
 
+  't55-assembly-machine-gun': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش الموازي للمدفع)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-assembly-machine-gun-طاقم': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش الموازي للمدفع)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-assembly-aa-machine-gun': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش م / ط)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+  't55-assembly-aa-machine-gun-طاقم': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش م / ط)',
+    backLabel: 'T55',
+    backTo: 't55',
+  },
+
+
+
 
 
   // ============================================================
@@ -1403,6 +1455,32 @@ export const viewContent: Partial<Record<View, ViewContent>> = {
     backLabel: 'T62',
     backTo: 't62',
   },
+
+  't62-assembly-machine-gun': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش الموازي للمدفع)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-assembly-machine-gun-طاقم': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش الموازي للمدفع)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-assembly-aa-machine-gun': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش م / ط)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+  't62-assembly-aa-machine-gun-طاقم': {
+    title: 'تركيب الرشاش بعد الفك الجزئي (الرشاش م / ط)',
+    backLabel: 'T62',
+    backTo: 't62',
+  },
+
+
 
 
 
