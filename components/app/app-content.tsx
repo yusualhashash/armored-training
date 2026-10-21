@@ -216,6 +216,13 @@ export function AppContent({
         />
 
         <SectionButton
+          label="تعبئة شريط الرشاش (بالنسبة للرشاش م/ط ٥٠ طلقة ( عدا الدبابة ت ٧٢ – ٦٠ طلقة ) تعبأ يدويا)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t72-load-aa-machine-gun-belt')}
+        />
+
+        <SectionButton
           label="ركوب الطواقم في الدبابة"
           description="الطاقم والفصيلة والسرية"
           icon={Medal}
@@ -410,6 +417,13 @@ export function AppContent({
           icon={Medal}
           onClick={() => openView('t55-load-machine-gun-belt-rakova')}
         />
+
+        <SectionButton
+          label="تعبئة شريط الرشاش (بالنسبة للرشاش م/ط ٥٠ طلقة ( عدا الدبابة ت ٧٢ – ٦٠ طلقة ) تعبأ يدويا)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t55-load-aa-machine-gun-belt')}
+        />
       </div>
     )
   }
@@ -532,6 +546,13 @@ export function AppContent({
           description="السدنة"
           icon={Medal}
           onClick={() => openView('t62-load-machine-gun-belt-rakova')}
+        />
+
+        <SectionButton
+          label="تعبئة شريط الرشاش (بالنسبة للرشاش م/ط ٥٠ طلقة ( عدا الدبابة ت ٧٢ – ٦٠ طلقة ) تعبأ يدويا)"
+          description="السدنة"
+          icon={Medal}
+          onClick={() => openView('t62-load-aa-machine-gun-belt')}
         />
       </div>
     )

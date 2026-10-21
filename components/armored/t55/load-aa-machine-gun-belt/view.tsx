@@ -1,0 +1,22 @@
+'use client'
+
+import { TimerPanel } from '@/components/timer/timer-panel'
+import {
+  createT55LoadAAMachineGunBeltEvent,
+  T55_LOAD_AA_MACHINE_GUN_BELT_INSTRUCTIONS,
+  T55_LOAD_AA_MACHINE_GUN_BELT_RATINGS,
+} from '@/lib/armored/t55/load-aa-machine-gun-belt'
+
+export function T55LoadAAMachineGunBeltView() {
+  return (
+    <div className="mx-auto w-full max-w-3xl">
+      <TimerPanel
+        event={createT55LoadAAMachineGunBeltEvent()}
+        showRecord={false}
+        trainerInstructions={T55_LOAD_AA_MACHINE_GUN_BELT_INSTRUCTIONS}
+        trainerRatings={T55_LOAD_AA_MACHINE_GUN_BELT_RATINGS}
+        ratingsTitle="التقدير حسب الزمن"
+      />
+    </div>
+  )
+}

@@ -68,10 +68,13 @@ import { T72AssemblyMachineGunView } from '@/components/armored/t72/assembly-mac
 import { T72AssemblyAAMachineGunView } from '@/components/armored/t72/assembly-aa-machine-gun/view'
 import { T72LoadMachineGunBeltView } from '@/components/armored/t72/load-machine-gun-belt/view'
 import { T72LoadMachineGunBeltRakovaView } from '@/components/armored/t72/load-machine-gun-belt-rakova/view'
+import { T72LoadAAMachineGunBeltView } from '@/components/armored/t72/load-aa-machine-gun-belt/view'
 import { T55LoadMachineGunBeltView } from '@/components/armored/t55/load-machine-gun-belt/view'
 import { T55LoadMachineGunBeltRakovaView } from '@/components/armored/t55/load-machine-gun-belt-rakova/view'
+import { T55LoadAAMachineGunBeltView } from '@/components/armored/t55/load-aa-machine-gun-belt/view'
 import { T62LoadMachineGunBeltView } from '@/components/armored/t62/load-machine-gun-belt/view'
 import { T62LoadMachineGunBeltRakovaView } from '@/components/armored/t62/load-machine-gun-belt-rakova/view'
+import { T62LoadAAMachineGunBeltView } from '@/components/armored/t62/load-aa-machine-gun-belt/view'
 import { T55AmmunitionStackingView } from '@/components/armored/t55/ammunition-stacking/view'
 import { T55TravelToCombatView } from '@/components/armored/t55/travel-to-combat-without-stabilizer/view'
 import { T55TravelToCombatWithStabilizerView } from '@/components/armored/t55/travel-to-combat-with-stabilizer/view'
@@ -873,6 +876,13 @@ function renderArmoredView(
     return <T72LoadMachineGunBeltRakovaView />
   }
 
+  if (
+    activeView === 't72-load-aa-machine-gun-belt' ||
+    activeView === 't72-load-aa-machine-gun-belt-طاقم'
+  ) {
+    return <T72LoadAAMachineGunBeltView />
+  }
+
 
 
 
@@ -1203,6 +1213,13 @@ function renderArmoredView(
     return <T55LoadMachineGunBeltRakovaView />
   }
 
+  if (
+    activeView === 't55-load-aa-machine-gun-belt' ||
+    activeView === 't55-load-aa-machine-gun-belt-طاقم'
+  ) {
+    return <T55LoadAAMachineGunBeltView />
+  }
+
 
 
 
@@ -1310,6 +1327,13 @@ function renderArmoredView(
     activeView === 't62-load-machine-gun-belt-rakova-طاقم'
   ) {
     return <T62LoadMachineGunBeltRakovaView />
+  }
+
+  if (
+    activeView === 't62-load-aa-machine-gun-belt' ||
+    activeView === 't62-load-aa-machine-gun-belt-طاقم'
+  ) {
+    return <T62LoadAAMachineGunBeltView />
   }
 
 
