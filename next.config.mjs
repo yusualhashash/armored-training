@@ -1,6 +1,6 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  // On Vercel, output: 'standalone' causes "ENOENT: no such file or directory, open '/vercel/path0/.next/next-server.js.nft.json'"
+  ...(process.env.BUILD_STANDALONE === 'true' && !process.env.VERCEL ? { output: 'standalone' } : {}),
   async headers() {
     const noCache = [
       { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
